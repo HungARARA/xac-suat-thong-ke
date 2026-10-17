@@ -20,6 +20,11 @@ const LESSONS = [
   }
 ];
 
+/* Trang phụ (không phải bài học): hiện ở thanh điều hướng, sau các bài. */
+const EXTRA_PAGES = [
+  { id: "phu-luc", href: "phu-luc.html", no: "Bảng phụ lục" }
+];
+
 /* Các bài sắp học (hiện mờ trên trang chủ). Khi làm xong bài nào thì chuyển nó lên LESSONS. */
 const COMING = [
   { no: "Bài 3", title: "Giới thiệu thống kê – Thu thập, trình bày dữ liệu – Phân bố của các tham số trên mẫu" },
@@ -60,7 +65,7 @@ const COMING = [
     const nav = document.getElementById("topnav");
     if (!nav) return;
     const cur = document.body.dataset.lesson;
-    nav.innerHTML = LESSONS.map(l =>
+    nav.innerHTML = [...LESSONS, ...EXTRA_PAGES].map(l =>
       `<a href="${l.href}" class="${l.id === cur ? "active" : ""}">${l.no}</a>`).join("");
   }
 

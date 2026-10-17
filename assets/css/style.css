@@ -465,6 +465,24 @@ a.lesson-card:hover { transform: translateY(-3px); border-color: var(--s1); }
 .lesson-card.soon .no { color: var(--muted); }
 .how { margin-top: 44px; }
 
+/* ---------- trang bảng phụ lục ---------- */
+.pl-cap { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 20px 0 0; }
+.pl-tag { font-size: 12.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
+.pl-tag.book { background: var(--s8-soft); color: color-mix(in srgb, var(--s8) 75%, var(--text)); }
+.pl-tag.fixed { background: var(--s3-soft); color: color-mix(in srgb, var(--s3) 65%, var(--text)); }
+table.pl { font-variant-numeric: tabular-nums; }
+table.pl th, table.pl td { padding: 4px 8px; font-size: 14px; white-space: nowrap; border-right: 1px solid var(--border); }
+table.pl th:last-child, table.pl td:last-child { border-right: 0; }
+table.pl tbody th { background: var(--surface-2); font-weight: 600; }
+table.pl tfoot th { border-top: 1px solid var(--border-strong); border-bottom: 0; }
+table.pl sup, .pl-key sup { font-size: 10px; font-weight: 700; margin-left: 1px; }
+td.pl-bad, .pl-key.bad { background: var(--s8-soft); color: color-mix(in srgb, var(--s8) 75%, var(--text)); font-weight: 700; }
+td.pl-fix, .pl-key.fix { background: var(--s3-soft); color: color-mix(in srgb, var(--s3) 65%, var(--text)); font-weight: 700; }
+.pl-key { display: inline-block; padding: 1px 7px; border-radius: 6px; font-variant-numeric: tabular-nums; margin-right: 4px; }
+.pl-notes { font-size: 14.5px; margin: -6px 0 8px; }
+.pl-notes ol { margin: 4px 0 0; }
+body[data-pl-view="book"] .pl-fixed, body[data-pl-view="fixed"] .pl-book { display: none; }
+
 /* ---------- responsive ---------- */
 @media (max-width: 1080px) {
   .layout { grid-template-columns: minmax(0, 1fr); padding: 0 16px; gap: 0; }

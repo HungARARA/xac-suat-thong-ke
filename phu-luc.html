@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bảng phụ lục · Xác suất – Thống kê</title>
+  <meta name="description" content="Các bảng phụ lục của giáo trình Xác suất – Thống kê Y học (l(x), φ(x), z, χ², Student, Fisher): bản chép đúng như giáo trình và bản đã sửa lỗi in, kèm ghi chú.">
+  <script>try{var t=localStorage.getItem("xstk-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/phuluc-data.js"></script>
+  <script defer src="assets/js/phuluc.js"></script>
+</head>
+<body data-lesson="phu-luc">
+<header class="topbar">
+  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục">☰ Mục lục</button>
+  <a class="brand" href="index.html"><span class="brand-mark">XS</span><span>Xác suất – Thống kê</span></a>
+  <span class="crumb">/ Bảng phụ lục</span>
+  <span class="spacer"></span>
+  <nav class="topnav" id="topnav"></nav>
+  <button class="icon-btn" id="themeBtn" title="Đổi giao diện sáng / tối" aria-label="Đổi giao diện sáng tối">☾</button>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="Mục lục">
+  <div class="toc-title">Các bảng phụ lục</div>
+  <ol id="tocList"></ol>
+</nav>
+
+<main class="content">
+
+<section class="hero">
+  <span class="kicker">Tài liệu kèm theo</span>
+  <h1>Bảng phụ lục</h1>
+  <p class="lead">Chép lại đầy đủ các bảng tra ở cuối giáo trình (Phụ lục 1 – 6c). Mỗi bảng có hai bản đặt liền nhau: <b>bản theo giáo trình</b> giữ nguyên từng chữ số in — kể cả chỗ in sai — để bạn đối chiếu với sách, và <b>bản đã sửa</b> thay các ô in sai bằng giá trị đúng, kèm ghi chú.</p>
+</section>
+
+<div class="box errata">
+  <div class="box-title"><span class="tag">Cách đọc</span>Ô đỏ, ô xanh và số nhỏ</div>
+  <ul>
+    <li><span class="pl-key bad">0,3877<sup>1</sup></span> ô đỏ trong bản theo giáo trình: chữ số in sai.</li>
+    <li><span class="pl-key fix">0,3977<sup>1</sup></span> ô xanh trong bản đã sửa: giá trị đúng. Số nhỏ trỏ tới ghi chú dưới bảng; rê chuột vào ô để xem nhanh.</li>
+    <li>Từng ô đã được đối chiếu với giá trị tính chính xác. Ô chỉ lệch 1 đơn vị ở chữ số cuối là do làm tròn, nên giữ nguyên như sách.</li>
+  </ul>
+  <p class="pl-cap">Hiện: <span class="seg" id="plView"><button data-v="both">Cả hai bản</button><button data-v="book">Chỉ bản giáo trình</button><button data-v="fixed">Chỉ bản đã sửa</button></span></p>
+</div>
+<p class="small muted">Cách tra từng bảng được giảng ở <a href="bai-2.html#tra-bang">Bài 2, mục 12</a> và <a href="bai-2.html#chi-t-f">mục 14</a>; danh sách gọn các ô in sai ở <a href="bai-2.html#tb-loi-in">mục 12.4</a>.</p>
+
+<!-- =============================================================== -->
+<h2 id="pl-1" data-toc="1. Hàm Laplace l(x)"><span class="num">1</span>Phụ lục 1 — Bảng giá trị hàm Laplace $l(x)$</h2>
+<p>$l(x)=\dfrac{1}{\sqrt{2\pi}}e^{-x^2/2}$ là chiều cao đường chuông chuẩn tắc tại $x$; $l(-x)=l(x)$. Hàng: phần nguyên và chữ số thập phân thứ nhất của $x$; cột: chữ số thập phân thứ hai.</p>
+<div data-pl="pl-1"></div>
+
+<!-- =============================================================== -->
+<h2 id="pl-2" data-toc="2. Tích phân Laplace φ(x)"><span class="num">2</span>Phụ lục 2 — Bảng giá trị tích phân Laplace $\varphi(x)$</h2>
+<p>$\varphi(x)=\displaystyle\int_0^x l(t)\,dt$; $\varphi(-x)=-\varphi(x)$. Sách in bỏ “0,”: $0389$ nghĩa là $0{,}0389$; từ hàng $3{,}0$ in 5 chữ số, $49865$ nghĩa là $0{,}49865$.</p>
+<div data-pl="pl-2"></div>
+
+<!-- =============================================================== -->
+<h2 id="pl-3" data-toc="3. Phân vị chuẩn tắc z"><span class="num">3</span>Phụ lục 3 — Bảng phân vị chuẩn tắc $z_\alpha$</h2>
+<p>$P(Z&lt;z_\alpha)=\alpha$. Bảng chỉ in $\alpha\ge0{,}5$; với $\alpha&lt;0{,}5$ dùng $z_\alpha=-z_{1-\alpha}$.</p>
+<div data-pl="pl-3"></div>
+
+<!-- =============================================================== -->
+<h2 id="pl-4" data-toc="4. Khi bình phương χ²"><span class="num">4</span>Phụ lục 4 — Bảng phân vị khi bình phương $\chi^2_\alpha(n)$</h2>
+<p>$P\big(\chi^2&lt;\chi^2_\alpha(n)\big)=\alpha$. Hàng: bậc tự do $n$; cột: mức $\alpha$.</p>
+<div data-pl="pl-4"></div>
+
+<!-- =============================================================== -->
+<h2 id="pl-5" data-toc="5. Student t"><span class="num">5</span>Phụ lục 5 — Bảng phân vị Student $t_\alpha(n)$</h2>
+<p>$P\big(T&lt;t_\alpha(n)\big)=\alpha$. Hàng: bậc tự do $n$; cột: mức $\alpha$. Với $\alpha&lt;0{,}5$ dùng $t_\alpha=-t_{1-\alpha}$.</p>
+<div data-pl="pl-5"></div>
+
+<!-- =============================================================== -->
+<h2 id="pl-6a" data-toc="6a. Fisher α = 0,95"><span class="num">6a</span>Phụ lục 6a — Bảng phân vị Fisher, $\alpha=0{,}95$</h2>
+<p>$P\big(F&lt;F_{0{,}95}(m;n)\big)=0{,}95$. Cột: bậc tự do $m$ (tử số); hàng: bậc tự do $n$ (mẫu số). Sách chia thành hai trang.</p>
+<h3 id="pl-6a-1" data-toc="Trang 1: m = 1 → 12">Trang 1: $m=1\to12$</h3>
+<div data-pl="pl-6a-1"></div>
+<h3 id="pl-6a-2" data-toc="Trang 2: m = 15 → +∞">Trang 2: $m=15\to+\infty$</h3>
+<div data-pl="pl-6a-2"></div>
+
+<!-- =============================================================== -->
+<h2 id="pl-6b" data-toc="6b. Fisher α = 0,975"><span class="num">6b</span>Phụ lục 6b — Bảng phân vị Fisher, $\alpha=0{,}975$</h2>
+<p>$P\big(F&lt;F_{0{,}975}(m;n)\big)=0{,}975$. Cột: $m$; hàng: $n$.</p>
+<h3 id="pl-6b-1" data-toc="Trang 1: m = 1 → 12">Trang 1: $m=1\to12$</h3>
+<div data-pl="pl-6b-1"></div>
+<h3 id="pl-6b-2" data-toc="Trang 2: m = 15 → +∞">Trang 2: $m=15\to+\infty$</h3>
+<div data-pl="pl-6b-2"></div>
+
+<!-- =============================================================== -->
+<h2 id="pl-6c" data-toc="6c. Fisher α = 0,99"><span class="num">6c</span>Phụ lục 6c — Bảng phân vị Fisher, $\alpha=0{,}99$</h2>
+<p>$P\big(F&lt;F_{0{,}99}(m;n)\big)=0{,}99$. Cột: $m$; hàng: $n$.</p>
+<h3 id="pl-6c-1" data-toc="Trang 1: m = 1 → 12">Trang 1: $m=1\to12$</h3>
+<div data-pl="pl-6c-1"></div>
+<h3 id="pl-6c-2" data-toc="Trang 2: m = 15 → +∞">Trang 2: $m=15\to+\infty$</h3>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Chú ý</span>Cả cột $m=40$ ở trang này bị in sai</div>
+  <p>Trong sách, cột $m=40$ (từ $n=3$ trở xuống) in lặp lại y nguyên cột $m=30$ bên cạnh. Khi cần $F_{0{,}99}(40;n)$ hãy dùng bản đã sửa hoặc <a href="bai-2.html#f-tra">công cụ tra nhanh ở Bài 2</a>.</p>
+</div>
+<div data-pl="pl-6c-2"></div>
+
+<div class="pager"><a class="prev" href="bai-2.html#tra-bang"><div class="dir">← Cách tra bảng</div><div class="ttl">Bài 2 · Mục 12. Tra bảng phụ lục</div></a></div>
+</main>
+</div>
+
+<footer class="site">Bảng phụ lục chép từ giáo trình <i>Xác suất – Thống kê Y học</i>; giá trị đúng được tính lại bằng máy để đối chiếu từng ô.</footer>
+</body>
+</html>

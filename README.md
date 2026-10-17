@@ -5,6 +5,7 @@ Trang web tự học theo giáo trình *Xác suất – Thống kê Y học*: m�
 - `index.html` — trang chủ, liệt kê các bài.
 - `bai-1.html` — Bài 1. Xác suất (De Morgan, có điều kiện, nhân, cộng, toàn phần, Bayes, xét nghiệm, Bernoulli).
 - `bai-2.html` — Bài 2. Phân phối xác suất của biến ngẫu nhiên (tích phân từ con số 0, mật độ, hàm phân phối, kỳ vọng, phương sai, nhị thức, chuẩn, chuẩn tắc, χ², Student, Fisher, tra bảng).
+- `phu-luc.html` — Bảng phụ lục 1 – 6c: mỗi bảng có bản chép đúng như giáo trình (ô in sai tô đỏ) và bản đã sửa kèm ghi chú.
 
 ## Xem trên máy
 
@@ -30,4 +31,6 @@ assets/js/site.js      danh sách bài, mục lục tự động, KaTeX, đổi 
 assets/js/plot.js      hàm toán (chuẩn, nhị thức, χ², Student, Fisher) + vẽ biểu đồ SVG, cây xác suất, sơ đồ tư duy
 assets/js/bai1.js      phần tương tác của Bài 1
 assets/js/bai2.js      phần tương tác của Bài 2
+assets/js/phuluc-data.js  các bảng phụ lục chép nguyên văn + danh sách ô in sai và giá trị đúng
+assets/js/phuluc.js    dựng hai bản (theo giáo trình / đã sửa) cho mỗi bảng ở phu-luc.html
 ```
