@@ -1,0 +1,1094 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bài 2 · Phân phối xác suất</title>
+  <meta name="description" content="Bài 2 – Phân phối xác suất của biến ngẫu nhiên: tích phân từ con số 0, hàm mật độ, hàm phân phối, kỳ vọng, phương sai, nhị thức, chuẩn, chuẩn tắc, χ², Student, Fisher, cách tra bảng.">
+  <script>try{var t=localStorage.getItem("xstk-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/plot.js"></script>
+  <script defer src="assets/js/bai2.js"></script>
+</head>
+<body data-lesson="bai-2">
+<header class="topbar">
+  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục">☰ Mục lục</button>
+  <a class="brand" href="index.html"><span class="brand-mark">XS</span><span>Xác suất – Thống kê</span></a>
+  <span class="crumb">/ Bài 2 · Phân phối xác suất</span>
+  <span class="spacer"></span>
+  <nav class="topnav" id="topnav"></nav>
+  <button class="icon-btn" id="themeBtn" title="Đổi giao diện sáng / tối" aria-label="Đổi giao diện sáng tối">☾</button>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="Mục lục">
+  <div class="toc-title">Mục lục Bài 2</div>
+  <ol id="tocList"></ol>
+</nav>
+
+<main class="content">
+
+<section class="hero">
+  <span class="kicker">Phần I · Xác suất</span>
+  <h1>Bài 2. Phân phối xác suất của biến ngẫu nhiên</h1>
+  <p class="lead">Từ “xác suất của một biến cố” sang “quy luật của cả một đại lượng”: bảng phân phối, hàm mật độ, kỳ vọng, phương sai, các phân phối nhị thức – chuẩn – chuẩn tắc – χ² – Student – Fisher, và cách tra bảng phụ lục. Phần tích phân được giảng lại từ đầu, từng bước một.</p>
+</section>
+
+<div class="box tip">
+  <div class="box-title"><span class="tag">Cách học</span>Lộ trình gợi ý</div>
+  <ul>
+    <li>Nếu đã quên tích phân, đọc kĩ <b>mục 3 “Tích phân từ con số 0”</b> trước khi sang hàm mật độ. Mục này chỉ dạy đúng những gì bài học cần, có ví dụ làm từng bước.</li>
+    <li>Phần quan trọng nhất cho thi cử: <b>kỳ vọng – phương sai</b> (mục 7, 8), <b>nhị thức</b> (mục 9), <b>chuẩn & tra bảng</b> (mục 10–13).</li>
+    <li>Ký hiệu số thập phân dùng dấu phẩy như giáo trình: $0{,}25$.</li>
+  </ul>
+</div>
+
+<h2 id="ban-do" data-toc="Bản đồ bài học"><span class="num">0</span>Bản đồ bài học (sơ đồ tư duy)</h2>
+<div class="fig-box" style="padding:16px"><div id="mm2"></div></div>
+<p class="small muted center">Trên điện thoại, vuốt ngang để xem hết sơ đồ.</p>
+
+<!-- =============================================================== -->
+<h2 id="bnn" data-toc="1. Biến ngẫu nhiên"><span class="num">1</span>Biến ngẫu nhiên là gì?</h2>
+<p>Ở Bài 1 ta hỏi “biến cố này có xảy ra không?”. Bây giờ ta hỏi “<b>con số</b> đo được là bao nhiêu?” — số ca điều trị thành công, số răng sâu, thời gian còn tê môi, huyết áp…</p>
+<div class="box def">
+  <div class="box-title"><span class="tag">Định nghĩa</span>Biến ngẫu nhiên</div>
+  <p><b>Biến ngẫu nhiên</b> là một quy tắc gán cho mỗi kết quả của phép thử <b>một con số</b>. Trước khi làm phép thử ta không biết nó nhận giá trị nào. Ký hiệu bằng chữ in hoa $X, Y, Z$; giá trị cụ thể bằng chữ thường $x, y, z$.</p>
+</div>
+<figure><div class="fig-box"><div id="rvMap"></div></div>
+<figcaption>Hình 1.1. Điều trị tủy cho 3 bệnh nhân (✓ thành công, ✗ thất bại): 8 kết quả trong $\Omega$ được “gom” thành 4 giá trị của $X$ = số ca thành công.</figcaption></figure>
+<h3 id="bnn-loai">1.1. Hai loại biến ngẫu nhiên</h3>
+<div class="grid2">
+  <div class="card"><h4>Rời rạc</h4><p>Nhận các giá trị <b>đếm được, cách quãng</b> (thường là số nguyên).</p><p class="small">Số răng sâu · số ca thành công · số bệnh nhân đến khám trong 1 giờ · số lần chải răng mỗi ngày.</p><p class="small"><b>Mô tả bằng:</b> bảng phân phối $P(X=x_i)=p_i$.</p></div>
+  <div class="card"><h4>Liên tục</h4><p>Nhận <b>mọi giá trị</b> trong một khoảng số thực (đo được, không đếm được).</p><p class="small">Thời gian còn tê môi · huyết áp · chiều cao · nồng độ fluor · chiều dài chân răng.</p><p class="small"><b>Mô tả bằng:</b> hàm mật độ $f(x)$ — xác suất là <b>diện tích</b>.</p></div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="bang-pp" data-toc="2. Bảng phân phối (rời rạc)"><span class="num">2</span>Bảng phân phối xác suất (biến rời rạc)</h2>
+<p>Luật phân phối của biến rời rạc $X$ cho biết <b>(i)</b> các giá trị $X$ có thể nhận và <b>(ii)</b> xác suất tương ứng:</p>
+<div class="table-wrap"><table class="compact">
+  <tr><th>$X$</th><td>$x_1$</td><td>$x_2$</td><td>$\dots$</td><td>$x_n$</td></tr>
+  <tr><th>$P$</th><td>$p_1$</td><td>$p_2$</td><td>$\dots$</td><td>$p_n$</td></tr>
+</table></div>
+<p>Hai điều kiện bắt buộc: $\;p_i\ge0\;$ và $\;p_1+p_2+\dots+p_n=1$ (chắc chắn $X$ nhận một trong các giá trị đó).</p>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 2.1</span>Ba ca điều trị tủy</div>
+  <p>Ba bệnh nhân được điều trị tủy, xác suất thành công lần lượt $0{,}9$; $0{,}8$; $0{,}7$ (độc lập). Gọi $X$ là số ca thành công. Lập bảng phân phối của $X$.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <p>Gọi $T_i$: “ca thứ $i$ thành công”. $X$ nhận các giá trị $0, 1, 2, 3$. Dùng công thức nhân (độc lập) và cộng (các trường hợp xung khắc) từ Bài 1:</p>
+    <ol class="steps">
+      <li>$P(X=0)=P(\overline{T_1}\,\overline{T_2}\,\overline{T_3})=0{,}1\cdot0{,}2\cdot0{,}3=0{,}006$.</li>
+      <li>$P(X=1)=0{,}9\cdot0{,}2\cdot0{,}3+0{,}1\cdot0{,}8\cdot0{,}3+0{,}1\cdot0{,}2\cdot0{,}7=0{,}054+0{,}024+0{,}014=0{,}092$.</li>
+      <li>$P(X=3)=0{,}9\cdot0{,}8\cdot0{,}7=0{,}504$.</li>
+      <li>$P(X=2)=0{,}9\cdot0{,}8\cdot0{,}3+0{,}9\cdot0{,}2\cdot0{,}7+0{,}1\cdot0{,}8\cdot0{,}7=0{,}216+0{,}126+0{,}056=0{,}398$.</li>
+      <li><span class="step-label">Kiểm tra tổng:</span> $0{,}006+0{,}092+0{,}398+0{,}504=1$ ✓.</li>
+    </ol>
+    <div class="table-wrap"><table class="compact">
+      <tr><th>$X$</th><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+      <tr><th>$P$</th><td>0,006</td><td>0,092</td><td>0,398</td><td>0,504</td></tr>
+    </table></div>
+    <div id="pmfChart"></div>
+    <p class="small muted">Lưu ý: đây <b>không</b> phải phân phối nhị thức vì xác suất mỗi ca khác nhau (mục 9 sẽ nói rõ).</p>
+  </div></details>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="tich-phan" data-toc="3. Tích phân từ con số 0"><span class="num">3</span>Tích phân từ con số 0 (chỉ những gì bài học cần)</h2>
+<p>Với biến liên tục, xác suất được tính bằng <b>diện tích dưới một đường cong</b>, và công cụ tính diện tích đó là <b>tích phân</b>. Mục này dạy lại từ đầu, chậm và đủ dùng.</p>
+
+<h3 id="tp-dien-tich">3.1. Tích phân = diện tích</h3>
+<p>Cho hàm $f(x)\ge0$ trên đoạn $[a;b]$. Ký hiệu</p>
+$$\int_a^b f(x)\,dx$$
+<p>đọc là “<b>tích phân từ $a$ đến $b$ của $f(x)\,dx$</b>”, là <b>diện tích</b> hình nằm dưới đường cong $y=f(x)$, trên trục hoành, giữa hai đường thẳng đứng $x=a$ và $x=b$.</p>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Hiểu ký hiệu</span>Từng phần của $\int_a^b f(x)\,dx$</div>
+  <ul>
+    <li>Dấu $\int$ là chữ <b>S</b> kéo dài — viết tắt của “Sum” (tổng).</li>
+    <li>$dx$ là bề rộng <b>cực nhỏ</b> của một dải; $f(x)\,dx$ = chiều cao × bề rộng = diện tích một hình chữ nhật rất mỏng.</li>
+    <li>Tích phân = <b>cộng vô số hình chữ nhật mỏng</b> từ $a$ đến $b$. Kéo thanh trượt bên dưới để thấy tổng diện tích các hình chữ nhật tiến dần đến diện tích thật.</li>
+  </ul>
+</div>
+<div class="widget" id="riemannWidget">
+  <div class="widget-title">Lấp đầy diện tích bằng hình chữ nhật</div>
+  <div class="widget-sub">Diện tích dưới $y=x^2$ trên đoạn $[0;2]$. Càng nhiều hình chữ nhật, tổng càng gần $\dfrac{8}{3}\approx2{,}6667$ (sẽ tính chính xác ở mục 3.4).</div>
+  <div class="controls">
+    <div class="ctrl"><label for="rn">Số hình chữ nhật $n$ <output for="rn"></output></label><input type="range" id="rn" min="1" max="80" step="1" value="4"></div>
+  </div>
+  <div id="riemannPlot"></div>
+  <div class="readout" id="riemannRead"></div>
+</div>
+
+<h3 id="tp-dao-ham">3.2. Nhắc nhanh đạo hàm (vì nguyên hàm là “đi ngược” đạo hàm)</h3>
+<div class="table-wrap"><table class="compact">
+  <tr><th>Hàm</th><th>Đạo hàm</th><th class="left">Ví dụ</th></tr>
+  <tr><td>$c$ (hằng số)</td><td>$0$</td><td class="left">$(7)'=0$</td></tr>
+  <tr><td>$x^n$</td><td>$n\,x^{n-1}$</td><td class="left">$(x^3)'=3x^2$; $(x)'=1$</td></tr>
+  <tr><td>$e^x$</td><td>$e^x$</td><td class="left">$(e^{x})'=e^{x}$</td></tr>
+  <tr><td>$e^{kx}$</td><td>$k\,e^{kx}$</td><td class="left">$(e^{-2x})'=-2e^{-2x}$</td></tr>
+  <tr><td>$\ln x$</td><td>$\dfrac1x$</td><td class="left"></td></tr>
+  <tr><td>$c\cdot u(x)$; $u\pm v$</td><td>$c\cdot u'$; $u'\pm v'$</td><td class="left">$(5x^2-3x)'=10x-3$</td></tr>
+</table></div>
+
+<h3 id="tp-nguyen-ham">3.3. Nguyên hàm</h3>
+<div class="box def">
+  <div class="box-title"><span class="tag">Định nghĩa</span>Nguyên hàm</div>
+  <p>$F(x)$ là một <b>nguyên hàm</b> của $f(x)$ nếu $F'(x)=f(x)$. Ký hiệu: $\displaystyle\int f(x)\,dx=F(x)+C$.</p>
+  <p class="small">Ví dụ: $\int 2x\,dx=x^2+C$ vì $(x^2)'=2x$. Có “$+C$” vì $(x^2+7)'$ cũng bằng $2x$ — hằng số nào cộng vào cũng không đổi đạo hàm.</p>
+</div>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Bảng</span>Nguyên hàm cần dùng trong môn học</div>
+  <div class="table-wrap" style="margin:4px 0 10px"><table class="compact">
+    <tr><th>$f(x)$</th><th>$\int f(x)\,dx$</th><th class="left">Cách nhớ</th></tr>
+    <tr><td>$k$ (hằng số)</td><td>$kx+C$</td><td class="left">thêm chữ $x$</td></tr>
+    <tr><td>$x^n\ (n\neq-1)$</td><td>$\dfrac{x^{n+1}}{n+1}+C$</td><td class="left"><b>tăng mũ thêm 1, rồi chia cho mũ mới</b></td></tr>
+    <tr><td>$\dfrac1x$</td><td>$\ln|x|+C$</td><td class="left">trường hợp $n=-1$</td></tr>
+    <tr><td>$e^x$</td><td>$e^x+C$</td><td class="left">giữ nguyên</td></tr>
+    <tr><td>$e^{kx}$</td><td>$\dfrac{e^{kx}}{k}+C$</td><td class="left">chia cho hệ số $k$</td></tr>
+  </table></div>
+  <p class="small center"><b>Quy tắc:</b> $\int[f\pm g]\,dx=\int f\,dx\pm\int g\,dx$ · $\int c\cdot f\,dx=c\int f\,dx$ (hằng số được “mang ra ngoài”).</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 3.1</span>Tìm $\int(3x^2-4x+5)\,dx$</div>
+  <ol class="steps">
+    <li><span class="step-label">Tách thành từng số hạng, mang hằng số ra ngoài:</span> $\;=3\int x^2dx-4\int x\,dx+5\int1\,dx$.</li>
+    <li><span class="step-label">Áp dụng “tăng mũ, chia mũ mới”:</span> $\int x^2dx=\dfrac{x^3}{3}$; $\int x\,dx=\int x^1dx=\dfrac{x^2}{2}$; $\int1\,dx=x$.</li>
+    <li><span class="step-label">Ghép lại:</span> $\;3\cdot\dfrac{x^3}{3}-4\cdot\dfrac{x^2}{2}+5x+C=x^3-2x^2+5x+C$.</li>
+    <li><span class="step-label">Tự kiểm tra bằng đạo hàm:</span> $(x^3-2x^2+5x)'=3x^2-4x+5$ ✓.</li>
+  </ol>
+</div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Không có “công thức nguyên hàm của một tích” — hãy nhân ra trước</div>
+  <p>Gặp $\int x(3-x)\,dx$ thì <b>khai triển</b> trước: $x(3-x)=3x-x^2$, rồi mới lấy nguyên hàm từng số hạng: $\int(3x-x^2)\,dx=\dfrac{3x^2}{2}-\dfrac{x^3}{3}+C$. Tương tự $x\cdot\dfrac{x}{2}=\dfrac{x^2}{2}$ → $\int\dfrac{x^2}{2}dx=\dfrac{x^3}{6}+C$. Trong môn này, khi tính $E(X)=\int x\,f(x)\,dx$ ta luôn <b>nhân $x$ vào $f(x)$ rồi khai triển</b>.</p>
+</div>
+
+<h3 id="tp-xac-dinh">3.4. Tích phân xác định: “thay cận trên trừ thay cận dưới”</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Newton – Leibniz</div>
+  <div class="big-formula">$$\int_a^b f(x)\,dx=\Big[F(x)\Big]_a^b=F(b)-F(a)$$</div>
+  <p class="small center">$F$ là một nguyên hàm bất kỳ của $f$ (bỏ $+C$ vì $(F(b)+C)-(F(a)+C)$ thì $C$ tự triệt tiêu).</p>
+</div>
+<p><b>Quy trình 4 bước:</b> ① tìm nguyên hàm $F$ → ② thay $x=b$ (cận trên) → ③ thay $x=a$ (cận dưới) → ④ lấy kết quả ② trừ ③.</p>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 3.2</span>Ba tích phân làm mẫu</div>
+  <p><b>(a)</b> $\displaystyle\int_0^2x^2\,dx$ (chính là diện tích ở khung tương tác 3.1):</p>
+  <ol class="steps">
+    <li>Nguyên hàm: $F(x)=\dfrac{x^3}{3}$.</li>
+    <li>Cận trên: $F(2)=\dfrac{2^3}{3}=\dfrac83$. Cận dưới: $F(0)=0$.</li>
+    <li>Kết quả: $\dfrac83-0=\dfrac83\approx2{,}6667$ ✓ — đúng con số mà các hình chữ nhật tiến tới.</li>
+  </ol>
+  <p><b>(b)</b> $\displaystyle\int_1^3(2x+1)\,dx$:</p>
+  <ol class="steps">
+    <li>Nguyên hàm: $F(x)=2\cdot\dfrac{x^2}{2}+x=x^2+x$.</li>
+    <li>$F(3)=9+3=12$; $F(1)=1+1=2$.</li>
+    <li>Kết quả: $12-2=10$.</li>
+    <li><span class="step-label">Kiểm tra bằng hình học:</span> hình dưới đường thẳng $y=2x+1$ là một <b>hình thang</b> có hai đáy $f(1)=3$, $f(3)=7$, chiều cao $3-1=2$ → diện tích $\dfrac{(3+7)\cdot2}{2}=10$ ✓.</li>
+  </ol>
+  <div id="trapFig"></div>
+  <p><b>(c)</b> $\displaystyle\int_1^2(3x^2-4x+5)\,dx$ (dùng nguyên hàm ở Ví dụ 3.1):</p>
+  <ol class="steps">
+    <li>$F(x)=x^3-2x^2+5x$.</li>
+    <li>$F(2)=8-8+10=10$; $F(1)=1-2+5=4$.</li>
+    <li>Kết quả: $10-4=6$.</li>
+  </ol>
+</div>
+
+<h3 id="tp-tinh-chat">3.5. Năm tính chất sẽ dùng liên tục</h3>
+<div class="table-wrap"><table>
+  <tr><th>Tính chất</th><th class="left">Ý nghĩa bằng hình</th><th class="left">Dùng ở đâu trong bài</th></tr>
+  <tr><td>$\int_a^a f\,dx=0$</td><td class="left">dải có bề rộng 0 thì diện tích 0</td><td class="left">$P(X=a)=0$ với biến liên tục</td></tr>
+  <tr><td>$\int_a^b f=\int_a^c f+\int_c^b f$</td><td class="left">cắt diện tích làm hai mảnh</td><td class="left">hàm mật độ cho từng khúc</td></tr>
+  <tr><td>$\int_a^b c\,f=c\int_a^b f$</td><td class="left">phóng to chiều cao $c$ lần</td><td class="left">tìm hằng số $k$ trong $f(x)$</td></tr>
+  <tr><td>$\int_b^a f=-\int_a^b f$</td><td class="left">đi ngược chiều thì đổi dấu</td><td class="left">$\varphi(-x)=-\varphi(x)$</td></tr>
+  <tr><td>$f=0$ trên khoảng nào thì tích phân ở đó $=0$</td><td class="left">không có diện tích</td><td class="left">bỏ phần $f=0$ khi có cận $\pm\infty$</td></tr>
+</table></div>
+
+<h3 id="tp-vo-cuc">3.6. Hàm cho từng khúc và cận vô cực</h3>
+<p>Hàm mật độ thường cho dạng “từng khúc”, ví dụ $f(x)=\frac29x(3-x)$ nếu $0\le x\le3$ và $f(x)=0$ nếu $x$ nằm ngoài. Khi gặp cận $\pm\infty$, chỉ cần <b>chia trục số thành các khúc</b>; khúc nào $f=0$ thì đóng góp $0$:</p>
+$$\int_{-\infty}^{+\infty}f(x)\,dx=\underbrace{\int_{-\infty}^{0}0\,dx}_{=0}+\int_0^3\tfrac29x(3-x)\,dx+\underbrace{\int_3^{+\infty}0\,dx}_{=0}=\int_0^3\tfrac29x(3-x)\,dx.$$
+<div class="box extra">
+  <div class="box-title"><span class="tag">Mở rộng nhẹ</span>Khi hàm thật sự kéo dài đến vô cực</div>
+  <p>Ví dụ $\displaystyle\int_0^{+\infty}2e^{-2x}dx$: ta tính đến một cận $b$ rồi cho $b$ lớn dần.</p>
+  <ol class="steps">
+    <li>Nguyên hàm của $2e^{-2x}$ là $2\cdot\dfrac{e^{-2x}}{-2}=-e^{-2x}$.</li>
+    <li>$\int_0^b2e^{-2x}dx=\big[-e^{-2x}\big]_0^b=-e^{-2b}-(-e^{0})=1-e^{-2b}$.</li>
+    <li>Khi $b$ rất lớn, $e^{-2b}$ rất gần 0 ($b=3$: $0{,}0025$; $b=10$: $0{,}000000002$) → tích phân $=1$.</li>
+  </ol>
+</div>
+
+<h3 id="tp-bien-t">3.7. Vì sao có chữ $t$ trong $\int_{-\infty}^{x}f(t)\,dt$?</h3>
+<p>Ở hàm phân phối $F(x)=\int_{-\infty}^{x}f(t)\,dt$, chữ $x$ đã được dùng làm <b>cận trên</b> (điểm dừng), nên biến chạy bên trong phải đặt tên khác — $t$. Biến $t$ chỉ “sống” bên trong dấu tích phân, đổi tên $t$ thành $u$ không thay đổi gì. Kết quả cuối cùng là một <b>hàm của $x$</b>. Ví dụ:</p>
+$$\int_0^x t\,dt=\Big[\frac{t^2}{2}\Big]_0^x=\frac{x^2}{2}-0=\frac{x^2}{2}.$$
+
+<h3 id="tp-e-binh">3.8. Vì sao phân phối chuẩn phải tra bảng?</h3>
+<p>Hàm $e^{-x^2/2}$ (lõi của phân phối chuẩn) <b>không có nguyên hàm viết được bằng các hàm quen thuộc</b> — đây là một kết quả đã được chứng minh trong toán học, không phải do ta chưa nghĩ ra. Vì vậy người ta tính sẵn diện tích bằng máy và in thành bảng (Phụ lục 2: $\varphi(x)$). Toàn bộ mục 11–12 là học cách <b>đọc</b> bảng đó thay cho việc tự tính tích phân.</p>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Luyện tay</span><span class="lvl l1">Tích phân</span></div>
+  <p>Tính: (a) $\int_0^1(4x^3+1)\,dx$; (b) $\int_0^2x(2-x)\,dx$; (c) $\int_2^4\frac1x\,dx$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <p>(a) $\big[x^4+x\big]_0^1=(1+1)-0=\mathbf{2}$.<br>
+    (b) Khai triển $2x-x^2$ → $\big[x^2-\frac{x^3}{3}\big]_0^2=4-\frac83=\mathbf{\frac43}$.<br>
+    (c) $\big[\ln x\big]_2^4=\ln4-\ln2=\ln\frac42=\ln2\approx\mathbf{0{,}6931}$.</p>
+  </div></details>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="mat-do" data-toc="4. Hàm mật độ (liên tục)"><span class="num">4</span>Hàm mật độ xác suất (biến liên tục)</h2>
+<div class="box def">
+  <div class="box-title"><span class="tag">Định nghĩa</span>Hàm mật độ $f(x)$</div>
+  <p>Hàm $f(x)$ xác định trên cả trục số là <b>hàm mật độ</b> của biến liên tục $X$ nếu:</p>
+  $$\text{(i) } f(x)\ge0\ \text{ với mọi } x\qquad\text{(ii) }\int_{-\infty}^{+\infty}f(x)\,dx=1$$
+  <p>và khi đó: $$P(a&lt;X&lt;b)=\int_a^b f(x)\,dx\quad\text{(diện tích dưới đường cong từ } a \text{ đến } b).$$</p>
+</div>
+<div class="grid2">
+  <div class="card"><h4>Điều kiện (ii) nghĩa là gì?</h4><p>Tổng diện tích dưới cả đường cong bằng 1 — tức là “chắc chắn $X$ nhận một giá trị nào đó”, giống $\sum p_i=1$ ở biến rời rạc.</p></div>
+  <div class="card"><h4>$f(x)$ không phải là xác suất</h4><p>$f(x)$ là “độ dày” của xác suất quanh $x$, có thể lớn hơn 1 (ví dụ $f(x)=2$ trên đoạn $[0;0{,}5]$ vẫn hợp lệ vì diện tích $=2\cdot0{,}5=1$). Xác suất là <b>diện tích</b>.</p></div>
+</div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Quan trọng</span>Với biến liên tục: $P(X=a)=0$</div>
+  <p>$P(X=a)=\int_a^a f(x)\,dx=0$ (một đường thẳng không có diện tích). Hệ quả rất tiện: dấu $&lt;$ hay $\le$ <b>không ảnh hưởng</b>: $P(a&lt;X&lt;b)=P(a\le X\le b)=P(a\le X&lt;b)$. (Với biến <b>rời rạc</b> thì khác hẳn — phải cẩn thận từng dấu.)</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 4.1</span>Thời gian còn tê môi</div>
+  <p>Gọi $X$ (giờ) là thời gian bệnh nhân còn tê môi sau khi gây tê, có hàm mật độ $f(x)=k\,x(3-x)$ nếu $0\le x\le3$ và $f(x)=0$ nếu ngược lại. (a) Tìm $k$. (b) Tính $P(1&lt;X&lt;2)$. (c) Tính xác suất còn tê quá 2,5 giờ.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <p><b>(a) Tìm $k$</b></p>
+    <ol class="steps">
+      <li><span class="step-label">Điều kiện (i):</span> trên $[0;3]$ thì $x\ge0$ và $3-x\ge0$ nên $x(3-x)\ge0$; cần $k\ge0$.</li>
+      <li><span class="step-label">Điều kiện (ii):</span> ngoài $[0;3]$ thì $f=0$, nên chỉ cần $\int_0^3k\,x(3-x)\,dx=1$.</li>
+      <li><span class="step-label">Mang $k$ ra ngoài, khai triển:</span> $k\int_0^3(3x-x^2)\,dx$.</li>
+      <li><span class="step-label">Nguyên hàm:</span> $\int(3x-x^2)dx=\dfrac{3x^2}{2}-\dfrac{x^3}{3}$.</li>
+      <li><span class="step-label">Thay cận:</span> tại $x=3$: $\dfrac{27}{2}-\dfrac{27}{3}=13{,}5-9=4{,}5$; tại $x=0$: $0$ → tích phân $=4{,}5$.</li>
+      <li><span class="step-label">Giải:</span> $4{,}5k=1\Rightarrow k=\dfrac{1}{4{,}5}=\mathbf{\dfrac29}$ (thoả $k\ge0$ ✓).</li>
+    </ol>
+    <p><b>(b) $P(1&lt;X&lt;2)$</b> — dùng lại nguyên hàm $G(x)=\dfrac{3x^2}{2}-\dfrac{x^3}{3}$:</p>
+    <ol class="steps">
+      <li>$G(2)=\dfrac{12}{2}-\dfrac83=6-\dfrac83=\dfrac{10}{3}$; $\;G(1)=\dfrac32-\dfrac13=\dfrac76$.</li>
+      <li>$G(2)-G(1)=\dfrac{10}{3}-\dfrac76=\dfrac{20-7}{6}=\dfrac{13}{6}$.</li>
+      <li>Nhân với $k$: $P=\dfrac29\cdot\dfrac{13}{6}=\dfrac{26}{54}=\dfrac{13}{27}\approx\mathbf{0{,}4815}$.</li>
+    </ol>
+    <p><b>(c) $P(X&gt;2{,}5)=\int_{2{,}5}^{3}f(x)\,dx$</b> (từ 3 trở đi $f=0$):</p>
+    <ol class="steps">
+      <li>$G(3)=4{,}5$; $\;G(2{,}5)=\dfrac{3\cdot6{,}25}{2}-\dfrac{15{,}625}{3}=9{,}375-5{,}2083=4{,}1667$.</li>
+      <li>$P=\dfrac29\,(4{,}5-4{,}1667)=\dfrac29\cdot0{,}3333\approx\mathbf{0{,}0741}$ (đúng bằng $\frac{2}{27}$).</li>
+    </ol>
+  </div></details>
+</div>
+<div class="widget" id="densWidget">
+  <div class="widget-title">Xác suất = diện tích</div>
+  <div class="widget-sub">Mật độ $f(x)=\frac29x(3-x)$ của Ví dụ 4.1. Kéo hai cận $a$, $b$; phần tô màu chính là $P(a&lt;X&lt;b)$. Rê chuột lên đồ thị để đọc $f(x)$.</div>
+  <div class="controls">
+    <div class="ctrl"><label for="da">Cận dưới $a$ <output for="da"></output></label><input type="range" id="da" min="0" max="3" step="0.05" value="1"></div>
+    <div class="ctrl"><label for="db">Cận trên $b$ <output for="db"></output></label><input type="range" id="db" min="0" max="3" step="0.05" value="2"></div>
+  </div>
+  <div id="densPlot"></div>
+  <div class="readout" id="densRead"></div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="ham-pp" data-toc="5. Hàm phân phối F(x)"><span class="num">5</span>Hàm phân phối $F(x)$</h2>
+<div class="box def">
+  <div class="box-title"><span class="tag">Định nghĩa</span>Hàm phân phối (theo giáo trình)</div>
+  <div class="big-formula">$$F(x)=P(X&lt;x),\qquad x\in\mathbb R$$</div>
+  <p>$F(x)$ = <b>xác suất dồn về bên trái điểm $x$</b> (không tính chính điểm $x$).</p>
+</div>
+
+<h3 id="pp-roi-rac">5.1. Biến rời rạc: hàm bậc thang</h3>
+<p>$F(x)=\sum_{x_i&lt;x}p_i$ — cộng xác suất của mọi giá trị <b>nhỏ hơn hẳn</b> $x$. Làm với Ví dụ 2.1 (giá trị $0,1,2,3$):</p>
+<ol class="steps">
+  <li>$x\le0$: không có giá trị nào nhỏ hơn $x$ → $F(x)=0$.</li>
+  <li>$0&lt;x\le1$: chỉ có giá trị $0$ nhỏ hơn $x$ → $F(x)=0{,}006$.</li>
+  <li>$1&lt;x\le2$: có $0$ và $1$ → $F(x)=0{,}006+0{,}092=0{,}098$.</li>
+  <li>$2&lt;x\le3$: $F(x)=0{,}098+0{,}398=0{,}496$.</li>
+  <li>$x&gt;3$: đủ cả bốn giá trị → $F(x)=1$.</li>
+</ol>
+$$F(x)=\begin{cases}0 & x\le0\\ 0{,}006 & 0&lt;x\le1\\ 0{,}098 & 1&lt;x\le2\\ 0{,}496 & 2&lt;x\le3\\ 1 & x&gt;3\end{cases}$$
+<figure><div class="fig-box"><div id="stepFig"></div></div><figcaption>Hình 5.1. Hàm bậc thang: mỗi lần đi qua một giá trị $x_i$, $F$ nhảy lên đúng bằng $p_i$. Chấm đặc = giá trị của $F$ tại điểm nhảy.</figcaption></figure>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Dấu “≤” nằm ở bên phải mỗi khoảng</div>
+  <p>Vì $F(1)=P(X&lt;1)=P(X=0)=0{,}006$ (dấu $&lt;$ chặt nên <b>không</b> tính $X=1$), giá trị tại $x=1$ thuộc bậc thấp. Do đó khoảng viết là $0&lt;x\le1$. Một số sách khác định nghĩa $F(x)=P(X\le x)$ thì dấu đảo sang trái — khi làm bài hãy theo đúng định nghĩa của giáo trình.</p>
+</div>
+
+<h3 id="pp-lien-tuc">5.2. Biến liên tục: tích phân từ $-\infty$ đến $x$</h3>
+$$F(x)=\int_{-\infty}^{x}f(t)\,dt\quad(\text{diện tích bên trái } x)$$
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 5.1</span>Hàm phân phối của thời gian tê môi</div>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">$x\le0$:</span> bên trái $x$ toàn là $f=0$ → $F(x)=0$.</li>
+      <li><span class="step-label">$0&lt;x\le3$:</span> phần bên trái $0$ đóng góp $0$, nên chỉ cần tích phân từ $0$ đến $x$: $$F(x)=\int_0^x\tfrac29(3t-t^2)\,dt=\tfrac29\Big[\tfrac{3t^2}{2}-\tfrac{t^3}{3}\Big]_0^x=\tfrac29\Big(\tfrac{3x^2}{2}-\tfrac{x^3}{3}\Big)=\frac{x^2}{3}-\frac{2x^3}{27}$$</li>
+      <li><span class="step-label">$x&gt;3$:</span> đã gom hết toàn bộ diện tích → $F(x)=1$.</li>
+      <li><span class="step-label">Kiểm tra nối liền tại $x=3$:</span> $\dfrac93-\dfrac{54}{27}=3-2=1$ ✓.</li>
+      <li><span class="step-label">Dùng $F$ để tính xác suất</span> (khớp Ví dụ 4.1 ✓): $$P(1&lt;X&lt;2)=F(2)-F(1)=\Big(\tfrac43-\tfrac{16}{27}\Big)-\Big(\tfrac13-\tfrac{2}{27}\Big)=\tfrac{20}{27}-\tfrac{7}{27}=\tfrac{13}{27}$$</li>
+    </ol>
+  </div></details>
+</div>
+<div class="widget" id="cdfWidget">
+  <div class="widget-title">Diện tích bên trái ↔ giá trị $F(x)$</div>
+  <div class="widget-sub">Kéo $x$: hình trên tô diện tích bên trái $x$, hình dưới là điểm $(x;F(x))$ — hai con số luôn bằng nhau.</div>
+  <div class="controls"><div class="ctrl"><label for="cx">Điểm $x$ <output for="cx"></output></label><input type="range" id="cx" min="-0.5" max="3.5" step="0.05" value="1.5"></div></div>
+  <div id="cdfTop"></div>
+  <div id="cdfBot"></div>
+  <div class="readout" id="cdfRead"></div>
+</div>
+<h3 id="pp-tinh-chat">5.3. Tính chất của $F(x)$</h3>
+<ul>
+  <li>$0\le F(x)\le1$; $F$ <b>không giảm</b> (đi sang phải chỉ gom thêm xác suất).</li>
+  <li>$F(-\infty)=0$, $F(+\infty)=1$.</li>
+  <li>$P(a\le X&lt;b)=F(b)-F(a)$.</li>
+  <li>Với biến liên tục: $F'(x)=f(x)$ — đạo hàm của hàm phân phối là hàm mật độ (ngược lại với bước 2 ở trên).</li>
+</ul>
+
+<!-- =============================================================== -->
+<h2 id="phan-vi" data-toc="6. Phân vị"><span class="num">6</span>Phân vị</h2>
+<div class="box def">
+  <div class="box-title"><span class="tag">Định nghĩa</span>Phân vị mức $\alpha$</div>
+  <p>$x_\alpha$ là số thoả $P(X&lt;x_\alpha)=\alpha$, tức $F(x_\alpha)=\alpha$: <b>diện tích bên trái $x_\alpha$ đúng bằng $\alpha$</b>. Phân vị mức $0{,}5$ gọi là <b>trung vị</b> (chia đôi diện tích).</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 6.1</span>Tìm phân vị</div>
+  <p>$X$ có mật độ $f(x)=\dfrac x2$ trên $[0;2]$ (bằng 0 ở ngoài). Tìm trung vị và phân vị mức $0{,}25$; $0{,}9$.</p>
+  <details class="sol" open><summary>Lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$F(x)=\int_0^x\frac t2dt=\Big[\frac{t^2}{4}\Big]_0^x=\dfrac{x^2}{4}$ với $0\le x\le2$.</li>
+      <li>Giải $F(x_\alpha)=\alpha$: $\dfrac{x_\alpha^2}{4}=\alpha\Rightarrow x_\alpha=2\sqrt\alpha$ (lấy nghiệm dương vì $x\in[0;2]$).</li>
+      <li>$x_{0{,}25}=2\sqrt{0{,}25}=\mathbf1$; trung vị $x_{0{,}5}=2\sqrt{0{,}5}\approx\mathbf{1{,}414}$; $x_{0{,}9}=2\sqrt{0{,}9}\approx\mathbf{1{,}897}$.</li>
+    </ol>
+    <p class="small muted">Với thời gian tê môi (Ví dụ 4.1): $F(1{,}5)=\frac{2{,}25}{3}-\frac{2\cdot3{,}375}{27}=0{,}75-0{,}25=0{,}5$ → trung vị là $1{,}5$ giờ (đường cong đối xứng quanh $1{,}5$).</p>
+  </div></details>
+</div>
+<div class="widget" id="qWidget">
+  <div class="widget-title">Phân vị = mốc để diện tích bên trái bằng α</div>
+  <div class="controls"><div class="ctrl"><label for="qa">Mức $\alpha$ <output for="qa"></output></label><input type="range" id="qa" min="0.01" max="0.99" step="0.01" value="0.5"></div></div>
+  <div id="qPlot"></div>
+  <div class="readout" id="qRead"></div>
+</div>
+<p class="small">Các phân vị chuẩn tắc $z_\alpha$, $\chi^2_\alpha$, $t_\alpha$, $F_\alpha$ ở cuối bài đều có <b>cùng một ý nghĩa</b> này — chỉ khác đường cong.</p>
+
+<!-- =============================================================== -->
+<h2 id="ky-vong" data-toc="7. Kỳ vọng E(X)"><span class="num">7</span>Kỳ vọng $E(X)$ — giá trị trung bình</h2>
+<h3 id="kv-y-nghia">7.1. Ý nghĩa</h3>
+<p>Kỳ vọng là <b>trung bình theo xác suất</b>: nếu lặp lại phép thử rất nhiều lần, trung bình cộng các giá trị thu được sẽ xấp xỉ $E(X)$. Về hình học, $E(X)$ là <b>điểm cân bằng</b> — đặt các cột xác suất lên một thanh, thanh sẽ thăng bằng tại $E(X)$.</p>
+<figure><div class="fig-box"><div id="balanceFig"></div></div><figcaption>Hình 7.1. Các cột của Ví dụ 2.1 “cân bằng” tại $E(X)=2{,}4$.</figcaption></figure>
+<h3 id="kv-roi-rac">7.2. Biến rời rạc</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Kỳ vọng – rời rạc</div>
+  <div class="big-formula">$$E(X)=\sum_{i=1}^{n}x_i\,p_i=x_1p_1+x_2p_2+\dots+x_np_n$$</div>
+</div>
+<p><b>Mẹo trình bày bằng bảng</b> (Ví dụ 2.1) — thêm một dòng $x\cdot p$ rồi cộng:</p>
+<div class="table-wrap"><table class="compact">
+  <tr><th>$x$</th><td>0</td><td>1</td><td>2</td><td>3</td><th>Tổng</th></tr>
+  <tr><th>$p$</th><td>0,006</td><td>0,092</td><td>0,398</td><td>0,504</td><td>1</td></tr>
+  <tr><th>$x\cdot p$</th><td>0</td><td>0,092</td><td>0,796</td><td>1,512</td><td class="hl">2,4</td></tr>
+</table></div>
+<p>Vậy $E(X)=2{,}4$: trung bình mỗi “đợt 3 ca” có 2,4 ca thành công. Thú vị: $2{,}4=0{,}9+0{,}8+0{,}7$ — tổng xác suất thành công của từng ca (mục 9.2 sẽ giải thích vì sao).</p>
+<h3 id="kv-lien-tuc">7.3. Biến liên tục</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Kỳ vọng – liên tục</div>
+  <div class="big-formula">$$E(X)=\int_{-\infty}^{+\infty}x\,f(x)\,dx$$</div>
+  <p class="small center">Giống hệt công thức rời rạc: “giá trị × xác suất”, chỉ thay dấu $\sum$ bằng $\int$ và $p_i$ bằng $f(x)\,dx$.</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 7.1</span>Thời gian tê môi trung bình</div>
+  <ol class="steps">
+    <li><span class="step-label">Nhân $x$ vào $f(x)$ rồi khai triển:</span> $x\cdot\frac29(3x-x^2)=\frac29(3x^2-x^3)$.</li>
+    <li><span class="step-label">Tích phân trên $[0;3]$:</span> $E(X)=\frac29\int_0^3(3x^2-x^3)\,dx=\frac29\Big[x^3-\frac{x^4}{4}\Big]_0^3$.</li>
+    <li><span class="step-label">Thay cận:</span> $27-\dfrac{81}{4}=\dfrac{108-81}{4}=\dfrac{27}{4}$.</li>
+    <li><span class="step-label">Kết quả:</span> $E(X)=\dfrac29\cdot\dfrac{27}{4}=\dfrac{54}{36}=\mathbf{1{,}5}$ giờ. (Hợp lý: đường cong đối xứng quanh $1{,}5$.)</li>
+  </ol>
+</div>
+<h3 id="kv-tinh-chat">7.4. Tính chất (kèm lý do)</h3>
+<div class="table-wrap"><table>
+  <tr><th>Tính chất</th><th class="left">Hiểu nôm na</th></tr>
+  <tr><td>$E(c)=c$</td><td class="left">một hằng số thì trung bình của nó là chính nó</td></tr>
+  <tr><td>$E(cX)=c\,E(X)$</td><td class="left">đổi đơn vị (giờ → phút: nhân 60) thì trung bình cũng nhân 60</td></tr>
+  <tr><td>$E(X+Y)=E(X)+E(Y)$</td><td class="left"><b>luôn đúng</b>, không cần độc lập</td></tr>
+  <tr><td>$E(XY)=E(X)E(Y)$</td><td class="left">chỉ khi $X, Y$ <b>độc lập</b></td></tr>
+  <tr><td>$E(aX+b)=aE(X)+b$</td><td class="left">hệ quả của 3 dòng đầu — dùng rất nhiều</td></tr>
+</table></div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 7.2</span>Chi phí trung bình</div>
+  <p>Với Ví dụ 2.1, mỗi ca thành công phòng khám thu 500 nghìn đồng, cộng phí cố định 200 nghìn đồng cho cả đợt: $Y=500X+200$. Khi đó $E(Y)=500\,E(X)+200=500\cdot2{,}4+200=\mathbf{1400}$ nghìn đồng.</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="phuong-sai" data-toc="8. Phương sai D(X), σ"><span class="num">8</span>Phương sai $D(X)$ và độ lệch chuẩn $\sigma(X)$</h2>
+<h3 id="ps-y-nghia">8.1. Ý nghĩa: đo độ “trải rộng”</h3>
+<p>Hai biến có cùng kỳ vọng vẫn có thể rất khác nhau: một biến luôn nằm sát trung bình, biến kia văng xa. <b>Phương sai</b> đo mức độ phân tán quanh kỳ vọng $\mu=E(X)$:</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Định nghĩa</span>Phương sai</div>
+  <div class="big-formula">$$D(X)=E\big[(X-\mu)^2\big]\qquad(\mu=E(X))$$</div>
+  <p class="small center">= trung bình của <b>bình phương độ lệch</b>. Phải bình phương vì độ lệch âm và dương sẽ triệt tiêu nhau: $E(X-\mu)$ luôn bằng 0.</p>
+</div>
+<div class="widget" id="spreadWidget">
+  <div class="widget-title">Cùng kỳ vọng, khác độ phân tán</div>
+  <div class="widget-sub">Ba biến cùng có $E(X)=2$. Dải tô nhạt là khoảng $\mu\pm\sigma$.</div>
+  <div class="seg" id="spreadBtns"></div>
+  <div id="spreadPlot" style="margin-top:8px"></div>
+  <div class="readout" id="spreadRead"></div>
+</div>
+<h3 id="ps-cong-thuc">8.2. Công thức tính nhanh (và vì sao)</h3>
+<p>Khai triển định nghĩa, dùng các tính chất của kỳ vọng ($\mu$ là hằng số):</p>
+<ol class="steps">
+  <li>$(X-\mu)^2=X^2-2\mu X+\mu^2$.</li>
+  <li>$D(X)=E(X^2)-2\mu\,E(X)+\mu^2$ (kỳ vọng của tổng = tổng kỳ vọng; hằng số mang ra ngoài).</li>
+  <li>Thay $E(X)=\mu$: $D(X)=E(X^2)-2\mu^2+\mu^2=E(X^2)-\mu^2$.</li>
+</ol>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Dùng khi làm bài</div>
+  <div class="big-formula">$$D(X)=E(X^2)-\big[E(X)\big]^2$$</div>
+  <p class="center small">Rời rạc: $E(X^2)=\sum x_i^2p_i$ · Liên tục: $E(X^2)=\int x^2f(x)\,dx$ · Độ lệch chuẩn: $\sigma(X)=\sqrt{D(X)}$</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 8.1</span>Rời rạc — tiếp Ví dụ 2.1</div>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$x$</th><td>0</td><td>1</td><td>2</td><td>3</td><th>Tổng</th></tr>
+    <tr><th>$p$</th><td>0,006</td><td>0,092</td><td>0,398</td><td>0,504</td><td>1</td></tr>
+    <tr><th>$x\,p$</th><td>0</td><td>0,092</td><td>0,796</td><td>1,512</td><td>$E(X)=2{,}4$</td></tr>
+    <tr><th>$x^2p$</th><td>0</td><td>0,092</td><td>1,592</td><td>4,536</td><td class="hl">$E(X^2)=6{,}22$</td></tr>
+  </table></div>
+  <p>$D(X)=6{,}22-2{,}4^2=6{,}22-5{,}76=\mathbf{0{,}46}$; $\;\sigma(X)=\sqrt{0{,}46}\approx\mathbf{0{,}678}$.</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 8.2</span>Liên tục — thời gian tê môi</div>
+  <ol class="steps">
+    <li><span class="step-label">Nhân $x^2$ vào $f(x)$:</span> $x^2\cdot\frac29(3x-x^2)=\frac29(3x^3-x^4)$.</li>
+    <li>$E(X^2)=\frac29\Big[\frac{3x^4}{4}-\frac{x^5}{5}\Big]_0^3=\frac29\Big(\frac{243}{4}-\frac{243}{5}\Big)=\frac29\cdot\frac{243}{20}=\frac{486}{180}=2{,}7$.</li>
+    <li>$D(X)=2{,}7-1{,}5^2=2{,}7-2{,}25=\mathbf{0{,}45}$.</li>
+    <li>$\sigma(X)=\sqrt{0{,}45}\approx\mathbf{0{,}671}$ giờ (khoảng 40 phút).</li>
+  </ol>
+</div>
+<h3 id="ps-tinh-chat">8.3. Tính chất</h3>
+<div class="table-wrap"><table>
+  <tr><th>Tính chất</th><th class="left">Vì sao</th></tr>
+  <tr><td>$D(c)=0$</td><td class="left">hằng số không dao động</td></tr>
+  <tr><td>$D(X+c)=D(X)$</td><td class="left">tịnh tiến cả phân phối không làm nó rộng/hẹp thêm</td></tr>
+  <tr><td>$D(cX)=c^2D(X)$</td><td class="left">độ lệch nhân $c$, bình phương lên thành $c^2$</td></tr>
+  <tr><td>$D(aX+b)=a^2D(X)$; $\ \sigma(aX+b)=|a|\,\sigma(X)$</td><td class="left">ghép hai dòng trên</td></tr>
+  <tr><td>$X,Y$ độc lập: $D(X+Y)=D(X)+D(Y)$</td><td class="left">độ phân tán cộng dồn</td></tr>
+</table></div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>$D(X-Y)=D(X)+D(Y)$ — vẫn là dấu CỘNG</div>
+  <p>Vì $X-Y=X+(-1)Y$ và $D(-Y)=(-1)^2D(Y)=D(Y)$. Hiệu của hai đại lượng ngẫu nhiên độc lập còn <b>dao động nhiều hơn</b> từng cái, không bao giờ ít hơn. Ngoài ra nhớ: $D(X)\ge0$ luôn luôn — tính ra số âm là chắc chắn sai.</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 8.3</span>Tiếp Ví dụ 7.2</div>
+  <p>$Y=500X+200$: $D(Y)=500^2\cdot D(X)=250000\cdot0{,}46=115000$; $\sigma(Y)=\sqrt{115000}\approx\mathbf{339{,}1}$ nghìn đồng. Hằng số $+200$ không ảnh hưởng.</p>
+</div>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Máy tính</span>Kiểm tra $E(X)$, $D(X)$ bằng máy Casio</div>
+  <p>Trên fx-580VN X: <kbd>MENU</kbd> → <b>Thống kê</b> (Statistics) → <b>1 biến</b> (1-Variable). Bật cột tần số: <kbd>SHIFT</kbd> <kbd>MENU</kbd> (SETUP) → Thống kê → Tần số: <b>Bật</b>. Nhập cột $x$ = các giá trị, cột tần số = các xác suất $p_i$. Sau đó <kbd>OPTN</kbd> → tính toán 1 biến: $\bar x$ chính là $E(X)$, $\sigma_x$ là $\sigma(X)$, $\sigma_x^2$ là $D(X)$. <span class="muted">(Tên menu có thể khác đôi chút tuỳ đời máy; fx-570VN Plus: <kbd>MODE</kbd> 3 → 1 và bật Frequency trong SETUP.)</span> Dùng để <b>kiểm tra</b>, khi thi vẫn nên trình bày bảng như trên.</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="nhi-thuc" data-toc="9. Phân phối nhị thức"><span class="num">9</span>Phân phối nhị thức $B(n;p)$</h2>
+<h3 id="nt-dinh-nghia">9.1. Định nghĩa</h3>
+<p>Làm $n$ phép thử Bernoulli (độc lập, mỗi lần thành công với cùng xác suất $p$). Gọi $X$ = <b>số lần thành công</b>. Khi đó $X$ có phân phối nhị thức, ký hiệu $X\sim B(n;p)$, và:</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Phân phối nhị thức</div>
+  $$P(X=m)=C_n^m\,p^m\,q^{\,n-m}\quad(m=0,1,\dots,n;\ q=1-p)$$
+  $$E(X)=np\qquad D(X)=npq\qquad \sigma(X)=\sqrt{npq}$$
+</div>
+<h3 id="nt-vi-sao">9.2. Vì sao $E=np$, $D=npq$? (mẹo “biến đếm”)</h3>
+<ol class="steps">
+  <li>Gọi $X_i=1$ nếu lần thứ $i$ thành công, $X_i=0$ nếu thất bại. Khi đó $X=X_1+X_2+\dots+X_n$ (cộng các số 1 lại chính là đếm số lần thành công).</li>
+  <li>Mỗi $X_i$ có bảng: giá trị $0$ với xác suất $q$, giá trị $1$ với xác suất $p$.</li>
+  <li>$E(X_i)=0\cdot q+1\cdot p=p$; $\;E(X_i^2)=0^2q+1^2p=p$; $\;D(X_i)=p-p^2=p(1-p)=pq$.</li>
+  <li>Kỳ vọng của tổng = tổng kỳ vọng: $E(X)=p+p+\dots+p=np$.</li>
+  <li>Các lần thử độc lập nên phương sai cộng được: $D(X)=pq+\dots+pq=npq$.</li>
+</ol>
+<p class="small">Đây cũng là lý do ở Ví dụ 2.1, $E(X)=0{,}9+0{,}8+0{,}7=2{,}4$ và $D(X)=0{,}09+0{,}16+0{,}21=0{,}46$ — bước 4, 5 vẫn đúng khi mỗi lần có $p$ khác nhau.</p>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 9.1</span>Răng khôn mọc lệch</div>
+  <p>Tỉ lệ người trưởng thành có răng khôn mọc lệch là $0{,}25$. Khám ngẫu nhiên 8 người; $X$ = số người có răng khôn mọc lệch. Tính (a) $P(X=2)$; (b) $P(X\ge2)$; (c) $E(X)$, $D(X)$, $\sigma(X)$; (d) số người có khả năng gặp nhất.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <p>$X\sim B(8;\,0{,}25)$, $q=0{,}75$.</p>
+    <ol class="steps">
+      <li>(a) $P(X=2)=C_8^2\,0{,}25^2\,0{,}75^6=28\cdot0{,}0625\cdot0{,}17798\approx\mathbf{0{,}3115}$.</li>
+      <li>(b) $P(X\ge2)=1-P(X=0)-P(X=1)=1-0{,}75^8-8\cdot0{,}25\cdot0{,}75^7\approx1-0{,}1001-0{,}2670=\mathbf{0{,}6329}$.</li>
+      <li>(c) $E(X)=8\cdot0{,}25=\mathbf2$; $D(X)=8\cdot0{,}25\cdot0{,}75=\mathbf{1{,}5}$; $\sigma\approx\mathbf{1{,}225}$.</li>
+      <li>(d) $np-q=1{,}25\le m_0\le np+p=2{,}25$ → $m_0=\mathbf2$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="widget" id="binWidget2">
+  <div class="widget-title">Hình dạng phân phối nhị thức</div>
+  <div class="widget-sub">$p=0{,}5$ → đối xứng; $p$ nhỏ → lệch phải; $n$ lớn → càng giống hình chuông (dẫn tới mục 13). Bật đường cong chuẩn để so sánh.</div>
+  <div class="controls">
+    <div class="ctrl"><label for="b2n">$n$ <output for="b2n"></output></label><input type="range" id="b2n" min="1" max="100" step="1" value="8"></div>
+    <div class="ctrl"><label for="b2p">$p$ <output for="b2p"></output></label><input type="range" id="b2p" min="0.02" max="0.98" step="0.01" value="0.25"></div>
+  </div>
+  <div class="seg" id="b2Toggle"><button data-k="0" class="on">Chỉ cột nhị thức</button><button data-k="1">Thêm đường cong chuẩn N(np; npq)</button></div>
+  <div id="b2Plot" style="margin-top:8px"></div>
+  <div class="readout" id="b2Read"></div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="chuan" data-toc="10. Phân phối chuẩn"><span class="num">10</span>Phân phối chuẩn $N(\mu;\sigma^2)$</h2>
+<h3 id="ch-cong-thuc">10.1. Mổ xẻ công thức</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Hàm mật độ của phân phối chuẩn</div>
+  <div class="big-formula">$$f(x)=\color{#2a78d6}{\frac{1}{\sigma\sqrt{2\pi}}}\;e^{\color{#e34948}{-\frac12}\left(\color{#1baf7a}{\frac{x-\mu}{\sigma}}\right)^{2}},\qquad \mu\ \text{tuỳ ý},\ \sigma&gt;0$$</div>
+</div>
+<ol class="steps">
+  <li><span class="step-label" style="color:#1baf7a">$\dfrac{x-\mu}{\sigma}$:</span> khoảng cách từ $x$ đến tâm $\mu$, đo bằng <b>“số lần $\sigma$”</b>. Ví dụ $\mu=120$, $\sigma=10$ thì $x=140$ cách tâm $2$ lần $\sigma$.</li>
+  <li><span class="step-label" style="color:#e34948">Bình phương rồi nhân $-\frac12$:</span> càng xa tâm (dù sang trái hay phải) thì số mũ càng âm → $e^{(\dots)}$ càng nhỏ, tụt rất nhanh về 0. Bình phương làm hai bên như nhau → đường cong <b>đối xứng</b>, có <b>hai đuôi</b> hình chuông.</li>
+  <li><span class="step-label" style="color:#2a78d6">$\dfrac{1}{\sigma\sqrt{2\pi}}$:</span> hệ số “chuẩn hoá” để tổng diện tích bằng đúng 1; đó cũng là <b>chiều cao đỉnh</b> (tại $x=\mu$, $e^0=1$). $\sigma$ nhỏ → đỉnh cao, chuông hẹp; $\sigma$ lớn → đỉnh thấp, chuông bè.</li>
+</ol>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy số 1</span>Tham số thứ hai là PHƯƠNG SAI, không phải độ lệch chuẩn</div>
+  <p>$X\sim N(\mu;\sigma^2)$: $E(X)=\mu$, $D(X)=\sigma^2$, $\sigma(X)=\sigma$. Đề viết $N(20;\,16)$ thì $\sigma=\sqrt{16}=4$; viết $N(30;\,25)$ thì $\sigma=5$. Quên khai căn là sai toàn bộ bài.</p>
+</div>
+<h3 id="ch-hinh-dang">10.2. Hình dạng và các tính chất</h3>
+<ul>
+  <li>Hình chuông, <b>đối xứng qua đường thẳng $x=\mu$</b>; cao nhất tại $x=\mu$ với giá trị $\dfrac{1}{\sigma\sqrt{2\pi}}$.</li>
+  <li>$\mu$ quyết định <b>vị trí</b> (tịnh tiến trái/phải); $\sigma$ quyết định <b>độ bè</b>.</li>
+  <li>Hai đuôi tiến sát trục hoành nhưng không bao giờ chạm (mọi giá trị đều “có thể”, chỉ là rất hiếm).</li>
+</ul>
+<div class="widget" id="normWidget">
+  <div class="widget-title">Thay đổi μ và σ</div>
+  <div class="widget-sub">Đường nét đứt là $N(0;1)$ để so sánh. Hai vạch mảnh đánh dấu $\mu\pm\sigma$ (chỗ đường cong đổi chiều uốn).</div>
+  <div class="controls">
+    <div class="ctrl"><label for="nmu">$\mu$ <output for="nmu"></output></label><input type="range" id="nmu" min="-4" max="4" step="0.1" value="1"></div>
+    <div class="ctrl"><label for="nsd">$\sigma$ <output for="nsd"></output></label><input type="range" id="nsd" min="0.5" max="3" step="0.1" value="1.5"></div>
+  </div>
+  <div id="normPlot"></div>
+  <div class="readout" id="normRead"></div>
+</div>
+<div class="box errata">
+  <div class="box-title"><span class="tag">Lỗi in</span>Hình 2.3 trong giáo trình</div>
+  <p>Hình 2.3 vẽ $N(4;9)$ nhưng trục tung lên tới $0{,}9$. Thực tế đỉnh chỉ cao $\dfrac{1}{3\sqrt{2\pi}}\approx0{,}133$. Hình dạng chuông và vị trí tâm $x=4$ thì đúng; chỉ có thang chia trục tung bị sai.</p>
+</div>
+<h3 id="ch-quy-tac">10.3. Quy tắc 68 – 95 – 99,7 (quy tắc 3σ)</h3>
+<figure><div class="fig-box"><div id="ruleFig"></div></div><figcaption>Hình 10.1. Khoảng $\mu\pm\sigma$ chứa khoảng 68,26% giá trị; $\mu\pm2\sigma$: 95,44%; $\mu\pm3\sigma$: 99,73%.</figcaption></figure>
+<p>Hệ quả “quy tắc $3\sigma$”: $P(|X-\mu|&lt;3\sigma)\approx1$ — hầu như mọi giá trị đều nằm trong $\mu\pm3\sigma$. Một giá trị nằm ngoài khoảng này được coi là bất thường.</p>
+<h3 id="ch-y-nghia">10.4. Vì sao phân phối chuẩn quan trọng?</h3>
+<p>Những đại lượng chịu tác động của <b>rất nhiều yếu tố nhỏ cộng dồn</b> thường có phân phối chuẩn: chiều cao, cân nặng của người cùng giới và cùng độ tuổi, huyết áp, nồng độ các chất trong máu, kích thước sản phẩm do máy sản xuất… Toàn bộ phần thống kê (Bài 4–8) dựa nặng vào nó.</p>
+
+<!-- =============================================================== -->
+<h2 id="chuan-tac" data-toc="11. Chuẩn tắc & chuẩn hoá"><span class="num">11</span>Phân phối chuẩn tắc và phép chuẩn hoá</h2>
+<h3 id="ct-ba-ham">11.1. Ba hàm cần phân biệt: $l(x)$, $G(x)$, $\varphi(x)$</h3>
+<p>Phân phối chuẩn tắc là trường hợp $\mu=0$, $\sigma=1$: $Z\sim N(0;1)$, $E(Z)=0$, $D(Z)=1$.</p>
+<div class="table-wrap"><table>
+  <tr><th>Hàm</th><th>Công thức</th><th class="left">Ý nghĩa bằng hình</th><th>Bảng</th></tr>
+  <tr><td><b>$l(x)$</b> — mật độ<br><span class="small muted">(giáo trình gọi là hàm Laplace)</span></td><td>$\dfrac{1}{\sqrt{2\pi}}e^{-x^2/2}$</td><td class="left"><b>chiều cao</b> đường cong tại $x$; $l(-x)=l(x)$</td><td>Phụ lục 1</td></tr>
+  <tr><td><b>$G(x)$</b> — hàm phân phối<br><span class="small muted">(hàm Gauss)</span></td><td>$\displaystyle\int_{-\infty}^{x}l(t)\,dt$</td><td class="left"><b>diện tích bên trái</b> $x$ $=P(Z&lt;x)$</td><td>—</td></tr>
+  <tr><td><b>$\varphi(x)$</b> — tích phân Laplace</td><td>$\displaystyle\int_{0}^{x}l(t)\,dt$</td><td class="left"><b>diện tích từ 0 đến $x$</b></td><td><b>Phụ lục 2</b></td></tr>
+</table></div>
+<figure><div class="fig-box"><div id="areaFigs" class="grid2" style="margin:0"></div></div><figcaption>Hình 11.1. Bốn diện tích hay dùng nhất, tất cả đều quy về $\varphi$.</figcaption></figure>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Liên hệ và tính chất của $\varphi$</div>
+  $$G(x)=0{,}5+\varphi(x)\qquad \varphi(-x)=-\varphi(x)\qquad \varphi(0)=0\qquad \varphi(x)\approx0{,}5\ \text{ khi } x\ge4$$
+  $$P(a&lt;Z&lt;b)=\varphi(b)-\varphi(a)\qquad P(Z&gt;a)=0{,}5-\varphi(a)\qquad P(Z&lt;b)=0{,}5+\varphi(b)$$
+</div>
+<ul>
+  <li><b>Vì sao $G=0{,}5+\varphi$?</b> Đường cong đối xứng qua 0 nên nửa bên trái 0 có diện tích đúng $0{,}5$; cộng thêm phần từ 0 đến $x$ là $\varphi(x)$.</li>
+  <li><b>Vì sao $\varphi(-x)=-\varphi(x)$?</b> Diện tích từ $0$ đến $-x$ bằng diện tích từ $0$ đến $x$ (đối xứng), nhưng tích phân đi <b>ngược chiều</b> (từ 0 sang trái) nên mang dấu trừ (tính chất 4 ở mục 3.5). Ví dụ $\varphi(-1)=-0{,}3413$.</li>
+  <li><b>Vì sao $P(Z&gt;a)=0{,}5-\varphi(a)$?</b> Nửa bên phải 0 có diện tích $0{,}5$; bỏ đi phần từ 0 đến $a$.</li>
+</ul>
+
+<h3 id="ct-chuan-hoa">11.2. Chuẩn hoá: đưa mọi phân phối chuẩn về $N(0;1)$</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Phép chuẩn hoá</div>
+  <div class="big-formula">$$X\sim N(\mu;\sigma^2)\ \Longrightarrow\ Z=\frac{X-\mu}{\sigma}\sim N(0;1)$$</div>
+  <p class="small center">Ý nghĩa: thay vì đo bằng mmHg, cm, kg… ta đo bằng “<b>cách tâm bao nhiêu $\sigma$</b>”. Mọi đường chuông khi đổi đơn vị như vậy đều trùng với một đường chuông duy nhất.</p>
+</div>
+<p>Từ đó có các công thức của giáo trình (viết lại theo đúng ý nghĩa):</p>
+<div class="table-wrap"><table>
+  <tr><th class="left">Cần tính</th><th>Công thức</th></tr>
+  <tr><td class="left">$P(x_1&lt;X&lt;x_2)$</td><td>$\varphi\!\left(\dfrac{x_2-\mu}{\sigma}\right)-\varphi\!\left(\dfrac{x_1-\mu}{\sigma}\right)$</td></tr>
+  <tr><td class="left">$P(X&gt;a)$</td><td>$0{,}5-\varphi\!\left(\dfrac{a-\mu}{\sigma}\right)$</td></tr>
+  <tr><td class="left">$P(X&lt;b)$</td><td>$0{,}5+\varphi\!\left(\dfrac{b-\mu}{\sigma}\right)$</td></tr>
+  <tr><td class="left">$P(|X-\mu|&lt;\varepsilon)$</td><td>$2\,\varphi\!\left(\dfrac{\varepsilon}{\sigma}\right)$</td></tr>
+  <tr><td class="left">$P(|X-\mu|&lt;3\sigma)$</td><td>$2\varphi(3)=0{,}9973\approx1$</td></tr>
+</table></div>
+<p class="small"><b>Từ đâu ra $2\varphi(\varepsilon/\sigma)$?</b> $|X-\mu|&lt;\varepsilon\iff\mu-\varepsilon&lt;X&lt;\mu+\varepsilon$. Áp dụng dòng 1: $\varphi\big(\frac{\varepsilon}{\sigma}\big)-\varphi\big(\frac{-\varepsilon}{\sigma}\big)=\varphi\big(\frac{\varepsilon}{\sigma}\big)+\varphi\big(\frac{\varepsilon}{\sigma}\big)=2\varphi\big(\frac{\varepsilon}{\sigma}\big)$.</p>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Quy trình</span>4 bước cho mọi bài phân phối chuẩn</div>
+  <ol>
+    <li>Xác định $\mu$ và $\sigma$ (nhớ <b>khai căn</b> phương sai).</li>
+    <li>Đổi từng mốc $x$ thành $z=\dfrac{x-\mu}{\sigma}$, làm tròn 2 chữ số thập phân (bảng chỉ có 2 chữ số).</li>
+    <li>Chọn công thức theo dạng: <b>giữa</b> / <b>lớn hơn</b> / <b>nhỏ hơn</b> / <b>đối xứng quanh $\mu$</b>.</li>
+    <li>Tra bảng $\varphi$; số âm thì dùng $\varphi(-z)=-\varphi(z)$. Vẽ nhanh một hình chuông để kiểm tra kết quả có hợp lý không.</li>
+  </ol>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 11.1</span>Huyết áp tâm thu của sinh viên</div>
+  <p>Huyết áp tâm thu $X$ (mmHg) của sinh viên một trường có phân phối $N(118;\,100)$. Chọn ngẫu nhiên một sinh viên. Tính: (a) $P(110&lt;X&lt;130)$; (b) $P(X&gt;140)$; (c) $P(X&lt;100)$; (d) ngưỡng $h$ sao cho chỉ 5% sinh viên có huyết áp cao hơn $h$; (e) $P(|X-118|&lt;15)$.</p>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <p>$\mu=118$; $\sigma=\sqrt{100}=10$.</p>
+    <ol class="steps">
+      <li><span class="step-label">(a) dạng “giữa”:</span> $z_2=\frac{130-118}{10}=1{,}2$; $z_1=\frac{110-118}{10}=-0{,}8$.<br>$P=\varphi(1{,}2)-\varphi(-0{,}8)=\varphi(1{,}2)+\varphi(0{,}8)=0{,}3849+0{,}2881=\mathbf{0{,}6730}$.</li>
+      <li><span class="step-label">(b) dạng “lớn hơn”:</span> $z=\frac{140-118}{10}=2{,}2$ → $P=0{,}5-\varphi(2{,}2)=0{,}5-0{,}4861=\mathbf{0{,}0139}$.</li>
+      <li><span class="step-label">(c) dạng “nhỏ hơn”:</span> $z=\frac{100-118}{10}=-1{,}8$ → $P=0{,}5+\varphi(-1{,}8)=0{,}5-0{,}4641=\mathbf{0{,}0359}$.</li>
+      <li><span class="step-label">(d) bài toán ngược:</span> $P(X&gt;h)=0{,}05\iff0{,}5-\varphi\big(\frac{h-118}{10}\big)=0{,}05\iff\varphi\big(\frac{h-118}{10}\big)=0{,}45$.<br>Tra ngược bảng: $\varphi(1{,}64)=0{,}4495$, $\varphi(1{,}65)=0{,}4505$ → lấy $1{,}645$ (hoặc tra thẳng $z_{0{,}95}=1{,}645$ ở Phụ lục 3).<br>$\frac{h-118}{10}=1{,}645\Rightarrow h=118+16{,}45=\mathbf{134{,}45}$ mmHg.</li>
+      <li><span class="step-label">(e) dạng đối xứng:</span> $\varepsilon=15$ → $P=2\varphi(1{,}5)=2\cdot0{,}4332=\mathbf{0{,}8664}$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="widget" id="calcWidget">
+  <div class="widget-title">Máy tính phân phối chuẩn từng bước</div>
+  <div class="widget-sub">Nhập $\mu$, $\sigma$ và mốc; trang sẽ viết ra từng bước giống như khi bạn làm trên giấy (dùng giá trị bảng 4 chữ số).</div>
+  <div class="controls">
+    <div class="ctrl" style="min-width:110px"><label for="cmu">$\mu$</label><input type="number" id="cmu" value="118" step="any"></div>
+    <div class="ctrl" style="min-width:110px"><label for="csd">$\sigma$ (độ lệch chuẩn)</label><input type="number" id="csd" value="10" step="any" min="0"></div>
+    <div class="ctrl" style="min-width:150px"><label for="cmode">Dạng câu hỏi</label>
+      <select id="cmode"><option value="between">a &lt; X &lt; b</option><option value="gt">X &gt; a</option><option value="lt">X &lt; b</option><option value="sym">|X − μ| &lt; ε</option></select></div>
+    <div class="ctrl" style="min-width:110px"><label for="ca">a (hoặc ε)</label><input type="number" id="ca" value="110" step="any"></div>
+    <div class="ctrl" style="min-width:110px"><label for="cb">b</label><input type="number" id="cb" value="130" step="any"></div>
+  </div>
+  <div id="calcPlot"></div>
+  <div class="readout" id="calcRead"></div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="tra-bang" data-toc="12. Tra bảng phụ lục"><span class="num">12</span>Tra bảng phụ lục</h2>
+<h3 id="tb-phi">12.1. Bảng $\varphi(x)$ (Phụ lục 2)</h3>
+<ol class="steps">
+  <li>Tách $x$ thành <b>hàng</b> (phần nguyên + chữ số thập phân thứ nhất) và <b>cột</b> (chữ số thập phân thứ hai). Ví dụ $x=1{,}67$ → hàng $1{,}6$, cột $0{,}07$.</li>
+  <li>Đọc ô giao nhau: $4525$ → $\varphi(1{,}67)=0{,}4525$ (bảng in bỏ “0,” cho gọn; từ hàng $3{,}0$ trở đi in 5 chữ số: $49865$ nghĩa là $0{,}49865$).</li>
+  <li>$x$ âm: $\varphi(-1{,}67)=-0{,}4525$. $\;x\ge4$: $\varphi(x)\approx0{,}5$.</li>
+</ol>
+<div class="widget" id="phiWidget">
+  <div class="widget-title">Bảng φ(x) tra trực tiếp (giá trị chuẩn, đã sửa lỗi in)</div>
+  <div class="controls">
+    <div class="ctrl" style="min-width:150px"><label for="phiX">Tra xuôi: nhập $x$</label><input type="number" id="phiX" value="1.67" step="0.01"></div>
+    <div class="ctrl" style="min-width:150px"><label for="phiV">Tra ngược: nhập $\varphi$</label><input type="number" id="phiV" value="0.45" step="0.0001"></div>
+  </div>
+  <div class="readout" id="phiRead" style="margin-bottom:10px"></div>
+  <div class="table-wrap" id="phiTable" style="max-height:420px;overflow:auto"></div>
+</div>
+<h3 id="tb-z">12.2. Bảng phân vị chuẩn tắc $z_\alpha$ (Phụ lục 3)</h3>
+<p>$z_\alpha$ là số mà $P(Z&lt;z_\alpha)=\alpha$ (diện tích bên trái bằng $\alpha$). Liên hệ với bảng $\varphi$: $\;0{,}5+\varphi(z_\alpha)=\alpha\iff\varphi(z_\alpha)=\alpha-0{,}5$. Bảng chỉ in $\alpha\ge0{,}5$; với $\alpha&lt;0{,}5$ dùng tính đối xứng $\;z_\alpha=-z_{1-\alpha}$ (ví dụ $z_{0{,}05}=-z_{0{,}95}=-1{,}645$).</p>
+<div class="table-wrap"><table class="compact">
+  <tr><th>$\alpha$</th><td>0,90</td><td>0,95</td><td>0,975</td><td>0,99</td><td>0,995</td><td>0,999</td></tr>
+  <tr><th>$z_\alpha$</th><td>1,282</td><td>1,645</td><td class="hl">1,960</td><td>2,326</td><td>2,576</td><td>3,090</td></tr>
+</table></div>
+<p class="small">Nên thuộc lòng 3 giá trị: $1{,}645$; $1{,}96$; $2{,}576$ — chúng xuất hiện liên tục ở Bài 4–5. Ví dụ: $P(-1{,}96&lt;Z&lt;1{,}96)=0{,}95$.</p>
+<h3 id="tb-l">12.3. Bảng $l(x)$ (Phụ lục 1)</h3>
+<p>Chỉ cho <b>chiều cao</b> của đường chuông chuẩn tắc tại $x$, <b>không phải xác suất</b>. Dùng khi cần giá trị mật độ tại một điểm, ví dụ đỉnh của $N(\mu;\sigma^2)$ là $\frac{1}{\sigma}\,l(0)=\frac{0{,}3989}{\sigma}$.</p>
+<h3 id="tb-loi-in">12.4. Các ô in sai trong bảng phụ lục</h3>
+<div class="box errata">
+  <div class="box-title"><span class="tag">Lỗi in</span>Đã đối chiếu từng ô với giá trị tính chính xác</div>
+  <p>Khi tra trúng những ô dưới đây, hãy dùng <b>giá trị đúng</b> (cột phải). Các ô khác chỉ có thể lệch 1 đơn vị ở chữ số cuối do làm tròn — không ảnh hưởng kết quả.</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>Bảng</th><th>Ô</th><th>Giáo trình in</th><th>Giá trị đúng</th></tr>
+    <tr><td rowspan="4">Phụ lục 2 — $\varphi(x)$</td><td>$x=0{,}10$</td><td>0389</td><td class="hl">0,0398</td></tr>
+    <tr><td>$x=0{,}15$</td><td>0396</td><td class="hl">0,0596</td></tr>
+    <tr><td>$x=1{,}68$</td><td>4583</td><td class="hl">0,4535</td></tr>
+    <tr><td>$x=3{,}26$</td><td>49994</td><td class="hl">0,49944</td></tr>
+    <tr><td>Phụ lục 3 — $z_\alpha$</td><td>$\alpha=0{,}52$</td><td>0,030</td><td class="hl">0,050</td></tr>
+    <tr><td rowspan="8">Phụ lục 1 — $l(x)$</td><td>$x=0{,}08$</td><td>0,3877</td><td class="hl">0,3977</td></tr>
+    <tr><td>$x=0{,}16$</td><td>0,3839</td><td class="hl">0,3939</td></tr>
+    <tr><td>$x=0{,}38$</td><td>0,2712</td><td class="hl">0,3712</td></tr>
+    <tr><td>$x=0{,}39$</td><td>0,3679</td><td class="hl">0,3697</td></tr>
+    <tr><td>$x=0{,}61$</td><td>0,3012</td><td class="hl">0,3312</td></tr>
+    <tr><td>$x=1{,}29$</td><td>0,1738</td><td class="hl">0,1736</td></tr>
+    <tr><td>$x=2{,}34$</td><td>0,0158</td><td class="hl">0,0258</td></tr>
+    <tr><td>$x=2{,}38$</td><td>0,0735</td><td class="hl">0,0235</td></tr>
+    <tr><td rowspan="12">Phụ lục 4 — $\chi^2_\alpha(n)$</td><td>$n=5,\ \alpha=0{,}95$</td><td>10,070</td><td class="hl">11,070</td></tr>
+    <tr><td>$n=8,\ \alpha=0{,}90$</td><td>13,326</td><td class="hl">13,362</td></tr>
+    <tr><td>$n=13,\ \alpha=0{,}05$</td><td>5,982</td><td class="hl">5,892</td></tr>
+    <tr><td>$n=15,\ \alpha=0{,}005$</td><td>5,601</td><td class="hl">4,601</td></tr>
+    <tr><td>$n=20,\ \alpha=0{,}005$</td><td>7,343</td><td class="hl">7,434</td></tr>
+    <tr><td>$n=22,\ \alpha=0{,}005$</td><td>8,543</td><td class="hl">8,643</td></tr>
+    <tr><td>$n=22,\ \alpha=0{,}05$</td><td>12,388</td><td class="hl">12,338</td></tr>
+    <tr><td>$n=22,\ \alpha=0{,}99$</td><td>30,289</td><td class="hl">40,289</td></tr>
+    <tr><td>$n=30,\ \alpha=0{,}01$</td><td>14,930</td><td class="hl">14,953</td></tr>
+    <tr><td>$n=50,\ \alpha=0{,}025$</td><td>32,307</td><td class="hl">32,357</td></tr>
+    <tr><td>$n=50,\ \alpha=0{,}05$</td><td>34,754</td><td class="hl">34,764</td></tr>
+    <tr><td>$n=100,\ \alpha=0{,}975$</td><td>128,561</td><td class="hl">129,561</td></tr>
+    <tr><td rowspan="4">Phụ lục 5 — Student $t_\alpha(n)$</td><td>$n=1,\ \alpha=0{,}995$</td><td>63,675</td><td class="hl">63,657</td></tr>
+    <tr><td>$n=1,\ \alpha=0{,}999$</td><td>636,619</td><td class="hl">318,309</td></tr>
+    <tr><td>$n=3,\ \alpha=0{,}999$</td><td>10,213</td><td class="hl">10,215</td></tr>
+    <tr><td>$n=60,\ \alpha=0{,}95$</td><td>1,674</td><td class="hl">1,671</td></tr>
+    <tr><td rowspan="3">Phụ lục 6a — Fisher $\alpha=0{,}95$</td><td>$m=3,\ n=2$</td><td>19,6</td><td class="hl">19,16</td></tr>
+    <tr><td>$m=10,\ n=7$</td><td>3,65</td><td class="hl">3,64</td></tr>
+    <tr><td>$m=10,\ n=8$</td><td>3,34</td><td class="hl">3,35</td></tr>
+  </table></div>
+  <p class="small muted">Ghi chú: $636{,}619$ thực ra là $t_{0{,}9995}(1)$ (in nhầm cột). Bảng Fisher: đã kiểm tra trang đầu của Phụ lục 6a ($m\le12$); các trang Fisher còn lại hãy đối chiếu bằng công cụ tra ở mục 14.4 khi cần.</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="xap-xi" data-toc="13. Xấp xỉ nhị thức bằng chuẩn"><span class="num">13</span>Xấp xỉ phân phối nhị thức bằng phân phối chuẩn</h2>
+<p>Khi $n$ lớn, tính $C_n^m p^mq^{n-m}$ rồi cộng hàng chục số hạng là rất mệt. Ở mục 9 ta đã thấy biểu đồ nhị thức càng ngày càng giống hình chuông — nên ta thay nó bằng đường chuông có <b>cùng kỳ vọng và phương sai</b>.</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Xấp xỉ chuẩn</div>
+  <p class="center">Nếu $X\sim B(n;p)$, $n$ lớn và $p$ không quá gần 0 hoặc 1, thì $X\approx Y\sim N(\mu;\sigma^2)$ với $\mu=np$, $\sigma^2=npq$.</p>
+  <p class="center small">Kinh nghiệm hay dùng (mở rộng): $np\ge5$ và $nq\ge5$.</p>
+</div>
+<h3 id="xx-hieu-chinh">13.1. Hiệu chỉnh 0,5 — vì sao cần?</h3>
+<p>Mỗi giá trị nguyên $k$ của nhị thức được vẽ thành một cột rộng từ $k-0{,}5$ đến $k+0{,}5$. Muốn lấy “đủ cột” bằng diện tích dưới đường cong thì phải lấy từ <b>mép trái cột đầu</b> đến <b>mép phải cột cuối</b>:</p>
+<div class="widget" id="ccWidget">
+  <div class="widget-title">Cột nhị thức và diện tích dưới đường chuông</div>
+  <div class="widget-sub">Phần tô dưới đường cong chạy từ $a-0{,}5$ đến $b+0{,}5$ — phủ vừa khít các cột được chọn.</div>
+  <div class="controls">
+    <div class="ctrl"><label for="ccn">$n$ <output for="ccn"></output></label><input type="range" id="ccn" min="10" max="200" step="1" value="100"></div>
+    <div class="ctrl"><label for="ccp">$p$ <output for="ccp"></output></label><input type="range" id="ccp" min="0.05" max="0.95" step="0.01" value="0.5"></div>
+    <div class="ctrl"><label for="cca">$a$ <output for="cca"></output></label><input type="range" id="cca" min="0" max="200" step="1" value="45"></div>
+    <div class="ctrl"><label for="ccb">$b$ <output for="ccb"></output></label><input type="range" id="ccb" min="0" max="200" step="1" value="55"></div>
+  </div>
+  <div id="ccPlot"></div>
+  <div class="readout" id="ccRead"></div>
+</div>
+<div class="table-wrap"><table>
+  <tr><th>Nhị thức (rời rạc)</th><th>Chuẩn (sau hiệu chỉnh)</th></tr>
+  <tr><td>$P(a\le X\le b)$</td><td>$P(a-0{,}5&lt;Y&lt;b+0{,}5)$</td></tr>
+  <tr><td>$P(X=k)$</td><td>$P(k-0{,}5&lt;Y&lt;k+0{,}5)$</td></tr>
+  <tr><td>$P(X\ge a)$</td><td>$P(Y&gt;a-0{,}5)$</td></tr>
+  <tr><td>$P(X\le b)$</td><td>$P(Y&lt;b+0{,}5)$</td></tr>
+  <tr><td>$P(X&gt;a)=P(X\ge a+1)$</td><td>$P(Y&gt;a+0{,}5)$</td></tr>
+  <tr><td>$P(X&lt;b)=P(X\le b-1)$</td><td>$P(Y&lt;b-0{,}5)$</td></tr>
+</table></div>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Mẹo</span>Chuyển dấu chặt thành dấu không chặt trước</div>
+  <p>Với biến rời rạc nguyên: “$X&gt;59$” chính là “$X\ge60$”. Luôn đưa về dạng $\ge$, $\le$ rồi mới cộng/trừ $0{,}5$ ra phía ngoài cột.</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 13.1</span>Thuốc giảm đau</div>
+  <p>Một thuốc giảm đau sau nhổ răng có tỉ lệ đáp ứng 50%. Dùng cho 100 bệnh nhân; $X$ = số người đáp ứng. Tính gần đúng (a) $P(45\le X\le55)$; (b) $P(X\ge60)$; (c) $P(X=50)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$X\sim B(100;0{,}5)$; $np=50\ge5$, $nq=50\ge5$ → xấp xỉ $N(50;\,25)$, $\sigma=5$.</li>
+      <li>(a) $P(44{,}5&lt;Y&lt;55{,}5)=\varphi\big(\frac{55{,}5-50}{5}\big)-\varphi\big(\frac{44{,}5-50}{5}\big)=\varphi(1{,}1)+\varphi(1{,}1)=2\cdot0{,}3643=\mathbf{0{,}7286}$ <span class="muted">(chính xác: 0,7287)</span>.</li>
+      <li>(b) $P(Y&gt;59{,}5)=0{,}5-\varphi\big(\frac{59{,}5-50}{5}\big)=0{,}5-\varphi(1{,}9)=0{,}5-0{,}4713=\mathbf{0{,}0287}$ <span class="muted">(chính xác: 0,0284)</span>.</li>
+      <li>(c) $P(49{,}5&lt;Y&lt;50{,}5)=2\varphi(0{,}1)=2\cdot0{,}0398=\mathbf{0{,}0796}$ <span class="muted">(chính xác: 0,0796)</span>.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Lưu ý</span>Khi nào KHÔNG nên xấp xỉ chuẩn?</div>
+  <p>Khi $p$ rất nhỏ (hoặc rất gần 1) mà $np$ nhỏ, ví dụ $p=0{,}001$, $n=2000$ ($np=2$), biểu đồ nhị thức lệch hẳn sang một bên, không có hình chuông → xấp xỉ chuẩn cho kết quả kém. Khi đó tính trực tiếp bằng công thức Bernoulli (máy tính bỏ túi làm được).</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="chi-t-f" data-toc="14. χ², Student, Fisher"><span class="num">14</span>Phân phối χ², Student và Fisher</h2>
+<p>Ba phân phối này đều được “đóng gói” từ các biến chuẩn tắc. Ở Bài 2 chỉ cần nắm <b>định nghĩa, hình dạng</b> và <b>cách tra bảng</b>; chúng sẽ được dùng thật sự ở Bài 4–8.</p>
+<div class="widget" id="famWidget">
+  <div class="widget-title">Hình dạng ba phân phối và giá trị tra bảng</div>
+  <div class="widget-sub">Chọn phân phối, kéo bậc tự do và mức $\alpha$. Phần tô màu có diện tích bằng $\alpha$; mốc tương ứng chính là số in trong bảng phụ lục.</div>
+  <div class="seg" id="famBtns"></div>
+  <div class="controls">
+    <div class="ctrl"><label for="fk1">Bậc tự do <span id="fk1name">k</span> <output for="fk1"></output></label><input type="range" id="fk1" min="1" max="40" step="1" value="4"></div>
+    <div class="ctrl" id="fk2wrap"><label for="fk2">Bậc tự do n (mẫu) <output for="fk2"></output></label><input type="range" id="fk2" min="1" max="40" step="1" value="10"></div>
+    <div class="ctrl"><label for="fal">Mức $\alpha$ <output for="fal"></output></label><input type="range" id="fal" min="0.005" max="0.995" step="0.005" value="0.95"></div>
+  </div>
+  <div id="famPlot"></div>
+  <div class="readout" id="famRead"></div>
+</div>
+<h3 id="f-chi">14.1. Phân phối khi bình phương $\chi^2(k)$</h3>
+<div class="box def">
+  <div class="box-title"><span class="tag">Định nghĩa</span>$\chi^2$ với $k$ bậc tự do</div>
+  <p>Cho $Z_1,\dots,Z_k$ độc lập, cùng phân phối $N(0;1)$. Biến $\chi^2=Z_1^2+Z_2^2+\dots+Z_k^2$ có phân phối khi bình phương bậc tự do $k$: $\chi^2\sim\chi^2(k)$.</p>
+</div>
+<ul>
+  <li>Là tổng các bình phương nên <b>luôn $\ge0$</b>; đồ thị <b>lệch phải</b>, không đối xứng. Khi $k\ge30$ thì gần hình chuông.</li>
+  <li>$E(\chi^2)=k$, $D(\chi^2)=2k$. <span class="small muted">(Lý do $E=k$: mỗi $E(Z_i^2)=D(Z_i)+[E(Z_i)]^2=1+0=1$, cộng $k$ số hạng.)</span></li>
+  <li><b>Tra bảng (Phụ lục 4):</b> $\chi^2_\alpha(n)$ thoả $P\big(\chi^2&lt;\chi^2_\alpha(n)\big)=\alpha$; hàng = bậc tự do $n$, cột = $\alpha$. Vì không đối xứng nên đầu dưới và đầu trên phải tra <b>riêng</b>.</li>
+</ul>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 14.1</span>Tra bảng χ²</div>
+  <p>$\chi^2_{0{,}95}(10)=18{,}307$ và $\chi^2_{0{,}05}(10)=3{,}940$. Suy ra $P\big(3{,}940&lt;\chi^2(10)&lt;18{,}307\big)=0{,}95-0{,}05=0{,}90$ và $P\big(\chi^2(10)&gt;18{,}307\big)=0{,}05$.</p>
+</div>
+<h3 id="f-t">14.2. Phân phối Student $T(n)$</h3>
+<div class="box def">
+  <div class="box-title"><span class="tag">Định nghĩa</span>Student với $n$ bậc tự do</div>
+  <p>Cho $Z\sim N(0;1)$ và $\chi^2\sim\chi^2(n)$ độc lập. Biến $\;T=\dfrac{Z}{\sqrt{\chi^2/n}}\;$ có phân phối Student bậc tự do $n$: $T\sim T(n)$.</p>
+</div>
+<ul>
+  <li>Hình chuông <b>đối xứng qua 0</b> giống $N(0;1)$ nhưng <b>thấp hơn và đuôi dày hơn</b> (giá trị xa tâm dễ xảy ra hơn). Khi $n\ge30$, $T(n)\approx N(0;1)$ — dòng “$+\infty$” của bảng trùng với $z_\alpha$.</li>
+  <li><b>Tra bảng (Phụ lục 5):</b> $P\big(T&lt;t_\alpha(n)\big)=\alpha$, bảng chỉ có $\alpha\ge0{,}9$. Với $\alpha$ nhỏ dùng đối xứng: $t_{1-\alpha}(n)=-t_\alpha(n)$, ví dụ $t_{0{,}05}(12)=-t_{0{,}95}(12)=-1{,}782$.</li>
+</ul>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 14.2</span>Tra bảng Student</div>
+  <p>$t_{0{,}975}(15)=2{,}131$ → $P(-2{,}131&lt;T(15)&lt;2{,}131)=0{,}95$. So với chuẩn tắc: $P(-1{,}96&lt;Z&lt;1{,}96)=0{,}95$ — Student cần mốc <b>xa hơn</b> ($2{,}131&gt;1{,}96$) vì đuôi dày hơn.</p>
+</div>
+<h3 id="f-f">14.3. Phân phối Fisher $F(m;n)$</h3>
+<div class="box def">
+  <div class="box-title"><span class="tag">Định nghĩa</span>Fisher với bậc tự do $(m;n)$</div>
+  <p>Cho $\chi_1^2\sim\chi^2(m)$, $\chi_2^2\sim\chi^2(n)$ độc lập. Biến $\;F=\dfrac{\chi_1^2/m}{\chi_2^2/n}\;$ có phân phối Fisher bậc tự do $(m;n)$.</p>
+</div>
+<ul>
+  <li>Luôn $\ge0$, lệch phải. Có <b>hai</b> bậc tự do: $m$ của tử số (cột của bảng), $n$ của mẫu số (hàng). <b>Thứ tự quan trọng</b>: $F(4;10)\neq F(10;4)$.</li>
+  <li><b>Tra bảng (Phụ lục 6a, 6b, 6c):</b> mỗi bảng ứng với một mức $\alpha=0{,}95;\ 0{,}975;\ 0{,}99$. Ví dụ $F_{0{,}95}(4;10)=3{,}48$ → $P(F&lt;3{,}48)=0{,}95$.</li>
+  <li><span class="small muted">Mở rộng: muốn mức $\alpha$ nhỏ thì dùng $F_{1-\alpha}(m;n)=\dfrac{1}{F_\alpha(n;m)}$.</span></li>
+</ul>
+<h3 id="f-tra">14.4. Công cụ tra nhanh (giá trị chính xác)</h3>
+<div class="widget" id="lookWidget">
+  <div class="widget-title">Tra χ², Student, Fisher</div>
+  <div class="controls">
+    <div class="ctrl" style="min-width:150px"><label for="lkType">Phân phối</label><select id="lkType"><option value="chi">χ²(n)</option><option value="t">Student T(n)</option><option value="f">Fisher F(m; n)</option></select></div>
+    <div class="ctrl" style="min-width:110px"><label for="lkA">Mức α</label><input type="number" id="lkA" value="0.95" step="0.005" min="0.001" max="0.999"></div>
+    <div class="ctrl" style="min-width:110px"><label for="lkM">m (Fisher)</label><input type="number" id="lkM" value="4" min="1" step="1"></div>
+    <div class="ctrl" style="min-width:110px"><label for="lkN">n</label><input type="number" id="lkN" value="10" min="1" step="1"></div>
+  </div>
+  <div class="readout" id="lkRead"></div>
+</div>
+<h3 id="f-dung-o-dau">14.5. Sẽ gặp lại ở đâu?</h3>
+<div class="table-wrap"><table>
+  <tr><th>Phân phối</th><th class="left">Dùng cho (các bài sau)</th></tr>
+  <tr><td>Chuẩn tắc $Z$</td><td class="left">ước lượng / kiểm định trung bình khi biết $\sigma$ hoặc mẫu lớn; tỉ lệ</td></tr>
+  <tr><td>Student $T$</td><td class="left">ước lượng / kiểm định trung bình khi chưa biết $\sigma$, mẫu nhỏ</td></tr>
+  <tr><td>$\chi^2$</td><td class="left">phương sai; kiểm định độc lập, phù hợp (bảng tiếp liên)</td></tr>
+  <tr><td>Fisher $F$</td><td class="left">so sánh hai phương sai; phân tích phương sai (ANOVA)</td></tr>
+</table></div>
+
+<!-- =============================================================== -->
+<h2 id="nhan-dang" data-toc="15. Nhận dạng & lỗi hay gặp"><span class="num">15</span>Nhận dạng dạng bài và lỗi hay gặp</h2>
+<div class="decide">
+  <div class="rule"><span class="when">Cho bảng có ẩn $a$ (hoặc $x, y$)</span><span class="arrow">→</span><span class="use">$\sum p_i=1$ (và $E(X)$ nếu đề cho) để lập phương trình</span></div>
+  <div class="rule"><span class="when">Cho $f(x)$ có ẩn $k$</span><span class="arrow">→</span><span class="use">$\int f=1$, nhớ khai triển rồi lấy nguyên hàm</span></div>
+  <div class="rule"><span class="when">Hỏi $E$, $D$ của $aX+b$</span><span class="arrow">→</span><span class="use">$aE+b$; $a^2D$ (không tính lại từ đầu)</span></div>
+  <div class="rule"><span class="when">“$n$ lần độc lập, cùng xác suất $p$, đếm số lần”</span><span class="arrow">→</span><span class="use">Nhị thức $B(n;p)$, $E=np$, $D=npq$</span></div>
+  <div class="rule"><span class="when">$X\sim N(\mu;\sigma^2)$, hỏi xác suất</span><span class="arrow">→</span><span class="use">Chuẩn hoá $z=\frac{x-\mu}{\sigma}$, tra $\varphi$</span></div>
+  <div class="rule"><span class="when">Cho xác suất, hỏi ngưỡng $x$</span><span class="arrow">→</span><span class="use">Tra ngược bảng $\varphi$ hoặc $z_\alpha$, rồi $x=\mu+z\sigma$</span></div>
+  <div class="rule"><span class="when">Cho 2 tỉ lệ phần trăm, chưa biết $\mu$, $\sigma$</span><span class="arrow">→</span><span class="use">Hệ 2 phương trình $\frac{x_1-\mu}{\sigma}=z_1$, $\frac{x_2-\mu}{\sigma}=z_2$</span></div>
+  <div class="rule"><span class="when">Nhị thức với $n$ lớn, hỏi “từ … đến …”</span><span class="arrow">→</span><span class="use">Xấp xỉ chuẩn + hiệu chỉnh 0,5</span></div>
+</div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Tránh</span>10 lỗi hay mất điểm</div>
+  <ol>
+    <li>Quên khai căn: $N(\mu;\sigma^2)$ thì $\sigma=\sqrt{\sigma^2}$.</li>
+    <li>Lấy nguyên hàm của tích mà không khai triển trước.</li>
+    <li>Quên nhân hằng số $k$ khi tính xác suất từ hàm mật độ.</li>
+    <li>Viết $D(X)=E(X^2)-E(X)$ (thiếu bình phương) hoặc ra $D&lt;0$.</li>
+    <li>$D(aX+b)=aD(X)+b$ — sai; đúng là $a^2D(X)$.</li>
+    <li>$D(X-Y)=D(X)-D(Y)$ — sai; đúng là cộng (khi độc lập).</li>
+    <li>Quên $\varphi(-z)=-\varphi(z)$, cộng nhầm dấu.</li>
+    <li>Dùng $0{,}5+\varphi$ cho dạng “lớn hơn” (đúng phải là $0{,}5-\varphi$). Vẽ hình chuông để kiểm tra!</li>
+    <li>Xấp xỉ chuẩn mà quên hiệu chỉnh $0{,}5$, hoặc cộng/trừ $0{,}5$ sai phía.</li>
+    <li>Với biến rời rạc coi $P(X&lt;3)$ như $P(X\le3)$.</li>
+  </ol>
+</div>
+
+<h2 id="tom-tat" data-toc="16. Bảng công thức"><span class="num">16</span>Bảng công thức tóm tắt</h2>
+<div class="table-wrap"><table>
+  <tr><th class="left">Nội dung</th><th>Rời rạc</th><th>Liên tục</th></tr>
+  <tr><td class="left">Mô tả</td><td>$P(X=x_i)=p_i$, $\sum p_i=1$</td><td>$f(x)\ge0$, $\int f=1$</td></tr>
+  <tr><td class="left">Xác suất</td><td>cộng các $p_i$ (cẩn thận dấu)</td><td>$P(a&lt;X&lt;b)=\int_a^bf$</td></tr>
+  <tr><td class="left">$F(x)=P(X&lt;x)$</td><td>$\sum_{x_i&lt;x}p_i$</td><td>$\int_{-\infty}^xf(t)\,dt$</td></tr>
+  <tr><td class="left">$E(X)$</td><td>$\sum x_ip_i$</td><td>$\int x f(x)\,dx$</td></tr>
+  <tr><td class="left">$D(X)$</td><td colspan="2">$E(X^2)-[E(X)]^2$; $\ \sigma=\sqrt{D}$</td></tr>
+  <tr><td class="left">Biến đổi</td><td colspan="2">$E(aX+b)=aE+b$; $\ D(aX+b)=a^2D$</td></tr>
+</table></div>
+<div class="table-wrap"><table>
+  <tr><th>Phân phối</th><th>Công thức chính</th><th>$E$</th><th>$D$</th></tr>
+  <tr><td>$B(n;p)$</td><td>$C_n^mp^mq^{n-m}$</td><td>$np$</td><td>$npq$</td></tr>
+  <tr><td>$N(\mu;\sigma^2)$</td><td>$P(x_1&lt;X&lt;x_2)=\varphi\big(\frac{x_2-\mu}{\sigma}\big)-\varphi\big(\frac{x_1-\mu}{\sigma}\big)$</td><td>$\mu$</td><td>$\sigma^2$</td></tr>
+  <tr><td>$N(0;1)$</td><td>$G(x)=0{,}5+\varphi(x)$; $\varphi(-x)=-\varphi(x)$</td><td>0</td><td>1</td></tr>
+  <tr><td>$\chi^2(k)$</td><td>$\sum Z_i^2$; tra $\chi^2_\alpha(n)$</td><td>$k$</td><td>$2k$</td></tr>
+  <tr><td>$T(n)$</td><td>$Z/\sqrt{\chi^2/n}$; $t_{1-\alpha}=-t_\alpha$</td><td>0</td><td>—</td></tr>
+  <tr><td>$F(m;n)$</td><td>$\frac{\chi_1^2/m}{\chi_2^2/n}$; tra $F_\alpha(m;n)$</td><td>—</td><td>—</td></tr>
+</table></div>
+
+<!-- =============================================================== -->
+<h2 id="bai-tap" data-toc="17. Bài tập luyện tập"><span class="num">17</span>Bài tập luyện tập (bài mới)</h2>
+<p>Bảng $\varphi$ dùng giá trị 4 chữ số như Phụ lục 2 (đã sửa lỗi in). Làm ra giấy trước rồi mới mở lời giải.</p>
+
+<h3 id="bt2-muc-1">Mức 1 — Thông hiểu</h3>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.1</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Phân loại biến</span></div>
+  <p>Biến nào rời rạc, biến nào liên tục? (a) số răng sâu của một học sinh; (b) thời gian chờ khám; (c) số bệnh nhân đến phòng khám trong 1 giờ; (d) nồng độ fluor trong nước; (e) số lần chải răng mỗi ngày; (f) chiều dài chân răng.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>Rời rạc: (a), (c), (e). Liên tục: (b), (d), (f).</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.2</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Bảng phân phối · E · D · F</span></div>
+  <p>$X$ (số lần tái khám) có bảng: $X$: $0;1;2;3$ với $P$: $0{,}1;\ 0{,}3;\ a;\ 0{,}2$. (a) Tìm $a$. (b) Tính $E(X)$, $D(X)$, $\sigma(X)$. (c) Tính $P(X\ge2)$ và lập $F(x)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $0{,}1+0{,}3+a+0{,}2=1\Rightarrow a=\mathbf{0{,}4}$.</li>
+      <li>(b) $E=0+0{,}3+0{,}8+0{,}6=\mathbf{1{,}7}$; $E(X^2)=0+0{,}3+1{,}6+1{,}8=3{,}7$; $D=3{,}7-1{,}7^2=3{,}7-2{,}89=\mathbf{0{,}81}$; $\sigma=\mathbf{0{,}9}$.</li>
+      <li>(c) $P(X\ge2)=0{,}4+0{,}2=\mathbf{0{,}6}$. $F(x)=0$ ($x\le0$); $0{,}1$ ($0&lt;x\le1$); $0{,}4$ ($1&lt;x\le2$); $0{,}8$ ($2&lt;x\le3$); $1$ ($x&gt;3$).</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.3</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Tính chất E, D</span></div>
+  <p>Với $X$ ở Bài 1.2, tính $E(3X-2)$, $D(3X-2)$, $\sigma(3X-2)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>$E=3\cdot1{,}7-2=\mathbf{3{,}1}$; $D=9\cdot0{,}81=\mathbf{7{,}29}$; $\sigma=\mathbf{2{,}7}$ ($=3\cdot0{,}9$).</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.4</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Tra bảng φ</span></div>
+  <p>Với $Z\sim N(0;1)$, tính: (a) $\varphi(1{,}23)$; (b) $\varphi(-0{,}47)$; (c) $P(Z&gt;1{,}5)$; (d) $P(-1&lt;Z&lt;2)$; (e) $P(Z&lt;-2{,}05)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>(a) $\mathbf{0{,}3907}$ · (b) $-0{,}1808$ · (c) $0{,}5-0{,}4332=\mathbf{0{,}0668}$ · (d) $0{,}3413+0{,}4772=\mathbf{0{,}8185}$ · (e) $0{,}5-0{,}4798=\mathbf{0{,}0202}$.</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.5</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Bẫy σ²</span></div>
+  <p>$X\sim N(20;\,16)$. Tính $P(X&gt;26)$ và $P(14&lt;X&lt;22)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>$\sigma=4$. $P(X&gt;26)=0{,}5-\varphi(1{,}5)=\mathbf{0{,}0668}$. $P(14&lt;X&lt;22)=\varphi(0{,}5)-\varphi(-1{,}5)=0{,}1915+0{,}4332=\mathbf{0{,}6247}$.</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.6</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Nhị thức cơ bản</span></div>
+  <p>$X\sim B(10;\,0{,}2)$. Tính $P(X=2)$, $E(X)$, $D(X)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>$P(X=2)=C_{10}^2\,0{,}2^2\,0{,}8^8=45\cdot0{,}04\cdot0{,}1678\approx\mathbf{0{,}3020}$; $E=\mathbf2$; $D=10\cdot0{,}2\cdot0{,}8=\mathbf{1{,}6}$.</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.7</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Tra các bảng phân vị</span></div>
+  <p>Tra: (a) $z_{0{,}975}$; (b) $z_{0{,}9}$; (c) $z_{0{,}05}$; (d) $t_{0{,}95}(12)$; (e) $\chi^2_{0{,}975}(8)$; (f) $F_{0{,}95}(3;15)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>(a) $1{,}96$ · (b) $1{,}282$ · (c) $-z_{0{,}95}=-1{,}645$ · (d) $1{,}782$ · (e) $17{,}535$ · (f) $3{,}29$.</p></div></details>
+</div>
+
+<h3 id="bt2-muc-2">Mức 2 — Vận dụng</h3>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.1</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Hàm mật độ trọn gói</span></div>
+  <p>$X$ có mật độ $f(x)=kx^2$ trên $[0;3]$, bằng 0 ở ngoài. (a) Tìm $k$. (b) Tính $P(1&lt;X&lt;2)$. (c) Tính $E(X)$, $D(X)$. (d) Tìm $F(x)$ và trung vị.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $k\big[\frac{x^3}{3}\big]_0^3=9k=1\Rightarrow k=\mathbf{\frac19}$.</li>
+      <li>(b) $\frac19\big[\frac{x^3}{3}\big]_1^2=\frac19\cdot\frac{8-1}{3}=\mathbf{\frac{7}{27}}\approx0{,}2593$.</li>
+      <li>(c) $E=\frac19\int_0^3x^3dx=\frac19\big[\frac{x^4}{4}\big]_0^3=\frac{81}{36}=\mathbf{2{,}25}$; $E(X^2)=\frac19\big[\frac{x^5}{5}\big]_0^3=\frac{243}{45}=5{,}4$; $D=5{,}4-2{,}25^2=\mathbf{0{,}3375}$.</li>
+      <li>(d) $F(x)=0$ ($x\le0$); $\frac{x^3}{27}$ ($0&lt;x\le3$); $1$ ($x&gt;3$). Trung vị: $\frac{m^3}{27}=0{,}5\Rightarrow m=\sqrt[3]{13{,}5}\approx\mathbf{2{,}381}$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.2</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Chuẩn · bài toán ngược</span></div>
+  <p>Thời gian một ca lấy cao răng $X$ (phút) có phân phối $N(30;\,25)$. (a) Tỉ lệ ca kéo dài quá 40 phút? (b) Tỉ lệ ca từ 25 đến 35 phút? (c) Tìm $t$ sao cho 90% số ca xong trước $t$ phút.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$\sigma=5$. (a) $0{,}5-\varphi(2)=0{,}5-0{,}4772=\mathbf{0{,}0228}$.</li>
+      <li>(b) $2\varphi(1)=\mathbf{0{,}6826}$.</li>
+      <li>(c) $P(X&lt;t)=0{,}9\iff\frac{t-30}{5}=z_{0{,}9}=1{,}282\Rightarrow t=30+6{,}41=\mathbf{36{,}41}$ phút.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.3</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Chuẩn + Bernoulli</span></div>
+  <p>Với dữ kiện Bài 2.2, một ngày phòng khám làm 10 ca (độc lập). Tính xác suất có ít nhất một ca kéo dài quá 40 phút.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>Mỗi ca quá 40 phút với $p=0{,}0228$. $P=1-(1-0{,}0228)^{10}=1-0{,}9772^{10}\approx1-0{,}7940=\mathbf{0{,}2060}$.</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.4</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Xấp xỉ chuẩn + hiệu chỉnh</span></div>
+  <p>Tỉ lệ người trưởng thành đã mất ít nhất một răng vĩnh viễn là 20%. Khảo sát 625 người. Tính gần đúng xác suất số người mất răng (a) từ 115 đến 140; (b) nhiều hơn 140.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$np=125$, $npq=100$, $\sigma=10$.</li>
+      <li>(a) $P(114{,}5&lt;Y&lt;140{,}5)=\varphi(1{,}55)-\varphi(-1{,}05)=0{,}4394+0{,}3531=\mathbf{0{,}7925}$ <span class="muted">(chính xác ≈ 0,7913)</span>.</li>
+      <li>(b) “Nhiều hơn 140” $=X\ge141$ → $P(Y&gt;140{,}5)=0{,}5-\varphi(1{,}55)=\mathbf{0{,}0606}$ <span class="muted">(chính xác ≈ 0,0621)</span>.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.5</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Tự lập bảng phân phối</span></div>
+  <p>Mỗi lần chụp phim cận chóp đạt chuẩn với xác suất $0{,}8$ (độc lập). Kỹ thuật viên chụp đến khi được phim đạt, nhưng tối đa 3 lần. Gọi $X$ là số phim phải chụp. Lập bảng phân phối, tính $E(X)$, $D(X)$; nếu mỗi phim tốn 50 nghìn đồng, chi phí trung bình là bao nhiêu?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$P(X=1)=0{,}8$; $P(X=2)=0{,}2\cdot0{,}8=0{,}16$; $P(X=3)=0{,}2\cdot0{,}2=0{,}04$ (lần 3 dừng dù đạt hay không). Tổng $=1$ ✓.</li>
+      <li>$E=0{,}8+0{,}32+0{,}12=\mathbf{1{,}24}$; $E(X^2)=0{,}8+0{,}64+0{,}36=1{,}8$; $D=1{,}8-1{,}5376=\mathbf{0{,}2624}$.</li>
+      <li>Chi phí $C=50X$ → $E(C)=50\cdot1{,}24=\mathbf{62}$ nghìn đồng.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.6</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Nhị thức + biến đổi tuyến tính</span></div>
+  <p>Một phòng khám đặt 20 implant mỗi tháng, tỉ lệ thất bại 5% (độc lập); mỗi ca thất bại tốn 8 triệu đồng để làm lại. Tính kỳ vọng, độ lệch chuẩn của chi phí bảo hành mỗi tháng và xác suất chi phí vượt 16 triệu.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$X\sim B(20;0{,}05)$: $E(X)=1$, $D(X)=0{,}95$. Chi phí $C=8X$.</li>
+      <li>$E(C)=\mathbf8$ triệu; $D(C)=64\cdot0{,}95=60{,}8$; $\sigma(C)\approx\mathbf{7{,}80}$ triệu.</li>
+      <li>$C&gt;16\iff X&gt;2\iff X\ge3$: $P=1-P(0)-P(1)-P(2)\approx1-0{,}3585-0{,}3774-0{,}1887=\mathbf{0{,}0755}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="bt2-muc-3">Mức 3 — Vận dụng cao</h3>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.1</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hệ 2 ẩn · bảng phân phối</span></div>
+  <p>$X$ nhận các giá trị $1;\ 2;\ 4$ với xác suất lần lượt $x;\ 0{,}3;\ y$. Biết $E(X)=2{,}5$. Tìm $x, y$ và $D(X)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Tổng xác suất: $x+0{,}3+y=1\Rightarrow x+y=0{,}7$. (1)</li>
+      <li>Kỳ vọng: $1\cdot x+2\cdot0{,}3+4y=2{,}5\Rightarrow x+4y=1{,}9$. (2)</li>
+      <li>(2) − (1): $3y=1{,}2\Rightarrow y=\mathbf{0{,}4}$, $x=\mathbf{0{,}3}$.</li>
+      <li>$E(X^2)=0{,}3+1{,}2+6{,}4=7{,}9$ → $D=7{,}9-6{,}25=\mathbf{1{,}65}$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.2</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hệ 2 ẩn μ, σ</span></div>
+  <p>Chiều cao nam sinh viên $X\sim N(\mu;\sigma^2)$ (cm). Biết 15,87% cao hơn 175 cm và 2,28% thấp hơn 160 cm. Tìm $\mu$, $\sigma$ rồi tính tỉ lệ cao từ 165 đến 180 cm.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$0{,}5-\varphi\big(\frac{175-\mu}{\sigma}\big)=0{,}1587\Rightarrow\varphi(\cdot)=0{,}3413\Rightarrow\frac{175-\mu}{\sigma}=1$.</li>
+      <li>$0{,}5+\varphi\big(\frac{160-\mu}{\sigma}\big)=0{,}0228\Rightarrow\varphi(\cdot)=-0{,}4772\Rightarrow\frac{160-\mu}{\sigma}=-2$.</li>
+      <li>Hệ: $175-\mu=\sigma$ và $160-\mu=-2\sigma$. Trừ vế: $15=3\sigma\Rightarrow\sigma=\mathbf5$, $\mu=\mathbf{170}$.</li>
+      <li>$P(165&lt;X&lt;180)=\varphi(2)-\varphi(-1)=0{,}4772+0{,}3413=\mathbf{0{,}8185}$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.3</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hệ 2 ẩn · hàm mật độ</span></div>
+  <p>$X$ có mật độ $f(x)=ax+b$ trên $[0;2]$ (bằng 0 ở ngoài), biết $E(X)=\frac76$. Tìm $a, b$; tính $P(X&gt;1)$ và trung vị.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$\int_0^2(ax+b)dx=\big[\frac{ax^2}{2}+bx\big]_0^2=2a+2b=1$. (1)</li>
+      <li>$E=\int_0^2(ax^2+bx)dx=\big[\frac{ax^3}{3}+\frac{bx^2}{2}\big]_0^2=\frac{8a}{3}+2b=\frac76$. (2)</li>
+      <li>(2) − (1): $\frac{8a}{3}-2a=\frac76-1\Rightarrow\frac{2a}{3}=\frac16\Rightarrow a=\mathbf{\frac14}$; từ (1): $b=\mathbf{\frac14}$. Kiểm tra $f\ge0$ trên $[0;2]$ ✓.</li>
+      <li>$P(X&gt;1)=\big[\frac{x^2}{8}+\frac x4\big]_1^2=1-\frac38=\mathbf{0{,}625}$.</li>
+      <li>Trung vị: $\frac{m^2}{8}+\frac m4=\frac12\iff m^2+2m-4=0\Rightarrow m=-1+\sqrt5\approx\mathbf{1{,}236}$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.4</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Tìm n, p của nhị thức</span></div>
+  <p>$X\sim B(n;p)$ có $E(X)=4{,}8$ và $D(X)=3{,}84$. Tìm $n$, $p$ rồi tính $P(X=5)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Chia: $\frac{npq}{np}=q=\frac{3{,}84}{4{,}8}=0{,}8\Rightarrow p=\mathbf{0{,}2}$; $n=\frac{4{,}8}{0{,}2}=\mathbf{24}$.</li>
+      <li>$P(X=5)=C_{24}^5\,0{,}2^5\,0{,}8^{19}\approx\mathbf{0{,}1960}$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.5</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Tổng hai biến độc lập</span></div>
+  <p>$X$ (số răng sâu của trẻ A): $0;1;2$ với $0{,}5;\ 0{,}3;\ 0{,}2$. $Y$ (của trẻ B, độc lập): $0;1$ với $0{,}6;\ 0{,}4$. Lập bảng phân phối của $Z=X+Y$, kiểm tra $E(Z)=E(X)+E(Y)$ và $D(Z)=D(X)+D(Y)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$P(Z=0)=0{,}5\cdot0{,}6=0{,}3$; $P(Z=1)=0{,}5\cdot0{,}4+0{,}3\cdot0{,}6=0{,}38$; $P(Z=2)=0{,}3\cdot0{,}4+0{,}2\cdot0{,}6=0{,}24$; $P(Z=3)=0{,}2\cdot0{,}4=0{,}08$.</li>
+      <li>$E(X)=0{,}7$; $E(Y)=0{,}4$; $E(Z)=0{,}38+0{,}48+0{,}24=1{,}1=0{,}7+0{,}4$ ✓.</li>
+      <li>$D(X)=1{,}1-0{,}49=0{,}61$; $D(Y)=0{,}4-0{,}16=0{,}24$; $D(Z)=(0{,}38+0{,}96+0{,}72)-1{,}21=0{,}85=0{,}61+0{,}24$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.6</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Chuẩn + toàn phần + Bayes</span></div>
+  <p>Trụ implant đến từ hai xưởng: xưởng I chiếm 60%, chiều dài $\sim N(10;\,0{,}01)$ mm; xưởng II chiếm 40%, chiều dài $\sim N(10;\,0{,}04)$ mm. Trụ đạt chuẩn nếu chiều dài lệch khỏi 10 mm dưới 0,2 mm. (a) Tỉ lệ trụ đạt chuẩn? (b) Một trụ không đạt, khả năng nó của xưởng II?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Xưởng I: $\sigma=0{,}1$ → $P(\text{đạt}\mid I)=2\varphi(2)=0{,}9544$. Xưởng II: $\sigma=0{,}2$ → $2\varphi(1)=0{,}6826$.</li>
+      <li>(a) $P(\text{đạt})=0{,}6\cdot0{,}9544+0{,}4\cdot0{,}6826=\mathbf{0{,}8457}$.</li>
+      <li>(b) $P(II\mid\overline{\text{đạt}})=\dfrac{0{,}4\cdot0{,}3174}{1-0{,}8457}=\dfrac{0{,}12696}{0{,}15432}\approx\mathbf{0{,}8227}$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.7</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Chỉnh tham số μ</span></div>
+  <p>Máy đóng gói bột trám có khối lượng $\sim N(\mu;\,0{,}0004)$ (gam). Cần chỉnh $\mu$ bao nhiêu để chỉ 2,5% số gói nhẹ hơn 5 gam?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>$\sigma=0{,}02$. $P(X&lt;5)=0{,}025\Rightarrow\frac{5-\mu}{0{,}02}=z_{0{,}025}=-1{,}96\Rightarrow\mu=5+0{,}0392=\mathbf{5{,}0392}$ gam.</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.8</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Dùng bảng Student, χ²</span></div>
+  <p>(a) Tính $P(T(10)&gt;2{,}228)$. (b) Tìm $c$ để $P(|T(20)|&lt;c)=0{,}99$. (c) Tính $P(7{,}261&lt;\chi^2(15)&lt;24{,}996)$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $2{,}228=t_{0{,}975}(10)$ → $P=1-0{,}975=\mathbf{0{,}025}$.</li>
+      <li>(b) Đối xứng: mỗi đuôi $0{,}005$ → $c=t_{0{,}995}(20)=\mathbf{2{,}845}$.</li>
+      <li>(c) $7{,}261=\chi^2_{0{,}05}(15)$, $24{,}996=\chi^2_{0{,}95}(15)$ → $P=0{,}95-0{,}05=\mathbf{0{,}90}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="pager" id="pager"></div>
+</main>
+</div>
+
+<footer class="site">Bài 2 · Phân phối xác suất — tài liệu tự học, ví dụ và bài tập là bài mới (không trùng giáo trình).</footer>
+</body>
+</html>

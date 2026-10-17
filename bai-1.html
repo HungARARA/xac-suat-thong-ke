@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bài 1 · Xác suất</title>
+  <meta name="description" content="Bài 1 – Xác suất: De Morgan, xác suất có điều kiện, độc lập, công thức nhân, cộng, xác suất toàn phần, Bayes, độ nhạy, độ đặc hiệu, giá trị tiên đoán, Bernoulli.">
+  <script>try{var t=localStorage.getItem("xstk-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/plot.js"></script>
+  <script defer src="assets/js/bai1.js"></script>
+</head>
+<body data-lesson="bai-1">
+<header class="topbar">
+  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục">☰ Mục lục</button>
+  <a class="brand" href="index.html"><span class="brand-mark">XS</span><span>Xác suất – Thống kê</span></a>
+  <span class="crumb">/ Bài 1 · Xác suất</span>
+  <span class="spacer"></span>
+  <nav class="topnav" id="topnav"></nav>
+  <button class="icon-btn" id="themeBtn" title="Đổi giao diện sáng / tối" aria-label="Đổi giao diện sáng tối">☾</button>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="Mục lục">
+  <div class="toc-title">Mục lục Bài 1</div>
+  <ol id="tocList"></ol>
+</nav>
+
+<main class="content">
+
+<section class="hero">
+  <span class="kicker">Phần I · Xác suất</span>
+  <h1>Bài 1. Xác suất — các công thức tính xác suất</h1>
+  <p class="lead">Trọng tâm là mục 3 của giáo trình: xác suất có điều kiện, công thức nhân, cộng, toàn phần, Bayes, các chỉ số của một xét nghiệm và công thức Bernoulli. Phần nền tảng chỉ tóm tắt, riêng luật De Morgan được giảng kĩ.</p>
+</section>
+
+<div class="box tip">
+  <div class="box-title"><span class="tag">Cách học</span>Đọc trang này thế nào cho hiệu quả</div>
+  <ul>
+    <li>Mỗi mục đi theo thứ tự: <b>ý tưởng bằng hình</b> → <b>công thức</b> → <b>ví dụ giải từng bước</b> → <b>bẫy hay gặp</b>.</li>
+    <li>Tất cả ví dụ trong trang là <b>ví dụ mới</b> (không trùng giáo trình), đa số lấy bối cảnh nha khoa – y khoa.</li>
+    <li>Bài tập cuối trang chia 3 mức: <span class="lvl l1">Thông hiểu</span> <span class="lvl l2">Vận dụng</span> <span class="lvl l3">Vận dụng cao</span>. Tự làm trước rồi mới mở lời giải.</li>
+  </ul>
+</div>
+
+<div class="box def">
+  <div class="box-title"><span class="tag">Quy ước</span>Ký hiệu dùng trong trang</div>
+  <p>Mỗi biến cố được đặt tên bằng <b>chữ cái đầu của sự việc</b> để vừa đọc là hiểu: $S$ = “bị <b>s</b>âu răng”, $V$ = “bị <b>v</b>iêm nướu”, $H$ = “<b>h</b>út thuốc”, $N$ = “bị bệnh <b>n</b>ha chu”, $K$ = “<b>k</b>hỏi bệnh”…</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>Ký hiệu</th><th>Đọc là</th><th class="left">Nghĩa</th></tr>
+    <tr><td>$\overline{S}$</td><td>“không $S$”</td><td class="left">$S$ không xảy ra (biến cố đối của $S$)</td></tr>
+    <tr><td>$S\cup V$ (hay $S+V$)</td><td>“$S$ hoặc $V$”</td><td class="left">ít nhất một trong hai xảy ra</td></tr>
+    <tr><td>$S\cap V$ (hay $SV$)</td><td>“$S$ và $V$”</td><td class="left">cả hai cùng xảy ra</td></tr>
+    <tr><td>$P(V\mid S)$</td><td>“xác suất $V$ biết $S$”</td><td class="left">xác suất $V$ xảy ra khi <b>đã biết</b> $S$ xảy ra</td></tr>
+  </table></div>
+  <p class="small muted">Giáo trình và đề thi thường gọi là $A, B, A_1, A_2,\dots$ — đó chỉ là cái tên. Khi làm bài bạn cứ “dịch” sang chữ có nghĩa để nghĩ cho dễ, rồi trình bày lại theo ký hiệu đề cho.</p>
+</div>
+
+<h2 id="ban-do" data-toc="Bản đồ bài học"><span class="num">0</span>Bản đồ bài học (sơ đồ tư duy)</h2>
+<p>Toàn bộ Bài 1 xoay quanh một câu hỏi: <i>“làm sao tính xác suất của một biến cố phức tạp từ xác suất của các biến cố đơn giản?”</i>. Mỗi nhánh dưới đây là một công cụ:</p>
+<div class="fig-box" style="padding:16px"><div id="mm1"></div></div>
+<p class="small muted center">Trên điện thoại, vuốt ngang để xem hết sơ đồ.</p>
+
+<!-- =============================================================== -->
+<h2 id="on-nhanh" data-toc="1. Ôn nhanh nền tảng"><span class="num">1</span>Ôn nhanh: tổ hợp, biến cố, định nghĩa xác suất</h2>
+<p>Phần này bạn đã nắm nên chỉ gom vào một khung để tra cứu khi cần.</p>
+<div class="box summary">
+  <div class="box-title"><span class="tag">Tóm tắt</span>Những gì cần nhớ từ phần đầu</div>
+  <div class="grid3">
+    <div class="card">
+      <h4>Đếm (tổ hợp)</h4>
+      <p><b>Quy tắc nhân:</b> làm qua nhiều giai đoạn nối tiếp → nhân số cách.<br><b>Quy tắc cộng:</b> chia thành các trường hợp tách rời → cộng số cách.</p>
+      <p>Chỉnh hợp (có thứ tự): $A_n^k=\dfrac{n!}{(n-k)!}$<br>Tổ hợp (không thứ tự): $C_n^k=\dfrac{n!}{k!\,(n-k)!}$<br>Hoán vị: $P_n=n!$ · Chỉnh hợp lặp: $n^k$</p>
+      <p class="small">$0!=1$ · $C_n^k=C_n^{n-k}$ · Mẹo: đổi chỗ 2 phần tử mà ra “cách khác” → có thứ tự → dùng $A$; ngược lại dùng $C$.</p>
+    </div>
+    <div class="card">
+      <h4>Biến cố</h4>
+      <p><b>Không gian mẫu</b> $\Omega$: tập mọi kết quả có thể. Biến cố chắc chắn $\Omega$, biến cố không thể $\varnothing$.</p>
+      <p><b>Tổng</b> $S\cup V$: ít nhất một xảy ra.<br><b>Tích</b> $S\cap V$: cả hai xảy ra.<br><b>Xung khắc</b>: $S\cap V=\varnothing$ (không thể cùng xảy ra).<br><b>Đối lập</b> $\overline S$: $S\cup\overline S=\Omega,\ S\cap\overline S=\varnothing$.</p>
+      <p class="small">Đối lập ⇒ xung khắc, nhưng xung khắc <b>chưa chắc</b> đối lập (ví dụ nhóm máu A và nhóm máu B xung khắc nhưng không đối lập vì còn O, AB).</p>
+    </div>
+    <div class="card">
+      <h4>Định nghĩa xác suất</h4>
+      <p><b>Cổ điển:</b> $P(S)=\dfrac{m}{n}$ ($n$ kết quả đồng khả năng, $m$ kết quả thuận lợi cho $S$).</p>
+      <p><b>Thống kê:</b> làm $n$ lần, $S$ xảy ra $m$ lần thì khi $n$ lớn, $P(S)\approx\dfrac{m}{n}$ (tần suất).</p>
+      <p><b>Tính chất:</b> $0\le P(S)\le 1$; $P(\varnothing)=0$; $P(\Omega)=1$; $P(\overline S)=1-P(S)$.</p>
+      <p class="small">Các phép toán: giao hoán, kết hợp, phân phối $S(V\cup H)=SV\cup SH$; $S\cup S=S$; $S\cap\Omega=S$; $S\cup\varnothing=S$.</p>
+    </div>
+  </div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="de-morgan" data-toc="2. Luật De Morgan (kĩ)"><span class="num">2</span>Luật De Morgan — chìa khoá của “ít nhất”, “không ai”</h2>
+<p>Đây là công cụ được dùng nhiều nhất khi đề hỏi kiểu <i>“ít nhất một…”</i>, <i>“không ai…”</i>, <i>“không phải tất cả…”</i>. Hiểu chắc phần này thì rất nhiều bài toán dài sẽ rút gọn còn một dòng.</p>
+
+<h3 id="dm-phat-bieu">2.1. Phát biểu</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Hai luật De Morgan</div>
+  <div class="big-formula">$$\overline{S\cup V}=\overline{S}\cap\overline{V}\qquad\qquad \overline{S\cap V}=\overline{S}\cup\overline{V}$$</div>
+</div>
+<p>Đọc bằng lời (với $S$ = sâu răng, $V$ = viêm nướu):</p>
+<div class="grid2">
+  <div class="card"><h4>Luật 1</h4><p>“<b>KHÔNG</b> (sâu răng <b>HOẶC</b> viêm nướu)” <br>= “<b>KHÔNG</b> sâu răng <b>VÀ</b> <b>KHÔNG</b> viêm nướu”<br>= <i>không mắc bệnh nào</i>.</p></div>
+  <div class="card"><h4>Luật 2</h4><p>“<b>KHÔNG</b> (sâu răng <b>VÀ</b> viêm nướu)” <br>= “<b>KHÔNG</b> sâu răng <b>HOẶC</b> <b>KHÔNG</b> viêm nướu”<br>= <i>ít nhất một bệnh vắng mặt</i>.</p></div>
+</div>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Mẹo nhớ</span>“Gạch dài gãy đôi thì dấu lật ngược”</div>
+  <p>Khi bẻ dấu gạch ngang dài phủ trên cả biểu thức thành những gạch ngắn trên từng chữ, phải <b>đổi dấu</b>: $\cup\leftrightarrow\cap$ (tức “hoặc” ↔ “và”). Giống tiếng Việt: “không phải (trời mưa hoặc có gió)” nghĩa là “trời không mưa <b>và</b> không có gió”.</p>
+</div>
+
+<h3 id="dm-hinh">2.2. Nhìn bằng sơ đồ Venn</h3>
+<p>Hình chữ nhật là toàn bộ bệnh nhân $\Omega$; hai hình tròn là nhóm sâu răng $S$ và nhóm viêm nướu $V$. Mọi bệnh nhân rơi vào đúng <b>1 trong 4 vùng</b>: ① chỉ $S$, ② cả $S$ và $V$, ③ chỉ $V$, ④ không bệnh nào. Bấm từng biểu thức để thấy vùng được tô:</p>
+<div class="widget" id="vennWidget">
+  <div class="widget-title">Tô vùng trên sơ đồ Venn</div>
+  <div class="widget-sub">Bấm lần lượt hai biểu thức trong hàng <b>Luật 1</b> (rồi hàng <b>Luật 2</b>) — chúng tô ra <b>đúng cùng một vùng</b>, đó chính là luật De Morgan.</div>
+  <div class="seg" id="vennBtns" style="margin-bottom:10px"></div>
+  <div id="vennPlot" style="max-width:460px;margin:0 auto"></div>
+  <div class="readout" id="vennRead"></div>
+</div>
+<figure>
+  <div class="fig-box"><div id="vennLaws" class="grid2" style="margin:0"></div></div>
+  <figcaption>Hình 2.1. Hai vế của mỗi luật De Morgan tô ra cùng một vùng.</figcaption>
+</figure>
+
+<h3 id="dm-bang">2.3. Kiểm chứng bằng bảng 4 vùng</h3>
+<p>Muốn chắc chắn hai biểu thức bằng nhau, chỉ cần kiểm tra chúng “bật/tắt” giống nhau ở cả 4 vùng (✓ = xảy ra, · = không xảy ra):</p>
+<div class="table-wrap"><table class="compact">
+  <tr><th>Vùng</th><th>$S$</th><th>$V$</th><th>$S\cup V$</th><th style="background:var(--s1-soft)">$\overline{S\cup V}$</th><th style="background:var(--s1-soft)">$\overline S\cap\overline V$</th><th>$S\cap V$</th><th style="background:var(--s2-soft)">$\overline{S\cap V}$</th><th style="background:var(--s2-soft)">$\overline S\cup\overline V$</th></tr>
+  <tr><td>① chỉ $S$</td><td>✓</td><td>·</td><td>✓</td><td>·</td><td>·</td><td>·</td><td>✓</td><td>✓</td></tr>
+  <tr><td>② cả hai</td><td>✓</td><td>✓</td><td>✓</td><td>·</td><td>·</td><td>✓</td><td>·</td><td>·</td></tr>
+  <tr><td>③ chỉ $V$</td><td>·</td><td>✓</td><td>✓</td><td>·</td><td>·</td><td>·</td><td>✓</td><td>✓</td></tr>
+  <tr><td>④ không bệnh</td><td>·</td><td>·</td><td>·</td><td>✓</td><td>✓</td><td>·</td><td>✓</td><td>✓</td></tr>
+</table></div>
+<p>Hai cột tô xanh giống hệt nhau → luật 1 đúng. Hai cột tô cam giống hệt nhau → luật 2 đúng.</p>
+
+<h3 id="dm-nhieu">2.4. Mở rộng cho nhiều biến cố</h3>
+<p>Gọi $K_i$ là “bệnh nhân thứ $i$ khỏi bệnh” ($i=1,2,\dots,n$). Luật De Morgan vẫn giữ nguyên dạng:</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>De Morgan cho $n$ biến cố</div>
+  $$\overline{K_1\cup K_2\cup\dots\cup K_n}=\overline{K_1}\cap\overline{K_2}\cap\dots\cap\overline{K_n}$$
+  $$\overline{K_1\cap K_2\cap\dots\cap K_n}=\overline{K_1}\cup\overline{K_2}\cup\dots\cup\overline{K_n}$$
+</div>
+<ul>
+  <li>“Không phải <b>có ít nhất một người khỏi</b>” = “<b>không ai khỏi</b>” = người 1 không khỏi <b>và</b> người 2 không khỏi <b>và</b> …</li>
+  <li>“Không phải <b>tất cả đều khỏi</b>” = “<b>có ít nhất một người không khỏi</b>”.</li>
+</ul>
+
+<h3 id="dm-tu-dien">2.5. Từ điển: câu chữ trong đề → ký hiệu</h3>
+<div class="table-wrap"><table class="compact">
+  <tr><th class="left">Đề viết</th><th>Ký hiệu</th><th class="left">Vùng trên Venn</th></tr>
+  <tr><td class="left">mắc ít nhất một trong hai bệnh</td><td>$S\cup V$</td><td class="left">① ② ③</td></tr>
+  <tr><td class="left">mắc cả hai bệnh / đồng thời hai bệnh</td><td>$S\cap V$</td><td class="left">②</td></tr>
+  <tr><td class="left">không mắc bệnh nào</td><td>$\overline S\cap\overline V=\overline{S\cup V}$</td><td class="left">④</td></tr>
+  <tr><td class="left">không mắc đồng thời hai bệnh / ít nhất một bệnh vắng mặt</td><td>$\overline S\cup\overline V=\overline{S\cap V}$</td><td class="left">① ③ ④</td></tr>
+  <tr><td class="left">chỉ mắc đúng một bệnh</td><td>$(S\cap\overline V)\cup(\overline S\cap V)$</td><td class="left">① ③</td></tr>
+  <tr><td class="left">chỉ bị sâu răng</td><td>$S\cap\overline V$</td><td class="left">①</td></tr>
+  <tr><td class="left">nhiều nhất một bệnh</td><td>$\overline{S\cap V}$</td><td class="left">① ③ ④</td></tr>
+</table></div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Câu “không bị cả hai bệnh” có hai nghĩa</div>
+  <p>Trong tiếng Việt, “không bị cả hai bệnh” có thể hiểu là <b>(1) không bị bệnh nào</b> ($\overline S\cap\overline V$, vùng ④) hoặc <b>(2) không bị đồng thời hai bệnh</b> ($\overline{S\cap V}$, vùng ①③④). Câu hỏi trắc nghiệm thường cài đúng chỗ này: hãy đọc các phương án để xác định đề muốn nghĩa nào, và khi tự trình bày thì viết rõ ra một trong hai cách nói trên.</p>
+</div>
+
+<h3 id="dm-ung-dung">2.6. Ứng dụng: “ít nhất một” = 1 − “không ai”</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Đường tắt cho “ít nhất một”</div>
+  $$P(\text{ít nhất một xảy ra})=1-P(\overline{K_1}\,\overline{K_2}\cdots\overline{K_n})$$
+  <p class="center small">Nếu các $K_i$ độc lập: $\;P(\text{ít nhất một})=1-P(\overline{K_1})\,P(\overline{K_2})\cdots P(\overline{K_n})$</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 2.1</span>Máy hút nha khoa</div>
+  <p>Một phòng khám có 3 ghế nha, mỗi ghế có một máy hút hoạt động độc lập. Xác suất hỏng trong ngày của từng máy là $0{,}05$; $0{,}10$; $0{,}08$. Tính xác suất trong ngày có <b>ít nhất một</b> máy hỏng.</p>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Đặt tên.</span> $H_i$: “máy thứ $i$ hỏng” ($i=1,2,3$). Cần tính $P(H_1\cup H_2\cup H_3)$.</li>
+      <li><span class="step-label">Lấy biến cố đối bằng De Morgan.</span> “Ít nhất một máy hỏng” có biến cố đối là “không máy nào hỏng”: $\overline{H_1\cup H_2\cup H_3}=\overline{H_1}\cap\overline{H_2}\cap\overline{H_3}$.</li>
+      <li><span class="step-label">Tính xác suất biến cố đối.</span> Các máy độc lập nên nhân được:<br>$P(\overline{H_1}\,\overline{H_2}\,\overline{H_3})=(1-0{,}05)(1-0{,}10)(1-0{,}08)=0{,}95\cdot0{,}90\cdot0{,}92=0{,}7866.$</li>
+      <li><span class="step-label">Kết luận.</span> $P(H_1\cup H_2\cup H_3)=1-0{,}7866=\mathbf{0{,}2134}$.</li>
+    </ol>
+    <p><b>So sánh với cách dài</b> (cộng 3 biến cố, dùng công thức cộng mở rộng ở mục 6):<br>
+    $0{,}05+0{,}10+0{,}08-(0{,}005+0{,}004+0{,}008)+0{,}0004=0{,}2134$ — cùng đáp số nhưng dài và dễ sót số hạng hơn.</p>
+  </div></details>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="dieu-kien" data-toc="3. Xác suất có điều kiện"><span class="num">3</span>Xác suất có điều kiện</h2>
+
+<h3 id="dk-y-tuong">3.1. Ý tưởng: biết thêm thông tin thì “sân chơi” thu hẹp lại</h3>
+<p>Một phòng khám ghi nhận <b>100 bệnh nhân</b> người lớn: <b>40</b> người hút thuốc ($H$), <b>30</b> người bị viêm nha chu ($N$), trong đó <b>20</b> người vừa hút thuốc vừa bị nha chu.</p>
+<div class="widget" id="condWidget">
+  <div class="widget-title">Lọc theo điều kiện</div>
+  <div class="widget-sub">Mỗi chấm là một bệnh nhân. Chấm <b style="color:var(--s2)">cam</b> = bị nha chu, chấm xám = không. Chấm có <b>viền đậm</b> = hút thuốc. Bấm một điều kiện để “chỉ xét” nhóm đó.</div>
+  <div class="seg" id="condBtns"></div>
+  <div class="dotgrid" id="condGrid" style="grid-template-columns:repeat(10,1fr);margin-top:14px"></div>
+  <div class="legend center" style="justify-content:center">
+    <span><span class="sw" style="background:var(--s2)"></span>bị nha chu ($N$)</span>
+    <span><span class="sw" style="background:var(--surface-3)"></span>không nha chu</span>
+    <span><span class="sw" style="background:transparent;box-shadow:inset 0 0 0 3px var(--text)"></span>hút thuốc ($H$)</span>
+  </div>
+  <div class="readout" id="condRead"></div>
+</div>
+<p>Khi chưa biết gì, $P(N)=\frac{30}{100}=0{,}3$. Nhưng nếu biết người đó <b>hút thuốc</b>, ta chỉ còn chọn trong <b>40</b> người hút thuốc, trong đó <b>20</b> người bị nha chu, nên khả năng bị nha chu là $\frac{20}{40}=0{,}5$. Thông tin “hút thuốc” đã đẩy khả năng nha chu từ 30% lên 50%.</p>
+
+<h3 id="dk-cong-thuc">3.2. Công thức</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Xác suất có điều kiện</div>
+  <div class="big-formula">$$P(N\mid H)=\frac{P(N\cap H)}{P(H)}\qquad (P(H)>0)$$</div>
+</div>
+<p><b>Vì sao lại chia như vậy?</b> Đếm trực tiếp: $P(N\mid H)=\dfrac{\text{số người vừa }N\text{ vừa }H}{\text{số người }H}=\dfrac{20}{40}$. Chia cả tử và mẫu cho tổng 100 người:</p>
+$$P(N\mid H)=\frac{20/100}{40/100}=\frac{P(N\cap H)}{P(H)}=\frac{0{,}2}{0{,}4}=0{,}5.$$
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Cách đọc</span>Cái gì đứng sau dấu “|” thì nằm ở mẫu số</div>
+  <p>$P(N\mid H)$: biến cố đứng <b>sau</b> dấu “|” ($H$) là điều <b>đã biết</b> — nó trở thành “không gian mẫu mới”, nên nằm ở mẫu số. Hãy luôn tự hỏi: <i>“Trong số những người <u>…(mẫu số)…</u>, có bao nhiêu phần trăm <u>…(tử số)…</u>?”</i></p>
+</div>
+
+<h3 id="dk-bay">3.3. Bẫy kinh điển: đảo ngược điều kiện</h3>
+<p>Với cùng dữ liệu trên: $P(H\mid N)=\dfrac{20}{30}\approx0{,}667$, còn $P(N\mid H)=0{,}5$. Hai con số khác nhau vì <b>mẫu số khác nhau</b>:</p>
+<ul>
+  <li>“Trong số người <b>bị nha chu</b>, 66,7% hút thuốc” — $P(H\mid N)$.</li>
+  <li>“Trong số người <b>hút thuốc</b>, 50% bị nha chu” — $P(N\mid H)$.</li>
+</ul>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>$P(N\mid H)\neq P(H\mid N)$</div>
+  <p>Câu “phần lớn bệnh nhân ung thư phổi hút thuốc” khác hẳn câu “phần lớn người hút thuốc bị ung thư phổi”. Đề bài thường cho một chiều và hỏi chiều ngược lại — chiều ngược lại phải tính bằng <b>công thức Bayes</b> (mục 8).</p>
+</div>
+
+<h3 id="dk-bang">3.4. Mẹo “tưởng tượng 1000 người” và bảng 2×2</h3>
+<p>Khi đề cho tỉ lệ phần trăm, hãy đổi ra số người cụ thể rồi lập bảng — mọi xác suất có điều kiện đều đọc thẳng từ bảng.</p>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 3.1</span>Chải răng và sâu răng</div>
+  <p>Ở một trường, 60% học sinh chải răng đều đặn từ 2 lần/ngày ($R$). Trong số học sinh chải răng đều đặn có 15% bị sâu răng ($S$); trong số còn lại có 40% bị sâu răng. Chọn ngẫu nhiên một học sinh. (a) Tính $P(S)$. (b) Biết em đó bị sâu răng, tính xác suất em chải răng đều đặn.</p>
+  <details class="sol"><summary>Xem lời giải bằng bảng</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Tưởng tượng 1000 học sinh.</span> $R$: $600$ em; $\overline R$: $400$ em.</li>
+      <li><span class="step-label">Chia theo sâu răng.</span> Trong 600 em $R$: $15\%\cdot600=90$ em sâu, $510$ em không. Trong 400 em $\overline R$: $40\%\cdot400=160$ em sâu, $240$ em không.</li>
+      <li><span class="step-label">Lập bảng.</span>
+        <div class="table-wrap"><table class="compact">
+          <tr><th></th><th>$S$ (sâu)</th><th>$\overline S$</th><th>Tổng</th></tr>
+          <tr><th>$R$</th><td>90</td><td>510</td><td>600</td></tr>
+          <tr><th>$\overline R$</th><td>160</td><td>240</td><td>400</td></tr>
+          <tr><th>Tổng</th><td class="hl">250</td><td>750</td><td>1000</td></tr>
+        </table></div></li>
+      <li><span class="step-label">Đọc kết quả.</span> (a) $P(S)=\dfrac{250}{1000}=\mathbf{0{,}25}$. (b) “Biết sâu răng” → mẫu số là cột $S$: $P(R\mid S)=\dfrac{90}{250}=\mathbf{0{,}36}$.</li>
+    </ol>
+    <p>Câu (a) thực chất là <b>công thức xác suất toàn phần</b>, câu (b) là <b>công thức Bayes</b> (mục 7, 8). Bảng 1000 người là cách kiểm tra lại cực nhanh cho hai công thức đó.</p>
+  </div></details>
+</div>
+
+<h3 id="dk-tinh-chat">3.5. Tính chất cần nhớ</h3>
+<ul>
+  <li>Khi đã cố định điều kiện $H$, xác suất có điều kiện tuân theo mọi quy tắc thông thường. Đặc biệt: $\;P(\overline N\mid H)=1-P(N\mid H)$ (cùng điều kiện $H$).</li>
+  <li>Nhưng <b>đổi điều kiện</b> thì không có quy tắc đó: nói chung $P(N\mid\overline H)\neq 1-P(N\mid H)$. Ở ví dụ 100 bệnh nhân: $P(N\mid\overline H)=\frac{10}{60}\approx0{,}167$, trong khi $1-P(N\mid H)=0{,}5$.</li>
+</ul>
+
+<!-- =============================================================== -->
+<h2 id="doc-lap" data-toc="4. Sự độc lập"><span class="num">4</span>Sự độc lập</h2>
+<h3 id="dl-dinh-nghia">4.1. Định nghĩa</h3>
+<p>Hai biến cố $S$ và $V$ <b>độc lập</b> nếu việc biết $S$ xảy ra hay không <b>không làm thay đổi</b> xác suất của $V$: $P(V\mid S)=P(V)$. Thay vào định nghĩa xác suất có điều kiện:</p>
+$$\frac{P(S\cap V)}{P(S)}=P(V)\iff P(S\cap V)=P(S)\cdot P(V).$$
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Tiêu chuẩn độc lập (dễ kiểm tra nhất)</div>
+  <div class="big-formula">$$S,\ V\ \text{độc lập}\iff P(S\cap V)=P(S)\,P(V)$$</div>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 4.1</span>Kiểm tra độc lập</div>
+  <p>(a) Với 100 bệnh nhân ở mục 3: $P(H)\,P(N)=0{,}4\cdot0{,}3=0{,}12$, còn $P(H\cap N)=0{,}2$. Vì $0{,}2\neq0{,}12$ nên hút thuốc và nha chu <b>không độc lập</b> (có liên quan).</p>
+  <p>(b) Khảo sát 200 người: 80 người nhóm máu O ($O$), 60 người sâu răng ($S$), 24 người vừa nhóm máu O vừa sâu răng. $P(O)P(S)=0{,}4\cdot0{,}3=0{,}12=\frac{24}{200}=P(O\cap S)$ → <b>độc lập</b>: biết nhóm máu chẳng nói gì thêm về sâu răng. Kiểm tra lại: $P(S\mid O)=\frac{24}{80}=0{,}3=P(S)$ ✓.</p>
+</div>
+
+<h3 id="dl-xung-khac">4.2. Độc lập khác xung khắc — đừng nhầm</h3>
+<div class="table-wrap"><table>
+  <tr><th></th><th>Xung khắc</th><th>Độc lập</th></tr>
+  <tr><td class="left"><b>Nghĩa</b></td><td>Không thể cùng xảy ra</td><td>Không ảnh hưởng lẫn nhau</td></tr>
+  <tr><td class="left"><b>Điều kiện</b></td><td>$P(S\cap V)=0$</td><td>$P(S\cap V)=P(S)P(V)$</td></tr>
+  <tr><td class="left"><b>Dùng ở</b></td><td>Công thức <b>cộng</b>: $P(S\cup V)=P(S)+P(V)$</td><td>Công thức <b>nhân</b>: $P(S\cap V)=P(S)P(V)$</td></tr>
+  <tr><td class="left"><b>Ví dụ</b></td><td>“Nhóm máu O” và “nhóm máu A” của cùng một người</td><td>“Bệnh nhân ở Huế sâu răng” và “bệnh nhân ở Cà Mau sâu răng”</td></tr>
+</table></div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Xung khắc thì (gần như luôn) KHÔNG độc lập</div>
+  <p>Nếu $S, V$ xung khắc và $P(S)>0,\ P(V)>0$ thì $P(S\cap V)=0\neq P(S)P(V)$. Thật vậy: biết $S$ xảy ra thì <b>chắc chắn</b> $V$ không xảy ra — đó là một sự phụ thuộc rất mạnh, chứ không phải “không liên quan”.</p>
+</div>
+
+<h3 id="dl-he-qua">4.3. Hệ quả: lấy “đối” vẫn giữ độc lập</h3>
+<p>Nếu $S, V$ độc lập thì các cặp $(\overline S, V)$, $(S,\overline V)$, $(\overline S,\overline V)$ cũng độc lập. Chứng minh một trường hợp (các trường hợp khác làm tương tự):</p>
+<ol class="steps">
+  <li>$V$ được chia thành hai phần không chồng nhau: $V=(S\cap V)\cup(\overline S\cap V)$, nên $P(\overline S\cap V)=P(V)-P(S\cap V)$.</li>
+  <li>Dùng độc lập: $P(\overline S\cap V)=P(V)-P(S)P(V)=P(V)\,[1-P(S)]=P(V)\,P(\overline S)$. ✓</li>
+</ol>
+<p>Hệ quả này chính là lý do ta được phép nhân các xác suất “<b>không</b> xảy ra” như ở Ví dụ 2.1.</p>
+
+<h3 id="dl-toan-phan">4.4. Độc lập toàn phần (nhiều biến cố)</h3>
+<p>Các biến cố $K_1,\dots,K_n$ <b>độc lập toàn phần</b> nếu mỗi biến cố độc lập với tích của bất kỳ nhóm biến cố còn lại. Khi đó xác suất của bất kỳ “tích” nào cũng bằng tích các xác suất, ví dụ $P(K_1K_2\cdots K_n)=P(K_1)P(K_2)\cdots P(K_n)$.</p>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Thực tế</span>Khi nào được coi là độc lập?</div>
+  <ul>
+    <li>Các bệnh nhân khác nhau, chọn ngẫu nhiên; các máy hoạt động riêng rẽ; các lần thử lặp lại trong cùng điều kiện → <b>độc lập</b>.</li>
+    <li>Lấy <b>có hoàn lại</b>, hoặc lấy từ một lô “rất nhiều” sản phẩm (tỉ lệ coi như không đổi) → <b>độc lập</b>.</li>
+    <li>Lấy <b>không hoàn lại</b> từ một hộp ít sản phẩm → <b>phụ thuộc</b> (lần sau phụ thuộc lần trước).</li>
+  </ul>
+</div>
+<div class="box extra">
+  <div class="box-title"><span class="tag">Mở rộng</span>Độc lập từng đôi chưa đủ</div>
+  <p class="small">Có thể xảy ra trường hợp từng cặp biến cố độc lập nhưng ba biến cố không độc lập toàn phần. Trong các bài tập của môn học, đề sẽ nói rõ “độc lập” (hiểu là độc lập toàn phần) nên bạn chỉ cần nhớ để không áp dụng sai khi tự đặt giả thiết.</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="cong-thuc-nhan" data-toc="5. Công thức nhân"><span class="num">5</span>Công thức nhân (dùng cho chữ “VÀ”)</h2>
+<h3 id="nhan-2">5.1. Cho hai biến cố</h3>
+<p>Nhân chéo định nghĩa xác suất có điều kiện là có ngay công thức nhân:</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Công thức nhân</div>
+  <div class="big-formula">$$P(S\cap V)=P(S)\,P(V\mid S)=P(V)\,P(S\mid V)$$</div>
+  <p class="center small">Nếu $S, V$ độc lập: $\;P(S\cap V)=P(S)\,P(V)$</p>
+</div>
+<p>Đọc: “xác suất <b>cả hai</b>” = “xác suất cái thứ nhất” × “xác suất cái thứ hai <b>khi đã có</b> cái thứ nhất”.</p>
+
+<h3 id="nhan-n">5.2. Cho nhiều biến cố (“lần lượt”)</h3>
+$$P(X_1X_2X_3)=P(X_1)\;P(X_2\mid X_1)\;P(X_3\mid X_1X_2)$$
+$$P(X_1X_2\cdots X_n)=P(X_1)\,P(X_2\mid X_1)\cdots P(X_n\mid X_1X_2\cdots X_{n-1})$$
+<p>Mỗi thừa số là xác suất của bước mới, <b>biết rằng các bước trước đã xảy ra</b> — rất hợp với những bài “lấy lần lượt, không hoàn lại”.</p>
+
+<h3 id="nhan-cay">5.3. Cây xác suất</h3>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Quy tắc cây</span>4 quy tắc vẽ và đọc cây</div>
+  <ol>
+    <li>Mỗi tầng là một bước; xác suất ghi trên nhánh con là xác suất <b>có điều kiện</b> (đã biết các nhánh phía trước).</li>
+    <li>Các nhánh mọc ra từ cùng một nút cộng lại bằng $1$.</li>
+    <li><b>Nhân dọc theo đường đi</b> → xác suất của cả đường (công thức nhân).</li>
+    <li><b>Cộng các đường thuận lợi</b> → xác suất cần tìm (các đường đi xung khắc nhau).</li>
+  </ol>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 5.1</span>Ống máu bị đông</div>
+  <p>Một khay có 12 ống máu, trong đó 3 ống bị đông. Kỹ thuật viên lấy lần lượt 3 ống (không hoàn lại). Gọi $T_i$: “ống lấy lần thứ $i$ tốt”. Tính (a) xác suất cả 3 ống đều tốt; (b) xác suất ống thứ ba là ống bị đông đầu tiên.</p>
+  <figure style="margin:10px 0"><div id="treeTubes"></div><figcaption>Cây cho 2 lần lấy đầu tiên. Đường tô cam: $T_1T_2$.</figcaption></figure>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Lần 1:</span> 12 ống có 9 tốt → $P(T_1)=\frac{9}{12}$.</li>
+      <li><span class="step-label">Lần 2 (biết lần 1 tốt):</span> còn 11 ống, 8 tốt → $P(T_2\mid T_1)=\frac{8}{11}$.</li>
+      <li><span class="step-label">Lần 3 (biết 2 lần đầu tốt):</span> còn 10 ống, 7 tốt → $P(T_3\mid T_1T_2)=\frac{7}{10}$.</li>
+      <li><span class="step-label">(a) Nhân dọc đường:</span> $P(T_1T_2T_3)=\frac{9}{12}\cdot\frac{8}{11}\cdot\frac{7}{10}=\frac{504}{1320}=\frac{21}{55}\approx\mathbf{0{,}3818}$.<br><span class="small muted">Kiểm tra bằng tổ hợp: $\frac{C_9^3}{C_{12}^3}=\frac{84}{220}=\frac{21}{55}$ ✓.</span></li>
+      <li><span class="step-label">(b)</span> “Ống thứ ba là ống đông đầu tiên” = $T_1T_2\overline{T_3}$: lần 3 còn 10 ống trong đó 3 ống đông → $P=\frac{9}{12}\cdot\frac{8}{11}\cdot\frac{3}{10}=\frac{216}{1320}=\frac{9}{55}\approx\mathbf{0{,}1636}$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 5.2</span>Trường hợp độc lập</div>
+  <p>Ba bệnh nhân khác nhau tuân thủ đúng hướng dẫn chải răng với xác suất $0{,}7$; $0{,}6$; $0{,}8$ (độc lập). Gọi $T_i$: “người thứ $i$ tuân thủ”.</p>
+  <ul>
+    <li>Cả ba tuân thủ: $P(T_1T_2T_3)=0{,}7\cdot0{,}6\cdot0{,}8=0{,}336$.</li>
+    <li>Chỉ người thứ hai không tuân thủ: $P(T_1\overline{T_2}T_3)=0{,}7\cdot0{,}4\cdot0{,}8=0{,}224$.</li>
+  </ul>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="cong-thuc-cong" data-toc="6. Công thức cộng"><span class="num">6</span>Công thức cộng (dùng cho chữ “HOẶC”)</h2>
+<h3 id="cong-2">6.1. Cho hai biến cố</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Công thức cộng</div>
+  <div class="big-formula">$$P(S\cup V)=P(S)+P(V)-P(S\cap V)$$</div>
+  <p class="center small">Nếu $S, V$ xung khắc: $\;P(S\cup V)=P(S)+P(V)$</p>
+</div>
+<p><b>Vì sao phải trừ?</b> Khi cộng $P(S)+P(V)$, phần giao $S\cap V$ (vùng ②) nằm trong cả hai hình tròn nên bị tính <b>hai lần</b> — phải trừ đi một lần.</p>
+<figure><div class="fig-box"><div id="vennAdd" style="max-width:520px;margin:0 auto"></div></div>
+<figcaption>Hình 6.1. Cộng hai hình tròn thì vùng giữa bị đếm 2 lần.</figcaption></figure>
+
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 6.1</span>Sâu răng và viêm nướu</div>
+  <p>Khám răng học sinh một trường: 60% bị sâu răng ($S$), 45% bị viêm nướu ($V$), 30% bị cả hai. Chọn ngẫu nhiên một em. Tính xác suất em đó (a) có ít nhất một bệnh; (b) không có bệnh nào; (c) chỉ bị đúng một bệnh; (d) chỉ bị sâu răng.</p>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">(a)</span> $P(S\cup V)=0{,}6+0{,}45-0{,}3=\mathbf{0{,}75}$.</li>
+      <li><span class="step-label">(b)</span> De Morgan: “không bệnh nào” $=\overline S\cap\overline V=\overline{S\cup V}$ → $P=1-0{,}75=\mathbf{0{,}25}$.</li>
+      <li><span class="step-label">(c)</span> “Đúng một bệnh” = “ít nhất một” bỏ đi “cả hai”: $0{,}75-0{,}3=\mathbf{0{,}45}$.</li>
+      <li><span class="step-label">(d)</span> $S=(S\cap V)\cup(S\cap\overline V)$ nên $P(S\cap\overline V)=P(S)-P(S\cap V)=0{,}6-0{,}3=\mathbf{0{,}3}$.</li>
+    </ol>
+    <p>Điền xác suất vào 4 vùng là thấy ngay: ① chỉ $S$: $0{,}30$ · ② cả hai: $0{,}30$ · ③ chỉ $V$: $0{,}15$ · ④ không bệnh: $0{,}25$ (tổng $=1$ ✓).</p>
+    <div id="vennEx61" style="max-width:420px;margin:0 auto"></div>
+  </div></details>
+</div>
+
+<h3 id="cong-3">6.2. Cho ba biến cố (bao hàm – loại trừ)</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Công thức cộng cho 3 biến cố</div>
+  $$P(X\cup Y\cup Z)=P(X)+P(Y)+P(Z)-P(XY)-P(XZ)-P(YZ)+P(XYZ)$$
+</div>
+<p>Quy luật: <b>cộng các đơn — trừ các đôi — cộng bộ ba</b>. Xem vì sao bằng cách đếm số lần mỗi vùng được tính:</p>
+<div class="widget" id="incWidget">
+  <div class="widget-title">Đếm số lần mỗi vùng được tính</div>
+  <div class="widget-sub">Mục tiêu: sau cùng mọi vùng đều được tính đúng <b>1 lần</b> (số màu xanh).</div>
+  <div class="seg" id="incBtns"></div>
+  <div id="incPlot" style="max-width:440px;margin:10px auto 0"></div>
+  <div class="readout" id="incRead"></div>
+</div>
+
+<h3 id="cong-nhan">6.3. Phối hợp cộng và nhân: bài “đúng một”</h3>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 6.2</span>Hai kỹ thuật viên chụp phim</div>
+  <p>Hai kỹ thuật viên chụp phim độc lập, xác suất phim đạt chuẩn lần lượt $0{,}9$ và $0{,}8$. Gọi $F_i$: “phim của người thứ $i$ đạt”. Tính xác suất (a) cả hai phim đạt; (b) đúng một phim đạt; (c) ít nhất một phim đạt.</p>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">(a) “và” → nhân:</span> $P(F_1F_2)=0{,}9\cdot0{,}8=\mathbf{0{,}72}$.</li>
+      <li><span class="step-label">(b) liệt kê các trường hợp xung khắc rồi cộng:</span> “đúng một” = $F_1\overline{F_2}$ hoặc $\overline{F_1}F_2$.<br>$P=0{,}9\cdot0{,}2+0{,}1\cdot0{,}8=0{,}18+0{,}08=\mathbf{0{,}26}$.</li>
+      <li><span class="step-label">(c) De Morgan:</span> $1-P(\overline{F_1}\,\overline{F_2})=1-0{,}1\cdot0{,}2=\mathbf{0{,}98}$.</li>
+      <li><span class="step-label">Tự kiểm tra:</span> $P(\text{0 phim})+P(\text{1 phim})+P(\text{2 phim})=0{,}02+0{,}26+0{,}72=1$ ✓ và $0{,}26+0{,}72=0{,}98$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Từ khoá</span>Đọc đề → chọn phép toán</div>
+  <ul>
+    <li><b>“và”, “cả”, “đồng thời”, “lần lượt”</b> → nhân.</li>
+    <li><b>“hoặc”</b> (hai biến cố) → cộng (nhớ trừ phần giao nếu không xung khắc).</li>
+    <li><b>“ít nhất một”</b> (nhiều biến cố) → $1-P(\text{không ai})$.</li>
+    <li><b>“đúng $k$”</b> → liệt kê các trường hợp (xung khắc), mỗi trường hợp tính bằng nhân, rồi cộng lại.</li>
+  </ul>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="toan-phan" data-toc="7. Xác suất toàn phần"><span class="num">7</span>Hệ đầy đủ và công thức xác suất toàn phần</h2>
+<h3 id="tp-he">7.1. Hệ đầy đủ — “cắt bánh”</h3>
+<p>Nhóm biến cố $\{H_1,H_2,\dots,H_n\}$ là <b>hệ đầy đủ</b> nếu:</p>
+$$\begin{cases}H_1\cup H_2\cup\dots\cup H_n=\Omega & \text{(phủ kín: chắc chắn rơi vào một nhóm)}\\ H_i\cap H_j=\varnothing\ \ (i\neq j) & \text{(không chồng nhau)}\end{cases}$$
+<p>Hình dung: cắt chiếc bánh $\Omega$ thành các miếng — mỗi kết quả nằm trong <b>đúng một</b> miếng.</p>
+<div class="grid2">
+  <div class="card"><h4>✓ Là hệ đầy đủ</h4><p>$\{S,\overline S\}$ (mọi biến cố và đối của nó) · nhóm máu $\{O, A, B, AB\}$ · 3 bác sĩ cùng làm một loại thủ thuật (mỗi ca do đúng 1 người làm) · $\{T^+,T^-\}$ kết quả xét nghiệm.</p></div>
+  <div class="card"><h4>✗ Không phải</h4><p>$\{\text{sâu răng}, \text{viêm nướu}\}$ — chồng nhau và chưa phủ hết · $\{\text{dưới 18 tuổi}, \text{trên 18 tuổi}\}$ — sót người đúng 18 tuổi.</p></div>
+</div>
+<figure><div class="fig-box">
+  <svg viewBox="0 0 600 230" style="width:100%;height:auto" role="img" aria-label="Hệ đầy đủ ba nhóm và biến cố B cắt qua">
+    <rect x="20" y="20" width="280" height="190" fill="var(--s1-soft)" stroke="var(--border-strong)"/>
+    <rect x="300" y="20" width="168" height="190" fill="var(--s2-soft)" stroke="var(--border-strong)"/>
+    <rect x="468" y="20" width="112" height="190" fill="var(--s3-soft)" stroke="var(--border-strong)"/>
+    <text x="160" y="48" text-anchor="middle" class="svg-strong">M (BS Minh) · 50%</text>
+    <text x="384" y="48" text-anchor="middle" class="svg-strong">L (BS Lan) · 30%</text>
+    <text x="524" y="48" text-anchor="middle" class="svg-strong">H (BS Hòa) · 20%</text>
+    <ellipse cx="300" cy="140" rx="262" ry="42" fill="var(--s8)" fill-opacity=".22" stroke="var(--s8)" stroke-width="2"/>
+    <text x="160" y="145" text-anchor="middle" class="svg-text">B ∩ M</text>
+    <text x="384" y="145" text-anchor="middle" class="svg-text">B ∩ L</text>
+    <text x="524" y="145" text-anchor="middle" class="svg-text">B ∩ H</text>
+    <text x="300" y="205" text-anchor="middle" class="svg-strong" fill="var(--s8)" style="fill:var(--s8)">B = miếng trám bị bong</text>
+  </svg>
+</div><figcaption>Hình 7.1. Biến cố $B$ bị “cắt” thành 3 mảnh rời nhau theo 3 nhóm của hệ đầy đủ.</figcaption></figure>
+
+<h3 id="tp-cong-thuc">7.2. Công thức xác suất toàn phần</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Xác suất toàn phần</div>
+  <div class="big-formula">$$P(B)=\sum_{i=1}^{n}P(H_i)\,P(B\mid H_i)=P(H_1)P(B\mid H_1)+\dots+P(H_n)P(B\mid H_n)$$</div>
+</div>
+<p><b>Từ đâu ra?</b> Ba bước, mỗi bước dùng một thứ đã học:</p>
+<ol class="steps">
+  <li><span class="step-label">Cắt $B$ theo hệ đầy đủ:</span> $B=BH_1\cup BH_2\cup\dots\cup BH_n$, các mảnh rời nhau.</li>
+  <li><span class="step-label">Công thức cộng (xung khắc):</span> $P(B)=P(BH_1)+P(BH_2)+\dots+P(BH_n)$.</li>
+  <li><span class="step-label">Công thức nhân cho từng mảnh:</span> $P(BH_i)=P(H_i)\,P(B\mid H_i)$. Thay vào là xong.</li>
+</ol>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Trực giác</span>Toàn phần = trung bình có trọng số</div>
+  <p>$P(B)$ là trung bình của các tỉ lệ $P(B\mid H_i)$, với “trọng số” là tỉ trọng $P(H_i)$ của từng nhóm. Vì vậy kết quả <b>luôn nằm giữa</b> tỉ lệ nhỏ nhất và lớn nhất — một cách tự kiểm tra đáp số rất nhanh.</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 7.1</span>Miếng trám bị bong</div>
+  <p>Một phòng khám có 3 bác sĩ làm trám răng: BS Minh làm 50% số ca, BS Lan 30%, BS Hòa 20%. Tỉ lệ miếng trám bị bong trong vòng 1 năm của từng người lần lượt là 4%, 6%, 10%. Chọn ngẫu nhiên một miếng trám của phòng khám. Tính xác suất miếng trám đó bị bong.</p>
+  <figure style="margin:10px 0"><div id="treeFill"></div><figcaption>Cây xác suất: tầng 1 là “ai làm”, tầng 2 là “bong hay không”. Các lá tô cam là các đường dẫn tới $B$.</figcaption></figure>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Hệ đầy đủ:</span> $M, L, H$ (mỗi miếng trám do đúng một bác sĩ làm): $P(M)=0{,}5;\ P(L)=0{,}3;\ P(H)=0{,}2$ (tổng bằng 1 ✓).</li>
+      <li><span class="step-label">Tỉ lệ bong trong từng nhóm:</span> $P(B\mid M)=0{,}04;\ P(B\mid L)=0{,}06;\ P(B\mid H)=0{,}10$.</li>
+      <li><span class="step-label">Nhân từng nhánh rồi cộng:</span> $P(B)=0{,}5\cdot0{,}04+0{,}3\cdot0{,}06+0{,}2\cdot0{,}10=0{,}020+0{,}018+0{,}020=\mathbf{0{,}058}$.</li>
+      <li><span class="step-label">Tự kiểm tra:</span> $0{,}058$ nằm giữa $0{,}04$ và $0{,}10$ ✓. Nghĩa là 5,8% miếng trám của phòng khám bị bong trong 1 năm.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Nhận dạng</span>Khi nào dùng xác suất toàn phần?</div>
+  <p>Đề cho <b>tỉ trọng các nhóm/nguồn</b> (nhà máy, khoa, phương pháp, bác sĩ, hộp…) và <b>tỉ lệ sự kiện trong từng nhóm</b>, rồi hỏi <b>tỉ lệ sự kiện nói chung</b> (không nói rõ nhóm nào).</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="bayes" data-toc="8. Công thức Bayes"><span class="num">8</span>Công thức Bayes — đi ngược từ kết quả về nguyên nhân</h2>
+<h3 id="bayes-cong-thuc">8.1. Công thức</h3>
+<p>Toàn phần trả lời “tỉ lệ bong nói chung là bao nhiêu?”. Bayes trả lời câu hỏi ngược: <i>“đã thấy một miếng trám bị bong, khả năng nó do bác sĩ nào làm?”</i></p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Công thức Bayes</div>
+  <div class="big-formula">$$P(H_k\mid B)=\frac{P(H_k)\,P(B\mid H_k)}{P(B)}=\frac{P(H_k)\,P(B\mid H_k)}{\sum_{i=1}^{n}P(H_i)\,P(B\mid H_i)}$$</div>
+</div>
+<p>Bayes không phải công thức mới, mà là 3 thứ đã học ghép lại:</p>
+<ol class="steps">
+  <li>Định nghĩa xác suất có điều kiện: $P(H_k\mid B)=\dfrac{P(H_kB)}{P(B)}$.</li>
+  <li>Tử số theo công thức nhân: $P(H_kB)=P(H_k)\,P(B\mid H_k)$.</li>
+  <li>Mẫu số theo công thức toàn phần.</li>
+</ol>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Trên cây</span>Bayes = một nhánh chia cho tổng các nhánh</div>
+  <p>$P(H_k\mid B)=\dfrac{\text{xác suất đường đi qua }H_k\text{ rồi tới }B}{\text{tổng xác suất mọi đường tới }B}$.</p>
+</div>
+
+<h3 id="bayes-vi-du">8.2. Ví dụ</h3>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 8.1</span>Tiếp Ví dụ 7.1</div>
+  <p>Kiểm tra một miếng trám thấy nó <b>bị bong</b>. Tính xác suất miếng trám đó do từng bác sĩ làm.</p>
+  <figure style="margin:10px 0"><div id="treeBayes"></div><figcaption>Chỉ giữ lại các đường tới $B$; Bayes so sánh độ lớn của 3 đường này.</figcaption></figure>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Mẫu số (đã tính ở 7.1):</span> $P(B)=0{,}058$.</li>
+      <li><span class="step-label">BS Hòa:</span> $P(H\mid B)=\dfrac{0{,}2\cdot0{,}10}{0{,}058}=\dfrac{0{,}020}{0{,}058}\approx\mathbf{0{,}3448}$.</li>
+      <li><span class="step-label">BS Minh:</span> $P(M\mid B)=\dfrac{0{,}020}{0{,}058}\approx\mathbf{0{,}3448}$.</li>
+      <li><span class="step-label">BS Lan:</span> $P(L\mid B)=\dfrac{0{,}018}{0{,}058}\approx\mathbf{0{,}3103}$.</li>
+      <li><span class="step-label">Kiểm tra:</span> $0{,}3448+0{,}3448+0{,}3103\approx1$ ✓ (các hậu nghiệm của một hệ đầy đủ luôn cộng lại bằng 1).</li>
+    </ol>
+    <div class="table-wrap"><table class="compact">
+      <tr><th>Bác sĩ</th><th>Trước khi biết (tiên nghiệm) $P(H_i)$</th><th>Sau khi biết bị bong (hậu nghiệm) $P(H_i\mid B)$</th></tr>
+      <tr><td>Minh</td><td>0,50</td><td>0,3448 ↓</td></tr>
+      <tr><td>Lan</td><td>0,30</td><td>0,3103 ≈</td></tr>
+      <tr><td>Hòa</td><td>0,20</td><td class="hl">0,3448 ↑</td></tr>
+    </table></div>
+    <p>BS Hòa chỉ làm 20% số ca nhưng chiếm tới 34,5% số ca bị bong: thông tin “bị bong” làm tăng nghi ngờ về nhóm có tỉ lệ lỗi cao. Đó là ý nghĩa của Bayes: <b>cập nhật niềm tin khi có dữ kiện mới</b>.</p>
+    <p class="small muted">Kiểm tra bằng 1000 miếng trám: Minh 500 → 20 bong; Lan 300 → 18 bong; Hòa 200 → 20 bong; tổng 58 bong. $P(H\mid B)=20/58$ ✓.</p>
+  </div></details>
+</div>
+
+<div class="widget" id="bayesWidget">
+  <div class="widget-title">Toàn phần &amp; Bayes bằng hình chữ nhật diện tích</div>
+  <div class="widget-sub">Bề rộng mỗi cột = tỉ trọng ca của bác sĩ; phần tô đậm trong cột = tỉ lệ bong. <b>Tổng diện tích tô đậm = $P(B)$</b> (toàn phần); <b>phần của từng cột chia cho tổng = hậu nghiệm</b> (Bayes).</div>
+  <div class="controls">
+    <div class="ctrl"><label for="bw1">Tỉ trọng BS Minh <output for="bw1"></output></label><input type="range" id="bw1" min="0.05" max="0.8" step="0.05" value="0.5"></div>
+    <div class="ctrl"><label for="bw2">Tỉ trọng BS Lan <output for="bw2"></output></label><input type="range" id="bw2" min="0.05" max="0.8" step="0.05" value="0.3"></div>
+  </div>
+  <div class="controls">
+    <div class="ctrl"><label for="br1">Tỉ lệ bong – Minh <output for="br1"></output></label><input type="range" id="br1" min="0" max="0.3" step="0.01" value="0.04"></div>
+    <div class="ctrl"><label for="br2">Tỉ lệ bong – Lan <output for="br2"></output></label><input type="range" id="br2" min="0" max="0.3" step="0.01" value="0.06"></div>
+    <div class="ctrl"><label for="br3">Tỉ lệ bong – Hòa <output for="br3"></output></label><input type="range" id="br3" min="0" max="0.3" step="0.01" value="0.10"></div>
+  </div>
+  <div id="bayesPlot"></div>
+  <div class="readout" id="bayesRead"></div>
+</div>
+
+<div class="box tip">
+  <div class="box-title"><span class="tag">Quy trình</span>4 bước giải một bài Bayes</div>
+  <ol>
+    <li>Xác định <b>hệ đầy đủ</b> (các “nguồn”) và kiểm tra tổng xác suất bằng 1.</li>
+    <li>Vẽ cây: tầng 1 là nguồn, tầng 2 là sự kiện quan sát được.</li>
+    <li>Tính $P(B)$ bằng công thức toàn phần.</li>
+    <li>Lấy nhánh được hỏi chia cho $P(B)$.</li>
+  </ol>
+</div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Nhầm cái đề cho với cái đề hỏi</div>
+  <p>Đề thường cho $P(B\mid H_i)$ (“tỉ lệ bong của BS Hòa là 10%”) và hỏi $P(H_i\mid B)$ (“miếng bị bong, khả năng do BS Hòa”). Các cụm từ “<b>biết rằng…</b>”, “<b>đã thấy…</b>”, “<b>trong số những… bị…</b>” cho biết biến cố nào đứng sau dấu “|”.</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="xet-nghiem" data-toc="9. Độ nhạy, độ đặc hiệu"><span class="num">9</span>Độ chính xác của xét nghiệm: độ nhạy, độ đặc hiệu</h2>
+<div class="box def">
+  <div class="box-title"><span class="tag">Ký hiệu</span>Bốn biến cố cơ bản</div>
+  <p>$M^+$: người đó <b>mắc</b> bệnh; $M^-$: không mắc. $T^+$: <b>xét nghiệm</b> dương tính; $T^-$: âm tính. <span class="muted">(Giáo trình ký hiệu bệnh là $B^+$, $B^-$.)</span> Chú ý: $\{M^+,M^-\}$ và $\{T^+,T^-\}$ đều là hệ đầy đủ.</p>
+</div>
+<h3 id="xn-bang">9.1. Bảng 2×2 — bốn ô, bốn cái tên</h3>
+<div class="table-wrap"><table>
+  <tr><th></th><th>$M^+$ (có bệnh)</th><th>$M^-$ (không bệnh)</th><th>Tổng</th></tr>
+  <tr><th>$T^+$ (dương tính)</th><td class="tp"><b>Dương thật</b> · $a$</td><td class="fp"><b>Dương giả</b> · $b$</td><td>$a+b$</td></tr>
+  <tr><th>$T^-$ (âm tính)</th><td class="fn"><b>Âm giả</b> · $c$</td><td class="tn"><b>Âm thật</b> · $d$</td><td>$c+d$</td></tr>
+  <tr><th>Tổng</th><td>$a+c$</td><td>$b+d$</td><td>$N$</td></tr>
+</table></div>
+<p>Tên gọi rất logic: chữ đầu (<b>dương/âm</b>) là kết quả xét nghiệm; chữ sau (<b>thật/giả</b>) cho biết kết quả đó đúng hay sai so với bệnh thật.</p>
+
+<h3 id="xn-se-sp">9.2. Độ nhạy và độ đặc hiệu</h3>
+<div class="grid2">
+  <div class="box formula" style="margin:0">
+    <div class="box-title"><span class="tag">Độ nhạy</span>Sensitivity — $Se$</div>
+    $$Se=P(T^+\mid M^+)=\frac{a}{a+c}$$
+    <p class="small">“Trong số người <b>có bệnh</b>, bao nhiêu % được xét nghiệm phát hiện.” Âm giả: $P(T^-\mid M^+)=1-Se$.<br>Độ nhạy cao → ít <b>bỏ sót</b> người bệnh.</p>
+  </div>
+  <div class="box formula" style="margin:0">
+    <div class="box-title"><span class="tag">Độ đặc hiệu</span>Specificity — $Sp$</div>
+    $$Sp=P(T^-\mid M^-)=\frac{d}{b+d}$$
+    <p class="small">“Trong số người <b>không bệnh</b>, bao nhiêu % được xác nhận âm tính.” Dương giả: $P(T^+\mid M^-)=1-Sp$.<br>Độ đặc hiệu cao → ít <b>báo động nhầm</b>.</p>
+  </div>
+</div>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Mẹo nhớ</span>Se, Sp “đứng theo cột”</div>
+  <p>Cả hai đều <b>biết trước tình trạng bệnh thật</b> (điều kiện là $M^+$ hoặc $M^-$) → đọc theo <b>cột</b>. Nhạy ↔ cột bệnh; Đặc hiệu ↔ cột không bệnh. (Giá trị tiên đoán ở mục 10 thì ngược lại: đọc theo <b>hàng</b>.)</p>
+  <p class="small">Câu thần chú tiếng Anh: <b>SnNout</b> — xét nghiệm rất <b>nhạy</b> mà âm tính (<b>N</b>egative) thì gần như loại trừ (<b>out</b>) được bệnh; <b>SpPin</b> — xét nghiệm rất <b>đặc hiệu</b> mà dương tính (<b>P</b>ositive) thì gần như khẳng định (<b>in</b>) bệnh.</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 9.1</span>Tính từ bảng số liệu</div>
+  <p>Một nghiên cứu làm xét nghiệm mới trên 250 người: 50 người có bệnh (42 dương tính, 8 âm tính) và 200 người không bệnh (14 dương tính, 186 âm tính).</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <div class="table-wrap"><table class="compact">
+      <tr><th></th><th>$M^+$</th><th>$M^-$</th><th>Tổng</th></tr>
+      <tr><th>$T^+$</th><td class="tp">42</td><td class="fp">14</td><td>56</td></tr>
+      <tr><th>$T^-$</th><td class="fn">8</td><td class="tn">186</td><td>194</td></tr>
+      <tr><th>Tổng</th><td>50</td><td>200</td><td>250</td></tr>
+    </table></div>
+    <ul>
+      <li>Độ nhạy: $Se=\frac{42}{50}=\mathbf{0{,}84}$; âm giả $=\frac{8}{50}=0{,}16$.</li>
+      <li>Độ đặc hiệu: $Sp=\frac{186}{200}=\mathbf{0{,}93}$; dương giả $=\frac{14}{200}=0{,}07$.</li>
+    </ul>
+  </div></details>
+</div>
+
+<h3 id="xn-toan-phan">9.3. Xác suất dương tính và độ chính xác chung</h3>
+<p>Dùng hệ đầy đủ $\{M^+,M^-\}$ và công thức toàn phần:</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Hai đại lượng hay hỏi</div>
+  $$P(T^+)=P(M^+)\,Se+P(M^-)\,(1-Sp)$$
+  $$P(\text{chẩn đoán đúng})=P(M^+T^+)+P(M^-T^-)=P(M^+)\,Se+P(M^-)\,Sp$$
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 9.2</span>Sàng lọc ung thư khoang miệng</div>
+  <p>Một xét nghiệm nhuộm màu sàng lọc ung thư khoang miệng có độ nhạy $0{,}9$, độ đặc hiệu $0{,}85$. Trong nhóm người được sàng lọc, tỉ lệ mắc bệnh là 2%. Tính xác suất một người có kết quả dương tính, và xác suất xét nghiệm cho kết quả đúng.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$P(M^+)=0{,}02;\ P(M^-)=0{,}98;\ Se=0{,}9;\ 1-Sp=0{,}15$.</li>
+      <li>$P(T^+)=0{,}02\cdot0{,}9+0{,}98\cdot0{,}15=0{,}018+0{,}147=\mathbf{0{,}165}$.</li>
+      <li>$P(\text{đúng})=0{,}02\cdot0{,}9+0{,}98\cdot0{,}85=0{,}018+0{,}833=\mathbf{0{,}851}$.</li>
+    </ol>
+    <p>Để ý: 16,5% số người dương tính, trong khi chỉ 2% thật sự có bệnh. Phần lớn số dương tính là dương giả — mục 10 sẽ cho thấy điều này rõ hơn.</p>
+  </div></details>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="tien-doan" data-toc="10. Giá trị tiên đoán"><span class="num">10</span>Giá trị tiên đoán (xác suất hậu nghiệm)</h2>
+<h3 id="td-dinh-nghia">10.1. Câu hỏi bệnh nhân thật sự quan tâm</h3>
+<p>Bệnh nhân không hỏi “độ nhạy là bao nhiêu?”, mà hỏi: <i>“Tôi dương tính rồi, vậy khả năng tôi bị bệnh thật là bao nhiêu?”</i> Đó là giá trị tiên đoán — điều kiện bây giờ là <b>kết quả xét nghiệm</b> (đọc theo <b>hàng</b>).</p>
+<div class="grid2">
+  <div class="box formula" style="margin:0">
+    <div class="box-title"><span class="tag">PV⁺</span>Giá trị tiên đoán dương</div>
+    $$PV^+=P(M^+\mid T^+)=\frac{a}{a+b}$$
+  </div>
+  <div class="box formula" style="margin:0">
+    <div class="box-title"><span class="tag">PV⁻</span>Giá trị tiên đoán âm</div>
+    $$PV^-=P(M^-\mid T^-)=\frac{d}{c+d}$$
+  </div>
+</div>
+<p>Khi không có bảng mà chỉ có tỉ lệ mắc bệnh, $Se$, $Sp$, ta dùng <b>Bayes</b>:</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Giá trị tiên đoán theo Bayes</div>
+  $$PV^+=\frac{P(M^+)\,Se}{P(M^+)\,Se+P(M^-)\,(1-Sp)}\qquad\quad PV^-=\frac{P(M^-)\,Sp}{P(M^-)\,Sp+P(M^+)\,(1-Se)}$$
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 10.1</span>Tiếp Ví dụ 9.2</div>
+  <p>Người được sàng lọc có kết quả dương tính. Khả năng người này thật sự bị ung thư là bao nhiêu? Nếu kết quả âm tính thì khả năng không bị bệnh là bao nhiêu?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$PV^+=\dfrac{0{,}018}{0{,}165}\approx\mathbf{0{,}109}$ — chỉ khoảng <b>11%</b>!</li>
+      <li>$PV^-=\dfrac{0{,}98\cdot0{,}85}{0{,}98\cdot0{,}85+0{,}02\cdot0{,}1}=\dfrac{0{,}833}{0{,}835}\approx\mathbf{0{,}9976}$.</li>
+    </ol>
+    <p><b>Vì sao PV⁺ thấp như vậy?</b> Tưởng tượng 1000 người: 20 người bệnh → 18 dương thật; 980 người lành → 15% tức 147 dương giả. Trong 165 người dương tính chỉ có 18 người bệnh thật: $18/165\approx11\%$. Người lành quá đông nên dù tỉ lệ dương giả nhỏ, số dương giả vẫn lấn át. Đây là lý do sàng lọc dương tính phải làm thêm xét nghiệm khẳng định (ví dụ sinh thiết).</p>
+  </div></details>
+</div>
+
+<h3 id="td-tuong-tac">10.2. Thử nghiệm với 1000 người</h3>
+<div class="widget" id="testWidget">
+  <div class="widget-title">1000 người đi xét nghiệm</div>
+  <div class="widget-sub">Kéo tỉ lệ mắc bệnh xuống thấp và xem PV⁺ thay đổi thế nào dù độ nhạy, độ đặc hiệu giữ nguyên.</div>
+  <div class="controls">
+    <div class="ctrl"><label for="tPrev">Tỉ lệ mắc bệnh $P(M^+)$ <output for="tPrev"></output></label><input type="range" id="tPrev" min="0.005" max="0.5" step="0.005" value="0.02"></div>
+    <div class="ctrl"><label for="tSe">Độ nhạy $Se$ <output for="tSe"></output></label><input type="range" id="tSe" min="0.5" max="1" step="0.01" value="0.9"></div>
+    <div class="ctrl"><label for="tSp">Độ đặc hiệu $Sp$ <output for="tSp"></output></label><input type="range" id="tSp" min="0.5" max="1" step="0.01" value="0.85"></div>
+  </div>
+  <div class="dotgrid small" id="testGrid" style="grid-template-columns:repeat(40,1fr)"></div>
+  <div class="legend" style="justify-content:center">
+    <span><span class="sw" style="background:var(--s3)"></span>Dương thật</span>
+    <span><span class="sw" style="background:var(--s4)"></span>Âm giả</span>
+    <span><span class="sw" style="background:var(--s2)"></span>Dương giả</span>
+    <span><span class="sw" style="background:var(--s1);opacity:.35"></span>Âm thật</span>
+  </div>
+  <div class="readout" id="testRead"></div>
+</div>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Ghi nhớ</span>Cái nào phụ thuộc tỉ lệ mắc bệnh?</div>
+  <ul>
+    <li>$Se$, $Sp$ là <b>đặc tính của xét nghiệm</b> — gần như không đổi khi đem dùng ở nơi khác.</li>
+    <li>$PV^+$, $PV^-$ <b>phụ thuộc tỉ lệ mắc bệnh</b> nơi áp dụng: tỉ lệ mắc tăng → $PV^+$ tăng, $PV^-$ giảm.</li>
+    <li>Vì thế $PV$ tính từ một bảng nghiên cứu chỉ đúng khi tỉ lệ người bệnh trong bảng bằng tỉ lệ ngoài cộng đồng (ở Ví dụ 9.1 tỉ lệ đó là $50/250=20\%$).</li>
+  </ul>
+</div>
+
+<h3 id="td-nguoc">10.3. Bài toán ngược: biết giá trị tiên đoán, tìm độ nhạy – độ đặc hiệu</h3>
+<p>Dạng này hay ra thi: đề cho tỉ lệ mắc bệnh và cho “nếu dương tính thì khả năng mắc bệnh là…, nếu âm tính thì khả năng mắc bệnh là…”, hỏi $P(T^+)$, $Se$, $Sp$. Mẹo then chốt: <b>dùng $\{T^+,T^-\}$ làm hệ đầy đủ</b> và đặt ẩn $x=P(T^+)$.</p>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 10.2</span>Giải ngược</div>
+  <p>Tỉ lệ mắc một bệnh ở địa phương là 10%. Phòng xét nghiệm tổng kết: nếu xét nghiệm dương tính thì khả năng mắc bệnh là 40%; nếu âm tính thì khả năng mắc bệnh là 2,5%. Tìm xác suất dương tính, độ nhạy và độ đặc hiệu.</p>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ghi dữ kiện:</span> $P(M^+)=0{,}1$; $P(M^+\mid T^+)=0{,}4$; $P(M^+\mid T^-)=0{,}025$. Đặt $x=P(T^+)$ thì $P(T^-)=1-x$.</li>
+      <li><span class="step-label">Toàn phần theo hệ $\{T^+,T^-\}$:</span> $P(M^+)=P(T^+)P(M^+\mid T^+)+P(T^-)P(M^+\mid T^-)$<br>$\Rightarrow 0{,}1=0{,}4x+0{,}025(1-x)$.</li>
+      <li><span class="step-label">Giải phương trình:</span> $0{,}1=0{,}4x+0{,}025-0{,}025x\Rightarrow 0{,}075=0{,}375x\Rightarrow x=\mathbf{0{,}2}$.</li>
+      <li><span class="step-label">Độ nhạy (Bayes “đảo chiều”):</span> $Se=P(T^+\mid M^+)=\dfrac{P(T^+)P(M^+\mid T^+)}{P(M^+)}=\dfrac{0{,}2\cdot0{,}4}{0{,}1}=\mathbf{0{,}8}$.</li>
+      <li><span class="step-label">Độ đặc hiệu:</span> $Sp=P(T^-\mid M^-)=\dfrac{P(T^-)P(M^-\mid T^-)}{P(M^-)}=\dfrac{0{,}8\cdot0{,}975}{0{,}9}\approx\mathbf{0{,}8667}$.</li>
+      <li><span class="step-label">Kiểm tra bằng 1000 người:</span> 200 dương tính (80 bệnh + 120 lành), 800 âm tính (20 bệnh + 780 lành) → 100 bệnh ✓; $Se=80/100$ ✓; $Sp=780/900$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="bernoulli" data-toc="11. Công thức Bernoulli"><span class="num">11</span>Công thức Bernoulli</h2>
+<h3 id="ber-khi-nao">11.1. Khi nào dùng?</h3>
+<p>“Lược đồ Bernoulli” gồm đủ <b>3 điều kiện</b>:</p>
+<ol>
+  <li>Lặp lại $n$ phép thử <b>độc lập</b>.</li>
+  <li>Mỗi lần chỉ quan tâm biến cố $K$ có xảy ra (“thành công”) hay không.</li>
+  <li>Xác suất $P(K)=p$ <b>như nhau</b> ở mọi lần (đặt $q=1-p$).</li>
+</ol>
+<p>Câu hỏi: xác suất để $K$ xảy ra <b>đúng $m$ lần</b> trong $n$ lần là bao nhiêu?</p>
+
+<h3 id="ber-xay-dung">11.2. Xây dựng công thức (không học thuộc mà tự suy ra)</h3>
+<p>Xét $n=3$ lần, cần đúng $m=2$ lần thành công. Liệt kê toàn bộ $2^3=8$ dãy kết quả:</p>
+<div id="seqFig"></div>
+<ul>
+  <li>Mỗi dãy có 2 lần $K$ và 1 lần $\overline K$ có xác suất $p\cdot p\cdot q=p^2q$ (độc lập → nhân), dù $\overline K$ đứng ở vị trí nào.</li>
+  <li>Có bao nhiêu dãy như vậy? Chính là số cách chọn <b>2 vị trí</b> cho $K$ trong 3 vị trí: $C_3^2=3$.</li>
+  <li>Các dãy xung khắc → cộng lại: $P=3p^2q=C_3^2p^2q^1$.</li>
+</ul>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Bernoulli</div>
+  <div class="big-formula">$$P_n(m)=C_n^m\,p^m\,q^{\,n-m}\qquad (q=1-p,\ m=0,1,\dots,n)$$</div>
+  <p class="center small">$C_n^m$: số cách chọn vị trí cho $m$ lần thành công · $p^m$: $m$ lần thành công · $q^{n-m}$: $n-m$ lần thất bại. (Giáo trình viết $P(n;m)$.)</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 11.1</span>Vecni fluor chống ê buốt</div>
+  <p>Tỉ lệ bệnh nhân hết ê buốt sau khi bôi vecni fluor là $0{,}7$. Điều trị cho 6 bệnh nhân (độc lập). Tính xác suất: (a) đúng 4 người hết ê buốt; (b) ít nhất 1 người hết; (c) ít nhất 5 người hết; (d) nhiều nhất 4 người hết.</p>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <p>Đủ 3 điều kiện Bernoulli với $n=6,\ p=0{,}7,\ q=0{,}3$.</p>
+    <ol class="steps">
+      <li><span class="step-label">(a)</span> $P_6(4)=C_6^4\,0{,}7^4\,0{,}3^2=15\cdot0{,}2401\cdot0{,}09=\mathbf{0{,}3241}$.</li>
+      <li><span class="step-label">(b)</span> Biến cố đối là “không ai hết”: $P_6(0)=0{,}3^6=0{,}000729$ → $P=1-0{,}000729=\mathbf{0{,}9993}$.</li>
+      <li><span class="step-label">(c)</span> “Ít nhất 5” = “đúng 5” hoặc “đúng 6”:<br>$P_6(5)=6\cdot0{,}7^5\cdot0{,}3=0{,}3025$; $P_6(6)=0{,}7^6=0{,}1176$ → $P=\mathbf{0{,}4202}$.</li>
+      <li><span class="step-label">(d)</span> “Nhiều nhất 4” là đối của “ít nhất 5”: $1-0{,}4202=\mathbf{0{,}5798}$ (khỏi phải cộng 5 số hạng).</li>
+    </ol>
+  </div></details>
+</div>
+<div class="widget" id="binWidget">
+  <div class="widget-title">Biểu đồ Bernoulli</div>
+  <div class="widget-sub">Mỗi cột là $P_n(m)$. Chọn loại câu hỏi để tô các cột cần cộng. Rê chuột lên cột để xem giá trị.</div>
+  <div class="controls">
+    <div class="ctrl"><label for="bn">Số lần thử $n$ <output for="bn"></output></label><input type="range" id="bn" min="1" max="30" step="1" value="6"></div>
+    <div class="ctrl"><label for="bp">Xác suất thành công $p$ <output for="bp"></output></label><input type="range" id="bp" min="0.05" max="0.95" step="0.05" value="0.7"></div>
+    <div class="ctrl"><label for="bk">Mốc $k$ <output for="bk"></output></label><input type="range" id="bk" min="0" max="6" step="1" value="4"></div>
+  </div>
+  <div class="seg" id="binMode"></div>
+  <div id="binPlot" style="margin-top:10px"></div>
+  <div class="readout" id="binRead"></div>
+</div>
+
+<h3 id="ber-kha-nang-nhat">11.3. Số lần có khả năng xảy ra nhất</h3>
+<div class="box extra">
+  <div class="box-title"><span class="tag">Mở rộng</span>Không có trong giáo trình nhưng hay dùng</div>
+  <p>Giá trị $m_0$ làm $P_n(m)$ lớn nhất thoả: $\;np-q\le m_0\le np+p$. Ví dụ 11.1: $6\cdot0{,}7-0{,}3=3{,}9\le m_0\le 4{,}9$ → $m_0=4$ (khớp với cột cao nhất trên biểu đồ).</p>
+</div>
+
+<h3 id="ber-tim-n">11.4. Tìm số lần thử nhỏ nhất (dùng logarit)</h3>
+<p>Câu hỏi “cần ít nhất bao nhiêu lần để xác suất <i>có ít nhất một lần thành công</i> không nhỏ hơn $\gamma$?” dẫn tới bất phương trình $1-q^n\ge\gamma\iff q^n\le 1-\gamma$.</p>
+<div class="box def">
+  <div class="box-title"><span class="tag">Ôn nhanh</span>Logarit tự nhiên</div>
+  <p>$\ln$ biến lũy thừa thành phép nhân: $\ln(q^n)=n\ln q$. Vì $0&lt;q&lt;1$ nên $\ln q&lt;0$ — khi chia hai vế cho số âm phải <b>đổi chiều</b> bất đẳng thức:</p>
+  $$q^n\le 1-\gamma\iff n\ln q\le\ln(1-\gamma)\iff n\ge\frac{\ln(1-\gamma)}{\ln q}.$$
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 11.2</span>Soi tìm ký sinh trùng</div>
+  <p>Mỗi lần soi một mẫu bệnh phẩm, nếu bệnh nhân có ký sinh trùng thì xác suất phát hiện là $0{,}3$ (các lần soi độc lập). Cần soi ít nhất bao nhiêu mẫu để xác suất phát hiện ít nhất một lần không nhỏ hơn $0{,}95$?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$1-0{,}7^n\ge0{,}95\iff0{,}7^n\le0{,}05$.</li>
+      <li>$n\ge\dfrac{\ln0{,}05}{\ln0{,}7}=\dfrac{-2{,}9957}{-0{,}3567}\approx8{,}40$.</li>
+      <li>$n$ nguyên nên $n_{\min}=\mathbf{9}$. Kiểm tra: $0{,}7^8\approx0{,}0576&gt;0{,}05$ (chưa đủ), $0{,}7^9\approx0{,}0404\le0{,}05$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="ber-dung">11.5. Dạng “kiểm tra đến khi… thì dừng ở lần thứ $k$”</h3>
+<p>Muốn dừng <b>đúng ở lần thứ $k$</b> khi gặp đủ $r$ lần “trúng” thì: lần thứ $k$ <b>bắt buộc trúng</b>, và trong $k-1$ lần trước có <b>đúng $r-1$ lần trúng</b>.</p>
+<div class="grid2">
+  <div class="box example" style="margin:0">
+    <div class="box-title"><span class="tag">Ví dụ 11.3</span>Lô rất lớn (độc lập)</div>
+    <p>Tỉ lệ học sinh sâu răng là $0{,}4$. Bác sĩ khám lần lượt từng em (số học sinh rất đông) đến khi gặp em sâu răng <b>thứ 2</b> thì dừng. Tính xác suất dừng ở em thứ 5.</p>
+    <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+      <p>4 em đầu có đúng 1 em sâu (Bernoulli) và em thứ 5 sâu:</p>
+      $$P=\underbrace{C_4^1\,0{,}4\cdot0{,}6^3}_{\text{4 em đầu}}\cdot\underbrace{0{,}4}_{\text{em thứ 5}}=4\cdot0{,}4\cdot0{,}216\cdot0{,}4=\mathbf{0{,}1382}.$$
+    </div></details>
+  </div>
+  <div class="box example" style="margin:0">
+    <div class="box-title"><span class="tag">Ví dụ 11.4</span>Hộp ít phần tử (không hoàn lại)</div>
+    <p>Hộp có 10 mũi khoan, trong đó 3 mũi bị cùn. Kiểm tra lần lượt từng mũi (không hoàn lại) đến khi phát hiện đủ 3 mũi cùn thì dừng. Tính xác suất dừng ở lần thứ 5.</p>
+    <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+      <ol class="steps">
+        <li>4 mũi đầu có đúng 2 mũi cùn: $\dfrac{C_3^2\,C_7^2}{C_{10}^4}=\dfrac{3\cdot21}{210}=0{,}3$.</li>
+        <li>Lần 5 phải là mũi cùn cuối cùng: còn 6 mũi, trong đó 1 mũi cùn → $\dfrac16$.</li>
+        <li>Nhân lại: $P=0{,}3\cdot\dfrac16=\mathbf{0{,}05}$.</li>
+      </ol>
+    </div></details>
+  </div>
+</div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Bernoulli chỉ dùng khi $p$ không đổi</div>
+  <p>Nếu mỗi lần có xác suất khác nhau (ví dụ 3 bệnh nhân với $0{,}7;\ 0{,}6;\ 0{,}8$) thì <b>không</b> dùng $C_n^m p^mq^{n-m}$ — phải liệt kê từng trường hợp như Ví dụ 6.2. Lấy không hoàn lại từ hộp nhỏ cũng không phải Bernoulli (dùng tổ hợp như Ví dụ 11.4).</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="nhan-dang" data-toc="12. Nhận dạng dạng bài"><span class="num">12</span>Nhận dạng dạng bài — đọc đề là biết dùng gì</h2>
+<div class="decide">
+  <div class="rule"><span class="when">“Biết rằng…”, “trong số những người…”, “nếu… thì khả năng…”</span><span class="arrow">→</span><span class="use">Xác suất có điều kiện $P(\cdot\mid\cdot)$</span></div>
+  <div class="rule"><span class="when">“và”, “cả”, “đồng thời”, “lần lượt”</span><span class="arrow">→</span><span class="use">Công thức nhân (độc lập: nhân thẳng; phụ thuộc: nhân có điều kiện / cây)</span></div>
+  <div class="rule"><span class="when">“hoặc” giữa hai biến cố</span><span class="arrow">→</span><span class="use">Công thức cộng $P(S)+P(V)-P(SV)$</span></div>
+  <div class="rule"><span class="when">“ít nhất một” trong nhiều biến cố</span><span class="arrow">→</span><span class="use">$1-P(\text{không ai})$ (De Morgan)</span></div>
+  <div class="rule"><span class="when">“đúng $k$” mà xác suất mỗi lần <b>khác nhau</b></span><span class="arrow">→</span><span class="use">Liệt kê trường hợp: nhân trong mỗi trường hợp, cộng các trường hợp</span></div>
+  <div class="rule"><span class="when">“đúng $k$ / ít nhất $k$ trong $n$” với $p$ <b>như nhau</b>, độc lập</span><span class="arrow">→</span><span class="use">Bernoulli $C_n^kp^kq^{n-k}$</span></div>
+  <div class="rule"><span class="when">Có nhiều nhóm/nguồn với tỉ lệ khác nhau, hỏi tỉ lệ <b>chung</b></span><span class="arrow">→</span><span class="use">Xác suất toàn phần</span></div>
+  <div class="rule"><span class="when">“Đã thấy kết quả…, hỏi khả năng thuộc nhóm…”</span><span class="arrow">→</span><span class="use">Bayes</span></div>
+  <div class="rule"><span class="when">“Độ nhạy”, “độ đặc hiệu”, “âm giả”, “dương giả”</span><span class="arrow">→</span><span class="use">$P(T\mid M)$ — đọc theo <b>cột</b> bệnh thật</span></div>
+  <div class="rule"><span class="when">“Giá trị tiên đoán”, “dương tính thì khả năng mắc bệnh”</span><span class="arrow">→</span><span class="use">$P(M\mid T)$ — Bayes / đọc theo <b>hàng</b></span></div>
+  <div class="rule"><span class="when">“Cần ít nhất bao nhiêu lần…”</span><span class="arrow">→</span><span class="use">$1-q^n\ge\gamma$, giải bằng logarit</span></div>
+  <div class="rule"><span class="when">“Kiểm tra đến khi… thì dừng ở lần thứ $k$”</span><span class="arrow">→</span><span class="use">Lần $k$ bắt buộc trúng × ($k-1$ lần trước có đúng $r-1$ lần trúng)</span></div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="loi-thuong-gap" data-toc="13. Lỗi thường gặp"><span class="num">13</span>Lỗi thường gặp</h2>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Tránh</span>10 lỗi hay mất điểm</div>
+  <ol>
+    <li>Nhầm $P(V\mid S)$ với $P(S\mid V)$ (nhầm mẫu số).</li>
+    <li>Nhầm <b>xung khắc</b> với <b>độc lập</b>.</li>
+    <li>Cộng hai biến cố không xung khắc mà quên trừ phần giao.</li>
+    <li>Nhân như thể độc lập trong bài lấy <b>không hoàn lại</b>.</li>
+    <li>Viết $P(N\mid\overline H)=1-P(N\mid H)$ (sai — khác điều kiện).</li>
+    <li>Quên kiểm tra tổng các $P(H_i)$ của hệ đầy đủ bằng 1.</li>
+    <li>“Ít nhất một” mà đi liệt kê dài dòng → dễ sót; hãy dùng biến cố đối.</li>
+    <li>Dùng Bernoulli khi xác suất mỗi lần khác nhau.</li>
+    <li>Chia cho $\ln q&lt;0$ mà quên đổi chiều bất đẳng thức.</li>
+    <li>Làm tròn quá sớm ở bước trung gian — giữ ít nhất 4 chữ số thập phân, chỉ làm tròn ở kết quả cuối.</li>
+  </ol>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="tom-tat" data-toc="14. Bảng công thức"><span class="num">14</span>Bảng công thức tóm tắt</h2>
+<div class="table-wrap"><table>
+  <tr><th class="left">Nội dung</th><th>Công thức</th><th class="left">Ghi chú</th></tr>
+  <tr><td class="left">De Morgan</td><td>$\overline{S\cup V}=\overline S\,\overline V$; $\ \overline{SV}=\overline S\cup\overline V$</td><td class="left">“gạch gãy, dấu lật”</td></tr>
+  <tr><td class="left">Có điều kiện</td><td>$P(V\mid S)=\dfrac{P(SV)}{P(S)}$</td><td class="left">sau dấu “|” → mẫu số</td></tr>
+  <tr><td class="left">Độc lập</td><td>$P(SV)=P(S)P(V)$</td><td class="left">⇔ $P(V\mid S)=P(V)$</td></tr>
+  <tr><td class="left">Nhân</td><td>$P(SV)=P(S)P(V\mid S)$</td><td class="left">nhân dọc nhánh cây</td></tr>
+  <tr><td class="left">Cộng</td><td>$P(S\cup V)=P(S)+P(V)-P(SV)$</td><td class="left">xung khắc: bỏ số hạng cuối</td></tr>
+  <tr><td class="left">Ít nhất một</td><td>$1-\prod P(\overline{K_i})$</td><td class="left">khi độc lập</td></tr>
+  <tr><td class="left">Toàn phần</td><td>$P(B)=\sum P(H_i)P(B\mid H_i)$</td><td class="left">$\{H_i\}$ hệ đầy đủ</td></tr>
+  <tr><td class="left">Bayes</td><td>$P(H_k\mid B)=\dfrac{P(H_k)P(B\mid H_k)}{P(B)}$</td><td class="left">1 nhánh / tổng nhánh</td></tr>
+  <tr><td class="left">Độ nhạy / đặc hiệu</td><td>$Se=P(T^+\mid M^+)$; $Sp=P(T^-\mid M^-)$</td><td class="left">âm giả $=1-Se$; dương giả $=1-Sp$</td></tr>
+  <tr><td class="left">Giá trị tiên đoán</td><td>$PV^+=P(M^+\mid T^+)$; $PV^-=P(M^-\mid T^-)$</td><td class="left">phụ thuộc tỉ lệ mắc bệnh</td></tr>
+  <tr><td class="left">Chẩn đoán đúng</td><td>$P(M^+)Se+P(M^-)Sp$</td><td class="left"></td></tr>
+  <tr><td class="left">Bernoulli</td><td>$P_n(m)=C_n^mp^mq^{n-m}$</td><td class="left">$n$ lần độc lập, $p$ không đổi</td></tr>
+</table></div>
+
+<!-- =============================================================== -->
+<h2 id="bai-tap" data-toc="15. Bài tập luyện tập"><span class="num">15</span>Bài tập luyện tập (bài mới)</h2>
+<p>Ba mức độ: <span class="lvl l1">Thông hiểu</span> kiểm tra bạn hiểu đúng khái niệm; <span class="lvl l2">Vận dụng</span> là dạng bài thi điển hình; <span class="lvl l3">Vận dụng cao</span> phối hợp nhiều công thức, có bài phải lập hệ phương trình hai ẩn $x, y$. Làm ra giấy trước, rồi mới mở lời giải.</p>
+
+<h3 id="bt-muc-1">Mức 1 — Thông hiểu</h3>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.1</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">De Morgan · dịch câu chữ</span></div>
+  <p>Gọi $S$: “bệnh nhân bị sâu răng”, $V$: “bệnh nhân bị viêm nướu”. Viết bằng ký hiệu các biến cố: (a) không mắc bệnh nào; (b) mắc ít nhất một bệnh; (c) không mắc đồng thời hai bệnh; (d) mắc đúng một bệnh; (e) chỉ bị viêm nướu.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <p>(a) $\overline S\cap\overline V=\overline{S\cup V}$ · (b) $S\cup V$ · (c) $\overline{S\cap V}=\overline S\cup\overline V$ · (d) $(S\cap\overline V)\cup(\overline S\cap V)$ · (e) $\overline S\cap V$.</p>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.2</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Cộng · có điều kiện · độc lập</span></div>
+  <p>Biết $P(S)=0{,}4$; $P(V)=0{,}3$; $P(S\cap V)=0{,}15$. Tính: (a) $P(S\cup V)$; (b) $P(\overline S\cap\overline V)$; (c) $P(\overline S\cup\overline V)$; (d) $P(V\mid S)$; (e) $P(S\mid\overline V)$. (f) $S$ và $V$ có độc lập không?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $0{,}4+0{,}3-0{,}15=\mathbf{0{,}55}$.</li>
+      <li>(b) De Morgan: $1-P(S\cup V)=\mathbf{0{,}45}$.</li>
+      <li>(c) De Morgan: $1-P(S\cap V)=\mathbf{0{,}85}$.</li>
+      <li>(d) $\dfrac{0{,}15}{0{,}4}=\mathbf{0{,}375}$.</li>
+      <li>(e) $P(S\cap\overline V)=P(S)-P(SV)=0{,}25$; $P(\overline V)=0{,}7$ → $\dfrac{0{,}25}{0{,}7}=\dfrac{5}{14}\approx\mathbf{0{,}3571}$.</li>
+      <li>(f) $P(S)P(V)=0{,}12\neq0{,}15$ → <b>không độc lập</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.3</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Đúng / Sai</span></div>
+  <p>Mỗi mệnh đề sau đúng hay sai? (Giả sử các xác suất đều dương.)</p>
+  <ol type="a">
+    <li>Nếu $S, V$ xung khắc thì $S, V$ độc lập.</li>
+    <li>Nếu $S, V$ độc lập thì $\overline S, \overline V$ độc lập.</li>
+    <li>$P(S\mid V)+P(\overline S\mid V)=1$.</li>
+    <li>$P(S\mid V)+P(S\mid\overline V)=1$.</li>
+    <li>$\{S,\overline S\}$ là một hệ đầy đủ.</li>
+    <li>Nếu $P(S\cap V)=P(S)P(V)$ thì $P(S\mid V)=P(S)$.</li>
+  </ol>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <p>(a) <b>Sai</b> — xung khắc thì phụ thuộc. (b) <b>Đúng</b> (mục 4.3). (c) <b>Đúng</b> — cùng điều kiện $V$. (d) <b>Sai</b> — khác điều kiện. (e) <b>Đúng</b>. (f) <b>Đúng</b> — chia hai vế cho $P(V)$.</p>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.4</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Hệ đầy đủ</span></div>
+  <p>Nhóm nào là hệ đầy đủ? (a) {răng 0 lỗ sâu, răng 1 lỗ sâu, răng từ 2 lỗ sâu trở lên}; (b) {bệnh nhân nam, bệnh nhân trên 60 tuổi}; (c) {ca khám buổi sáng, ca khám buổi chiều} ở phòng khám chỉ làm hai buổi; (d) {xét nghiệm dương tính, xét nghiệm âm tính}; (e) {huyết áp dưới 120, huyết áp trên 140}.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <p>(a) <b>Có</b>. (b) <b>Không</b> — chồng nhau (nam trên 60 tuổi) và sót (nữ dưới 60). (c) <b>Có</b>. (d) <b>Có</b>. (e) <b>Không</b> — sót khoảng 120–140.</p>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.5</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Bernoulli cơ bản</span></div>
+  <p>Tỉ lệ trẻ có thói quen mút ngón tay là $0{,}2$. Chọn ngẫu nhiên 5 trẻ. Tính xác suất (a) đúng 2 trẻ có thói quen này; (b) không trẻ nào; (c) ít nhất một trẻ.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <p>(a) $C_5^2\,0{,}2^2\,0{,}8^3=10\cdot0{,}04\cdot0{,}512=\mathbf{0{,}2048}$. (b) $0{,}8^5=\mathbf{0{,}3277}$. (c) $1-0{,}3277=\mathbf{0{,}6723}$.</p>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.6</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Đọc bảng 2×2</span></div>
+  <p>Xét nghiệm trên 300 người: 60 người có bệnh (51 dương tính, 9 âm tính), 240 người không bệnh (24 dương tính, 216 âm tính). Tính độ nhạy, độ đặc hiệu, tỉ lệ âm giả, dương giả, $PV^+$, $PV^-$ và tỉ lệ chẩn đoán đúng (coi tỉ lệ bệnh trong mẫu đại diện cho cộng đồng).</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <p>$Se=\frac{51}{60}=\mathbf{0{,}85}$; âm giả $=0{,}15$ · $Sp=\frac{216}{240}=\mathbf{0{,}9}$; dương giả $=0{,}1$ · $PV^+=\frac{51}{51+24}=\frac{51}{75}=\mathbf{0{,}68}$ · $PV^-=\frac{216}{216+9}=\mathbf{0{,}96}$ · đúng $=\frac{51+216}{300}=\mathbf{0{,}89}$.</p>
+  </div></details>
+</div>
+
+<h3 id="bt-muc-2">Mức 2 — Vận dụng</h3>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.1</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Toàn phần · Bayes</span></div>
+  <p>Một bệnh viện mua thuốc tê từ 3 hãng: Mekong ($M$) 45%, Quang Minh ($Q$) 35%, Trường Sơn ($T$) 20%. Tỉ lệ ống thuốc lỗi của từng hãng là 2%, 3%, 5%. Lấy ngẫu nhiên một ống trong kho. (a) Tính xác suất ống bị lỗi ($L$). (b) Biết ống bị lỗi, tính xác suất ống đó của hãng Trường Sơn. (c) Biết ống tốt, tính xác suất ống đó của hãng Mekong.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $P(L)=0{,}45\cdot0{,}02+0{,}35\cdot0{,}03+0{,}2\cdot0{,}05=0{,}009+0{,}0105+0{,}01=\mathbf{0{,}0295}$.</li>
+      <li>(b) $P(T\mid L)=\dfrac{0{,}01}{0{,}0295}\approx\mathbf{0{,}3390}$.</li>
+      <li>(c) $P(\overline L)=0{,}9705$; $P(M\mid\overline L)=\dfrac{0{,}45\cdot0{,}98}{0{,}9705}=\dfrac{0{,}441}{0{,}9705}\approx\mathbf{0{,}4544}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.2</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Nhân · không hoàn lại</span></div>
+  <p>Hộp có 15 mũi khoan, trong đó 4 mũi bị cùn. Lấy lần lượt 3 mũi (không hoàn lại). Tính xác suất: (a) cả 3 mũi tốt; (b) mũi thứ hai bị cùn; (c) có đúng 1 mũi cùn.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $\dfrac{11}{15}\cdot\dfrac{10}{14}\cdot\dfrac{9}{13}=\dfrac{990}{2730}=\dfrac{33}{91}\approx\mathbf{0{,}3626}$.</li>
+      <li>(b) Toàn phần theo lần 1 ($C_1$: lần 1 cùn): $P(C_2)=\frac{4}{15}\cdot\frac{3}{14}+\frac{11}{15}\cdot\frac{4}{14}=\frac{12+44}{210}=\mathbf{\frac{4}{15}}\approx0{,}2667$. <span class="muted">Nhận xét: bằng đúng xác suất lần 1 cùn — khi chưa biết lần trước ra gì, mọi lần lấy đều “bình đẳng”.</span></li>
+      <li>(c) Dùng tổ hợp: $\dfrac{C_4^1C_{11}^2}{C_{15}^3}=\dfrac{4\cdot55}{455}=\dfrac{44}{91}\approx\mathbf{0{,}4835}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.3</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Độc lập · “đúng k” với p khác nhau</span></div>
+  <p>Ba kỹ thuật viên lấy dấu răng độc lập, xác suất mẫu đạt lần lượt là $0{,}9$; $0{,}8$; $0{,}75$. Tính xác suất: (a) cả ba mẫu đạt; (b) ít nhất một mẫu đạt; (c) đúng hai mẫu đạt; (d) đúng một mẫu đạt.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $0{,}9\cdot0{,}8\cdot0{,}75=\mathbf{0{,}54}$.</li>
+      <li>(b) $1-0{,}1\cdot0{,}2\cdot0{,}25=\mathbf{0{,}995}$.</li>
+      <li>(c) $0{,}9\cdot0{,}8\cdot0{,}25+0{,}9\cdot0{,}2\cdot0{,}75+0{,}1\cdot0{,}8\cdot0{,}75=0{,}18+0{,}135+0{,}06=\mathbf{0{,}375}$.</li>
+      <li>(d) $0{,}9\cdot0{,}2\cdot0{,}25+0{,}1\cdot0{,}8\cdot0{,}25+0{,}1\cdot0{,}2\cdot0{,}75=0{,}045+0{,}02+0{,}015=\mathbf{0{,}08}$.</li>
+      <li>Kiểm tra: $0{,}005+0{,}08+0{,}375+0{,}54=1$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.4</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Giá trị tiên đoán theo tỉ lệ mắc</span></div>
+  <p>Một xét nghiệm có $Se=0{,}95$, $Sp=0{,}9$. Tính $PV^+$ và $PV^-$ khi dùng (a) ở bệnh viện chuyên khoa với tỉ lệ mắc bệnh 30%; (b) ở cộng đồng với tỉ lệ mắc 1%. Nhận xét.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $PV^+=\dfrac{0{,}3\cdot0{,}95}{0{,}3\cdot0{,}95+0{,}7\cdot0{,}1}=\dfrac{0{,}285}{0{,}355}\approx\mathbf{0{,}8028}$; $PV^-=\dfrac{0{,}7\cdot0{,}9}{0{,}63+0{,}3\cdot0{,}05}=\dfrac{0{,}63}{0{,}645}\approx\mathbf{0{,}9767}$.</li>
+      <li>(b) $PV^+=\dfrac{0{,}0095}{0{,}0095+0{,}099}=\dfrac{0{,}0095}{0{,}1085}\approx\mathbf{0{,}0876}$; $PV^-=\dfrac{0{,}891}{0{,}891+0{,}0005}\approx\mathbf{0{,}9994}$.</li>
+      <li>Nhận xét: cùng một xét nghiệm, dương tính ở bệnh viện chuyên khoa đáng tin (80%) nhưng ở cộng đồng chỉ ~9%.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.5</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Bernoulli · ít nhất / nhiều nhất</span></div>
+  <p>Tỉ lệ implant nha khoa tích hợp xương thành công là $0{,}95$. Một bác sĩ đặt 10 implant (độc lập). Tính xác suất: (a) tất cả thành công; (b) ít nhất 9 cái thành công; (c) nhiều nhất 8 cái thành công. (d) Số implant thành công có khả năng nhất là bao nhiêu?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $0{,}95^{10}\approx\mathbf{0{,}5987}$.</li>
+      <li>(b) $P_{10}(9)+P_{10}(10)=10\cdot0{,}95^9\cdot0{,}05+0{,}95^{10}\approx0{,}3151+0{,}5987=\mathbf{0{,}9139}$.</li>
+      <li>(c) Đối của (b): $1-0{,}9139=\mathbf{0{,}0861}$.</li>
+      <li>(d) $9{,}5-0{,}05=9{,}45\le m_0\le9{,}5+0{,}95=10{,}45$ → $m_0=\mathbf{10}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.6</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Chọn khay rồi lấy · toàn phần + Bayes</span></div>
+  <p>Khay I có 8 ống thuốc tốt và 2 ống hỏng; khay II có 6 ống tốt và 4 ống hỏng. Chọn ngẫu nhiên một khay rồi từ khay đó lấy 2 ống. (a) Tính xác suất được 2 ống tốt. (b) Biết đã lấy được 2 ống tốt, tính xác suất chúng lấy từ khay I.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Gọi $G$: “lấy được 2 ống tốt”. Hệ đầy đủ: $K_1, K_2$ (chọn khay I, II), mỗi cái xác suất $0{,}5$.</li>
+      <li>$P(G\mid K_1)=\dfrac{C_8^2}{C_{10}^2}=\dfrac{28}{45}$; $P(G\mid K_2)=\dfrac{C_6^2}{C_{10}^2}=\dfrac{15}{45}$.</li>
+      <li>(a) $P(G)=0{,}5\cdot\dfrac{28}{45}+0{,}5\cdot\dfrac{15}{45}=\dfrac{43}{90}\approx\mathbf{0{,}4778}$.</li>
+      <li>(b) $P(K_1\mid G)=\dfrac{0{,}5\cdot28/45}{43/90}=\dfrac{28}{43}\approx\mathbf{0{,}6512}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.7</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Chuyển sản phẩm · hệ đầy đủ “ẩn”</span></div>
+  <p>Với hai khay như Bài 2.6, lấy ngẫu nhiên 1 ống từ khay I bỏ sang khay II, rồi từ khay II lấy ra 1 ống. Tính xác suất ống lấy ra bị hỏng.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Hệ đầy đủ là “ống được chuyển”: $C_t$ (ống tốt, xác suất $0{,}8$), $C_h$ (ống hỏng, $0{,}2$).</li>
+      <li>Nếu chuyển ống tốt, khay II có 7 tốt + 4 hỏng → $P(\text{hỏng}\mid C_t)=\frac{4}{11}$. Nếu chuyển ống hỏng: 6 tốt + 5 hỏng → $\frac{5}{11}$.</li>
+      <li>$P=0{,}8\cdot\dfrac{4}{11}+0{,}2\cdot\dfrac{5}{11}=\dfrac{4{,}2}{11}=\dfrac{21}{55}\approx\mathbf{0{,}3818}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.8</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Dừng ở lần thứ k</span></div>
+  <p>Tỉ lệ phim X-quang phải chụp lại là $0{,}1$ (độc lập). Kiểm tra lần lượt các phim, đến khi gặp phim <b>thứ hai</b> phải chụp lại thì dừng. Tính xác suất dừng ở phim thứ 6.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <p>5 phim đầu có đúng 1 phim hỏng, phim thứ 6 hỏng: $C_5^1\cdot0{,}1\cdot0{,}9^4\cdot0{,}1=5\cdot0{,}1\cdot0{,}6561\cdot0{,}1\approx\mathbf{0{,}0328}$.</p>
+  </div></details>
+</div>
+
+<h3 id="bt-muc-3">Mức 3 — Vận dụng cao</h3>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.1</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hệ 2 ẩn · độc lập</span></div>
+  <p>Hai máy X-quang hoạt động độc lập. Xác suất cả hai cùng hỏng trong một tháng là $0{,}02$; xác suất có ít nhất một máy hỏng là $0{,}28$. Biết máy I dễ hỏng hơn máy II. Tìm xác suất hỏng của mỗi máy, rồi tính xác suất đúng một máy hỏng.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Đặt $x=P(\text{máy I hỏng})$, $y=P(\text{máy II hỏng})$, $x&gt;y$.</li>
+      <li>Độc lập: $xy=0{,}02$. Công thức cộng: $x+y-xy=0{,}28\Rightarrow x+y=0{,}30$.</li>
+      <li>$x, y$ là nghiệm của $t^2-0{,}3t+0{,}02=0$: $\Delta=0{,}09-0{,}08=0{,}01$ → $t=\dfrac{0{,}3\pm0{,}1}{2}\in\{0{,}2;\ 0{,}1\}$.</li>
+      <li>Vì $x&gt;y$: $\mathbf{x=0{,}2,\ y=0{,}1}$.</li>
+      <li>Đúng một máy hỏng $=$ ít nhất một $-$ cả hai $=0{,}28-0{,}02=\mathbf{0{,}26}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.2</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hệ 2 ẩn · toàn phần + Bayes</span></div>
+  <p>Bệnh viện có hai khoa điều trị cùng một bệnh: khoa I nhận 60% bệnh nhân, khoa II nhận 40%. Tỉ lệ khỏi bệnh của khoa I là $x$, của khoa II là $y$. Biết tỉ lệ khỏi bệnh chung là 82%, và trong số bệnh nhân <b>không khỏi</b> có $\frac13$ thuộc khoa I. Tìm $x, y$. Sau đó, chọn ngẫu nhiên một bệnh nhân đã khỏi, tính xác suất người đó thuộc khoa II.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Toàn phần: $0{,}6x+0{,}4y=0{,}82$. (1)</li>
+      <li>$P(\overline K)=0{,}18$. Bayes cho “không khỏi”: $P(I\mid\overline K)=\dfrac{0{,}6(1-x)}{0{,}18}=\dfrac13\Rightarrow0{,}6(1-x)=0{,}06\Rightarrow x=\mathbf{0{,}9}$.</li>
+      <li>Thay vào (1): $0{,}54+0{,}4y=0{,}82\Rightarrow y=\mathbf{0{,}7}$.</li>
+      <li>$P(II\mid K)=\dfrac{0{,}4\cdot0{,}7}{0{,}82}=\dfrac{0{,}28}{0{,}82}\approx\mathbf{0{,}3415}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.3</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hệ 2 ẩn · tìm Se, Sp</span></div>
+  <p>Tỉ lệ mắc bệnh trong cộng đồng là 10%. Một xét nghiệm cho kết quả dương tính ở 18% số người được làm, và tỉ lệ chẩn đoán đúng chung là 90%. Tìm độ nhạy $x$ và độ đặc hiệu $y$, rồi tính $PV^+$ và $PV^-$.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Dương tính: $P(T^+)=0{,}1x+0{,}9(1-y)=0{,}18$. (1)</li>
+      <li>Chẩn đoán đúng: $0{,}1x+0{,}9y=0{,}9$. (2)</li>
+      <li>Cộng (1) và (2): $0{,}2x+0{,}9=1{,}08\Rightarrow x=\mathbf{0{,}9}$. Thay vào (2): $0{,}9y=0{,}81\Rightarrow y=\mathbf{0{,}9}$.</li>
+      <li>$PV^+=\dfrac{0{,}1\cdot0{,}9}{0{,}18}=\mathbf{0{,}5}$; $PV^-=\dfrac{0{,}9\cdot0{,}9}{0{,}82}=\dfrac{0{,}81}{0{,}82}\approx\mathbf{0{,}9878}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.4</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bài toán ngược xét nghiệm</span></div>
+  <p>Tỉ lệ mắc bệnh là 5%. Nếu xét nghiệm dương tính thì khả năng mắc bệnh là 20%; nếu âm tính thì khả năng mắc bệnh là 1,25%. Tính xác suất xét nghiệm dương tính, độ nhạy và độ đặc hiệu.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Đặt $x=P(T^+)$: $0{,}05=0{,}2x+0{,}0125(1-x)\Rightarrow0{,}0375=0{,}1875x\Rightarrow x=\mathbf{0{,}2}$.</li>
+      <li>$Se=\dfrac{0{,}2\cdot0{,}2}{0{,}05}=\mathbf{0{,}8}$.</li>
+      <li>$Sp=\dfrac{0{,}8\cdot0{,}9875}{0{,}95}=\dfrac{0{,}79}{0{,}95}\approx\mathbf{0{,}8316}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.5</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bayes hai lần liên tiếp</span></div>
+  <p>Dùng xét nghiệm ở Ví dụ 9.2 (tỉ lệ mắc 2%, $Se=0{,}9$, $Sp=0{,}85$). Một người dương tính lần 1 và được làm lại lần 2 (hai lần độc lập với nhau khi đã biết tình trạng bệnh). Tính khả năng người đó mắc bệnh nếu (a) lần 2 cũng dương tính; (b) lần 2 âm tính.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Sau lần 1: $P(M^+\mid T_1^+)\approx0{,}1091$ (Ví dụ 10.1).</li>
+      <li>(a) Hai lần dương: $P(M^+\mid T_1^+T_2^+)=\dfrac{0{,}02\cdot0{,}9^2}{0{,}02\cdot0{,}9^2+0{,}98\cdot0{,}15^2}=\dfrac{0{,}0162}{0{,}0162+0{,}02205}\approx\mathbf{0{,}4235}$.</li>
+      <li>(b) Dương rồi âm: $\dfrac{0{,}02\cdot0{,}9\cdot0{,}1}{0{,}0018+0{,}98\cdot0{,}15\cdot0{,}85}=\dfrac{0{,}0018}{0{,}12675}\approx\mathbf{0{,}0142}$.</li>
+      <li>Ý nghĩa: mỗi kết quả mới lại “cập nhật” xác suất — hậu nghiệm của lần trước trở thành tiên nghiệm của lần sau (thử lấy $0{,}1091$ làm tỉ lệ mắc rồi áp dụng Bayes cho lần 2, bạn sẽ ra đúng $0{,}4235$).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.6</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bernoulli với p chưa biết</span></div>
+  <p>Xác suất để trong 2 bệnh nhân điều trị có đúng 1 người khỏi là $0{,}42$; biết tỉ lệ khỏi lớn hơn 50%. Tìm tỉ lệ khỏi $p$, rồi tính xác suất trong 4 bệnh nhân có ít nhất 3 người khỏi.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$C_2^1p(1-p)=0{,}42\Rightarrow p^2-p+0{,}21=0\Rightarrow p\in\{0{,}7;\ 0{,}3\}$ → $p=\mathbf{0{,}7}$.</li>
+      <li>$P_4(3)+P_4(4)=4\cdot0{,}7^3\cdot0{,}3+0{,}7^4=0{,}4116+0{,}2401=\mathbf{0{,}6517}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.7</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Tìm n nhỏ nhất</span></div>
+  <p>Mỗi phim X-quang phát hiện được tổn thương (nếu có) với xác suất $0{,}6$, các phim độc lập. Cần chụp ít nhất bao nhiêu phim để xác suất phát hiện tổn thương ít nhất một lần không nhỏ hơn $0{,}99$?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$1-0{,}4^n\ge0{,}99\iff0{,}4^n\le0{,}01\iff n\ge\dfrac{\ln0{,}01}{\ln0{,}4}=\dfrac{-4{,}6052}{-0{,}9163}\approx5{,}03$.</li>
+      <li>$n_{\min}=\mathbf{6}$. Kiểm tra: $0{,}4^5=0{,}01024&gt;0{,}01$ (chưa đạt, dù rất sát!), $0{,}4^6\approx0{,}0041$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.8</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bernoulli + Bayes + cập nhật</span></div>
+  <p>Một lô thuốc (rất nhiều lọ) đến từ nhà máy I (tỉ lệ lọ hỏng 10%) hoặc nhà máy II (tỉ lệ hỏng 20%), khả năng như nhau. Lấy 3 lọ kiểm tra thấy đúng 1 lọ hỏng. (a) Tính xác suất lô thuốc của nhà máy II. (b) Lấy thêm một lọ nữa từ lô đó, tính xác suất lọ này hỏng.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Gọi $D$: “3 lọ có đúng 1 lọ hỏng”. Bernoulli: $P(D\mid I)=3\cdot0{,}1\cdot0{,}9^2=0{,}243$; $P(D\mid II)=3\cdot0{,}2\cdot0{,}8^2=0{,}384$.</li>
+      <li>(a) $P(II\mid D)=\dfrac{0{,}5\cdot0{,}384}{0{,}5\cdot0{,}243+0{,}5\cdot0{,}384}=\dfrac{0{,}384}{0{,}627}\approx\mathbf{0{,}6124}$; $P(I\mid D)\approx0{,}3876$.</li>
+      <li>(b) Toàn phần với xác suất <b>đã cập nhật</b>: $0{,}3876\cdot0{,}1+0{,}6124\cdot0{,}2\approx\mathbf{0{,}1612}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.9</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Cộng 3 biến cố · tìm ẩn</span></div>
+  <p>Trong một lớp: 40% học sinh sâu răng ($S$), 30% viêm nướu ($V$), 25% có nhiều mảng bám ($M$). Biết $P(SV)=0{,}15$; $P(SM)=0{,}12$; $P(VM)=0{,}10$ và 37% học sinh không có vấn đề nào trong ba vấn đề trên. Tìm xác suất một em có cả ba vấn đề.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>De Morgan: $P(S\cup V\cup M)=1-0{,}37=0{,}63$.</li>
+      <li>Công thức cộng 3 biến cố với ẩn $x=P(SVM)$: $0{,}63=0{,}4+0{,}3+0{,}25-0{,}15-0{,}12-0{,}10+x=0{,}58+x$.</li>
+      <li>$x=\mathbf{0{,}05}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="pager" id="pager"></div>
+</main>
+</div>
+
+<footer class="site">Bài 1 · Xác suất — tài liệu tự học, ví dụ và bài tập là bài mới (không trùng giáo trình).</footer>
+</body>
+</html>
