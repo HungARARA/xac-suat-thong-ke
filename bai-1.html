@@ -98,7 +98,7 @@
 </div>
 <div class="box calc">
   <div class="box-title"><span class="tag">Bấm máy</span>Tổ hợp, chỉnh hợp, giai thừa trên Vinacal 680EX Plus</div>
-  <p>$C_n^k$: <span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>÷</kbd>k<kbd>=</kbd></span> · $A_n^k$: <span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>×</kbd>k<kbd>=</kbd></span> · $n!$: <span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>x<sup>−1</sup></kbd><kbd>=</kbd></span>. Ví dụ $C_6^4$: <span class="keys"><kbd>6</kbd><kbd class="fn">SHIFT</kbd><kbd>÷</kbd><kbd>4</kbd><kbd>=</kbd></span> → <span class="lcd">15</span> (màn hình viết <span class="lcd">6C4</span>).</p>
+  <p>$C_n^k$: <span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>÷</kbd>k<kbd>=</kbd></span> · $A_n^k$: <span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>×</kbd>k<kbd>=</kbd></span> · $n!$: <span class="keys">n<kbd class="fn">SHIFT</kbd><kbd><i>x</i></kbd><kbd>=</kbd></span>. Ví dụ $C_6^4$: <span class="keys"><kbd>6</kbd><kbd class="fn">SHIFT</kbd><kbd>÷</kbd><kbd>4</kbd><kbd>=</kbd></span> → <span class="lcd">15</span> (màn hình viết <span class="lcd">6C4</span>).</p>
   <p class="more"><a href="may-tinh.html">Trang “Bấm máy”</a>: cách đọc ký hiệu phím và mọi chức năng dùng trong môn học.</p>
 </div>
 
@@ -558,8 +558,8 @@ $$\begin{cases}H_1\cup H_2\cup\dots\cup H_n=\Omega & \text{(phủ kín: chắc c
 </div>
 <div class="box calc">
   <div class="box-title"><span class="tag">Bấm máy</span>Bayes không làm tròn giữa chừng: cất từng nhánh vào A, B, C</div>
-  <p>Ví dụ 8.1: <span class="keys"><kbd>0.5</kbd><kbd>×</kbd><kbd>0.04</kbd><kbd>STO</kbd><kbd>(−)</kbd></span> (nhánh Minh → A), <span class="keys"><kbd>0.3</kbd><kbd>×</kbd><kbd>0.06</kbd><kbd>STO</kbd><kbd>°'"</kbd></span> (Lan → B), <span class="keys"><kbd>0.2</kbd><kbd>×</kbd><kbd>0.1</kbd><kbd>STO</kbd><kbd>x<sup>−1</sup></kbd></span> (Hòa → C). Rồi gõ $\dfrac{C}{A+B+C}$:</p>
-  <p><span class="keys"><kbd class="fn">ALPHA</kbd><kbd>x<sup>−1</sup></kbd><kbd>÷</kbd><kbd>(</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>+</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>+</kbd><kbd class="fn">ALPHA</kbd><kbd>x<sup>−1</sup></kbd><kbd>)</kbd><kbd>=</kbd></span> → máy hiện phân số $\frac{10}{29}$; nhấn <span class="keys"><kbd class="fn">SHIFT</kbd><kbd>=</kbd></span> → <span class="lcd">0.3448275862</span>.</p>
+  <p>Ví dụ 8.1: <span class="keys"><kbd>0.5</kbd><kbd>×</kbd><kbd>0.04</kbd><kbd class="fn">SHIFT</kbd><kbd>RCL</kbd><kbd>(−)</kbd></span> (nhánh Minh → A), <span class="keys"><kbd>0.3</kbd><kbd>×</kbd><kbd>0.06</kbd><kbd class="fn">SHIFT</kbd><kbd>RCL</kbd><kbd>°'"</kbd></span> (Lan → B), <span class="keys"><kbd>0.2</kbd><kbd>×</kbd><kbd>0.1</kbd><kbd class="fn">SHIFT</kbd><kbd>RCL</kbd><kbd>log<sub>■</sub>□</kbd></span> (Hòa → C). Rồi gõ $\dfrac{C}{A+B+C}$:</p>
+  <p><span class="keys"><kbd class="fn">ALPHA</kbd><kbd>log<sub>■</sub>□</kbd><kbd>÷</kbd><kbd>(</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>+</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>+</kbd><kbd class="fn">ALPHA</kbd><kbd>log<sub>■</sub>□</kbd><kbd>)</kbd><kbd>=</kbd></span> → máy hiện phân số $\frac{10}{29}$; nhấn <span class="keys"><kbd class="fn">SHIFT</kbd><kbd>=</kbd></span> → <span class="lcd">0.3448275862</span>.</p>
   <p><b>Hiểu:</b> mẫu số $A+B+C=0{,}058$ là tổng các nhánh tới “bong” (toàn phần), tử số là nhánh của BS Hòa — đúng câu “Bayes = một nhánh chia cho tổng các nhánh”. Đổi tử số thành A hoặc B là có ngay hai hậu nghiệm còn lại. <a href="may-tinh.html#bien-nho">Chi tiết từng bước →</a></p>
 </div>
 <div class="box trap">
@@ -697,8 +697,8 @@ $$\begin{cases}H_1\cup H_2\cup\dots\cup H_n=\Omega & \text{(phủ kín: chắc c
 <div class="box calc">
   <div class="box-title"><span class="tag">Bấm máy</span>Tự kiểm chứng “PV⁺ phụ thuộc tỉ lệ mắc bệnh” bằng CALC</div>
   <p>Gõ công thức $PV^+$ <b>một lần</b>, dùng biến A $=P(M^+)$, B $=Se$, C $=Sp$:</p>
-  <p><span class="keys"><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>×</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>÷</kbd><kbd>(</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>×</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>+</kbd><kbd>(</kbd><kbd>1</kbd><kbd>−</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>)</kbd><kbd>×</kbd><kbd>(</kbd><kbd>1</kbd><kbd>−</kbd><kbd class="fn">ALPHA</kbd><kbd>x<sup>−1</sup></kbd><kbd>)</kbd><kbd>)</kbd></span></p>
-  <p>Nhấn <span class="keys"><kbd>CALC</kbd></span>, nhập A = 0.02, B = 0.9, C = 0.85 (mỗi số nhấn <kbd class="key">=</kbd>) → $\frac{6}{55}\approx0{,}109$ — đúng Ví dụ 10.1. Nhấn <span class="keys"><kbd>CALC</kbd></span> lần nữa, chỉ đổi A thành 0.2 (B, C nhấn = để giữ nguyên) → $0{,}6$.</p>
+  <p><span class="keys"><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>×</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>÷</kbd><kbd>(</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>×</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>+</kbd><kbd>(</kbd><kbd>1</kbd><kbd>−</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>)</kbd><kbd>×</kbd><kbd>(</kbd><kbd>1</kbd><kbd>−</kbd><kbd class="fn">ALPHA</kbd><kbd>log<sub>■</sub>□</kbd><kbd>)</kbd><kbd>)</kbd></span></p>
+  <p>Nhấn <span class="keys"><kbd>CALC</kbd></span>, nhập A = 0.02, B = 0.9, C = 0.85 (mỗi số nhấn <kbd class="key">=</kbd>), rồi nhấn <kbd class="key">=</kbd> <b>thêm một lần</b> để máy tính → $\frac{6}{55}\approx0{,}109$ — đúng Ví dụ 10.1. Nhấn <span class="keys"><kbd>CALC</kbd></span> lần nữa, chỉ đổi A thành 0.2 (ở B, C nhấn = để giữ nguyên, rồi = để tính) → $0{,}6$.</p>
   <p><b>Hiểu:</b> cùng một xét nghiệm, tỉ lệ mắc bệnh 2% → 20% làm $PV^+$ nhảy từ 11% lên 60%. Đó chính là điều khung “1000 người” ở trên cho thấy bằng hình. <a href="may-tinh.html#calc">Chi tiết →</a></p>
 </div>
 
