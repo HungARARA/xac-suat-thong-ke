@@ -10,16 +10,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/site.js?v=3"></script>
   <script defer src="assets/js/phuluc-data.js"></script>
   <script defer src="assets/js/phuluc.js"></script>
 </head>
 <body data-lesson="phu-luc">
 <header class="topbar">
-  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục">☰ Mục lục</button>
+  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục" aria-controls="toc" aria-expanded="false"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span>Mục lục</span></button>
   <a class="brand" href="index.html"><span class="brand-mark">XS</span><span>Xác suất – Thống kê</span></a>
   <span class="crumb">/ Bảng phụ lục</span>
   <span class="spacer"></span>
@@ -29,7 +29,7 @@
 </header>
 
 <div class="layout">
-<nav class="toc" aria-label="Mục lục">
+<nav class="toc" id="toc" aria-label="Mục lục">
   <div class="toc-title">Các bảng phụ lục</div>
   <ol id="tocList"></ol>
 </nav>

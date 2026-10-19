@@ -22,7 +22,8 @@ const LESSONS = [
 
 /* Trang phụ (không phải bài học): hiện ở thanh điều hướng, sau các bài. */
 const EXTRA_PAGES = [
-  { id: "phu-luc", href: "phu-luc.html", no: "Bảng phụ lục" }
+  { id: "phu-luc", href: "phu-luc.html", no: "Bảng phụ lục" },
+  { id: "may-tinh", href: "may-tinh.html", no: "Bấm máy" }
 ];
 
 /* Các bài sắp học (hiện mờ trên trang chủ). Khi làm xong bài nào thì chuyển nó lên LESSONS. */
@@ -121,25 +122,45 @@ const COMING = [
       return `<li class="${h.tagName === "H3" ? "lv3" : "lv2"}"><a href="#${h.id}">${label}</a></li>`;
     }).join("");
     toc.addEventListener("click", e => {
-      if (e.target.closest("a")) document.body.classList.remove("toc-open");
+      if (e.target.closest("a")) setToc(false);
     });
     return heads;
+  }
+
+  /* ---------- mở / đóng mục lục (điện thoại, máy tính bảng) ---------- */
+  function setToc(open) {
+    document.body.classList.toggle("toc-open", open);
+    const b = document.getElementById("tocBtn");
+    if (b) b.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) revealActive(true);
+  }
+  /* cuộn khung mục lục sao cho mục đang đọc nằm trong tầm nhìn */
+  function revealActive(force) {
+    const nav = document.querySelector(".toc");
+    const a = nav && nav.querySelector("a.active");
+    if (!a) return;
+    const top = a.offsetTop, h = nav.clientHeight;
+    if (force || top < nav.scrollTop + 40 || top > nav.scrollTop + h - 60) {
+      nav.scrollTop = Math.max(0, top - h / 3);
+    }
   }
 
   function scrollSpy(heads) {
     const links = new Map();
     document.querySelectorAll("#tocList a").forEach(a => links.set(a.getAttribute("href").slice(1), a));
     const bar = document.getElementById("progress");
-    let ticking = false;
+    let ticking = false, last;
     function update() {
       ticking = false;
       const y = window.scrollY + 120;
       let cur = null;
       for (const h of heads) { if (h.offsetTop <= y) cur = h; else break; }
-      links.forEach(a => a.classList.remove("active"));
-      if (cur && links.get(cur.id)) {
-        const a = links.get(cur.id);
-        a.classList.add("active");
+      const next = cur ? links.get(cur.id) : null;
+      if (next !== last) {
+        links.forEach(a => a.classList.remove("active"));
+        if (next) next.classList.add("active");
+        last = next;
+        revealActive(false);
       }
       if (bar) {
         const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -174,7 +195,14 @@ const COMING = [
       b.addEventListener("click", () => setTheme(currentTheme() === "dark" ? "light" : "dark"));
     }
     const tb = document.getElementById("tocBtn");
-    if (tb) tb.addEventListener("click", () => document.body.classList.toggle("toc-open"));
+    if (tb) {
+      tb.addEventListener("click", () => setToc(!document.body.classList.contains("toc-open")));
+      /* chạm ra ngoài mục lục (vào nền mờ) hoặc nhấn Esc thì đóng */
+      document.addEventListener("click", e => {
+        if (document.body.classList.contains("toc-open") && !e.target.closest(".toc, #tocBtn")) setToc(false);
+      });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") setToc(false); });
+    }
 
     buildTopnav();
     buildPager();

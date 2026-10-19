@@ -10,16 +10,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/site.js?v=3"></script>
   <script defer src="assets/js/plot.js"></script>
   <script defer src="assets/js/bai1.js"></script>
 </head>
 <body data-lesson="bai-1">
 <header class="topbar">
-  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục">☰ Mục lục</button>
+  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục" aria-controls="toc" aria-expanded="false"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span>Mục lục</span></button>
   <a class="brand" href="index.html"><span class="brand-mark">XS</span><span>Xác suất – Thống kê</span></a>
   <span class="crumb">/ Bài 1 · Xác suất</span>
   <span class="spacer"></span>
@@ -29,7 +29,7 @@
 </header>
 
 <div class="layout">
-<nav class="toc" aria-label="Mục lục">
+<nav class="toc" id="toc" aria-label="Mục lục">
   <div class="toc-title">Mục lục Bài 1</div>
   <ol id="tocList"></ol>
 </nav>
@@ -95,6 +95,11 @@
       <p class="small">Các phép toán: giao hoán, kết hợp, phân phối $S(V\cup H)=SV\cup SH$; $S\cup S=S$; $S\cap\Omega=S$; $S\cup\varnothing=S$.</p>
     </div>
   </div>
+</div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Tổ hợp, chỉnh hợp, giai thừa trên Vinacal 680EX Plus</div>
+  <p>$C_n^k$: <span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>÷</kbd>k<kbd>=</kbd></span> · $A_n^k$: <span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>×</kbd>k<kbd>=</kbd></span> · $n!$: <span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>x<sup>−1</sup></kbd><kbd>=</kbd></span>. Ví dụ $C_6^4$: <span class="keys"><kbd>6</kbd><kbd class="fn">SHIFT</kbd><kbd>÷</kbd><kbd>4</kbd><kbd>=</kbd></span> → <span class="lcd">15</span> (màn hình viết <span class="lcd">6C4</span>).</p>
+  <p class="more"><a href="may-tinh.html">Trang “Bấm máy”</a>: cách đọc ký hiệu phím và mọi chức năng dùng trong môn học.</p>
 </div>
 
 <!-- =============================================================== -->
@@ -551,6 +556,12 @@ $$\begin{cases}H_1\cup H_2\cup\dots\cup H_n=\Omega & \text{(phủ kín: chắc c
     <li>Lấy nhánh được hỏi chia cho $P(B)$.</li>
   </ol>
 </div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Bayes không làm tròn giữa chừng: cất từng nhánh vào A, B, C</div>
+  <p>Ví dụ 8.1: <span class="keys"><kbd>0.5</kbd><kbd>×</kbd><kbd>0.04</kbd><kbd>STO</kbd><kbd>(−)</kbd></span> (nhánh Minh → A), <span class="keys"><kbd>0.3</kbd><kbd>×</kbd><kbd>0.06</kbd><kbd>STO</kbd><kbd>°'"</kbd></span> (Lan → B), <span class="keys"><kbd>0.2</kbd><kbd>×</kbd><kbd>0.1</kbd><kbd>STO</kbd><kbd>x<sup>−1</sup></kbd></span> (Hòa → C). Rồi gõ $\dfrac{C}{A+B+C}$:</p>
+  <p><span class="keys"><kbd class="fn">ALPHA</kbd><kbd>x<sup>−1</sup></kbd><kbd>÷</kbd><kbd>(</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>+</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>+</kbd><kbd class="fn">ALPHA</kbd><kbd>x<sup>−1</sup></kbd><kbd>)</kbd><kbd>=</kbd></span> → máy hiện phân số $\frac{10}{29}$; nhấn <span class="keys"><kbd class="fn">SHIFT</kbd><kbd>=</kbd></span> → <span class="lcd">0.3448275862</span>.</p>
+  <p><b>Hiểu:</b> mẫu số $A+B+C=0{,}058$ là tổng các nhánh tới “bong” (toàn phần), tử số là nhánh của BS Hòa — đúng câu “Bayes = một nhánh chia cho tổng các nhánh”. Đổi tử số thành A hoặc B là có ngay hai hậu nghiệm còn lại. <a href="may-tinh.html#bien-nho">Chi tiết từng bước →</a></p>
+</div>
 <div class="box trap">
   <div class="box-title"><span class="tag">Bẫy</span>Nhầm cái đề cho với cái đề hỏi</div>
   <p>Đề thường cho $P(B\mid H_i)$ (“tỉ lệ bong của BS Hòa là 10%”) và hỏi $P(H_i\mid B)$ (“miếng bị bong, khả năng do BS Hòa”). Các cụm từ “<b>biết rằng…</b>”, “<b>đã thấy…</b>”, “<b>trong số những… bị…</b>” cho biết biến cố nào đứng sau dấu “|”.</p>
@@ -683,6 +694,13 @@ $$\begin{cases}H_1\cup H_2\cup\dots\cup H_n=\Omega & \text{(phủ kín: chắc c
     <li>Vì thế $PV$ tính từ một bảng nghiên cứu chỉ đúng khi tỉ lệ người bệnh trong bảng bằng tỉ lệ ngoài cộng đồng (ở Ví dụ 9.1 tỉ lệ đó là $50/250=20\%$).</li>
   </ul>
 </div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Tự kiểm chứng “PV⁺ phụ thuộc tỉ lệ mắc bệnh” bằng CALC</div>
+  <p>Gõ công thức $PV^+$ <b>một lần</b>, dùng biến A $=P(M^+)$, B $=Se$, C $=Sp$:</p>
+  <p><span class="keys"><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>×</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>÷</kbd><kbd>(</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>×</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>+</kbd><kbd>(</kbd><kbd>1</kbd><kbd>−</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>)</kbd><kbd>×</kbd><kbd>(</kbd><kbd>1</kbd><kbd>−</kbd><kbd class="fn">ALPHA</kbd><kbd>x<sup>−1</sup></kbd><kbd>)</kbd><kbd>)</kbd></span></p>
+  <p>Nhấn <span class="keys"><kbd>CALC</kbd></span>, nhập A = 0.02, B = 0.9, C = 0.85 (mỗi số nhấn <kbd class="key">=</kbd>) → $\frac{6}{55}\approx0{,}109$ — đúng Ví dụ 10.1. Nhấn <span class="keys"><kbd>CALC</kbd></span> lần nữa, chỉ đổi A thành 0.2 (B, C nhấn = để giữ nguyên) → $0{,}6$.</p>
+  <p><b>Hiểu:</b> cùng một xét nghiệm, tỉ lệ mắc bệnh 2% → 20% làm $PV^+$ nhảy từ 11% lên 60%. Đó chính là điều khung “1000 người” ở trên cho thấy bằng hình. <a href="may-tinh.html#calc">Chi tiết →</a></p>
+</div>
 
 <h3 id="td-nguoc">10.3. Bài toán ngược: biết giá trị tiên đoán, tìm độ nhạy – độ đặc hiệu</h3>
 <p>Dạng này hay ra thi: đề cho tỉ lệ mắc bệnh và cho “nếu dương tính thì khả năng mắc bệnh là…, nếu âm tính thì khả năng mắc bệnh là…”, hỏi $P(T^+)$, $Se$, $Sp$. Mẹo then chốt: <b>dùng $\{T^+,T^-\}$ làm hệ đầy đủ</b> và đặt ẩn $x=P(T^+)$.</p>
@@ -738,6 +756,15 @@ $$\begin{cases}H_1\cup H_2\cup\dots\cup H_n=\Omega & \text{(phủ kín: chắc c
     </ol>
   </div></details>
 </div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Ba cách bấm Ví dụ 11.1</div>
+  <ol class="keyseq">
+    <li><b>Theo công thức</b> (cách trình bày khi thi): $C_6^4\cdot0{,}7^4\cdot0{,}3^2$ → <span class="keys"><kbd>6</kbd><kbd class="fn">SHIFT</kbd><kbd>÷</kbd><kbd>4</kbd><kbd>×</kbd><kbd>0.7</kbd><kbd>x<sup>■</sup></kbd><kbd>4</kbd><kbd>▶</kbd><kbd>×</kbd><kbd>0.3</kbd><kbd>x²</kbd><kbd>=</kbd></span> → <span class="lcd">0.324135</span>.</li>
+    <li><b>Soát bằng Distribution:</b> <span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>4</kbd><span class="lcd">Binomial PD</span><kbd>2</kbd></span>, nhập x = 4, N = 6, p = 0.7 → <span class="lcd">0.324135</span>. Câu (d) dùng <span class="lcd">Binomial CD</span> (<span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>▼</kbd><kbd>1</kbd></span>): $P(X\le4)=0{,}579825$; câu (c) $=1-P(X\le4)=0{,}420175$.</li>
+    <li><b>Xem cả phân phối:</b> <span class="keys"><kbd class="fn">MENU</kbd><kbd>8</kbd></span> Table với $f(x)=C_6^x\,0{,}7^x\,0{,}3^{6-x}$, $x$ từ 0 đến 6 — 7 cột của biểu đồ dưới đây hiện thành 7 con số, lớn nhất ở $x=4$.</li>
+  </ol>
+  <p class="more"><b>Hiểu:</b> CD luôn cộng dồn “từ 0 đến $x$”, nên “ít nhất $k$” $=1-$ CD$(k-1)$ và “từ $a$ đến $b$” $=$ CD$(b)-$ CD$(a-1)$ — vẫn là chiêu biến cố đối của mục 2.6. <a href="may-tinh.html#binomial">Bảng đổi câu chữ →</a> · <a href="may-tinh.html#table-bernoulli">Cách lập bảng →</a></p>
+</div>
 <div class="widget" id="binWidget">
   <div class="widget-title">Biểu đồ Bernoulli</div>
   <div class="widget-sub">Mỗi cột là $P_n(m)$. Chọn loại câu hỏi để tô các cột cần cộng. Rê chuột lên cột để xem giá trị.</div>
@@ -774,6 +801,10 @@ $$\begin{cases}H_1\cup H_2\cup\dots\cup H_n=\Omega & \text{(phủ kín: chắc c
       <li>$n$ nguyên nên $n_{\min}=\mathbf{9}$. Kiểm tra: $0{,}7^8\approx0{,}0576&gt;0{,}05$ (chưa đủ), $0{,}7^9\approx0{,}0404\le0{,}05$ ✓.</li>
     </ol>
   </div></details>
+</div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Logarit — và cách “nhìn thấy” đáp số bằng bảng</div>
+  <p><span class="keys"><kbd>ln</kbd><kbd>0.05</kbd><kbd>)</kbd><kbd>÷</kbd><kbd>ln</kbd><kbd>0.7</kbd><kbd>)</kbd><kbd>=</kbd></span> → <span class="lcd">8.399054446</span> → làm tròn <b>lên</b> thành 9. Kiểm chứng bằng <span class="keys"><kbd class="fn">MENU</kbd><kbd>8</kbd></span> Table với $f(x)=1-0{,}7^x$, $x$ từ 1 đến 12: dòng 8 là $0{,}9424$ (chưa đủ), dòng 9 là $0{,}9596$ — lần đầu vượt 0,95. <a href="may-tinh.html#table-n">Chi tiết →</a></p>
 </div>
 
 <h3 id="ber-dung">11.5. Dạng “kiểm tra đến khi… thì dừng ở lần thứ $k$”</h3>

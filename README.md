@@ -6,6 +6,7 @@ Trang web tự học theo giáo trình *Xác suất – Thống kê Y học*: m�
 - `bai-1.html` — Bài 1. Xác suất (De Morgan, có điều kiện, nhân, cộng, toàn phần, Bayes, xét nghiệm, Bernoulli).
 - `bai-2.html` — Bài 2. Phân phối xác suất của biến ngẫu nhiên (tích phân từ con số 0, mật độ, hàm phân phối, kỳ vọng, phương sai, nhị thức, chuẩn, chuẩn tắc, χ², Student, Fisher, tra bảng).
 - `phu-luc.html` — Bảng phụ lục 1 – 6c: mỗi bảng có bản chép đúng như giáo trình (ô in sai tô đỏ) và bản đã sửa kèm ghi chú.
+- `may-tinh.html` — Bấm máy Vinacal 680EX Plus (menu kiểu Casio fx-580VN X): tổ hợp, biến nhớ, CALC, Table, Statistics, Distribution, tích phân. Trong các bài, khung `<div class="box calc">` (“Bấm máy”) đặt ngay chỗ cần dùng máy và dẫn link về trang này; phím ghi bằng `<span class="keys"><kbd>…</kbd></span>` (phím chức năng thêm `class="fn"`), chữ trên màn hình máy ghi bằng `<span class="lcd">…</span>`.
 
 ## Xem trên máy
 
@@ -22,6 +23,7 @@ rồi vào `http://localhost:8765`.
 1. Sao chép `bai-2.html` thành `bai-3.html`, sửa `<title>`, `data-lesson="bai-3"` ở thẻ `<body>`, phần tiêu đề và nội dung.
 2. Nếu bài có phần tương tác riêng, tạo `assets/js/bai3.js` và đổi dòng `<script defer src="assets/js/bai2.js">` thành `bai3.js`.
 3. Trong `assets/js/site.js`, chuyển bài đó từ mảng `COMING` sang mảng `LESSONS` (điền `id`, `href`, `no`, `title`, `desc`, `chips`). Trang chủ, thanh điều hướng và nút “Bài trước / Bài tiếp” tự cập nhật.
+4. Khi sửa `style.css` hoặc `site.js`, tăng số `?v=` ở thẻ `<link>`/`<script>` của mọi trang để điện thoại không dùng bản cũ trong bộ nhớ đệm.
 
 ## Cấu trúc
 

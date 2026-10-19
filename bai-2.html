@@ -10,16 +10,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/site.js?v=3"></script>
   <script defer src="assets/js/plot.js"></script>
   <script defer src="assets/js/bai2.js"></script>
 </head>
 <body data-lesson="bai-2">
 <header class="topbar">
-  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục">☰ Mục lục</button>
+  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục" aria-controls="toc" aria-expanded="false"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span>Mục lục</span></button>
   <a class="brand" href="index.html"><span class="brand-mark">XS</span><span>Xác suất – Thống kê</span></a>
   <span class="crumb">/ Bài 2 · Phân phối xác suất</span>
   <span class="spacer"></span>
@@ -29,7 +29,7 @@
 </header>
 
 <div class="layout">
-<nav class="toc" aria-label="Mục lục">
+<nav class="toc" id="toc" aria-label="Mục lục">
   <div class="toc-title">Mục lục Bài 2</div>
   <ol id="tocList"></ol>
 </nav>
@@ -197,6 +197,11 @@ $$\int_a^b f(x)\,dx$$
     <li>$F(2)=8-8+10=10$; $F(1)=1-2+5=4$.</li>
     <li>Kết quả: $10-4=6$.</li>
   </ol>
+</div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Soát tích phân bằng phím ∫</div>
+  <p>Nhấn <span class="keys"><kbd>∫</kbd></span>, gõ hàm (dùng phím <kbd class="key"><i>x</i></kbd>), <kbd class="key">▶</kbd> sang cận dưới, <kbd class="key">▶</kbd> sang cận trên, <kbd class="key">=</kbd>. Câu (a): <span class="keys"><kbd>∫</kbd><kbd><i>x</i></kbd><kbd>x²</kbd><kbd>▶</kbd><kbd>0</kbd><kbd>▶</kbd><kbd>2</kbd><kbd>=</kbd></span> → $2{,}6667=\frac83$ ✓. Câu (b) ra 10, câu (c) ra 6.</p>
+  <p><b>Hiểu:</b> máy <b>không</b> tìm nguyên hàm — nó cộng diện tích của rất nhiều mảnh nhỏ, đúng như khung tương tác 3.1, rồi cho ra một con số. Vì vậy vẫn phải làm tay theo 4 bước; máy chỉ cho biết bạn đã làm đúng chưa. <a href="may-tinh.html#tich-phan">Chi tiết →</a></p>
 </div>
 
 <h3 id="tp-tinh-chat">3.5. Năm tính chất sẽ dùng liên tục</h3>
@@ -482,9 +487,17 @@ $$F(x)=\int_{-\infty}^{x}f(t)\,dt\quad(\text{diện tích bên trái } x)$$
   <div class="box-title"><span class="tag">Ví dụ 8.3</span>Tiếp Ví dụ 7.2</div>
   <p>$Y=500X+200$: $D(Y)=500^2\cdot D(X)=250000\cdot0{,}46=115000$; $\sigma(Y)=\sqrt{115000}\approx\mathbf{339{,}1}$ nghìn đồng. Hằng số $+200$ không ảnh hưởng.</p>
 </div>
-<div class="box tip">
-  <div class="box-title"><span class="tag">Máy tính</span>Kiểm tra $E(X)$, $D(X)$ bằng máy Casio</div>
-  <p>Trên fx-580VN X: <kbd>MENU</kbd> → <b>Thống kê</b> (Statistics) → <b>1 biến</b> (1-Variable). Bật cột tần số: <kbd>SHIFT</kbd> <kbd>MENU</kbd> (SETUP) → Thống kê → Tần số: <b>Bật</b>. Nhập cột $x$ = các giá trị, cột tần số = các xác suất $p_i$. Sau đó <kbd>OPTN</kbd> → tính toán 1 biến: $\bar x$ chính là $E(X)$, $\sigma_x$ là $\sigma(X)$, $\sigma_x^2$ là $D(X)$. <span class="muted">(Tên menu có thể khác đôi chút tuỳ đời máy; fx-570VN Plus: <kbd>MODE</kbd> 3 → 1 và bật Frequency trong SETUP.)</span> Dùng để <b>kiểm tra</b>, khi thi vẫn nên trình bày bảng như trên.</p>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Soát $E(X)$, $D(X)$ trên Vinacal 680EX Plus</div>
+  <p><b>Biến rời rạc</b> (Ví dụ 8.1) — chế độ thống kê, cột tần số là xác suất:</p>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">SHIFT</kbd><kbd class="fn">MENU</kbd><kbd>▼</kbd><kbd>3</kbd><span class="lcd">Statistics</span><kbd>1</kbd><span class="lcd">On</span></span> <span class="why">bật cột Freq (chỉ cần làm một lần).</span></li>
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd><span class="lcd">1-Variable</span></span> <span class="why">cột x: 0, 1, 2, 3 (mỗi số nhấn =); đưa con trỏ lên ô Freq dòng 1, nhập 0.006, 0.092, 0.398, 0.504.</span></li>
+    <li><span class="keys"><kbd class="fn">OPTN</kbd><kbd>3</kbd><span class="lcd">1-Variable Calc</span></span> <span class="why">đọc $\bar x=2{,}4=E(X)$; $\Sigma x^2=6{,}22=E(X^2)$; $\sigma^2_x=0{,}46=D(X)$; $\sigma_x\approx0{,}678=\sigma(X)$; $n=1$ (tổng xác suất bằng 1 ✓).</span></li>
+  </ol>
+  <p><b>Vì sao được?</b> Máy tính $\bar x=\frac{\sum x_if_i}{\sum f_i}$ — trung bình có trọng số. Đặt trọng số $f_i=p_i$ (tổng bằng 1) thì $\bar x=\sum x_ip_i$, đúng định nghĩa kỳ vọng. Lấy $\sigma_x$, <b>không</b> lấy $s_x$ (đó là độ lệch chuẩn mẫu của Bài 3).</p>
+  <p><b>Biến liên tục</b> (Ví dụ 7.1, 8.2) — dùng phím <span class="keys"><kbd>∫</kbd></span>: $\int_0^3x\cdot\frac29(3x-x^2)\,dx$ → 1,5 và $\int_0^3x^2\cdot\frac29(3x-x^2)\,dx$ → 2,7.</p>
+  <p class="more">Khi thi vẫn trình bày bảng $x\,p$, $x^2p$ như trên; máy dùng để soát. <a href="may-tinh.html#statistics">Chi tiết từng phím →</a></p>
 </div>
 
 <!-- =============================================================== -->
@@ -517,6 +530,12 @@ $$F(x)=\int_{-\infty}^{x}f(t)\,dt\quad(\text{diện tích bên trái } x)$$
       <li>(d) $np-q=1{,}25\le m_0\le np+p=2{,}25$ → $m_0=\mathbf2$.</li>
     </ol>
   </div></details>
+</div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Soát Ví dụ 9.1 bằng Binomial PD / CD</div>
+  <p>(a) <span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>4</kbd><span class="lcd">Binomial PD</span><kbd>2</kbd></span>, nhập x = 2, N = 8, p = 0.25 → <span class="lcd">0.3114624</span>.<br>
+  (b) “ít nhất 2” $=1-P(X\le1)$: <span class="lcd">Binomial CD</span> (<span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>▼</kbd><kbd>1</kbd></span>) với x = 1 → $0{,}3670807$ → $1-0{,}3670807=0{,}6329193$.</p>
+  <p><b>Hiểu:</b> CD cộng dồn từ 0 đến $x$, nên “ít nhất 2” phải đi đường vòng qua biến cố đối “nhiều nhất 1” — đúng như bước (b) của lời giải. <a href="may-tinh.html#binomial">Bảng đổi câu chữ →</a></p>
 </div>
 <div class="widget" id="binWidget2">
   <div class="widget-title">Hình dạng phân phối nhị thức</div>
@@ -633,6 +652,15 @@ $$F(x)=\int_{-\infty}^{x}f(t)\,dt\quad(\text{diện tích bên trái } x)$$
     </ol>
   </div></details>
 </div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Soát Ví dụ 11.1 bằng Normal CD và Inverse Normal</div>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd><span class="lcd">Normal CD</span></span> rồi nhập Lower, Upper, <b>σ = 10</b> (độ lệch chuẩn, không phải 100), μ = 118.
+      <span class="why">(a) 110 → 130: <span class="lcd">0.6730749</span> · (b) 140 → $10^{99}$: <span class="lcd">0.0139034</span> · (c) $-10^{99}$ → 100: <span class="lcd">0.0359303</span> · (e) 103 → 133: <span class="lcd">0.8663856</span>. Gõ $10^{99}$: <span class="keys"><kbd>1</kbd><kbd>×10<sup>x</sup></kbd><kbd>99</kbd></span>; $-10^{99}$ thì thêm <kbd class="key">(−)</kbd> ở đầu.</span></li>
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd><span class="lcd">Inverse Normal</span></span> cho câu (d): Area là diện tích <b>bên trái</b> $h$, tức $1-0{,}05=0{,}95$; σ = 10, μ = 118 → <span class="lcd">134.4485363</span>.</li>
+  </ol>
+  <p><b>Hiểu:</b> nhập Lower $=-0{,}8$, Upper $=1{,}2$, σ = 1, μ = 0 (tức là đã chuẩn hoá) cũng ra đúng $0{,}67307$ — chuẩn hoá chỉ đổi thước đo, diện tích giữ nguyên. Máy chính xác hơn bảng (bảng làm tròn $z$ còn 2 chữ số) nên có thể lệch ở chữ số thứ tư. <a href="may-tinh.html#normal-cd">Chi tiết →</a></p>
+</div>
 <div class="widget" id="calcWidget">
   <div class="widget-title">Máy tính phân phối chuẩn từng bước</div>
   <div class="widget-sub">Nhập $\mu$, $\sigma$ và mốc; trang sẽ viết ra từng bước giống như khi bạn làm trên giấy (dùng giá trị bảng 4 chữ số).</div>
@@ -672,6 +700,14 @@ $$F(x)=\int_{-\infty}^{x}f(t)\,dt\quad(\text{diện tích bên trái } x)$$
   <tr><th>$z_\alpha$</th><td>1,282</td><td>1,645</td><td class="hl">1,960</td><td>2,326</td><td>2,576</td><td>3,090</td></tr>
 </table></div>
 <p class="small">Nên thuộc lòng 3 giá trị: $1{,}645$; $1{,}96$; $2{,}576$ — chúng xuất hiện liên tục ở Bài 4–5. Ví dụ: $P(-1{,}96&lt;Z&lt;1{,}96)=0{,}95$.</p>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Tra $\varphi(x)$ và $z_\alpha$ bằng máy</div>
+  <ul>
+    <li>$\varphi(x)$: <span class="lcd">Normal CD</span> với Lower 0, Upper $x$, σ 1, μ 0 — vì $\varphi(x)$ là diện tích từ 0 đến $x$. Hoặc <span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd><kbd>AC</kbd><kbd class="fn">OPTN</kbd><kbd>▼</kbd><kbd>4</kbd></span> chọn <span class="lcd">Q(</span>: $Q(x)=\varphi(x)$ (còn <span class="lcd">P(</span> $=G(x)$, <span class="lcd">R(</span> là phần bên phải). Ví dụ $\varphi(1{,}67)$ → $0{,}4525$.</li>
+    <li>$z_\alpha$: <span class="lcd">Inverse Normal</span> với Area $=\alpha$, σ 1, μ 0 — vì $z_\alpha$ là số có diện tích bên trái bằng $\alpha$. Ví dụ $z_{0{,}975}$ → <span class="lcd">1.959963985</span>.</li>
+  </ul>
+  <p class="more">Khi thi vẫn phải biết tra bảng; máy giúp bạn tự kiểm tra mình đã đọc đúng hàng, đúng cột. <a href="may-tinh.html#tra-phi">Chi tiết →</a></p>
+</div>
 <h3 id="tb-l">12.3. Bảng $l(x)$ (Phụ lục 1)</h3>
 <p>Chỉ cho <b>chiều cao</b> của đường chuông chuẩn tắc tại $x$, <b>không phải xác suất</b>. Dùng khi cần giá trị mật độ tại một điểm, ví dụ đỉnh của $N(\mu;\sigma^2)$ là $\frac{1}{\sigma}\,l(0)=\frac{0{,}3989}{\sigma}$.</p>
 <h3 id="tb-loi-in">12.4. Các ô in sai trong bảng phụ lục</h3>
@@ -774,6 +810,11 @@ $$F(x)=\int_{-\infty}^{x}f(t)\,dt\quad(\text{diện tích bên trái } x)$$
     </ol>
   </div></details>
 </div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Đáp số “chính xác” ở trên lấy từ đâu?</div>
+  <p>Từ <span class="lcd">Binomial CD</span> và <span class="lcd">Binomial PD</span> với N = 100, p = 0.5: (a) CD(55) − CD(44) $=0{,}7287$; (b) $1-$ CD(59) $=0{,}0284$; (c) PD(50) $=0{,}0796$. Xấp xỉ chuẩn lệch không quá 0,0003 — rất tốt vì $np=nq=50$ đủ lớn. Muốn bấm luôn phần xấp xỉ: <span class="lcd">Normal CD</span> từ 44.5 đến 55.5, σ 5, μ 50 → $0{,}72867$.</p>
+  <p class="more">Chú ý biên của CD: “từ 45 đến 55” là CD(<b>55</b>) − CD(<b>44</b>) — trừ đi phần “nhiều nhất 44”, giữ lại 45. <a href="may-tinh.html#binomial">Chi tiết →</a></p>
+</div>
 <div class="box trap">
   <div class="box-title"><span class="tag">Lưu ý</span>Khi nào KHÔNG nên xấp xỉ chuẩn?</div>
   <p>Khi $p$ rất nhỏ (hoặc rất gần 1) mà $np$ nhỏ, ví dụ $p=0{,}001$, $n=2000$ ($np=2$), biểu đồ nhị thức lệch hẳn sang một bên, không có hình chuông → xấp xỉ chuẩn cho kết quả kém. Khi đó tính trực tiếp bằng công thức Bernoulli (máy tính bỏ túi làm được).</p>
@@ -842,6 +883,7 @@ $$F(x)=\int_{-\infty}^{x}f(t)\,dt\quad(\text{diện tích bên trái } x)$$
   </div>
   <div class="readout" id="lkRead"></div>
 </div>
+<p class="small muted">Máy Vinacal 680EX Plus chỉ có phân phối nhị thức, chuẩn và Poisson — <b>không có</b> χ², Student, Fisher. Ba phân phối này luôn phải tra <a href="phu-luc.html#pl-4">bảng phụ lục</a> (hoặc dùng công cụ trên để soát).</p>
 <h3 id="f-dung-o-dau">14.5. Sẽ gặp lại ở đâu?</h3>
 <div class="table-wrap"><table>
   <tr><th>Phân phối</th><th class="left">Dùng cho (các bài sau)</th></tr>

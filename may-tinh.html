@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bấm máy Vinacal 680EX Plus · Xác suất – Thống kê</title>
+  <meta name="description" content="Hướng dẫn dùng máy tính Vinacal 680EX Plus cho môn Xác suất – Thống kê Y học: tổ hợp, biến nhớ, CALC, Table, kỳ vọng – phương sai, phân phối nhị thức, phân phối chuẩn, tích phân.">
+  <script>try{var t=localStorage.getItem("xstk-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script defer src="assets/js/site.js?v=3"></script>
+</head>
+<body data-lesson="may-tinh">
+<header class="topbar">
+  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục" aria-controls="toc" aria-expanded="false"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span>Mục lục</span></button>
+  <a class="brand" href="index.html"><span class="brand-mark">XS</span><span>Xác suất – Thống kê</span></a>
+  <span class="crumb">/ Bấm máy</span>
+  <span class="spacer"></span>
+  <nav class="topnav" id="topnav"></nav>
+  <button class="icon-btn" id="themeBtn" title="Đổi giao diện sáng / tối" aria-label="Đổi giao diện sáng tối">☾</button>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="layout">
+<nav class="toc" id="toc" aria-label="Mục lục">
+  <div class="toc-title">Bấm máy 680EX Plus</div>
+  <ol id="tocList"></ol>
+</nav>
+
+<main class="content">
+
+<section class="hero">
+  <span class="kicker">Tài liệu kèm theo</span>
+  <h1>Bấm máy Vinacal 680EX Plus</h1>
+  <p class="lead">Những chức năng của máy cần cho môn Xác suất – Thống kê: tổ hợp, biến nhớ, CALC, lập bảng, kỳ vọng – phương sai, phân phối nhị thức và chuẩn, tích phân. Mỗi thao tác đều trả lời câu hỏi <b>“máy đang tính cái gì?”</b> — bấm nhanh mà vẫn hiểu.</p>
+</section>
+
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Nguyên tắc</span>Hiểu trước, bấm sau</div>
+  <ol>
+    <li><b>Máy chỉ làm phần số học.</b> Nhận ra bài thuộc dạng nào (Bernoulli? toàn phần? chuẩn hoá?) và viết đúng công thức là việc của bạn — cũng chính là phần được chấm điểm.</li>
+    <li><b>Thứ tự luôn là:</b> viết công thức ra giấy → thay số → bấm máy → tự hỏi “kết quả có hợp lý không?” (xác suất nằm trong $[0;1]$, các xác suất cộng lại bằng 1, kỳ vọng nằm giữa giá trị nhỏ nhất và lớn nhất…).</li>
+    <li><b>Hai cách dùng máy:</b> (a) <b>bấm theo công thức</b> — lúc nào cũng dùng được và trình bày được; (b) <b>dùng chế độ chuyên dụng</b> (Distribution, Statistics) — rất nhanh, dùng để <b>soát đáp số</b>. Khi thi: trình bày theo (a), lấy (b) để kiểm tra.</li>
+  </ol>
+</div>
+
+<div class="box def">
+  <div class="box-title"><span class="tag">Về máy</span>Trang này soạn theo menu nào?</div>
+  <p>Máy Vinacal 680EX Plus dùng cùng kiểu menu với dòng Casio fx-580VN X: tên các mục hiện bằng tiếng Anh và đánh số như nhau — đúng như bạn thấy khi bấm <span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> ra <span class="lcd">1-Variable</span>. Trang này ghi cả <b>số thứ tự</b> lẫn <b>tên mục</b>; nếu trên máy bạn số thứ tự bị lệch, cứ dùng phím mũi tên chọn đúng tên mục rồi nhấn <span class="keys"><kbd>=</kbd></span>.</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="lam-quen" data-toc="1. Làm quen với máy"><span class="num">1</span>Làm quen với máy</h2>
+<h3 id="ky-hieu">1.1. Cách đọc ký hiệu trên trang</h3>
+<div class="table-wrap"><table>
+  <tr><th>Ký hiệu</th><th class="left">Nghĩa</th></tr>
+  <tr><td><span class="keys"><kbd>7</kbd></span></td><td class="left">nhấn phím 7</td></tr>
+  <tr><td><span class="keys"><kbd>0.04</kbd></span></td><td class="left">một số nhiều chữ số: gõ lần lượt <code>0</code> <code>.</code> <code>0</code> <code>4</code></td></tr>
+  <tr><td><span class="keys"><kbd class="fn">SHIFT</kbd><kbd>÷</kbd></span></td><td class="left">nhấn <b>SHIFT</b>, thả ra, rồi nhấn ÷ (không cần giữ). Máy dùng chức năng in <b>phía trên</b> phím ÷ — ở đây là nCr.</td></tr>
+  <tr><td><span class="keys"><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd></span></td><td class="left">gọi biến nhớ <b>A</b> (chữ A in cạnh phím (−)). Tương tự: B cạnh phím <kbd class="key">°'"</kbd>, C cạnh phím <kbd class="key">x<sup>−1</sup></kbd>.</td></tr>
+  <tr><td><span class="lcd">1-Variable</span></td><td class="left">chữ hiện trên màn hình máy — để bạn đối chiếu là đang đi đúng đường</td></tr>
+  <tr><td><span class="keys"><kbd>0</kbd><kbd>.</kbd><kbd>7</kbd></span></td><td class="left">máy dùng <b>dấu chấm</b> thập phân: trang viết $0{,}7$ thì trên máy gõ <code>0.7</code></td></tr>
+</table></div>
+
+<h3 id="phim">1.2. Các phím dùng nhiều</h3>
+<div class="grid2">
+  <div class="card"><h4>Xoá – tính</h4>
+    <p><span class="keys"><kbd>AC</kbd></span> xoá cả dòng / thoát màn hình con · <span class="keys"><kbd>DEL</kbd></span> xoá 1 ký tự.<br>
+    <span class="keys"><kbd>=</kbd></span> tính · <span class="keys"><kbd class="fn">SHIFT</kbd><kbd>=</kbd></span> (≈) tính và ra <b>số thập phân</b> khi máy đang hiện phân số như $\frac{13}{27}$.</p></div>
+  <div class="card"><h4>Dùng lại kết quả</h4>
+    <p><span class="keys"><kbd>Ans</kbd></span> kết quả vừa tính — dùng tiếp mà không phải chép lại.<br>
+    <span class="keys"><kbd>STO</kbd></span> cất kết quả vào biến A, B, C… (mục 2.2).<br>
+    Sau khi có kết quả, nhấn <span class="keys"><kbd>◀</kbd></span> để quay lại sửa biểu thức vừa gõ.</p></div>
+  <div class="card"><h4>Chọn chế độ</h4>
+    <p><span class="keys"><kbd class="fn">MENU</kbd></span> chọn chế độ tính · <span class="keys"><kbd class="fn">OPTN</kbd></span> menu riêng của chế độ đang dùng · <span class="keys"><kbd class="fn">SHIFT</kbd><kbd class="fn">MENU</kbd></span> (SETUP) cài đặt máy.</p></div>
+  <div class="card"><h4>Di chuyển</h4>
+    <p><span class="keys"><kbd>▲</kbd><kbd>▼</kbd><kbd>◀</kbd><kbd>▶</kbd></span> di chuyển con trỏ; trong menu, <span class="keys"><kbd>▼</kbd></span> sang trang tiếp theo của menu.</p></div>
+</div>
+
+<h3 id="che-do">1.3. Bốn chế độ dùng trong môn học</h3>
+<div class="table-wrap"><table>
+  <tr><th>Phím</th><th>Tên trên màn hình</th><th class="left">Dùng để</th><th class="left">Gặp ở</th></tr>
+  <tr><td><span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span></td><td><span class="lcd">Calculate</span></td><td class="left">tính thường: tổ hợp, Bernoulli, toàn phần, Bayes, tích phân $\int$</td><td class="left">mục 2, 6</td></tr>
+  <tr><td><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd></span></td><td><span class="lcd">Statistics</span></td><td class="left">kỳ vọng, phương sai của biến rời rạc; sau này: số liệu mẫu (Bài 3), hồi quy (Bài 8)</td><td class="left">mục 4</td></tr>
+  <tr><td><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd></span></td><td><span class="lcd">Distribution</span></td><td class="left">xác suất nhị thức, phân phối chuẩn, phân vị</td><td class="left">mục 5</td></tr>
+  <tr><td><span class="keys"><kbd class="fn">MENU</kbd><kbd>8</kbd></span></td><td><span class="lcd">Table</span></td><td class="left">lập bảng giá trị $f(x)$ khi $x$ chạy — xem cả phân phối một lúc</td><td class="left">mục 3</td></tr>
+</table></div>
+<p class="small muted">Các chế độ khác (Complex, Base-N, Matrix, Vector, Equation…) môn này không dùng.</p>
+
+<h3 id="cai-dat">1.4. Cài đặt một lần là xong</h3>
+<ol class="keyseq">
+  <li><span class="keys"><kbd class="fn">SHIFT</kbd><kbd class="fn">MENU</kbd><span class="lcd">SETUP</span><kbd>▼</kbd><kbd>3</kbd><span class="lcd">Statistics</span><kbd>1</kbd><span class="lcd">On</span></span>
+    <span class="why"><b>Bật cột tần số Freq</b> cho chế độ thống kê. Cần cho mục 4: ta sẽ nhập các xác suất $p_i$ vào cột này như những “trọng số”.</span></li>
+  <li><span class="why"><b>Giữ nguyên kiểu hiển thị mặc định</b> (MathI/MathO): máy hiện phân số đúng như $\frac{13}{27}$, $\frac{10}{29}$ — tiện để thấy kết quả <b>chính xác</b>. Muốn số thập phân thì nhấn <span class="keys"><kbd class="fn">SHIFT</kbd><kbd>=</kbd></span> thay cho <span class="keys"><kbd>=</kbd></span>.</span></li>
+</ol>
+
+<!-- =============================================================== -->
+<h2 id="calculate" data-toc="2. Tính thường (MENU 1)"><span class="num">2</span>Tính thường — <span class="nowrap">MENU 1</span> Calculate</h2>
+<h3 id="to-hop">2.1. Tổ hợp, chỉnh hợp, giai thừa</h3>
+<div class="table-wrap"><table>
+  <tr><th>Cần tính</th><th>Bấm</th><th>Ví dụ</th><th>Máy hiện</th></tr>
+  <tr><td>$C_n^k$ (tổ hợp)</td><td><span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>÷</kbd>k<kbd>=</kbd></span></td><td>$C_6^4$: <span class="keys"><kbd>6</kbd><kbd class="fn">SHIFT</kbd><kbd>÷</kbd><kbd>4</kbd><kbd>=</kbd></span></td><td><span class="lcd">15</span></td></tr>
+  <tr><td>$A_n^k$ (chỉnh hợp)</td><td><span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>×</kbd>k<kbd>=</kbd></span></td><td>$A_{10}^3$: <span class="keys"><kbd>10</kbd><kbd class="fn">SHIFT</kbd><kbd>×</kbd><kbd>3</kbd><kbd>=</kbd></span></td><td><span class="lcd">720</span></td></tr>
+  <tr><td>$n!$ (giai thừa)</td><td><span class="keys">n<kbd class="fn">SHIFT</kbd><kbd>x<sup>−1</sup></kbd><kbd>=</kbd></span></td><td>$5!$: <span class="keys"><kbd>5</kbd><kbd class="fn">SHIFT</kbd><kbd>x<sup>−1</sup></kbd><kbd>=</kbd></span></td><td><span class="lcd">120</span></td></tr>
+</table></div>
+<p class="small">Trên màn hình $C_6^4$ được viết là <span class="lcd">6C4</span>, $A_{10}^3$ là <span class="lcd">10P3</span>. <b>Hiểu:</b> $C_6^4=15$ là số cách chọn <b>4 vị trí</b> “thành công” trong 6 lần thử — đúng con số đứng đầu công thức Bernoulli (<a href="bai-1.html#ber-xay-dung">Bài 1, mục 11.2</a>). Thử bấm $C_6^2$ cũng ra 15: chọn 4 lần thành công cũng chính là chọn 2 lần thất bại ($C_n^k=C_n^{n-k}$).</p>
+
+<h3 id="bien-nho">2.2. Cất kết quả vào biến A, B, C (toàn phần, Bayes)</h3>
+<p>Mỗi nhánh của cây xác suất cất vào một biến. Như vậy không phải chép tay, và <b>không làm tròn giữa chừng</b> (làm tròn sớm có thể làm sai chữ số thứ tư của đáp số).</p>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Bài 1, Ví dụ 8.1 — miếng trám bị bong do bác sĩ nào?</div>
+  <p>Ba nhánh dẫn tới “bong”: Minh $0{,}5\cdot0{,}04$; Lan $0{,}3\cdot0{,}06$; Hòa $0{,}2\cdot0{,}10$. (A, B, C ở đây là tên ô nhớ của máy, không liên quan tên biến cố.)</p>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd>0.5</kbd><kbd>×</kbd><kbd>0.04</kbd><kbd>STO</kbd><kbd>(−)</kbd></span> <span class="why">cất nhánh Minh vào A — máy hiện $\frac{1}{50}$ (tức 0,02).</span></li>
+    <li><span class="keys"><kbd>0.3</kbd><kbd>×</kbd><kbd>0.06</kbd><kbd>STO</kbd><kbd>°'"</kbd></span> <span class="why">nhánh Lan vào B ($\frac{9}{500}=0{,}018$).</span></li>
+    <li><span class="keys"><kbd>0.2</kbd><kbd>×</kbd><kbd>0.1</kbd><kbd>STO</kbd><kbd>x<sup>−1</sup></kbd></span> <span class="why">nhánh Hòa vào C ($\frac{1}{50}=0{,}02$).</span></li>
+    <li><span class="keys"><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>+</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>+</kbd><kbd class="fn">ALPHA</kbd><kbd>x<sup>−1</sup></kbd><kbd>=</kbd></span> <span class="why">$A+B+C=\frac{29}{500}=0{,}058$ — đây là $P(B)$ theo công thức <b>toàn phần</b> (tổng mọi nhánh tới “bong”).</span></li>
+    <li><span class="keys"><kbd class="fn">ALPHA</kbd><kbd>x<sup>−1</sup></kbd><kbd>÷</kbd><kbd>(</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>+</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>+</kbd><kbd class="fn">ALPHA</kbd><kbd>x<sup>−1</sup></kbd><kbd>)</kbd><kbd class="fn">SHIFT</kbd><kbd>=</kbd></span> <span class="why">$\frac{C}{A+B+C}=\frac{10}{29}\approx$ <span class="lcd">0.3448275862</span> — xác suất do BS Hòa. <b>Bayes chỉ là một nhánh chia cho tổng các nhánh.</b></span></li>
+  </ol>
+  <p class="small">Xem lại tất cả các biến đang nhớ: <span class="keys"><kbd class="fn">SHIFT</kbd><kbd>STO</kbd></span> (RECALL). Xoá một biến: cất số 0 vào nó, ví dụ <span class="keys"><kbd>0</kbd><kbd>STO</kbd><kbd>(−)</kbd></span>.</p>
+</div>
+
+<h3 id="calc">2.3. CALC — một công thức, nhiều bộ số</h3>
+<p>Khi cùng một công thức phải tính với nhiều bộ số khác nhau, gõ công thức <b>một lần</b> bằng biến, rồi để CALC hỏi giá trị từng biến.</p>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Bài 1, mục 10 — giá trị tiên đoán dương thay đổi theo tỉ lệ mắc bệnh</div>
+  <p>$PV^+=\dfrac{P(M^+)\,Se}{P(M^+)\,Se+P(M^-)(1-Sp)}$. Đặt A $=P(M^+)$, B $=Se$, C $=Sp$:</p>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>×</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>÷</kbd><kbd>(</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>×</kbd><kbd class="fn">ALPHA</kbd><kbd>°'"</kbd><kbd>+</kbd><kbd>(</kbd><kbd>1</kbd><kbd>−</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>)</kbd><kbd>×</kbd><kbd>(</kbd><kbd>1</kbd><kbd>−</kbd><kbd class="fn">ALPHA</kbd><kbd>x<sup>−1</sup></kbd><kbd>)</kbd><kbd>)</kbd></span>
+      <span class="why">màn hình: <span class="lcd">A×B÷(A×B+(1−A)×(1−C))</span>. Đừng quên hai cặp ngoặc quanh $1-A$ và $1-C$.</span></li>
+    <li><span class="keys"><kbd>CALC</kbd><span class="lcd">A=</span><kbd>0.02</kbd><kbd>=</kbd><span class="lcd">B=</span><kbd>0.9</kbd><kbd>=</kbd><span class="lcd">C=</span><kbd>0.85</kbd><kbd>=</kbd></span>
+      <span class="why">nhập lần lượt từng biến (nếu kết quả chưa hiện thì nhấn <span class="keys"><kbd>=</kbd></span> thêm một lần). Máy ra $\frac{6}{55}\approx0{,}109$ — khớp Ví dụ 10.1.</span></li>
+    <li><span class="keys"><kbd>CALC</kbd><span class="lcd">A=</span><kbd>0.2</kbd><kbd>=</kbd><kbd>=</kbd><kbd>=</kbd></span>
+      <span class="why">chỉ đổi A thành 20%, B và C giữ nguyên (nhấn = để đi qua). Máy ra $\frac35=0{,}6$.</span></li>
+  </ol>
+  <p><b>Hiểu:</b> cùng một xét nghiệm ($Se$, $Sp$ không đổi), chỉ cần tỉ lệ mắc bệnh tăng từ 2% lên 20% là $PV^+$ tăng từ 11% lên 60%. Thử thêm A = 0.005 (vùng ít bệnh) để thấy $PV^+$ còn khoảng 3%. Thoát CALC: <span class="keys"><kbd>AC</kbd></span>.</p>
+</div>
+
+<h3 id="luy-thua">2.4. Lũy thừa và logarit</h3>
+<ul>
+  <li><b>Lũy thừa</b> $0{,}7^6$: <span class="keys"><kbd>0.7</kbd><kbd>x<sup>■</sup></kbd><kbd>6</kbd><kbd>▶</kbd></span> — phím <kbd class="key">x<sup>■</sup></kbd> mở ô số mũ, nhấn <kbd class="key">▶</kbd> để ra khỏi ô số mũ trước khi gõ tiếp.</li>
+  <li><b>Logarit tự nhiên</b> (Bài 1, Ví dụ 11.2): $n\ge\dfrac{\ln0{,}05}{\ln0{,}7}$ → <span class="keys"><kbd>ln</kbd><kbd>0.05</kbd><kbd>)</kbd><kbd>÷</kbd><kbd>ln</kbd><kbd>0.7</kbd><kbd>)</kbd><kbd>=</kbd></span> → <span class="lcd">8.399054446</span>. Vì $n$ phải <b>lớn hơn hoặc bằng</b> 8,399 nên làm tròn <b>lên</b>: $n_{\min}=9$. (Cách thấy tận mắt: mục 3.2.)</li>
+</ul>
+
+<!-- =============================================================== -->
+<h2 id="table" data-toc="3. Lập bảng (MENU 8)"><span class="num">3</span>Lập bảng — <span class="nowrap">MENU 8</span> Table</h2>
+<p><b>Máy làm gì?</b> Bạn gõ một hàm $f(x)$ và chọn $x$ chạy từ <b>Start</b> đến <b>End</b> với bước <b>Step</b>; máy thay lần lượt từng $x$ và in ra cột $f(x)$. Nếu $f(x)$ là công thức Bernoulli thì cột đó chính là <b>cả bảng phân phối</b>.</p>
+<h3 id="table-bernoulli">3.1. Cả phân phối Bernoulli trong một màn hình</h3>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Bài 1, Ví dụ 11.1 — vecni fluor, $n=6$, $p=0{,}7$</div>
+  <p>Gõ $f(x)=C_6^x\cdot0{,}7^x\cdot0{,}3^{\,6-x}$ ($x$ đóng vai số lần thành công $m$):</p>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>8</kbd><span class="lcd">f(x)=</span></span></li>
+    <li><span class="keys"><kbd>6</kbd><kbd class="fn">SHIFT</kbd><kbd>÷</kbd><kbd><i>x</i></kbd><kbd>×</kbd><kbd>0.7</kbd><kbd>x<sup>■</sup></kbd><kbd><i>x</i></kbd><kbd>▶</kbd><kbd>×</kbd><kbd>0.3</kbd><kbd>x<sup>■</sup></kbd><kbd>6</kbd><kbd>−</kbd><kbd><i>x</i></kbd><kbd>▶</kbd><kbd>=</kbd></span>
+      <span class="why">phím <kbd class="key"><i>x</i></kbd> là phím biến $x$ riêng của máy. Màn hình: <span class="lcd">f(x)=6Cx×0.7^x×0.3^(6−x)</span>.</span></li>
+    <li><span class="keys"><span class="lcd">g(x)=</span><kbd>=</kbd></span> <span class="why">để trống $g(x)$, nhấn = đi tiếp (máy nào cài chỉ dùng $f(x)$ thì không có bước này).</span></li>
+    <li><span class="keys"><span class="lcd">Start</span><kbd>0</kbd><kbd>=</kbd><span class="lcd">End</span><kbd>6</kbd><kbd>=</kbd><span class="lcd">Step</span><kbd>1</kbd><kbd>=</kbd><kbd>=</kbd></span></li>
+  </ol>
+  <div class="screen">  x   f(x)
+  0   7.29×10⁻⁴     (= 0,000729)
+  1   0.010206
+  2   0.059535
+  3   0.18522
+  4   0.324135      ← lớn nhất: m₀ = 4
+  5   0.302526
+  6   0.117649</div>
+  <p><b>Đọc bảng:</b> (a) “đúng 4” là dòng $x=4$; (c) “ít nhất 5” là dòng 5 + dòng 6 $=0{,}420175$; số lần có khả năng nhất là dòng cao nhất $m_0=4$ (khớp mục 11.3). Cộng cả cột được đúng 1 — đó là điều kiện của mọi bảng phân phối. Nhấn <span class="keys"><kbd>AC</kbd></span> để quay lại sửa hàm.</p>
+</div>
+
+<h3 id="table-n">3.2. Tìm số lần thử nhỏ nhất</h3>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Bài 1, Ví dụ 11.2 — soi bao nhiêu mẫu để xác suất phát hiện ≥ 0,95?</div>
+  <p>Xác suất phát hiện ít nhất một lần sau $x$ mẫu là $f(x)=1-0{,}7^x$. Lập bảng với Start 1, End 12, Step 1:</p>
+  <p><span class="keys"><kbd class="fn">MENU</kbd><kbd>8</kbd><kbd>1</kbd><kbd>−</kbd><kbd>0.7</kbd><kbd>x<sup>■</sup></kbd><kbd><i>x</i></kbd><kbd>▶</kbd><kbd>=</kbd><kbd>=</kbd><kbd>1</kbd><kbd>=</kbd><kbd>12</kbd><kbd>=</kbd><kbd>1</kbd><kbd>=</kbd><kbd>=</kbd></span></p>
+  <div class="screen">  x   f(x)
+  7   0.917646
+  8   0.942352      ← chưa đủ 0,95
+  9   0.959646      ← lần đầu tiên ≥ 0,95  →  n = 9
+ 10   0.971752</div>
+  <p><b>Hiểu:</b> xác suất tăng dần theo số mẫu nhưng không bao giờ chạm tới 1; nó vượt mốc 0,95 ở khoảng giữa 8 và 9 — chính là con số $8{,}399$ mà logarit cho ở mục 2.4.</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="statistics" data-toc="4. Kỳ vọng – phương sai (MENU 6)"><span class="num">4</span>Kỳ vọng – phương sai — <span class="nowrap">MENU 6</span> Statistics</h2>
+<h3 id="stat-vi-sao">4.1. Vì sao chế độ thống kê tính được $E(X)$?</h3>
+<p>Với dữ liệu $x_i$ có tần số $f_i$, chế độ thống kê tính <b>trung bình có trọng số</b> và độ lệch chuẩn:</p>
+$$\bar x=\frac{\sum x_i f_i}{\sum f_i}\qquad\quad \sigma_x^2=\frac{\sum (x_i-\bar x)^2 f_i}{\sum f_i}$$
+<p>Nếu nhập tần số $f_i=p_i$ thì $\sum f_i=1$, nên $\bar x=\sum x_ip_i=E(X)$ và $\sigma_x^2=\sum(x_i-\mu)^2p_i=D(X)$. Nói cách khác: <b>kỳ vọng chính là trung bình có trọng số, trọng số là xác suất</b> — máy “biết” tính kỳ vọng là nhờ vậy.</p>
+
+<h3 id="stat-cac-buoc">4.2. Các bước</h3>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Bài 2, Ví dụ 2.1 — ba ca điều trị tủy</div>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$X$</th><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+    <tr><th>$P$</th><td>0,006</td><td>0,092</td><td>0,398</td><td>0,504</td></tr>
+  </table></div>
+  <ol class="keyseq">
+    <li><span class="why">Đã bật cột Freq (mục 1.4).</span></li>
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd><span class="lcd">1-Variable</span></span> <span class="why">hiện bảng hai cột <span class="lcd">x</span> và <span class="lcd">Freq</span>.</span></li>
+    <li><span class="keys"><kbd>0</kbd><kbd>=</kbd><kbd>1</kbd><kbd>=</kbd><kbd>2</kbd><kbd>=</kbd><kbd>3</kbd><kbd>=</kbd></span> <span class="why">nhập cột $x$ (các giá trị của $X$). Máy tự điền 1 vào cột Freq.</span></li>
+    <li><span class="keys"><kbd>▶</kbd><kbd>▲</kbd><kbd>▲</kbd><kbd>▲</kbd><kbd>▲</kbd></span> <span class="why">đưa con trỏ lên <b>ô Freq dòng 1</b> (bấm ▲ đến khi tới dòng đầu).</span></li>
+    <li><span class="keys"><kbd>0.006</kbd><kbd>=</kbd><kbd>0.092</kbd><kbd>=</kbd><kbd>0.398</kbd><kbd>=</kbd><kbd>0.504</kbd><kbd>=</kbd></span> <span class="why">ghi đè các số 1 bằng xác suất $p_i$.</span></li>
+    <li><span class="keys"><kbd class="fn">OPTN</kbd><kbd>3</kbd><span class="lcd">1-Variable Calc</span></span> <span class="why">máy liệt kê kết quả, dùng ▼ để xem hết.</span></li>
+  </ol>
+  <div class="screen">x̄   = 2.4            → E(X)
+Σx   = 2.4
+Σx²  = 6.22           → E(X²)
+σ²x  = 0.46           → D(X)
+σx   = 0.6782329983   → σ(X)
+n    = 1              → tổng các p bằng 1 ✓</div>
+  <p class="small">Dòng $s_x$, $s_x^2$ không dùng ở đây (máy có thể báo lỗi ở hai dòng này vì chúng chia cho $n-1=0$ — không sao). Nhấn <span class="keys"><kbd>AC</kbd></span> để ra màn hình tính; muốn nhập bảng mới: <span class="keys"><kbd class="fn">OPTN</kbd><kbd>2</kbd><span class="lcd">Editor</span><kbd>2</kbd><span class="lcd">Delete All</span></span>.</p>
+</div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Lấy $\sigma_x$, không lấy $s_x$</div>
+  <p>$\sigma_x$ chia cho $\sum f_i$ — đúng định nghĩa phương sai của biến ngẫu nhiên. $s_x$ chia cho $n-1$ — đó là <b>độ lệch chuẩn mẫu</b>, sẽ dùng ở Bài 3 khi làm với số liệu thu thập được. Ngoài ra luôn nhìn dòng <span class="lcd">n</span>: phải bằng 1, nếu không là bạn đã nhập sai một xác suất.</p>
+</div>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Thử nghiệm</span>Hai tính chất của $E$, $\sigma$ “nhìn thấy” trên máy</div>
+  <ul>
+    <li><b>Nhân mọi trọng số với cùng một số thì trung bình không đổi.</b> Nhập Freq là 6, 92, 398, 504 (tức $1000\,p_i$): $\bar x$ vẫn là 2,4 và $\sigma_x$ vẫn là 0,678…, chỉ có $n=1000$. Đây cũng là cách chữa cháy nếu máy không nhận tần số là số thập phân.</li>
+    <li><b>$E(aX+b)=aE(X)+b$ và $\sigma(aX+b)=|a|\,\sigma(X)$</b> (Bài 2, Ví dụ 7.2 và 8.3): đổi cột $x$ thành 200, 700, 1200, 1700 (tức $500x+200$), giữ nguyên Freq → máy ra $\bar x=1400$ và $\sigma_x\approx339{,}1$.</li>
+  </ul>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="distribution" data-toc="5. Phân phối (MENU 7)"><span class="num">5</span>Phân phối — <span class="nowrap">MENU 7</span> Distribution</h2>
+<h3 id="dist-menu">5.1. Menu phân phối</h3>
+<div class="table-wrap"><table>
+  <tr><th>Phím (sau <span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd></span>)</th><th>Tên</th><th class="left">Máy tính cái gì</th></tr>
+  <tr><td><span class="keys"><kbd>1</kbd></span></td><td><span class="lcd">Normal PD</span></td><td class="left"><b>chiều cao</b> đường chuông tại $x$ (với $\sigma=1,\mu=0$ chính là $l(x)$ — Phụ lục 1). Không phải xác suất.</td></tr>
+  <tr><td><span class="keys"><kbd>2</kbd></span></td><td><span class="lcd">Normal CD</span></td><td class="left"><b>diện tích</b> dưới đường chuông từ Lower đến Upper $=P(\text{Lower}&lt;X&lt;\text{Upper})$</td></tr>
+  <tr><td><span class="keys"><kbd>3</kbd></span></td><td><span class="lcd">Inverse Normal</span></td><td class="left">bài toán ngược: biết diện tích <b>bên trái</b>, tìm mốc $x$</td></tr>
+  <tr><td><span class="keys"><kbd>4</kbd></span></td><td><span class="lcd">Binomial PD</span></td><td class="left">$P(X=x)$ của phân phối nhị thức</td></tr>
+  <tr><td><span class="keys"><kbd>▼</kbd><kbd>1</kbd></span></td><td><span class="lcd">Binomial CD</span></td><td class="left">$P(X\le x)$ — cộng dồn từ 0 đến $x$</td></tr>
+  <tr><td><span class="keys"><kbd>▼</kbd><kbd>2</kbd></span> <span class="keys"><kbd>▼</kbd><kbd>3</kbd></span></td><td><span class="lcd">Poisson PD/CD</span></td><td class="left">chưa dùng trong Bài 1–2</td></tr>
+</table></div>
+<p class="small"><b>PD</b> (probability density/distribution) = xác suất <b>tại một điểm</b>; <b>CD</b> (cumulative distribution) = xác suất <b>cộng dồn</b> từ bên trái tới $x$. Đang ở một kiểu muốn đổi sang kiểu khác: <span class="keys"><kbd class="fn">OPTN</kbd><kbd>1</kbd><span class="lcd">Select Type</span></span>.</p>
+
+<h3 id="binomial">5.2. Phân phối nhị thức: Binomial PD và CD</h3>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Điều kiện</span>Chỉ dùng khi đủ 3 điều kiện Bernoulli</div>
+  <p>$n$ lần thử độc lập, mỗi lần cùng một xác suất $p$ (<a href="bai-1.html#ber-khi-nao">Bài 1, mục 11.1</a>). Ví dụ 2.1 của Bài 2 (ba ca có $p$ khác nhau) hay bốc không hoàn lại từ hộp nhỏ thì <b>không</b> dùng được.</p>
+</div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Bài 1, Ví dụ 11.1 — $n=6$, $p=0{,}7$</div>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>4</kbd><span class="lcd">Binomial PD</span><kbd>2</kbd><span class="lcd">Variable</span></span> <span class="why">chọn “Variable” để tính cho <b>một</b> giá trị $x$ (“List” dùng khi muốn nhiều giá trị cùng lúc).</span></li>
+    <li><span class="keys"><span class="lcd">x</span><kbd>4</kbd><kbd>=</kbd><span class="lcd">N</span><kbd>6</kbd><kbd>=</kbd><span class="lcd">p</span><kbd>0.7</kbd><kbd>=</kbd><kbd>=</kbd></span> <span class="why">máy ra <span class="lcd">0.324135</span> $=P(X=4)$ — câu (a).</span></li>
+    <li><span class="keys"><kbd class="fn">OPTN</kbd><kbd>1</kbd><kbd>▼</kbd><kbd>1</kbd><span class="lcd">Binomial CD</span><kbd>2</kbd></span> rồi nhập x = 4, N = 6, p = 0.7 <span class="why">máy ra <span class="lcd">0.579825</span> $=P(X\le4)$ — chính là câu (d) “nhiều nhất 4”.</span></li>
+    <li><span class="why">Câu (c) “ít nhất 5” $=1-P(X\le4)=1-0{,}579825=0{,}420175$. Câu (b) “ít nhất 1” $=1-P(X\le0)=1-0{,}000729=0{,}999271$.</span></li>
+  </ol>
+  <p class="small">Mẹo: khi kết quả đang hiện, nhấn <span class="keys"><kbd>STO</kbd><kbd>(−)</kbd></span> để cất vào A, rồi sang <span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span> gõ <span class="keys"><kbd>1</kbd><kbd>−</kbd><kbd class="fn">ALPHA</kbd><kbd>(−)</kbd><kbd>=</kbd></span> — khỏi chép tay số dài.</p>
+</div>
+<p><b>Đổi câu chữ trong đề thành CD.</b> CD luôn cộng dồn “từ 0 đến $x$”, nên mọi câu hỏi khác đều quy về <b>phép trừ</b> — giống hệt cách dùng biến cố đối ở <a href="bai-1.html#dm-ung-dung">Bài 1, mục 2.6</a>. Với biến rời rạc, dấu $&lt;$ và $\le$ <b>khác nhau</b>:</p>
+<div class="table-wrap"><table>
+  <tr><th class="left">Đề hỏi</th><th>Viết thành</th><th>Bấm</th></tr>
+  <tr><td class="left">đúng $k$</td><td>$P(X=k)$</td><td>PD($k$)</td></tr>
+  <tr><td class="left">nhiều nhất $k$, không quá $k$</td><td>$P(X\le k)$</td><td>CD($k$)</td></tr>
+  <tr><td class="left">ít hơn $k$</td><td>$P(X\le k-1)$</td><td>CD($k-1$)</td></tr>
+  <tr><td class="left">ít nhất $k$, không dưới $k$</td><td>$1-P(X\le k-1)$</td><td>1 − CD($k-1$)</td></tr>
+  <tr><td class="left">nhiều hơn $k$</td><td>$1-P(X\le k)$</td><td>1 − CD($k$)</td></tr>
+  <tr><td class="left">từ $a$ đến $b$</td><td>$P(X\le b)-P(X\le a-1)$</td><td>CD($b$) − CD($a-1$)</td></tr>
+</table></div>
+<p class="small">Bài 2, Ví dụ 9.1 ($n=8$, $p=0{,}25$): PD(2) = <span class="lcd">0.3114624</span>; “ít nhất 2” $=1-$ CD(1) $=1-0{,}3670807=0{,}6329193$.</p>
+
+<h3 id="normal-cd">5.3. Phân phối chuẩn: Normal CD</h3>
+<p><b>Máy làm gì?</b> Normal CD trả về <b>diện tích dưới đường chuông</b> $N(\mu;\sigma^2)$ từ Lower đến Upper — chính là $P(\text{Lower}&lt;X&lt;\text{Upper})$. Máy tự làm bước chuẩn hoá, bạn không cần đổi sang $z$.</p>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Bài 2, Ví dụ 11.1 — huyết áp $X\sim N(118;\,100)$</div>
+  <p>Phương sai 100 nên <b>độ lệch chuẩn $\sigma=10$</b> — ô σ của máy nhận độ lệch chuẩn, không nhận phương sai.</p>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd><span class="lcd">Normal CD</span></span></li>
+    <li><span class="keys"><span class="lcd">Lower</span><kbd>110</kbd><kbd>=</kbd><span class="lcd">Upper</span><kbd>130</kbd><kbd>=</kbd><span class="lcd">σ</span><kbd>10</kbd><kbd>=</kbd><span class="lcd">μ</span><kbd>118</kbd><kbd>=</kbd><kbd>=</kbd></span> <span class="why">máy ra <span class="lcd">0.6730749312</span> — bảng cho 0,6730.</span></li>
+  </ol>
+  <div class="table-wrap"><table class="compact">
+    <tr><th class="left">Câu hỏi</th><th>Lower</th><th>Upper</th><th>Máy ra</th><th>Bảng $\varphi$ cho</th></tr>
+    <tr><td class="left">(a) $P(110&lt;X&lt;130)$</td><td>110</td><td>130</td><td>0,67307</td><td>0,6730</td></tr>
+    <tr><td class="left">(b) $P(X&gt;140)$</td><td>140</td><td>$10^{99}$</td><td>0,01390</td><td>0,0139</td></tr>
+    <tr><td class="left">(c) $P(X&lt;100)$</td><td>$-10^{99}$</td><td>100</td><td>0,03593</td><td>0,0359</td></tr>
+    <tr><td class="left">(e) $P(|X-118|&lt;15)$</td><td>103</td><td>133</td><td>0,86639</td><td>0,8664</td></tr>
+  </table></div>
+  <p class="small"><b>Nhập ±∞:</b> $10^{99}$ là <span class="keys"><kbd>1</kbd><kbd>×10<sup>x</sup></kbd><kbd>99</kbd></span>; $-10^{99}$ là <span class="keys"><kbd>(−)</kbd><kbd>1</kbd><kbd>×10<sup>x</sup></kbd><kbd>99</kbd></span>. Dùng được vì đuôi đường chuông ở xa quá vài $\sigma$ có diện tích gần như bằng 0.</p>
+</div>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Hiểu</span>Thấy tận mắt ý nghĩa của phép chuẩn hoá</div>
+  <p>Bấm lại câu (a) nhưng với Lower $=-0{,}8$, Upper $=1{,}2$, σ $=1$, μ $=0$ (tức là đã đổi sang $z=\frac{x-118}{10}$): máy vẫn ra $0{,}67307$. Chuẩn hoá chỉ là <b>đổi thước đo</b> (từ mmHg sang “số σ”), diện tích — tức xác suất — giữ nguyên. Đó là lý do một bảng $\varphi$ duy nhất dùng được cho mọi phân phối chuẩn.</p>
+</div>
+<p class="small muted">Máy cho kết quả chính xác hơn bảng (bảng phải làm tròn $z$ còn 2 chữ số), nên có thể lệch ở chữ số thứ tư. Khi thi vẫn trình bày theo $\varphi$ và bảng như <a href="bai-2.html#ct-chuan-hoa">Bài 2, mục 11.2</a>; máy dùng để soát.</p>
+
+<h3 id="inverse-normal">5.4. Bài toán ngược: Inverse Normal</h3>
+<p><b>Máy làm gì?</b> Bạn đưa diện tích <b>bên trái</b> (Area $=P(X&lt;x)$), máy tìm mốc $x$. Máy này chỉ có kiểu “bên trái”, nên đề cho phần bên phải thì phải đổi trước.</p>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Ngưỡng huyết áp và phân vị $z_\alpha$</div>
+  <ol class="keyseq">
+    <li><span class="why"><b>Ví dụ 11.1(d):</b> “chỉ 5% cao hơn $h$” → phần <b>bên trái</b> $h$ là $1-0{,}05=0{,}95$.</span>
+      <span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd><span class="lcd">Area</span><kbd>0.95</kbd><kbd>=</kbd><span class="lcd">σ</span><kbd>10</kbd><kbd>=</kbd><span class="lcd">μ</span><kbd>118</kbd><kbd>=</kbd><kbd>=</kbd></span>
+      <span class="why">máy ra <span class="lcd">134.4485363</span> mmHg (giải tay: 134,45).</span></li>
+    <li><span class="why"><b>Phân vị $z_\alpha$</b> (Phụ lục 3): $z_\alpha$ là số có diện tích bên trái bằng $\alpha$ → Area $=\alpha$, σ $=1$, μ $=0$.</span>
+      <span class="why">$z_{0{,}95}$ → <span class="lcd">1.644853627</span> · $z_{0{,}975}$ → <span class="lcd">1.959963985</span> · $z_{0{,}995}$ → <span class="lcd">2.575829304</span></span></li>
+  </ol>
+</div>
+
+<h3 id="tra-phi">5.5. Tra $\varphi(x)$ bằng máy</h3>
+<div class="grid2">
+  <div class="card"><h4>Cách 1 — Normal CD</h4>
+    <p>$\varphi(x)$ là diện tích từ 0 đến $x$ dưới đường chuông chuẩn tắc, nên: Lower $=0$, Upper $=x$, σ $=1$, μ $=0$.<br>Ví dụ $\varphi(1{,}67)$ → <span class="lcd">0.4525403</span> (bảng: 0,4525).</p></div>
+  <div class="card"><h4>Cách 2 — P( Q( R( trong Statistics</h4>
+    <p><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd><kbd>AC</kbd><kbd class="fn">OPTN</kbd><kbd>▼</kbd><kbd>4</kbd><span class="lcd">Norm Dist</span></span>, chọn:<br>
+    <kbd class="key">1</kbd> <span class="lcd">P(</span> $=G(x)$ — diện tích bên trái $x$<br>
+    <kbd class="key">2</kbd> <span class="lcd">Q(</span> $=\varphi(x)$ — từ 0 đến $x$<br>
+    <kbd class="key">3</kbd> <span class="lcd">R(</span> — diện tích bên phải $x$<br>
+    Ví dụ <span class="keys"><kbd>2</kbd><kbd>1.96</kbd><kbd>)</kbd><kbd>=</kbd></span> → $Q(1{,}96)=0{,}475$.</p></div>
+</div>
+<p class="small">Ba hàm P, Q, R của máy chính là ba diện tích ở <a href="bai-2.html#ct-ba-ham">Bài 2, mục 11.1</a>: $P=G=0{,}5+\varphi$, $Q=\varphi$, $R=0{,}5-\varphi$. Với Q( nên nhập $x$ dương; $x$ âm thì tự dùng $\varphi(-x)=-\varphi(x)$.</p>
+
+<h3 id="khong-co">5.6. Máy không có χ², Student, Fisher</h3>
+<p>Ba phân phối này phải <b>tra bảng</b>: <a href="phu-luc.html#pl-4">Phụ lục 4 (χ²)</a>, <a href="phu-luc.html#pl-5">Phụ lục 5 (Student)</a>, <a href="phu-luc.html#pl-6a">Phụ lục 6 (Fisher)</a> — hoặc dùng công cụ tra nhanh ở <a href="bai-2.html#f-tra">Bài 2, mục 14.4</a> để soát.</p>
+
+<!-- =============================================================== -->
+<h2 id="tich-phan" data-toc="6. Tích phân ∫"><span class="num">6</span>Tích phân $\int$</h2>
+<p><b>Máy làm gì?</b> Máy cộng diện tích của rất nhiều mảnh nhỏ dưới đường cong (đúng ý tưởng ở khung tương tác <a href="bai-2.html#tp-dien-tich">Bài 2, mục 3.1</a>) và cho ra <b>một con số</b>. Máy <b>không</b> tìm nguyên hàm — nên bạn vẫn phải tính tay theo 4 bước Newton – Leibniz, còn máy dùng để soát.</p>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Cú pháp và các ví dụ của Bài 2</div>
+  <p>Nhấn <span class="keys"><kbd>∫</kbd></span> máy hiện khung $\int_{\square}^{\square}\square\,dx$, con trỏ nằm ở <b>hàm</b>. Gõ hàm (dùng phím <kbd class="key"><i>x</i></kbd>) → <kbd class="key">▶</kbd> sang <b>cận dưới</b> → <kbd class="key">▶</kbd> sang <b>cận trên</b> → <kbd class="key">=</kbd>.</p>
+  <ol class="keyseq">
+    <li><span class="why"><b>Ví dụ 3.2(a)</b> $\int_0^2x^2\,dx$:</span> <span class="keys"><kbd>∫</kbd><kbd><i>x</i></kbd><kbd>x²</kbd><kbd>▶</kbd><kbd>0</kbd><kbd>▶</kbd><kbd>2</kbd><kbd>=</kbd></span> <span class="why">→ $2{,}6667$ (tức $\frac83$).</span></li>
+    <li><span class="why"><b>Ví dụ 4.1</b> — kiểm tra hàm mật độ $f(x)=\frac29(3x-x^2)$ có diện tích bằng 1:</span>
+      <span class="keys"><kbd>∫</kbd><kbd>2</kbd><kbd>÷</kbd><kbd>9</kbd><kbd>×</kbd><kbd>(</kbd><kbd>3</kbd><kbd><i>x</i></kbd><kbd>−</kbd><kbd><i>x</i></kbd><kbd>x²</kbd><kbd>)</kbd><kbd>▶</kbd><kbd>0</kbd><kbd>▶</kbd><kbd>3</kbd><kbd>=</kbd></span> <span class="why">→ 1 ✓. Nhấn <kbd class="key">◀</kbd> quay lại, sửa cận thành 1 và 2 → $0{,}4815$ $=P(1&lt;X&lt;2)=\frac{13}{27}$.</span></li>
+    <li><span class="why"><b>Ví dụ 7.1, 8.2</b> — kỳ vọng và phương sai: thêm <kbd class="key"><i>x</i></kbd><kbd class="key">×</kbd> vào đầu hàm → $E(X)=\int_0^3x\,f(x)\,dx=1{,}5$; thêm <kbd class="key"><i>x</i></kbd><kbd class="key">x²</kbd><kbd class="key">×</kbd> → $E(X^2)=2{,}7$. Suy ra $D(X)=2{,}7-1{,}5^2=0{,}45$.</span></li>
+  </ol>
+  <p class="small">Lưu ý: không nhập được $\infty$ — với hàm mật độ bằng 0 ngoài $[a;b]$ thì chỉ lấy tích phân trên $[a;b]$ (đúng như khi làm tay, <a href="bai-2.html#tp-vo-cuc">mục 3.6</a>). Hàm cho từng khúc thì tính từng khúc rồi cộng. Phép tính mất vài giây, chờ máy chạy xong.</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="tra-nhanh" data-toc="7. Dạng bài → bấm gì"><span class="num">7</span>Dạng bài → bấm gì</h2>
+<div class="table-wrap"><table>
+  <tr><th class="left">Dạng bài</th><th class="left">Chế độ / phím</th><th class="left">Xem</th></tr>
+  <tr><td class="left">$C_n^k$, $A_n^k$, $n!$</td><td class="left"><span class="keys"><kbd class="fn">SHIFT</kbd><kbd>÷</kbd></span> · <span class="keys"><kbd class="fn">SHIFT</kbd><kbd>×</kbd></span> · <span class="keys"><kbd class="fn">SHIFT</kbd><kbd>x<sup>−1</sup></kbd></span></td><td class="left"><a href="#to-hop">2.1</a></td></tr>
+  <tr><td class="left">Toàn phần, Bayes</td><td class="left">cất từng nhánh bằng <span class="keys"><kbd>STO</kbd></span></td><td class="left"><a href="#bien-nho">2.2</a></td></tr>
+  <tr><td class="left">Cùng công thức, nhiều bộ số (PV⁺, PV⁻…)</td><td class="left"><span class="keys"><kbd>CALC</kbd></span></td><td class="left"><a href="#calc">2.3</a></td></tr>
+  <tr><td class="left">Bernoulli: “đúng $k$”</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>4</kbd></span> Binomial PD</td><td class="left"><a href="#binomial">5.2</a></td></tr>
+  <tr><td class="left">Bernoulli: “ít nhất / nhiều nhất / từ … đến …”</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>▼</kbd><kbd>1</kbd></span> Binomial CD + bảng đổi câu chữ</td><td class="left"><a href="#binomial">5.2</a></td></tr>
+  <tr><td class="left">Cả bảng phân phối, số lần có khả năng nhất, $n$ nhỏ nhất</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>8</kbd></span> Table</td><td class="left"><a href="#table">3</a></td></tr>
+  <tr><td class="left">$E(X)$, $D(X)$, $\sigma(X)$ của biến rời rạc</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> + cột Freq $=p_i$</td><td class="left"><a href="#statistics">4</a></td></tr>
+  <tr><td class="left">Tích phân, $E(X)$, $D(X)$ của biến liên tục</td><td class="left"><span class="keys"><kbd>∫</kbd></span></td><td class="left"><a href="#tich-phan">6</a></td></tr>
+  <tr><td class="left">Xác suất của phân phối chuẩn</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd></span> Normal CD</td><td class="left"><a href="#normal-cd">5.3</a></td></tr>
+  <tr><td class="left">Tìm ngưỡng, phân vị $z_\alpha$</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd></span> Inverse Normal (diện tích bên trái)</td><td class="left"><a href="#inverse-normal">5.4</a></td></tr>
+  <tr><td class="left">$\varphi(x)$</td><td class="left">Normal CD (0 → $x$; σ 1; μ 0) hoặc Q(</td><td class="left"><a href="#tra-phi">5.5</a></td></tr>
+  <tr><td class="left">χ², Student, Fisher</td><td class="left">máy không có — tra bảng</td><td class="left"><a href="phu-luc.html">Phụ lục</a></td></tr>
+</table></div>
+
+<!-- =============================================================== -->
+<h2 id="loi" data-toc="8. Lỗi hay gặp"><span class="num">8</span>Lỗi hay gặp khi bấm máy</h2>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Kiểm tra trước khi tin con số</div>
+  <ul>
+    <li><b>Nhập phương sai vào ô σ.</b> $N(118;100)$ thì σ $=10$.</li>
+    <li><b>Lấy $s_x$ thay vì $\sigma_x$</b> khi tính $D(X)$ của biến ngẫu nhiên.</li>
+    <li><b>Dùng Binomial PD cho câu “ít nhất”.</b> PD chỉ cho đúng một giá trị; “ít nhất”, “nhiều nhất” phải dùng CD và bảng đổi câu chữ ở mục 5.2.</li>
+    <li><b>Lệch một đơn vị ở CD:</b> “ít nhất 5” là $1-$ CD(<b>4</b>), không phải $1-$ CD(5).</li>
+    <li><b>Nhập diện tích bên phải vào Inverse Normal.</b> Máy chỉ nhận diện tích <b>bên trái</b>.</li>
+    <li><b>Thiếu ngoặc:</b> $(1-A)(1-C)$, số mũ $6-x$ phải nằm trọn trong ô số mũ.</li>
+    <li><b>Làm tròn giữa chừng</b> rồi dùng tiếp — hãy để số trong <span class="keys"><kbd>Ans</kbd></span> hoặc cất vào biến.</li>
+    <li><b>Dùng Bernoulli/Binomial khi $p$ thay đổi</b> giữa các lần thử — máy vẫn ra số, nhưng là số sai.</li>
+  </ul>
+</div>
+<div class="box extra">
+  <div class="box-title"><span class="tag">Sẽ bổ sung</span>Các bài sau</div>
+  <p>Bài 3: dùng <span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> với <b>số liệu mẫu</b> (trung bình mẫu $\bar x$, độ lệch chuẩn mẫu $s_x$). Bài 8: hồi quy tuyến tính <span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>2</kbd></span> <span class="lcd">y=a+bx</span>. Các bài sẽ có khung <b>“Bấm máy”</b> ngay tại chỗ cần dùng.</p>
+</div>
+
+<div class="pager">
+  <a class="prev" href="index.html"><div class="dir">← Về</div><div class="ttl">Trang chủ</div></a>
+  <a class="next" href="bai-1.html"><div class="dir">Áp dụng ngay →</div><div class="ttl">Bài 1. Xác suất</div></a>
+</div>
+
+</main>
+</div>
+
+<footer class="site">Tài liệu tự học · hướng dẫn bấm máy soạn theo menu dòng máy Vinacal 680EX Plus (cùng kiểu menu với Casio fx-580VN X).</footer>
+</body>
+</html>
