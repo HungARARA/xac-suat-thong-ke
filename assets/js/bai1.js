@@ -341,4 +341,60 @@ document.addEventListener("siteready", () => {
     X.bind(["bn", "bp", "bk"], v => { st = v; render(); }, { bn: v => String(v), bp: v => f(v, 2), bk: v => String(v) });
     X.responsive($("binPlot"), render);
   }
+
+  /* ---------------- ĐỒ THỊ y = ln x ---------------- */
+  if ($("lnPlot")) {
+    const host = $("lnPlot");
+    const neg = v => f(v, 3).replace("-", "−");
+    const render = () => {
+      const c = X.chart(host, { height: 270, xmin: 0, xmax: 3, ymin: -3.2, ymax: 1.4, margin: { left: 40, bottom: 34, top: 14 }, aria: "đồ thị y = ln x" });
+      c.axes({ xticks: [0, 0.5, 1, 1.5, 2, 2.5, 3], yticks: [-3, -2, -1, 0, 1], yfmt: v => String(v).replace("-", "−") });
+      X.el("rect", { x: c.x(0), y: c.y(0), width: c.x(1) - c.x(0), height: c.y(-3.2) - c.y(0), fill: "var(--s2-soft)", opacity: .8 }, c.g);
+      c.hline(0, { "stroke-dasharray": null, stroke: "var(--border-strong)", "stroke-width": 1.4 });
+      c.curve(Math.log, 0.045, 3);
+      const pts = [
+        { x: 0.05, s: "ln 0,05 ≈ −3,00", a: { dx: 10, dy: 5, "text-anchor": "start" } },
+        { x: 0.7, s: "ln 0,7 ≈ −0,357", a: { dx: 10, dy: 18, "text-anchor": "start" } },
+        { x: 1, s: "ln 1 = 0", a: { dx: -8, dy: -8, "text-anchor": "end" } },
+        { x: Math.E, s: "ln e = 1", a: { dx: -10, dy: -6, "text-anchor": "end" } }
+      ];
+      pts.forEach(p => { c.dot(p.x, Math.log(p.x)); c.text(p.x, Math.log(p.x), p.s, p.a); });
+      c.text(0.5, -2.2, "0 < x < 1:", { class: "svg-strong", style: "fill:var(--s2)" });
+      c.text(0.5, -2.2, "ln x âm", { dy: 17, class: "svg-strong", style: "fill:var(--s2)" });
+      c.hover(xv => {
+        if (xv < 0.04 || xv > 3) return null;
+        const y = Math.log(xv);
+        return `x = ${f(xv, 2)} → ln x ≈ ${neg(y)}<br><span style="opacity:.75">vì e<sup>${neg(y)}</sup> ≈ ${f(xv, 2)}</span>`;
+      }, { snap: v => Math.round(v * 100) / 100, ty: xv => c.y(Math.max(-3.1, Math.min(1.3, Math.log(Math.max(xv, 0.04))))) });
+    };
+    X.responsive(host, render);
+  }
+
+  /* ---------------- TÌM n NHỎ NHẤT ---------------- */
+  if ($("nminWidget")) {
+    const t2 = v => X.tfmt(v, 2, true);
+    let st = null;
+    const render = () => {
+      if (!st) return;
+      const p = Math.round(st.nmP * 100) / 100, g = Math.round(st.nmG * 100) / 100;
+      const q = Math.round((1 - p) * 100) / 100, r = Math.round((1 - g) * 100) / 100;
+      let nmin = 1; while (q ** nmin > r + 1e-12) nmin++;
+      const N = Math.max(10, nmin + 3);
+      const vals = []; for (let n = 1; n <= N; n++) vals.push(1 - q ** n);
+      const c = X.chart($("nminPlot"), { height: 250, xmin: 0.3, xmax: N + 0.7, ymin: 0, ymax: 1.05, margin: { left: 44 } });
+      const step = N > 30 ? 5 : N > 15 ? 2 : 1; const xt = []; for (let n = step; n <= N; n += step) xt.push(n);
+      c.axes({ xticks: xt, xfmt: v => String(v), yticks: [0, 0.25, 0.5, 0.75, 1] });
+      c.bars(vals.map((v, i) => ({ x: i + 1, y: v, fill: i + 1 === nmin ? "var(--s3)" : i + 1 > nmin ? "color-mix(in srgb, var(--s3) 40%, var(--surface))" : "color-mix(in srgb, var(--s1) 40%, var(--surface))" })), { maxW: 34 });
+      c.hline(g, { stroke: "var(--s2)", "stroke-width": 1.6 });
+      c.text(0.3, g, `γ = ${f(g, 2)}`, { dx: 4, dy: -6, "text-anchor": "start", class: "svg-strong", style: "fill:var(--s2)" });
+      c.hover(xv => { const n = Math.round(xv); if (n < 1 || n > N) return null; return `n = ${n}: 1 − ${f(q, 2, true)}<sup>${n}</sup> ≈ ${f(vals[n - 1], 4)}${n === nmin ? " ← lần đầu đạt mốc" : ""}`; },
+        { snap: v => Math.round(v), ty: xv => c.y(vals[Math.max(1, Math.min(N, Math.round(xv))) - 1]) });
+      const lr = Math.log(r), lq = Math.log(q), ratio = lr / lq;
+      $("nminRead").innerHTML =
+        `<div>${T(`1-${t2(q)}^n\\ge${t2(g)}\\iff ${t2(q)}^n\\le${t2(r)}\\iff n\\ge\\dfrac{\\ln${t2(r)}}{\\ln${t2(q)}}=\\dfrac{${tf(lr)}}{${tf(lq)}}\\approx${tf(ratio, 3)}`)} → ${T(`n_{\\min}=${nmin}`)}</div>
+         <div class="small muted" style="margin-top:4px">Thử lại: ${nmin > 1 ? T(`${t2(q)}^{${nmin - 1}}\\approx${tf(q ** (nmin - 1))}>${t2(r)}`) + " (chưa đủ), " : ""}${T(`${t2(q)}^{${nmin}}\\approx${tf(q ** nmin)}\\le${t2(r)}`)} ✓ — sau ${nmin} lần, xác suất có ít nhất một lần thành công ≈ ${f(1 - q ** nmin)}.</div>`;
+    };
+    X.bind(["nmP", "nmG"], v => { st = v; render(); }, { nmP: v => f(v, 2), nmG: v => f(v, 2) });
+    X.responsive($("nminPlot"), render);
+  }
 });

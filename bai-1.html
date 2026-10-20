@@ -15,7 +15,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
   <script defer src="assets/js/site.js?v=3"></script>
   <script defer src="assets/js/plot.js"></script>
-  <script defer src="assets/js/bai1.js"></script>
+  <script defer src="assets/js/bai1.js?v=2"></script>
 </head>
 <body data-lesson="bai-1">
 <header class="topbar">
@@ -39,7 +39,7 @@
 <section class="hero">
   <span class="kicker">Phần I · Xác suất</span>
   <h1>Bài 1. Xác suất — các công thức tính xác suất</h1>
-  <p class="lead">Trọng tâm là mục 3 của giáo trình: xác suất có điều kiện, công thức nhân, cộng, toàn phần, Bayes, các chỉ số của một xét nghiệm và công thức Bernoulli. Phần nền tảng chỉ tóm tắt, riêng luật De Morgan được giảng kĩ.</p>
+  <p class="lead">Trọng tâm là mục 3 của giáo trình: xác suất có điều kiện, công thức nhân, cộng, toàn phần, Bayes, các chỉ số của một xét nghiệm và công thức Bernoulli. Phần nền tảng chỉ tóm tắt, riêng luật De Morgan và logarit (mục 11.4) được giảng kĩ.</p>
 </section>
 
 <div class="box tip">
@@ -785,26 +785,126 @@ $$\begin{cases}H_1\cup H_2\cup\dots\cup H_n=\Omega & \text{(phủ kín: chắc c
 </div>
 
 <h3 id="ber-tim-n">11.4. Tìm số lần thử nhỏ nhất (dùng logarit)</h3>
-<p>Câu hỏi “cần ít nhất bao nhiêu lần để xác suất <i>có ít nhất một lần thành công</i> không nhỏ hơn $\gamma$?” dẫn tới bất phương trình $1-q^n\ge\gamma\iff q^n\le 1-\gamma$.</p>
+<p>Dạng đề: <i>“mỗi lần thử thành công với xác suất $p$; cần thử <b>ít nhất bao nhiêu lần</b> để xác suất <b>có ít nhất một lần thành công</b> không nhỏ hơn $\gamma$?”</i> ($\gamma$ đọc là “gam-ma” — mức chắc chắn đề yêu cầu, thường là $0{,}9$; $0{,}95$; $0{,}99$). Lời giải luôn gồm <b>4 bước</b>. Bước 1 và 4 chỉ dùng xác suất; bước 2–3 cần <b>logarit</b> nên được giảng kĩ từ đầu.</p>
+
+<h4>Bước 1 — Dịch đề thành bất phương trình</h4>
+<p>Gọi $n$ là số lần thử (ẩn cần tìm), $q=1-p$ là xác suất <b>thất bại</b> ở mỗi lần.</p>
+<ol class="steps">
+  <li>“Có ít nhất một lần thành công” có biến cố đối là “<b>cả $n$ lần đều thất bại</b>” (De Morgan — <a href="#dm-ung-dung">mục 2.6</a>).</li>
+  <li>Các lần thử độc lập nên nhân được: $P(\text{cả } n \text{ lần thất bại})=\underbrace{q\cdot q\cdots q}_{n\text{ lần}}=q^n$. Do đó $P(\text{ít nhất một lần thành công})=1-q^n$.</li>
+  <li>Đề đòi xác suất này không nhỏ hơn $\gamma$: $\;1-q^n\ge\gamma$. Chuyển vế ($q^n$ sang phải, $\gamma$ sang trái): $\;\boxed{q^n\le1-\gamma}$.</li>
+</ol>
+<p>Đọc bằng lời: <i>xác suất “trượt hết cả $n$ lần” không được vượt quá $1-\gamma$</i>. Ví dụ $\gamma=0{,}95$ thì “trượt hết” phải $\le0{,}05$ (5%) — ta gọi $1-\gamma$ là <b>rủi ro chấp nhận được</b>.</p>
+
+<h4>Bước 2 — Vướng mắc: ẩn $n$ nằm trên số mũ</h4>
+<p>Với $q=0{,}7$ và $\gamma=0{,}95$ ta phải giải $0{,}7^{\,n}\le0{,}05$. Cộng, trừ, nhân, chia đều không “gỡ” được $n$ ra khỏi số mũ. Cần một phép toán làm <b>ngược</b> phép lũy thừa — giống phép trừ làm ngược phép cộng, phép chia làm ngược phép nhân. Phép toán đó là <b>logarit</b>.</p>
 <div class="box def">
-  <div class="box-title"><span class="tag">Ôn nhanh</span>Logarit tự nhiên</div>
-  <p>$\ln$ biến lũy thừa thành phép nhân: $\ln(q^n)=n\ln q$. Vì $0&lt;q&lt;1$ nên $\ln q&lt;0$ — khi chia hai vế cho số âm phải <b>đổi chiều</b> bất đẳng thức:</p>
-  $$q^n\le 1-\gamma\iff n\ln q\le\ln(1-\gamma)\iff n\ge\frac{\ln(1-\gamma)}{\ln q}.$$
+  <div class="box-title"><span class="tag">Định nghĩa</span>Logarit trả lời câu hỏi “mũ mấy?”</div>
+  <p>Với cơ số $a&gt;0,\ a\ne1$ và số $x&gt;0$:</p>
+  $$\log_a x=c\quad\iff\quad a^{c}=x.$$
+  <p>Đọc là: “logarit cơ số $a$ của $x$ là <b>số mũ $c$</b> phải đặt lên $a$ để được $x$”. Thử với cơ số 10 (viết gọn là $\log$):</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>Lũy thừa</th><td>$10^3=1000$</td><td>$10^2=100$</td><td>$10^1=10$</td><td>$10^0=1$</td><td>$10^{-1}=0{,}1$</td><td>$10^{-2}=0{,}01$</td></tr>
+    <tr><th>Logarit</th><td>$\log1000=3$</td><td>$\log100=2$</td><td>$\log10=1$</td><td>$\log1=0$</td><td>$\log0{,}1=-1$</td><td>$\log0{,}01=-2$</td></tr>
+  </table></div>
+  <p>Nhìn hai cột cuối: muốn biến 10 thành một số <b>nằm giữa 0 và 1</b> thì số mũ phải <b>âm</b>. Vì thế <b>logarit của một số giữa 0 và 1 luôn âm</b> — mà mọi xác suất ta gặp ở đây đều nằm giữa 0 và 1. Còn số $\le0$ thì không có logarit (lũy thừa của số dương không bao giờ ra số 0 hay số âm), bấm máy sẽ báo lỗi.</p>
+</div>
+<div class="box def">
+  <div class="box-title"><span class="tag">Logarit tự nhiên</span><span>$\ln$ là logarit cơ số $e\approx2{,}718$</span></div>
+  <p>$e\approx2{,}71828$ là một hằng số đặc biệt của toán học (giống như $\pi\approx3{,}14$). Logarit cơ số $e$ dùng nhiều đến mức có tên riêng: $\ln x=\log_e x$ — “$e$ mũ mấy thì ra $x$?”. Máy tính có sẵn phím <kbd class="key">ln</kbd>.</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$x$</th><td>$0{,}05$</td><td>$0{,}3$</td><td>$0{,}5$</td><td>$0{,}7$</td><td>$1$</td><td>$2$</td><td>$e\approx2{,}718$</td></tr>
+    <tr><th>$\ln x$</th><td>$-2{,}9957$</td><td>$-1{,}2040$</td><td>$-0{,}6931$</td><td>$-0{,}3567$</td><td>$0$</td><td>$0{,}6931$</td><td>$1$</td></tr>
+  </table></div>
+  <p class="small">Đọc một ô: $\ln0{,}7\approx-0{,}3567$ nghĩa là $e^{-0{,}3567}\approx0{,}7$. Bạn không cần biết vì sao lại chọn $e$ — ở dạng bài này dùng $\log$ cơ số 10 cũng ra đúng đáp số đó (xem khung “Mở rộng” cuối mục).</p>
+</div>
+<figure>
+  <div class="fig-box"><div id="lnPlot"></div></div>
+  <figcaption>Hình 11.1. Đồ thị $y=\ln x$: luôn đi lên, cắt trục hoành tại $x=1$. Phần $0&lt;x&lt;1$ (nền cam) nằm dưới trục — logarit âm. Rê chuột hoặc chạm lên hình để đọc giá trị.</figcaption>
+</figure>
+
+<h4>Ba tính chất của $\ln$ dùng để giải</h4>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span><span>Ba tính chất (với $a,\ b$ là số dương)</span></div>
+  <div class="table-wrap"><table class="compact">
+    <tr><th></th><th>Tính chất</th><th class="left">Dùng để làm gì</th></tr>
+    <tr><td>①</td><td>$\ln(a^n)=n\ln a$</td><td class="left">kéo số mũ $n$ xuống thành một thừa số bình thường</td></tr>
+    <tr><td>②</td><td>$a\le b\iff\ln a\le\ln b$</td><td class="left">lấy $\ln$ hai vế của bất đẳng thức mà <b>giữ nguyên chiều</b></td></tr>
+    <tr><td>③</td><td>$0&lt;a&lt;1\Rightarrow\ln a&lt;0$</td><td class="left">biết $\ln q$ và $\ln(1-\gamma)$ là số âm</td></tr>
+  </table></div>
+</div>
+<p><b>Vì sao ① đúng?</b> Bắt đầu từ quy tắc nhân hai lũy thừa cùng cơ số: $e^u\cdot e^v=e^{u+v}$ — nhân thì <b>cộng số mũ</b>. Logarit chính là số mũ, nên logarit của một tích bằng tổng các logarit: $\ln(a\cdot b)=\ln a+\ln b$. Lũy thừa $a^n$ là tích của $n$ thừa số $a$, do đó:</p>
+$$\ln(a^n)=\ln(\underbrace{a\cdot a\cdots a}_{n\text{ thừa số}})=\underbrace{\ln a+\ln a+\dots+\ln a}_{n\text{ số hạng}}=n\ln a.$$
+<p>Thử bằng số: $0{,}7^2=0{,}49$ và $\ln0{,}49\approx-0{,}7134=2\cdot(-0{,}3567)$ ✓. Đây chính là chỗ logarit “kéo” ẩn $n$ từ số mũ xuống.</p>
+<p><b>Vì sao ② đúng?</b> Nhìn Hình 11.1: đường $y=\ln x$ <b>luôn đi lên</b> — $x$ lớn hơn thì $\ln x$ lớn hơn. Nên hai số dương so sánh thế nào thì logarit của chúng so sánh đúng như thế; lấy $\ln$ hai vế không làm lật chiều.</p>
+<p><b>Vì sao ③ đúng?</b> Đã thấy ở bảng và ở nền cam của Hình 11.1. Trong bài toán, $q$ và $1-\gamma$ đều là xác suất nằm giữa 0 và 1, nên $\ln q&lt;0$ và $\ln(1-\gamma)&lt;0$.</p>
+
+<h4>Bước 3 — Lấy $\ln$ hai vế, rồi chia cho một số âm (đổi chiều!)</h4>
+<ol class="steps">
+  <li><span class="step-label">Lấy $\ln$ hai vế</span> (tính chất ②, giữ chiều): $\;q^n\le1-\gamma\iff\ln(q^n)\le\ln(1-\gamma)$.</li>
+  <li><span class="step-label">Kéo số mũ xuống</span> (tính chất ①): $\;n\ln q\le\ln(1-\gamma)$. Giờ $n$ chỉ còn bị nhân với một con số.</li>
+  <li><span class="step-label">Chia hai vế cho $\ln q$</span> — đây là số <b>âm</b> (tính chất ③), nên dấu $\le$ phải <b>lật thành</b> $\ge$:
+    $$n\ge\frac{\ln(1-\gamma)}{\ln q}.$$</li>
+</ol>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Trực giác</span>Vì sao chia cho số âm thì phải đổi chiều?</div>
+  <p><b>Với số đơn giản:</b> $6&gt;4$. Chia cả hai vế cho $-2$ được $-3$ và $-2$, mà $-3&lt;-2$ — chiều đã lật. Lý do: nhân/chia cho số âm “lật” trục số qua điểm 0, số đang ở xa bên phải bị đẩy ra xa bên trái.</p>
+  <p><b>Với bài toán — cầu thang đi xuống:</b> vì $\ln(0{,}7^n)=n\cdot(-0{,}3567)$, mỗi lần soi thêm một mẫu thì $\ln(\text{xác suất trượt hết})$ <b>tụt thêm một bậc $0{,}3567$</b>. Ta cần tụt tới mốc $\ln0{,}05=-2{,}9957$:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>Số mẫu $n$</th><td>1</td><td>2</td><td>3</td><td>…</td><td>8</td><td>9</td></tr>
+    <tr><th>$n\ln0{,}7$</th><td>$-0{,}357$</td><td>$-0{,}713$</td><td>$-1{,}070$</td><td>…</td><td>$-2{,}853$</td><td>$-3{,}210$</td></tr>
+    <tr><th>Đã $\le-2{,}996$ chưa?</th><td>chưa</td><td>chưa</td><td>chưa</td><td>…</td><td>chưa</td><td><b>rồi ✓</b></td></tr>
+  </table></div>
+  <p>Số bậc cần đi là $\dfrac{2{,}9957}{0{,}3567}\approx8{,}4$ — phải đi <b>ít nhất</b> 8,4 bậc, tức là $n$ <b>lớn hơn</b> một mốc. Điều này hợp lẽ thường: soi càng nhiều mẫu càng chắc tìm ra. Nếu bạn giải ra “$n\le\dots$” (soi <i>ít</i> đi mà lại chắc hơn?) thì chắc chắn đã quên đổi chiều.</p>
+</div>
+
+<h4>Bước 4 — Làm tròn LÊN và thử lại</h4>
+<p>$n$ là số lần nên phải là số nguyên. Với $n\ge8{,}399$, các số nguyên thoả là $9,\ 10,\ 11,\dots$ → nhỏ nhất là $n_{\min}=9$. Đây <b>không</b> phải làm tròn thông thường: phần thập phân nhỏ mấy cũng phải lên — ví dụ $n\ge5{,}03$ thì $n_{\min}=6$, không phải 5. (Chỉ khi thương ra đúng một số nguyên, chẳng hạn $n\ge6$, thì $n_{\min}=6$.) Cuối cùng <b>thay số kiểm tra</b> hai giá trị liền nhau: $q^{\,n_{\min}-1}&gt;1-\gamma$ (chưa đủ) và $q^{\,n_{\min}}\le1-\gamma$ (đủ).</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Tóm tắt</span>4 bước tìm số lần thử nhỏ nhất</div>
+  $$1-q^n\ge\gamma\;\iff\;q^n\le1-\gamma\;\iff\;n\ln q\le\ln(1-\gamma)\;\iff\;n\ge\frac{\ln(1-\gamma)}{\ln q}$$
+  <p class="center small">Tử $\ln(1-\gamma)$: rủi ro chấp nhận được · Mẫu $\ln q$: xác suất <b>thất bại</b> một lần · Tử và mẫu đều âm nên thương dương · Làm tròn <b>lên</b>.</p>
 </div>
 <div class="box example">
   <div class="box-title"><span class="tag">Ví dụ 11.2</span>Soi tìm ký sinh trùng</div>
   <p>Mỗi lần soi một mẫu bệnh phẩm, nếu bệnh nhân có ký sinh trùng thì xác suất phát hiện là $0{,}3$ (các lần soi độc lập). Cần soi ít nhất bao nhiêu mẫu để xác suất phát hiện ít nhất một lần không nhỏ hơn $0{,}95$?</p>
-  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
     <ol class="steps">
-      <li>$1-0{,}7^n\ge0{,}95\iff0{,}7^n\le0{,}05$.</li>
-      <li>$n\ge\dfrac{\ln0{,}05}{\ln0{,}7}=\dfrac{-2{,}9957}{-0{,}3567}\approx8{,}40$.</li>
-      <li>$n$ nguyên nên $n_{\min}=\mathbf{9}$. Kiểm tra: $0{,}7^8\approx0{,}0576&gt;0{,}05$ (chưa đủ), $0{,}7^9\approx0{,}0404\le0{,}05$ ✓.</li>
+      <li><span class="step-label">Lập bất phương trình.</span> Mỗi lần soi: phát hiện với $p=0{,}3$, không phát hiện với $q=0{,}7$. Soi $n$ mẫu thì “không lần nào phát hiện” có xác suất $0{,}7^n$, nên $P(\text{phát hiện ít nhất 1 lần})=1-0{,}7^n$. Đề đòi $1-0{,}7^n\ge0{,}95\iff0{,}7^n\le0{,}05$.</li>
+      <li><span class="step-label">Lấy $\ln$ hai vế, kéo số mũ xuống.</span> $n\ln0{,}7\le\ln0{,}05$, tức là $n\cdot(-0{,}3567)\le-2{,}9957$.</li>
+      <li><span class="step-label">Chia cho $\ln0{,}7&lt;0$ nên đổi chiều.</span> $n\ge\dfrac{-2{,}9957}{-0{,}3567}\approx8{,}40$.</li>
+      <li><span class="step-label">Làm tròn lên, thử lại.</span> $n_{\min}=\mathbf{9}$. Kiểm tra: $0{,}7^8\approx0{,}0576&gt;0{,}05$ (8 mẫu chưa đủ), $0{,}7^9\approx0{,}0404\le0{,}05$ ✓ — soi 9 mẫu thì xác suất phát hiện $\approx0{,}9596$.</li>
     </ol>
   </div></details>
+</div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Ba chỗ hay nhầm (thử với số của Ví dụ 11.2)</div>
+  <ul>
+    <li><b>Dùng $\ln p$ thay cho $\ln q$:</b> $\dfrac{\ln0{,}05}{\ln0{,}3}\approx2{,}49$ → “3 mẫu” (sai). Mẫu số phải là xác suất <b>thất bại</b> $q=0{,}7$, vì $q^n$ mới là xác suất trượt hết.</li>
+    <li><b>Dùng $\ln\gamma$ thay cho $\ln(1-\gamma)$:</b> $\dfrac{\ln0{,}95}{\ln0{,}7}\approx0{,}14$ → “1 mẫu” (vô lý). Tử số là rủi ro $1-\gamma=0{,}05$.</li>
+    <li><b>Quên đổi chiều</b> hoặc <b>làm tròn xuống</b>: ra “$n\le8{,}4$” hay “$n=8$” — thay $0{,}7^8\approx0{,}0576&gt;0{,}05$ là thấy chưa đạt.</li>
+  </ul>
+  <p class="small">Mẹo soát nhanh: mỗi lần chỉ có 30% cơ hội mà muốn chắc 95% thì chắc chắn phải cần khá nhiều lần — đáp số 1 hay 3 là không có lý.</p>
+</div>
+<div class="widget" id="nminWidget">
+  <div class="widget-title">Nhìn thấy $n_{\min}$</div>
+  <div class="widget-sub">Cột thứ $n$ là $1-q^n$ — xác suất có ít nhất một lần thành công sau $n$ lần. Đường cam là mốc $\gamma$. Cột xanh đậm là cột <b>đầu tiên</b> chạm mốc — đúng bằng số logarit tính ra bên dưới. Kéo thanh trượt để thấy $p$ càng nhỏ, $\gamma$ càng cao thì càng cần nhiều lần.</div>
+  <div class="controls">
+    <div class="ctrl"><label for="nmP">Xác suất thành công mỗi lần $p$ <output for="nmP"></output></label><input type="range" id="nmP" min="0.1" max="0.9" step="0.05" value="0.3"></div>
+    <div class="ctrl"><label for="nmG">Mức chắc chắn yêu cầu $\gamma$ <output for="nmG"></output></label><input type="range" id="nmG" min="0.8" max="0.99" step="0.01" value="0.95"></div>
+  </div>
+  <div id="nminPlot" style="margin-top:10px"></div>
+  <div class="readout" id="nminRead"></div>
 </div>
 <div class="box calc">
   <div class="box-title"><span class="tag">Bấm máy</span>Logarit — và cách “nhìn thấy” đáp số bằng bảng</div>
   <p><span class="keys"><kbd>ln</kbd><kbd>0.05</kbd><kbd>)</kbd><kbd>÷</kbd><kbd>ln</kbd><kbd>0.7</kbd><kbd>)</kbd><kbd>=</kbd></span> → <span class="lcd">8.399054446</span> → làm tròn <b>lên</b> thành 9. Kiểm chứng bằng <span class="keys"><kbd class="fn">MENU</kbd><kbd>8</kbd></span> Table với $f(x)=1-0{,}7^x$, $x$ từ 1 đến 12: dòng 8 là $0{,}9424$ (chưa đủ), dòng 9 là $0{,}9596$ — lần đầu vượt 0,95. <a href="may-tinh.html#table-n">Chi tiết →</a></p>
+</div>
+<div class="box extra">
+  <div class="box-title"><span class="tag">Mở rộng</span><span>Dùng $\log$ (cơ số 10) thay cho $\ln$ có được không?</span></div>
+  <p>Được. Ba tính chất ①②③ đúng với logarit của mọi cơ số lớn hơn 1, nên:</p>
+  $$n\ge\frac{\log0{,}05}{\log0{,}7}=\frac{-1{,}3010}{-0{,}1549}\approx8{,}399$$
+  <p>— đúng bằng kết quả dùng $\ln$. Lý do: $\log x=\dfrac{\ln x}{\ln10}$, tức là đổi sang cơ số 10 thì tử và mẫu cùng bị chia cho $\ln10$, thương không đổi. Chỉ cần nhớ <b>tử và mẫu phải cùng một loại logarit</b>; trang này dùng $\ln$ cho thống nhất.</p>
 </div>
 
 <h3 id="ber-dung">11.5. Dạng “kiểm tra đến khi… thì dừng ở lần thứ $k$”</h3>
@@ -865,7 +965,7 @@ $$\begin{cases}H_1\cup H_2\cup\dots\cup H_n=\Omega & \text{(phủ kín: chắc c
     <li>Quên kiểm tra tổng các $P(H_i)$ của hệ đầy đủ bằng 1.</li>
     <li>“Ít nhất một” mà đi liệt kê dài dòng → dễ sót; hãy dùng biến cố đối.</li>
     <li>Dùng Bernoulli khi xác suất mỗi lần khác nhau.</li>
-    <li>Chia cho $\ln q&lt;0$ mà quên đổi chiều bất đẳng thức.</li>
+    <li>Chia cho $\ln q&lt;0$ mà quên đổi chiều bất đẳng thức; dùng nhầm $\ln p$ hay $\ln\gamma$ (xem <a href="#ber-tim-n">mục 11.4</a>).</li>
     <li>Làm tròn quá sớm ở bước trung gian — giữ ít nhất 4 chữ số thập phân, chỉ làm tròn ở kết quả cuối.</li>
   </ol>
 </div>
