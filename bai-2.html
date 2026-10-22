@@ -5296,6 +5296,1475 @@ $$z=\frac{\overline{x}-\mu}{\sigma/\sqrt n}$$
 </div>
 
 <div class="pager" id="pager"></div>
+
+<!-- =============================================================== -->
+<h2 id="trac-nghiem" data-toc="18. Trắc nghiệm luyện tập"><span class="num">18</span>Trắc nghiệm luyện tập (50 câu)</h2>
+<p>Đề soạn mới theo đúng các dạng hay gặp trong bài thu hoạch và đề thi trắc nghiệm của lớp, chia thành từng <b>chặng</b>: mỗi chặng đi từ <span class="lvl l1">Thông hiểu</span> → <span class="lvl l2">Vận dụng</span> → <span class="lvl l3">Vận dụng cao</span>. Bấm vào một phương án để chấm ngay: sai thì đọc lời giải thích vì sao sai rồi chọn lại; đúng rồi thì mở “Xem lời giải từng bước” để đối chiếu cách làm.</p>
+<p class="small muted">Mẹo: làm nháp ra giấy trước khi bấm — mục tiêu là đúng ngay lần đầu.</p>
+<h3 id="b2-tn-c1">Chặng 1 · Biến ngẫu nhiên và bảng phân phối</h3>
+<p>Chặng khởi động: nhận ra biến <b>rời rạc</b> hay <b>liên tục</b>, viết đúng <b>tập giá trị</b>, rồi lập và dùng <b>bảng phân phối</b>. Gần như mọi câu khó hơn ở các chặng sau (kỳ vọng, phương sai, nhị thức…) đều bắt đầu bằng một bảng phân phối đúng — sai bảng là sai cả bài.</p>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Cách làm dạng này</span>Ba bước lập bảng phân phối</div>
+  <ol class="steps">
+    <li><span class="step-label">Bước 1 · Tập giá trị:</span> hỏi “$X$ nhỏ nhất là mấy, lớn nhất là mấy?” — đừng quên giá trị $0$.</li>
+    <li><span class="step-label">Bước 2 · Từng xác suất:</span> mỗi giá trị $X=k$ là một biến cố; tách thành các trường hợp xung khắc rồi cộng, trong mỗi trường hợp dùng công thức nhân.</li>
+    <li><span class="step-label">Bước 3 · Kiểm tra:</span> mọi $p_i\ge0$ và tổng các $p_i$ bằng $1$. Tổng khác $1$ là chắc chắn có chỗ sai.</li>
+  </ol>
+</div>
+
+<div class="ex mcq" id="b2q01">
+  <div class="ex-head"><span class="ex-num">Câu 1</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Rời rạc / liên tục · Tập giá trị</span></div>
+  <p>Khám một trẻ 8 tuổi, gọi $X$ là số răng bị sâu trong <b>4 răng hàm lớn thứ nhất</b> (răng số 6) của trẻ, và $T$ là thời gian (phút) từ lúc tiêm thuốc tê đến khi môi trẻ bắt đầu tê. Phát biểu nào <b>đúng</b>?</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $X$ là biến liên tục, nhận mọi giá trị trong đoạn $[0;4]$.</button>
+      <button data-k="b"><b>B.</b> $T$ là biến rời rạc, vì đồng hồ chỉ đếm từng phút.</button>
+      <button data-k="c"><b>C.</b> $X$ rời rạc với tập giá trị $\{0;1;2;3;4\}$; $T$ là biến liên tục.</button>
+      <button data-k="d"><b>D.</b> $X$ rời rạc với tập giá trị $\{1;2;3;4\}$; $T$ là biến liên tục.</button>
+    </div>
+    <div class="qc-fb" data-k="a">$X$ là kết quả <b>đếm</b> (đếm răng sâu) nên chỉ nhận số nguyên: không thể có $1{,}5$ răng sâu. Biến đếm luôn là biến <b>rời rạc</b>, giá trị liệt kê được từng cái.</div>
+    <div class="qc-fb" data-k="b">Đồng hồ làm tròn là do <b>dụng cụ đo</b>, còn bản thân thời gian có thể là $3{,}27$ phút, $3{,}271$ phút… — lấp kín cả một khoảng. Đại lượng <b>đo</b> (thời gian, cân nặng, nồng độ) là biến <b>liên tục</b>.</div>
+    <div class="qc-fb" data-k="c">$X$ là biến đếm: ít nhất $0$ răng sâu (trẻ không sâu răng nào), nhiều nhất cả $4$ răng ⇒ $\{0;1;2;3;4\}$. $T$ là đại lượng đo, nhận mọi giá trị trong một khoảng ⇒ liên tục.</div>
+    <div class="qc-fb" data-k="d">Phân loại đúng nhưng <b>quên giá trị $0$</b>: trẻ hoàn toàn có thể không sâu răng nào. Tập giá trị phải đi từ nhỏ nhất ($0$) tới lớn nhất ($4$).</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> $X$ có được bằng cách <b>đếm</b> ⇒ chỉ nhận số nguyên, liệt kê được ⇒ biến rời rạc.</li>
+      <li><span class="step-label">Bước 2:</span> Tập giá trị: nhỏ nhất là $0$ (không răng nào sâu), lớn nhất là $4$ (cả 4 răng sâu) ⇒ $X\in\{0;1;2;3;4\}$.</li>
+      <li><span class="step-label">Bước 3:</span> $T$ có được bằng cách <b>đo</b> ⇒ giữa hai giá trị bất kỳ luôn có giá trị khác ⇒ biến liên tục. Chọn <b>C</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q02">
+  <div class="ex-head"><span class="ex-num">Câu 2</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Lập bảng · Hai nơi độc lập</span></div>
+  <p>Tỉ lệ trẻ bị sâu răng ở trường mầm non Hoa Mai là $0{,}35$, ở trường mầm non Sơn Ca là $0{,}2$. Khám ngẫu nhiên <b>mỗi trường một trẻ</b> (hai trẻ độc lập). Gọi $X$ là số trẻ bị sâu răng trong hai trẻ. Bảng phân phối của $X$, viết theo thứ tự $P(X=0);\ P(X=1);\ P(X=2)$, là</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}52;\ 0{,}41;\ 0{,}07$</button>
+      <button data-k="b"><b>B.</b> $0{,}52;\ 0{,}28;\ 0{,}20$</button>
+      <button data-k="c"><b>C.</b> $0{,}38;\ 0{,}55;\ 0{,}07$</button>
+      <button data-k="d"><b>D.</b> $0{,}45;\ 0{,}48;\ 0{,}07$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$X=1$ gồm <b>hai trường hợp xung khắc</b>: trẻ Hoa Mai sâu – trẻ Sơn Ca không ($0{,}35\cdot0{,}8=0{,}28$), hoặc ngược lại ($0{,}65\cdot0{,}2=0{,}13$). Cộng lại $0{,}41$; tổng $0{,}52+0{,}41+0{,}07=1$ ✓.</div>
+    <div class="qc-fb" data-k="b">$0{,}28$ chỉ là <b>một</b> trường hợp (trẻ Hoa Mai sâu, trẻ Sơn Ca không). Còn trường hợp ngược lại $0{,}65\cdot0{,}2=0{,}13$. Lấy $1-0{,}52-0{,}28=0{,}20$ để “bù” làm $P(X=2)$ sai theo: thật ra $P(X=2)=0{,}35\cdot0{,}2=0{,}07$.</div>
+    <div class="qc-fb" data-k="c">$0{,}55=0{,}35+0{,}2$ là <b>cộng hai tỉ lệ</b> — đó không phải xác suất “đúng một trẻ sâu” (nếu cộng thì cả trường hợp hai trẻ cùng sâu bị tính vào). Phải nhân: $0{,}35\cdot0{,}8+0{,}65\cdot0{,}2=0{,}41$.</div>
+    <div class="qc-fb" data-k="d">$0{,}45=1-0{,}35-0{,}2$ là trừ thẳng — sai. “Không trẻ nào sâu” = trẻ Hoa Mai <b>không</b> sâu <b>và</b> trẻ Sơn Ca <b>không</b> sâu, độc lập nên nhân: $0{,}65\cdot0{,}8=0{,}52$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Đặt tên:</span> $H$: “trẻ trường Hoa Mai sâu răng”, $P(H)=0{,}35$, $P(\overline H)=0{,}65$; $S$: “trẻ trường Sơn Ca sâu răng”, $P(S)=0{,}2$, $P(\overline S)=0{,}8$. $X\in\{0;1;2\}$.</li>
+      <li><span class="step-label">Bước 1:</span> $P(X=0)=P(\overline H\,\overline S)=0{,}65\cdot0{,}8=0{,}52$.</li>
+      <li><span class="step-label">Bước 2:</span> $P(X=1)=P(H\overline S)+P(\overline H S)=0{,}35\cdot0{,}8+0{,}65\cdot0{,}2=0{,}28+0{,}13=0{,}41$.</li>
+      <li><span class="step-label">Bước 3:</span> $P(X=2)=P(HS)=0{,}35\cdot0{,}2=0{,}07$.</li>
+      <li><span class="step-label">Kiểm tra:</span> $0{,}52+0{,}41+0{,}07=1$ ✓. Chọn <b>A</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q03">
+  <div class="ex-head"><span class="ex-num">Câu 3</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Tìm ẩn (tổng = 1) · $P(a\le X&lt;b)$</span></div>
+  <p>Gọi $X$ là số lần một bệnh nhân phải quay lại tái khám sau khi nhổ răng khôn. Bảng phân phối của $X$:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$X$</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+    <tr><th>$P$</th><td>0,1</td><td>0,35</td><td>$m$</td><td>0,2</td><td>0,05</td></tr>
+  </table></div>
+  <p>Xác suất $P(1\le X&lt;3)$ bằng</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}85$</button>
+      <button data-k="b"><b>B.</b> $0{,}30$</button>
+      <button data-k="c"><b>C.</b> $0{,}50$</button>
+      <button data-k="d"><b>D.</b> $0{,}65$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}85=0{,}35+0{,}3+0{,}2$ là đã lấy cả $X=3$. Dấu $&lt;3$ là <b>nhỏ hơn hẳn</b> $3$ nên $X=3$ không được tính; đó là $P(1\le X\le3)$.</div>
+    <div class="qc-fb" data-k="b">$0{,}30$ chỉ là $P(X=2)=m$: đã bỏ mất $X=1$. Dấu $\le$ ở “$1\le X$” nghĩa là <b>có lấy</b> $X=1$.</div>
+    <div class="qc-fb" data-k="c">$0{,}50=0{,}3+0{,}2$ là $P(1&lt;X\le3)$ — đặt hai dấu ngược chỗ. Đề hỏi $1\le X&lt;3$: lấy $X=1$, bỏ $X=3$.</div>
+    <div class="qc-fb" data-k="d">Tìm $m$ từ tổng bằng $1$: $m=0{,}3$. Các giá trị thoả $1\le X&lt;3$ là $X=1$ và $X=2$: $0{,}35+0{,}3=0{,}65$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 · Tìm $m$:</span> tổng các xác suất bằng $1$: $0{,}1+0{,}35+m+0{,}2+0{,}05=1\Rightarrow m=1-0{,}7=0{,}3$.</li>
+      <li><span class="step-label">Bước 2 · Đọc dấu:</span> $1\le X$: lấy cả $1$; $X&lt;3$: không lấy $3$. Vậy chỉ có $X=1$ và $X=2$.</li>
+      <li><span class="step-label">Bước 3:</span> $P(1\le X&lt;3)=P(X=1)+P(X=2)=0{,}35+0{,}3=0{,}65$.</li>
+      <li><span class="step-label">Đối chiếu:</span> với $F(x)=P(X&lt;x)$ thì $P(1\le X&lt;3)=F(3)-F(1)=(0{,}1+0{,}35+0{,}3)-0{,}1=0{,}65$ ✓. Chọn <b>D</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q04">
+  <div class="ex-head"><span class="ex-num">Câu 4</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Lập bảng · Rút đồng thời không hoàn lại</span></div>
+  <p>Một hộp có $12$ ống thuốc tê, trong đó $5$ ống loại Articaine và $7$ ống loại Lidocaine. Phụ tá lấy <b>đồng thời</b> $3$ ống. Gọi $X$ là số ống Articaine trong $3$ ống lấy ra. Bảng phân phối của $X$, theo thứ tự $P(X=0);\ P(X=1);\ P(X=2);\ P(X=3)$ (làm tròn 4 chữ số thập phân), là</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}1985;\ 0{,}4253;\ 0{,}3038;\ 0{,}0723$</button>
+      <button data-k="b"><b>B.</b> $0{,}1591;\ 0{,}4773;\ 0{,}3182;\ 0{,}0455$</button>
+      <button data-k="c"><b>C.</b> $0{,}0455;\ 0{,}3182;\ 0{,}4773;\ 0{,}1591$</button>
+      <button data-k="d"><b>D.</b> $0{,}1591;\ 0{,}1591;\ 0{,}1061;\ 0{,}0455$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Đây là công thức nhị thức với $p=\tfrac5{12}$, ví dụ $P(X=1)=C_3^1\cdot\tfrac5{12}\cdot\big(\tfrac7{12}\big)^2\approx0{,}4253$. Nhị thức chỉ đúng khi lấy <b>có hoàn lại</b>. Lấy đồng thời thì số ống trong hộp giảm dần ⇒ phải đếm tổ hợp: $P(X=k)=\dfrac{C_5^kC_7^{3-k}}{C_{12}^3}$.</div>
+    <div class="qc-fb" data-k="b">Số cách lấy $3$ ống: $C_{12}^3=220$. $P(X=k)=\dfrac{C_5^k\,C_7^{3-k}}{220}$ cho $\dfrac{35}{220};\dfrac{105}{220};\dfrac{70}{220};\dfrac{10}{220}$, tổng bằng $1$ ✓.</div>
+    <div class="qc-fb" data-k="c">Bảng này bị <b>đảo vai trò hai loại</b>: đó là bảng của số ống <b>Lidocaine</b>. Ví dụ $\dfrac{C_7^3}{220}=0{,}1591$ là xác suất cả 3 ống Lidocaine, tức là $X=0$ (không ống Articaine nào), không phải $X=3$.</div>
+    <div class="qc-fb" data-k="d">Đây là tính theo thứ tự lấy từng ống nhưng <b>quên nhân số cách sắp vị trí</b>. Ví dụ $\tfrac5{12}\cdot\tfrac7{11}\cdot\tfrac6{10}\approx0{,}1591$ chỉ là “ống 1 Articaine, ống 2 và 3 Lidocaine”; còn 2 vị trí khác cho ống Articaine nên phải nhân $3$: $0{,}4773$. Tổng các số ở D chỉ $\approx0{,}47\ne1$ — dấu hiệu sai.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 · Tập giá trị:</span> có $5$ ống Articaine, lấy $3$ ống ⇒ $X\in\{0;1;2;3\}$.</li>
+      <li><span class="step-label">Bước 2 · Số cách chung:</span> lấy đồng thời $3$ trong $12$ ống: $C_{12}^3=220$ cách, đồng khả năng.</li>
+      <li><span class="step-label">Bước 3 · Số cách thuận lợi:</span> $X=k$ nghĩa là $k$ ống Articaine (chọn từ 5) và $3-k$ ống Lidocaine (chọn từ 7): $C_5^k\cdot C_7^{3-k}$.
+        <ul>
+          <li>$X=0$: $C_5^0C_7^3=1\cdot35=35$</li>
+          <li>$X=1$: $C_5^1C_7^2=5\cdot21=105$</li>
+          <li>$X=2$: $C_5^2C_7^1=10\cdot7=70$</li>
+          <li>$X=3$: $C_5^3C_7^0=10\cdot1=10$</li>
+        </ul></li>
+      <li><span class="step-label">Bước 4:</span> chia cho $220$: $0{,}1591;\ 0{,}4773;\ 0{,}3182;\ 0{,}0455$.</li>
+      <li><span class="step-label">Kiểm tra:</span> $35+105+70+10=220$ ⇒ tổng xác suất bằng $1$ ✓. Chọn <b>B</b>.</li>
+      <li><span class="step-label">Bấm máy:</span> $C_5^1C_7^2$: <code>5</code> <code>SHIFT</code> <code>÷</code> <code>1</code> <code>×</code> <code>7</code> <code>SHIFT</code> <code>÷</code> <code>2</code> <code>÷</code> <code>(</code> <code>12</code> <code>SHIFT</code> <code>÷</code> <code>3</code> <code>)</code> <code>=</code> ra $0{,}4773$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q05">
+  <div class="ex-head"><span class="ex-num">Câu 5</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Hệ 2 ẩn (tổng = 1, kỳ vọng) · $P(X=Y)$</span></div>
+  <p>Gọi $X$, $Y$ lần lượt là số ca cấp cứu nha khoa mà phòng khám An Bình và phòng khám Minh Tâm nhận trong một đêm; $X$ và $Y$ độc lập, có bảng phân phối:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$X$</th><td>0</td><td>1</td><td>2</td></tr>
+    <tr><th>$P$</th><td>0,1</td><td>0,6</td><td>0,3</td></tr>
+  </table></div>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$Y$</th><td>1</td><td>2</td><td>3</td></tr>
+    <tr><th>$P$</th><td>$a$</td><td>$b$</td><td>0,2</td></tr>
+  </table></div>
+  <p>Biết $E(Y)=1{,}9$. Xác suất để đêm đó hai phòng khám nhận <b>số ca bằng nhau</b>, $P(X=Y)$, là</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}39$</button>
+      <button data-k="b"><b>B.</b> $0{,}18$</button>
+      <button data-k="c"><b>C.</b> $0{,}51$</button>
+      <button data-k="d"><b>D.</b> $0{,}33$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Hệ đúng cho $a=0{,}3$, $b=0{,}5$; số $0{,}39=0{,}6\cdot0{,}5+0{,}3\cdot0{,}3$ là đã <b>đảo $a$ và $b$</b>. Nhớ $a=P(Y=1)$ đi với $X=1$, $b=P(Y=2)$ đi với $X=2$.</div>
+    <div class="qc-fb" data-k="b">$0{,}18=0{,}6\cdot0{,}3$ chỉ là trường hợp cả hai cùng $1$ ca. Còn trường hợp cả hai cùng $2$ ca: $0{,}3\cdot0{,}5=0{,}15$. ($X=0$ và $Y=3$ không có cặp chung vì $Y$ không nhận $0$, $X$ không nhận $3$.)</div>
+    <div class="qc-fb" data-k="c">Số này đến từ việc viết $a+b=1$ — <b>quên cột $0{,}2$</b> — nên ra $a=0{,}7$, $b=0{,}3$. Đúng phải là $a+b+0{,}2=1$, tức $a+b=0{,}8$.</div>
+    <div class="qc-fb" data-k="d">Giải hệ được $a=0{,}3$, $b=0{,}5$. $X=Y$ chỉ xảy ra khi cả hai cùng $1$ hoặc cùng $2$: $0{,}6\cdot0{,}3+0{,}3\cdot0{,}5=0{,}33$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> có hai ẩn $a,b$ nên cần hai phương trình: một từ “tổng xác suất bằng 1”, một từ $E(Y)$ cho trước.</li>
+      <li><span class="step-label">Bước 1 · Tổng bằng 1:</span> $a+b+0{,}2=1\Rightarrow a+b=0{,}8$.</li>
+      <li><span class="step-label">Bước 2 · Kỳ vọng:</span> $E(Y)=1\cdot a+2\cdot b+3\cdot0{,}2=1{,}9\Rightarrow a+2b=1{,}3$.</li>
+      <li><span class="step-label">Bước 3 · Giải hệ:</span> lấy phương trình bước 2 trừ bước 1: $b=1{,}3-0{,}8=0{,}5$; rồi $a=0{,}8-0{,}5=0{,}3$. Kiểm tra: $0{,}3+0{,}5+0{,}2=1$ ✓.</li>
+      <li><span class="step-label">Bước 4 · Liệt kê cặp bằng nhau:</span> $X\in\{0;1;2\}$, $Y\in\{1;2;3\}$ ⇒ giá trị chung chỉ có $1$ và $2$.</li>
+      <li><span class="step-label">Bước 5:</span> độc lập nên nhân, hai trường hợp xung khắc nên cộng:
+        $$\begin{aligned}&amp;P(X=Y)\\ &amp;=P(X=1)P(Y=1)+P(X=2)P(Y=2)\\ &amp;=0{,}6\cdot0{,}3+0{,}3\cdot0{,}5\\ &amp;=0{,}18+0{,}15=0{,}33.\end{aligned}$$
+        Chọn <b>D</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q06">
+  <div class="ex-head"><span class="ex-num">Câu 6</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Lập bảng · Lần lượt tới khi gặp mẫu âm tính</span></div>
+  <p>Một phòng xét nghiệm có $4$ mẫu dịch nha chu cần xét nghiệm vi khuẩn; mỗi mẫu dương tính với xác suất $0{,}4$, độc lập nhau. Kỹ thuật viên xét nghiệm <b>lần lượt từng mẫu</b>, gặp mẫu <b>âm tính</b> đầu tiên thì <b>dừng</b>; nếu chưa gặp thì làm tới hết $4$ mẫu. Gọi $X$ là số mẫu đã xét nghiệm. Xác suất $P(X\ge3)$ là</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}16$</button>
+      <button data-k="b"><b>B.</b> $0{,}1344$</button>
+      <button data-k="c"><b>C.</b> $0{,}36$</button>
+      <button data-k="d"><b>D.</b> $0{,}096$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bảng đúng: $P(X=3)=0{,}4^2\cdot0{,}6=0{,}096$, $P(X=4)=0{,}4^3=0{,}064$ (tới mẫu thứ 4 thì dừng dù kết quả là gì). Cộng lại $0{,}16$ — cũng chính là $0{,}4^2$: phải làm ít nhất 3 mẫu khi và chỉ khi hai mẫu đầu đều dương tính.</div>
+    <div class="qc-fb" data-k="b">Đã tính $P(X=4)=0{,}4^3\cdot0{,}6=0{,}0384$ — tức là bắt mẫu thứ 4 phải âm tính. Nhưng làm tới mẫu thứ 4 thì <b>dừng dù mẫu đó âm hay dương</b>, nên $P(X=4)=0{,}4^3=0{,}064$. (Với bảng sai này tổng chỉ là $0{,}9744\ne1$.)</div>
+    <div class="qc-fb" data-k="c">Đã <b>đổi vai trò</b> dương/âm: dùng $0{,}6$ cho “tiếp tục” và $0{,}4$ cho “dừng”: $0{,}6^2\cdot0{,}4+0{,}6^3=0{,}36$. Kỹ thuật viên chỉ đi tiếp khi mẫu <b>dương tính</b> (xác suất $0{,}4$), dừng khi gặp <b>âm tính</b> (xác suất $0{,}6$).</div>
+    <div class="qc-fb" data-k="d">$0{,}096$ chỉ là $P(X=3)$. “$X\ge3$” gồm cả $X=4$: thêm $P(X=4)=0{,}4^3=0{,}064$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> lập bảng phân phối của $X$ rồi cộng các cột $X\ge3$. Chỗ dễ sai là giá trị <b>cuối cùng</b> $X=4$: ở đó dừng vì hết mẫu, không cần mẫu thứ 4 âm tính.</li>
+      <li><span class="step-label">Đặt tên:</span> $D_i$: “mẫu thứ $i$ dương tính”, $P(D_i)=0{,}4$, $P(\overline{D_i})=0{,}6$. $X\in\{1;2;3;4\}$.</li>
+      <li><span class="step-label">Bước 1:</span> $X=1$: mẫu 1 âm tính: $P(X=1)=0{,}6$.</li>
+      <li><span class="step-label">Bước 2:</span> $X=2$: mẫu 1 dương, mẫu 2 âm: $P(X=2)=0{,}4\cdot0{,}6=0{,}24$.</li>
+      <li><span class="step-label">Bước 3:</span> $X=3$: mẫu 1, 2 dương, mẫu 3 âm: $P(X=3)=0{,}4^2\cdot0{,}6=0{,}096$.</li>
+      <li><span class="step-label">Bước 4:</span> $X=4$: ba mẫu đầu dương, mẫu 4 âm <b>hay</b> dương đều dừng: $P(X=4)=0{,}4^3\cdot0{,}6+0{,}4^3\cdot0{,}4=0{,}4^3=0{,}064$.</li>
+      <li><span class="step-label">Kiểm tra:</span> $0{,}6+0{,}24+0{,}096+0{,}064=1$ ✓.</li>
+      <li><span class="step-label">Bước 5:</span> $P(X\ge3)=0{,}096+0{,}064=0{,}16$. Cách nhanh: $X\ge3\iff D_1D_2$ ⇒ $0{,}4^2=0{,}16$. Chọn <b>A</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b2-tn-c2">Chặng 2 · Kỳ vọng, phương sai, biến đổi tuyến tính</h3>
+<p>Chặng này luyện ba việc mà đề thi gần như luôn hỏi: tính $E(X)$, $D(X)$, $\sigma(X)$ từ bảng phân phối; biến đổi $aX+b$ (hệ số $a$ ra ngoài $D$ thì <b>bình phương</b>, hằng số $b$ thì <b>biến mất</b>); và cộng – trừ hai biến <b>độc lập</b> (phương sai luôn <b>cộng</b>, kể cả khi trừ biến). Cuối chặng là bài toán ngược: biết $E$, $D$ mong muốn, tìm lại $a$, $b$.</p>
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Bộ công thức cần thuộc</span></div>
+<ol class="steps">
+<li><span class="step-label">Từ bảng:</span> $E(X)=\sum x_ip_i$; $E(X^2)=\sum x_i^2p_i$; $D(X)=E(X^2)-[E(X)]^2$; $\sigma(X)=\sqrt{D(X)}$.</li>
+<li><span class="step-label">Tuyến tính:</span> $E(aX+b)=aE(X)+b$; $D(aX+b)=a^2D(X)$ — dấu của $a$ mất đi vì bình phương, $b$ chỉ "dời" giá trị nên không làm thay đổi độ phân tán.</li>
+<li><span class="step-label">Hai biến độc lập:</span> $D(aX+bY)=a^2D(X)+b^2D(Y)$ — luôn là dấu <b>+</b>. Muốn ra $\sigma$ thì cộng các $D$ trước rồi mới khai căn, <b>không</b> cộng các $\sigma$.</li>
+</ol>
+</div>
+
+<div class="ex mcq" id="b2q07">
+  <div class="ex-head"><span class="ex-num">Câu 7</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">E, D, σ từ bảng</span></div>
+  <p>Gọi $X$ là số răng sâu mới phát hiện ở một trẻ 6 tuổi trong đợt khám định kỳ, có bảng phân phối:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$X$</th><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td></tr>
+    <tr><th>$P$</th><td>$0{,}3$</td><td>$0{,}4$</td><td>$0{,}2$</td><td>$0{,}1$</td></tr>
+  </table></div>
+  <p>Độ lệch chuẩn $\sigma(X)$ xấp xỉ bằng (làm tròn 2 chữ số thập phân):</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}89$</button>
+      <button data-k="b"><b>B.</b> $2{,}10$</button>
+      <button data-k="c"><b>C.</b> $0{,}94$</button>
+      <button data-k="d"><b>D.</b> $1{,}00$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}89$ là <b>phương sai</b> $D(X)=2{,}1-1{,}1^2$. Đề hỏi độ lệch chuẩn nên còn phải khai căn: $\sigma=\sqrt{0{,}89}\approx 0{,}94$.</div>
+    <div class="qc-fb" data-k="b">$2{,}1$ mới là $E(X^2)=0^2\cdot0{,}3+1^2\cdot0{,}4+2^2\cdot0{,}2+3^2\cdot0{,}1$. Bạn quên trừ $[E(X)]^2=1{,}21$ và quên khai căn.</div>
+    <div class="qc-fb" data-k="c">$E(X)=1{,}1$, $E(X^2)=2{,}1$, $D(X)=2{,}1-1{,}21=0{,}89$, $\sigma=\sqrt{0{,}89}\approx0{,}94$. Đủ ba bước: kỳ vọng → phương sai → khai căn.</div>
+    <div class="qc-fb" data-k="d">$1{,}00$ ra từ $E(X^2)-E(X)=2{,}1-1{,}1$ — trừ $E(X)$ mà quên <b>bình phương</b> nó. Phải trừ $[E(X)]^2=1{,}1^2=1{,}21$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Kỳ vọng:</span> $E(X)=0\cdot0{,}3+1\cdot0{,}4+2\cdot0{,}2+3\cdot0{,}1=1{,}1$ (trung bình 1,1 răng sâu mới mỗi trẻ).</li>
+      <li><span class="step-label">Bước 2 – $E(X^2)$:</span> bình phương <b>giá trị</b>, giữ nguyên xác suất: $0\cdot0{,}3+1\cdot0{,}4+4\cdot0{,}2+9\cdot0{,}1=2{,}1$.</li>
+      <li><span class="step-label">Bước 3 – Phương sai:</span> $D(X)=E(X^2)-[E(X)]^2=2{,}1-1{,}21=0{,}89$.</li>
+      <li><span class="step-label">Bước 4 – Độ lệch chuẩn:</span> $\sigma(X)=\sqrt{0{,}89}\approx0{,}9434\approx0{,}94$ (cùng đơn vị "răng" với $X$).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q08">
+  <div class="ex-head"><span class="ex-num">Câu 8</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Mệnh đề về E, D</span></div>
+  <p>Gọi $X$ (mm) là mức thay đổi độ sâu túi nha chu của một bệnh nhân sau 1 tháng điều trị (âm nghĩa là túi nông đi). $X$ nhận các giá trị $-2;\,-1;\,0$ với xác suất lần lượt $0{,}5;\,0{,}3;\,0{,}2$. Gọi $Y$ là mức thay đổi tương ứng của một bệnh nhân khác, <b>độc lập</b> với $X$. Xét các mệnh đề:</p>
+  <p>(1) $E(X)&lt;0$.<br>(2) Vì $X$ chỉ nhận giá trị không dương nên $D(X)&lt;0$.<br>(3) $D(X-Y)=D(X)-D(Y)$.<br>(4) $D(X+3)=D(X)$.</p>
+  <p>Các mệnh đề <b>đúng</b> là:</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> Chỉ (1)</button>
+      <button data-k="b"><b>B.</b> (1) và (4)</button>
+      <button data-k="c"><b>C.</b> (1), (2) và (4)</button>
+      <button data-k="d"><b>D.</b> (1), (3) và (4)</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn bỏ sót (4). Cộng hằng số 3 chỉ dời mọi giá trị sang phải 3 mm, khoảng cách giữa các giá trị không đổi nên độ phân tán không đổi: $D(X+3)=1^2\cdot D(X)=D(X)$.</div>
+    <div class="qc-fb" data-k="b">(1) đúng: $E(X)=-2\cdot0{,}5-1\cdot0{,}3+0=-1{,}3&lt;0$ — kỳ vọng có thể âm. (4) đúng vì hằng số không làm đổi phương sai. (2) sai vì phương sai luôn $\ge0$; (3) sai vì với hai biến độc lập $D(X-Y)=D(X)+D(Y)$.</div>
+    <div class="qc-fb" data-k="c">(2) sai. Phương sai là trung bình của <b>bình phương</b> độ lệch, $D(X)=E\big[(X-E(X))^2\big]\ge0$ dù $X$ âm. Ở đây $D(X)=2{,}3-(-1{,}3)^2=0{,}61&gt;0$.</div>
+    <div class="qc-fb" data-k="d">(3) sai. $D(X-Y)=1^2D(X)+(-1)^2D(Y)=D(X)+D(Y)$: hệ số $-1$ bị bình phương thành $+1$. Trừ hai biến vẫn làm <b>tăng</b> độ phân tán chứ không giảm.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">(1):</span> $E(X)=(-2)(0{,}5)+(-1)(0{,}3)+0(0{,}2)=-1{,}3&lt;0$ → <b>đúng</b>. Kỳ vọng mang dấu của giá trị, nên có thể âm.</li>
+      <li><span class="step-label">(2):</span> $E(X^2)=4\cdot0{,}5+1\cdot0{,}3+0=2{,}3$; $D(X)=2{,}3-1{,}69=0{,}61\ge0$ → <b>sai</b>. Phương sai không bao giờ âm vì là trung bình của các số bình phương.</li>
+      <li><span class="step-label">(3):</span> $X$, $Y$ độc lập: $D(X-Y)=D(X)+(-1)^2D(Y)=D(X)+D(Y)$ → <b>sai</b>.</li>
+      <li><span class="step-label">(4):</span> $D(X+3)=1^2\cdot D(X)=D(X)$ → <b>đúng</b>.</li>
+      <li><span class="step-label">Kết luận:</span> đúng là (1) và (4).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q09">
+  <div class="ex-head"><span class="ex-num">Câu 9</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">E(a − bX), D(a − bX)</span></div>
+  <p>Gọi $X$ là số ống thuốc tê dùng trong một ca nhổ răng, có bảng phân phối:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$X$</th><td>$1$</td><td>$2$</td><td>$3$</td></tr>
+    <tr><th>$P$</th><td>$0{,}5$</td><td>$0{,}4$</td><td>$0{,}1$</td></tr>
+  </table></div>
+  <p>Mỗi ca được chuẩn bị sẵn $10$ ml thuốc tê, mỗi ống $2$ ml. Lượng thuốc còn dư sau ca là $Y=10-2X$ (ml). Cặp $\big(E(Y);\,D(Y)\big)$ là:</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(6{,}8;\ -0{,}88)$</button>
+      <button data-k="b"><b>B.</b> $(13{,}2;\ 1{,}76)$</button>
+      <button data-k="c"><b>C.</b> $(6{,}8;\ 11{,}76)$</button>
+      <button data-k="d"><b>D.</b> $(6{,}8;\ 1{,}76)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$-0{,}88=-2\cdot0{,}44$: bạn đưa hệ số $-2$ ra ngoài $D$ mà <b>không bình phương</b>. Phương sai âm là dấu hiệu chắc chắn đã sai. Đúng: $(-2)^2\cdot0{,}44=1{,}76$.</div>
+    <div class="qc-fb" data-k="b">$13{,}2=10+2\cdot1{,}6$: bạn làm mất dấu trừ. $E(10-2X)=10-2E(X)=10-3{,}2=6{,}8$ — dấu của $a$ <b>giữ nguyên</b> trong kỳ vọng (chỉ mất đi trong phương sai).</div>
+    <div class="qc-fb" data-k="c">$11{,}76=10+1{,}76$: bạn giữ lại hằng số $10$ trong phương sai. Hằng số chỉ dời giá trị, không làm đổi độ phân tán: $D(10-2X)=4D(X)=1{,}76$.</div>
+    <div class="qc-fb" data-k="d">$E(X)=1{,}6$, $D(X)=3-1{,}6^2=0{,}44$. Khi đó $E(Y)=10-2\cdot1{,}6=6{,}8$ và $D(Y)=(-2)^2\cdot0{,}44=1{,}76$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – $E(X)$:</span> $1\cdot0{,}5+2\cdot0{,}4+3\cdot0{,}1=1{,}6$ ống.</li>
+      <li><span class="step-label">Bước 2 – $D(X)$:</span> $E(X^2)=1\cdot0{,}5+4\cdot0{,}4+9\cdot0{,}1=3{,}0$; $D(X)=3{,}0-1{,}6^2=0{,}44$.</li>
+      <li><span class="step-label">Bước 3 – $E(Y)$:</span> $Y=10-2X$ có dạng $aX+b$ với $a=-2$, $b=10$: $E(Y)=-2\cdot1{,}6+10=6{,}8$ ml.</li>
+      <li><span class="step-label">Bước 4 – $D(Y)$:</span> $D(Y)=a^2D(X)=(-2)^2\cdot0{,}44=1{,}76$ (ml²). Hằng số $10$ không có mặt.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q10">
+  <div class="ex-head"><span class="ex-num">Câu 10</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">D(X + Y), X, Y độc lập</span></div>
+  <p>Một nha khoa có hai cơ sở hoạt động độc lập. Gọi $X$, $Y$ lần lượt là số ca cấp cứu trong một buổi sáng ở cơ sở 1 và cơ sở 2:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$X$</th><td>$0$</td><td>$1$</td><td>$2$</td></tr>
+    <tr><th>$P$</th><td>$0{,}5$</td><td>$0{,}3$</td><td>$0{,}2$</td></tr>
+  </table></div>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$Y$</th><td>$1$</td><td>$2$</td></tr>
+    <tr><th>$P$</th><td>$0{,}6$</td><td>$0{,}4$</td></tr>
+  </table></div>
+  <p>Phương sai của tổng số ca cấp cứu buổi sáng $S=X+Y$ là:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}85$</button>
+      <button data-k="b"><b>B.</b> $0{,}37$</button>
+      <button data-k="c"><b>C.</b> $3{,}30$</button>
+      <button data-k="d"><b>D.</b> $1{,}62$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$D(X)=1{,}1-0{,}7^2=0{,}61$, $D(Y)=2{,}2-1{,}4^2=0{,}24$. Vì độc lập nên $D(S)=0{,}61+0{,}24=0{,}85$.</div>
+    <div class="qc-fb" data-k="b">$0{,}37=0{,}61-0{,}24$: bạn <b>trừ</b> hai phương sai. Với hai biến độc lập, phương sai của tổng là <b>tổng</b> các phương sai: $D(X+Y)=D(X)+D(Y)$.</div>
+    <div class="qc-fb" data-k="c">$3{,}3=1{,}1+2{,}2$ là $E(X^2)+E(Y^2)$: bạn quên trừ $[E(X)]^2$ và $[E(Y)]^2$ khi tính từng phương sai.</div>
+    <div class="qc-fb" data-k="d">$1{,}62\approx(\sigma_X+\sigma_Y)^2=(0{,}781+0{,}490)^2$: bạn cộng các <b>độ lệch chuẩn</b> rồi bình phương. Quy tắc cộng chỉ đúng cho <b>phương sai</b>: $D(S)=D(X)+D(Y)$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – $D(X)$:</span> $E(X)=0+0{,}3+0{,}4=0{,}7$; $E(X^2)=0+0{,}3+4\cdot0{,}2=1{,}1$; $D(X)=1{,}1-0{,}49=0{,}61$.</li>
+      <li><span class="step-label">Bước 2 – $D(Y)$:</span> $E(Y)=0{,}6+0{,}8=1{,}4$; $E(Y^2)=0{,}6+4\cdot0{,}4=2{,}2$; $D(Y)=2{,}2-1{,}96=0{,}24$.</li>
+      <li><span class="step-label">Bước 3 – Ghép:</span> $X$, $Y$ độc lập nên $D(S)=D(X)+D(Y)=0{,}61+0{,}24=0{,}85$. (Kèm theo: $E(S)=0{,}7+1{,}4=2{,}1$ ca.)</li>
+      <li><span class="step-label">Kiểm tra:</span> lập bảng của $S$ (giá trị $1;2;3;4$ với xác suất $0{,}30;0{,}38;0{,}24;0{,}08$) rồi tính trực tiếp cũng được $E(S)=2{,}1$, $D(S)=5{,}26-2{,}1^2=0{,}85$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q11">
+  <div class="ex-head"><span class="ex-num">Câu 11</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">σ(X − 2Y), X, Y độc lập</span></div>
+  <p>Trong kì thi thực hành nha khoa, $X$ là điểm kĩ thuật của một sinh viên với $E(X)=7$, $\sigma(X)=1{,}2$; $Y$ là số lỗi vô khuẩn với $E(Y)=1{,}5$, $\sigma(Y)=0{,}8$; $X$ và $Y$ độc lập. Mỗi lỗi bị trừ 2 điểm nên điểm cuối cùng là $H=X-2Y$. Độ lệch chuẩn $\sigma(H)$ bằng (làm tròn 2 chữ số thập phân):</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $2{,}80$</button>
+      <button data-k="b"><b>B.</b> $4{,}00$</button>
+      <button data-k="c"><b>C.</b> $1{,}65$</button>
+      <button data-k="d"><b>D.</b> $2{,}00$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$2{,}8=1{,}2+2\cdot0{,}8$: bạn cộng thẳng các <b>độ lệch chuẩn</b>. $\sigma$ không cộng được; phải đổi sang phương sai, cộng, rồi mới khai căn.</div>
+    <div class="qc-fb" data-k="b">$4$ là <b>phương sai</b> $D(H)=1{,}44+4\cdot0{,}64$ (tình cờ cũng bằng $E(H)=7-3$). Đề hỏi $\sigma(H)$ nên phải khai căn: $\sqrt4=2$.</div>
+    <div class="qc-fb" data-k="c">$1{,}65\approx\sqrt{1{,}44+2\cdot0{,}64}$: bạn quên <b>bình phương hệ số</b> $-2$. Đúng là $(-2)^2D(Y)=4\cdot0{,}64=2{,}56$.</div>
+    <div class="qc-fb" data-k="d">$D(H)=1^2\cdot1{,}2^2+(-2)^2\cdot0{,}8^2=1{,}44+2{,}56=4$, nên $\sigma(H)=\sqrt4=2$. Đổi $\sigma$ ra $D$, bình phương hệ số, cộng, rồi khai căn.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Đổi σ ra D:</span> $D(X)=1{,}2^2=1{,}44$; $D(Y)=0{,}8^2=0{,}64$.</li>
+      <li><span class="step-label">Bước 2 – Công thức độc lập:</span> $D(X-2Y)=1^2D(X)+(-2)^2D(Y)=1{,}44+4\cdot0{,}64=4$.</li>
+      <li><span class="step-label">Bước 3 – Khai căn:</span> $\sigma(H)=\sqrt4=2$ điểm.</li>
+      <li><span class="step-label">Thêm:</span> $E(H)=7-2\cdot1{,}5=4$ điểm — kỳ vọng thì dấu trừ <b>giữ nguyên</b>, còn phương sai thì hệ số bị bình phương.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q12">
+  <div class="ex-head"><span class="ex-num">Câu 12</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Tìm a, b từ E, D cho trước</span></div>
+  <p>Mức đau sau nhổ răng khôn được chấm theo thang $X\in\{1;2;3;4\}$ với bảng phân phối:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$X$</th><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td></tr>
+    <tr><th>$P$</th><td>$0{,}1$</td><td>$0{,}3$</td><td>$0{,}4$</td><td>$0{,}2$</td></tr>
+  </table></div>
+  <p>Để so sánh với nghiên cứu khác, người ta quy đổi sang điểm $Y=aX+b$ ($a&gt;0$) sao cho $E(Y)=50$ và $D(Y)=81$. Cặp $(a;\,b)$ là:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(10;\ 23)$</button>
+      <button data-k="b"><b>B.</b> $(100;\ -220)$</button>
+      <button data-k="c"><b>C.</b> $(10;\ 77)$</button>
+      <button data-k="d"><b>D.</b> $(9;\ 25{,}7)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$E(X)=2{,}7$, $D(X)=0{,}81$. Từ $a^2\cdot0{,}81=81$ và $a&gt;0$ được $a=10$; rồi $10\cdot2{,}7+b=50$ cho $b=23$.</div>
+    <div class="qc-fb" data-k="b">$a=100$ ra từ $a\cdot0{,}81=81$, tức dùng nhầm $D(aX+b)=aD(X)$. Hệ số ra ngoài phương sai phải <b>bình phương</b>: $a^2\cdot0{,}81=81\Rightarrow a=10$. Thử lại: $D(100X)=8100\ne81$.</div>
+    <div class="qc-fb" data-k="c">$b=77=50+27$: chuyển vế sai dấu. Từ $10\cdot2{,}7+b=50$ phải được $b=50-27=23$. Thử lại: $E(10X+77)=104\ne50$. (Cặp $(-10;77)$ mới thỏa nếu cho phép $a&lt;0$, nhưng đề yêu cầu $a&gt;0$.)</div>
+    <div class="qc-fb" data-k="d">$a=9=\sqrt{81}$: bạn lấy $\sigma(Y)$ làm $a$ mà quên chia cho $\sigma(X)=0{,}9$. Đúng: $a=\sigma(Y)/\sigma(X)=9/0{,}9=10$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> $D(aX+b)=a^2D(X)$ <b>không chứa $b$</b>, nên dùng điều kiện về phương sai để tìm $a$ trước; sau đó thế $a$ vào điều kiện kỳ vọng để tìm $b$. Muốn vậy phải có $E(X)$ và $D(X)$ từ bảng.</li>
+      <li><span class="step-label">Bước 1 – $E(X)$:</span> $1\cdot0{,}1+2\cdot0{,}3+3\cdot0{,}4+4\cdot0{,}2=2{,}7$.</li>
+      <li><span class="step-label">Bước 2 – $D(X)$:</span> $E(X^2)=0{,}1+1{,}2+3{,}6+3{,}2=8{,}1$; $D(X)=8{,}1-2{,}7^2=0{,}81$.</li>
+      <li><span class="step-label">Bước 3 – Tìm $a$:</span> $a^2\cdot0{,}81=81\Rightarrow a^2=100\Rightarrow a=10$ (loại $a=-10$ vì đề cho $a&gt;0$).</li>
+      <li><span class="step-label">Bước 4 – Tìm $b$:</span> $E(Y)=aE(X)+b\Rightarrow 10\cdot2{,}7+b=50\Rightarrow b=23$.</li>
+      <li><span class="step-label">Thử lại:</span> $E(10X+23)=27+23=50$ ✓; $D(10X+23)=100\cdot0{,}81=81$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b2-tn-c3">Chặng 3 · Hàm phân phối F(x) của biến rời rạc</h3>
+<p>Chặng này luyện đọc và lập hàm phân phối $F(x)=P(X&lt;x)$ của biến rời rạc. Điểm mấu chốt chỉ có một: dấu <b>&lt; chặt</b>, nên tại đúng một giá trị $x_i$ của $X$, xác suất $P(X=x_i)$ <b>chưa</b> được cộng vào $F(x_i)$. Đề thi rất hay cài bẫy ở chỗ này (đổi sang $P(X\le x)$ của sách khác, hay hỏi $P(a&lt;X\le b)$ thay vì $P(a\le X&lt;b)$). Câu dễ trước: đọc một giá trị $F$, rồi đọc ngược $F$ ra bảng, cuối chặng tự lập $F(x)$ từ một phép chọn không hoàn lại.</p>
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Bốn điều cần nhớ về $F(x)$ rời rạc</span></div>
+<ol class="steps">
+<li><span class="step-label">Giá trị:</span> $F(x)=$ tổng các $P(X=x_i)$ với $x_i$ nằm <b>bên trái hẳn</b> $x$ (tức $x_i&lt;x$).</li>
+<li><span class="step-label">Khoảng:</span> vì dấu &lt; chặt nên $F$ là bậc thang trên các khoảng dạng $x_i&lt;x\le x_{i+1}$ — dấu $\le$ nằm ở <b>bên phải</b>, vì tại $x=x_{i+1}$ thì $P(X=x_{i+1})$ vẫn chưa được cộng.</li>
+<li><span class="step-label">Đọc ngược:</span> $P(X=x_i)=$ độ cao <b>bước nhảy</b> của $F$ tại $x_i$ = (giá trị $F$ ngay bên phải $x_i$) − (giá trị $F$ tại $x_i$).</li>
+<li><span class="step-label">Khoảng xác suất:</span> $P(a\le X&lt;b)=F(b)-F(a)$ (lấy $a$, bỏ $b$ — đúng "kiểu" của $F$). Còn $P(a&lt;X\le b)=F(b)-F(a)+P(X=b)-P(X=a)$: cộng thêm đầu $b$, bỏ đi đầu $a$.</li>
+</ol>
+</div>
+
+<div class="ex mcq" id="b2q13">
+  <div class="ex-head"><span class="ex-num">Câu 13</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Giá trị F tại điểm nhảy</span></div>
+  <p>Gọi $X$ là số mũi chỉ khâu cần dùng sau một ca nhổ răng khôn, có bảng phân phối:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$X$</th><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td></tr>
+    <tr><th>$P$</th><td>$0{,}10$</td><td>$0{,}35$</td><td>$0{,}40$</td><td>$0{,}15$</td></tr>
+  </table></div>
+  <p>Với quy ước $F(x)=P(X&lt;x)$, giá trị $F(3)$ bằng:</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}85$</button>
+      <button data-k="b"><b>B.</b> $0{,}40$</button>
+      <button data-k="c"><b>C.</b> $0{,}45$</button>
+      <button data-k="d"><b>D.</b> $0{,}55$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}85=0{,}10+0{,}35+0{,}40$ là $P(X\le3)$ — bạn đã cộng cả $P(X=3)$. Với $F(3)=P(X&lt;3)$, dấu &lt; chặt nên giá trị $3$ <b>không</b> được tính.</div>
+    <div class="qc-fb" data-k="b">$0{,}40$ chỉ là $P(X=3)$, xác suất tại đúng một điểm. $F(3)$ là xác suất <b>dồn</b> của mọi giá trị nhỏ hơn 3, tức $P(X=1)+P(X=2)$.</div>
+    <div class="qc-fb" data-k="c">$F(3)=P(X&lt;3)=P(X=1)+P(X=2)=0{,}10+0{,}35=0{,}45$. Dấu &lt; chặt nên tại điểm nhảy $x=3$, phần $0{,}40$ của chính giá trị 3 chưa được cộng.</div>
+    <div class="qc-fb" data-k="d">$0{,}55=0{,}40+0{,}15$ là $P(X\ge3)$ — phần bên phải. $F$ luôn đếm phía <b>bên trái</b>: $F(3)=1-P(X\ge3)=0{,}45$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Viết đúng định nghĩa:</span> $F(3)=P(X&lt;3)$: "số mũi khâu <b>ít hơn hẳn</b> 3".</li>
+      <li><span class="step-label">Bước 2 – Chọn giá trị:</span> những giá trị của $X$ nhỏ hơn hẳn 3 là $1$ và $2$ (không có 3).</li>
+      <li><span class="step-label">Bước 3 – Cộng:</span> $F(3)=0{,}10+0{,}35=0{,}45$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q14">
+  <div class="ex-head"><span class="ex-num">Câu 14</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">F trên một khoảng</span></div>
+  <p>Gọi $X$ là số răng cần trám của một bệnh nhân đến khám, có bảng phân phối:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$X$</th><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td></tr>
+    <tr><th>$P$</th><td>$0{,}20$</td><td>$0{,}35$</td><td>$0{,}30$</td><td>$0{,}15$</td></tr>
+  </table></div>
+  <p>Với $F(x)=P(X&lt;x)$, trên khoảng $1&lt;x\le2$ hàm phân phối $F(x)$ nhận giá trị:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}55$</button>
+      <button data-k="b"><b>B.</b> $0{,}85$</button>
+      <button data-k="c"><b>C.</b> $0{,}35$</button>
+      <button data-k="d"><b>D.</b> $0{,}20$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Với mọi $x$ trong $1&lt;x\le2$ (vd $x=1{,}5$ hay $x=2$), các giá trị của $X$ nằm bên trái hẳn $x$ là $0$ và $1$: $F(x)=0{,}20+0{,}35=0{,}55$. Tại $x=2$ thì $P(X=2)$ chưa được cộng, nên $x=2$ vẫn thuộc bậc này.</div>
+    <div class="qc-fb" data-k="b">$0{,}85=0{,}20+0{,}35+0{,}30$ — bạn đã cộng cả $P(X=2)$. Thử $x=1{,}5$: $P(X&lt;1{,}5)$ chỉ gồm $X=0$ và $X=1$; giá trị 2 nằm bên phải $1{,}5$ nên không được tính. $0{,}85$ là giá trị của $F$ trên khoảng <b>sau</b>, $2&lt;x\le3$.</div>
+    <div class="qc-fb" data-k="c">$0{,}35$ chỉ là $P(X=1)$, tức độ cao của một bậc nhảy. $F$ là xác suất <b>dồn</b> nên phải cộng cả $P(X=0)=0{,}20$: $F(x)=0{,}55$.</div>
+    <div class="qc-fb" data-k="d">$0{,}20$ là giá trị của $F$ trên khoảng <b>trước</b>, $0&lt;x\le1$ (chỉ mới có $X=0$). Khi $x$ vượt qua 1 thì $F$ nhảy thêm $P(X=1)=0{,}35$ thành $0{,}55$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Lấy một điểm đại diện:</span> chọn $x=1{,}5$ trong khoảng $1&lt;x\le2$.</li>
+      <li><span class="step-label">Bước 2 – Giá trị nằm bên trái hẳn:</span> $X&lt;1{,}5$ gồm $X=0$ và $X=1$.</li>
+      <li><span class="step-label">Bước 3 – Cộng:</span> $F(x)=0{,}20+0{,}35=0{,}55$ với mọi $1&lt;x\le2$.</li>
+      <li><span class="step-label">Kiểm tra đầu mút:</span> tại $x=2$: $F(2)=P(X&lt;2)=0{,}55$ — vẫn bằng bậc này, nên dấu $\le$ đặt bên phải là đúng.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q15">
+  <div class="ex-head"><span class="ex-num">Câu 15</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Đọc F suy ra bảng phân phối</span></div>
+  <p>Gọi $X$ là số đêm trong tuần một bệnh nhân quên đeo hàm duy trì sau niềng răng. Hàm phân phối của $X$ (quy ước $F(x)=P(X&lt;x)$) là:</p>
+  $$F(x)=\begin{cases}0 &amp; x\le0\\ 0{,}3 &amp; 0&lt;x\le1\\ 0{,}7 &amp; 1&lt;x\le2\\ 0{,}9 &amp; 2&lt;x\le4\\ 1 &amp; x&gt;4\end{cases}$$
+  <p>Xác suất $P(X=2)$ bằng:</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}7$</button>
+      <button data-k="b"><b>B.</b> $0{,}4$</button>
+      <button data-k="c"><b>C.</b> $0{,}9$</button>
+      <button data-k="d"><b>D.</b> $0{,}2$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}7$ là $F(2)=P(X&lt;2)$, xác suất dồn của các giá trị $0$ và $1$ — không phải xác suất tại điểm 2. $P(X=2)$ là <b>độ cao bước nhảy</b> tại 2.</div>
+    <div class="qc-fb" data-k="b">$0{,}4=0{,}7-0{,}3$ là bước nhảy tại $x=1$, tức $P(X=1)$. Bạn đã trừ hai bậc ở <b>hai bên điểm 1</b>. Bước nhảy tại 2 là bậc ngay sau 2 trừ bậc chứa 2: $0{,}9-0{,}7$.</div>
+    <div class="qc-fb" data-k="c">$0{,}9$ là giá trị của $F$ ngay bên phải 2, tức $P(X\le2)$ — vẫn là xác suất dồn (gồm $X=0,1,2$). Phải trừ đi phần đã có trước đó $0{,}7$.</div>
+    <div class="qc-fb" data-k="d">Tại $x=2$, $F$ nhảy từ $0{,}7$ (bậc $1&lt;x\le2$) lên $0{,}9$ (bậc $2&lt;x\le4$). Độ cao bước nhảy $0{,}9-0{,}7=0{,}2$ chính là $P(X=2)$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> $F$ chỉ tăng khi $x$ vượt qua một giá trị của $X$; lượng tăng đúng bằng xác suất của giá trị đó.</li>
+      <li><span class="step-label">Bước 1 – Tìm các điểm nhảy:</span> $F$ đổi bậc tại $0;\,1;\,2;\,4$ nên $X$ nhận các giá trị $0;1;2;4$ (không có 3, vì $F$ giữ nguyên $0{,}9$ suốt từ 2 đến 4).</li>
+      <li><span class="step-label">Bước 2 – Độ cao từng bước nhảy:</span> $P(X=0)=0{,}3-0=0{,}3$; $P(X=1)=0{,}7-0{,}3=0{,}4$; $P(X=2)=0{,}9-0{,}7=0{,}2$; $P(X=4)=1-0{,}9=0{,}1$.</li>
+      <li><span class="step-label">Bước 3 – Kiểm tra:</span> $0{,}3+0{,}4+0{,}2+0{,}1=1$. Vậy $P(X=2)=0{,}2$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q16">
+  <div class="ex-head"><span class="ex-num">Câu 16</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">P(a&lt;X≤b) từ F</span></div>
+  <p>Gọi $X$ là số răng cần điều trị tủy của một bệnh nhân trong đợt khám. Hàm phân phối của $X$ (quy ước $F(x)=P(X&lt;x)$) là:</p>
+  $$F(x)=\begin{cases}0 &amp; x\le0\\ 0{,}30 &amp; 0&lt;x\le1\\ 0{,}55 &amp; 1&lt;x\le2\\ 0{,}75 &amp; 2&lt;x\le3\\ 0{,}90 &amp; 3&lt;x\le4\\ 1 &amp; x&gt;4\end{cases}$$
+  <p>Xác suất $P(1&lt;X\le3)$ bằng:</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}45$</button>
+      <button data-k="b"><b>B.</b> $0{,}35$</button>
+      <button data-k="c"><b>C.</b> $0{,}60$</button>
+      <button data-k="d"><b>D.</b> $0{,}20$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}45=F(3)-F(1)=0{,}75-0{,}30$ là $P(1\le X&lt;3)$: lấy đầu 1, bỏ đầu 3 — ngược với đề. Với $P(1&lt;X\le3)$ còn phải $+P(X=3)-P(X=1)=+0{,}15-0{,}25$.</div>
+    <div class="qc-fb" data-k="b">$P(1&lt;X\le3)=F(3)-F(1)+P(X=3)-P(X=1)=0{,}75-0{,}30+0{,}15-0{,}25=0{,}35$. Kiểm tra trực tiếp: chỉ gồm $X=2$ và $X=3$: $0{,}20+0{,}15=0{,}35$.</div>
+    <div class="qc-fb" data-k="c">$0{,}60=0{,}25+0{,}20+0{,}15$ là $P(1\le X\le3)$ — bạn đã lấy cả $X=1$. Dấu $1&lt;X$ là chặt nên $X=1$ bị loại.</div>
+    <div class="qc-fb" data-k="d">$0{,}20$ chỉ là $P(X=2)=P(1&lt;X&lt;3)$ — bạn đã bỏ cả hai đầu. Dấu $X\le3$ nghĩa là giá trị 3 được lấy, cộng thêm $P(X=3)=0{,}15$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> $F(b)-F(a)$ chỉ cho đúng $P(a\le X&lt;b)$. Đề hỏi kiểu ngược lại (bỏ $a$, lấy $b$) nên phải sửa hai đầu mút bằng xác suất tại điểm, đọc từ bước nhảy của $F$.</li>
+      <li><span class="step-label">Bước 1 – Đọc F:</span> $F(1)=P(X&lt;1)=0{,}30$ (bậc $0&lt;x\le1$); $F(3)=P(X&lt;3)=0{,}75$ (bậc $2&lt;x\le3$).</li>
+      <li><span class="step-label">Bước 2 – Xác suất tại hai đầu:</span> $P(X=1)=0{,}55-0{,}30=0{,}25$; $P(X=3)=0{,}90-0{,}75=0{,}15$.</li>
+      <li><span class="step-label">Bước 3 – Ghép công thức:</span> $$\begin{aligned}&amp;P(1&lt;X\le3)\\ &amp;=F(3)-F(1)+P(X=3)-P(X=1)\\ &amp;=0{,}75-0{,}30+0{,}15-0{,}25\\ &amp;=0{,}35.\end{aligned}$$</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q17">
+  <div class="ex-head"><span class="ex-num">Câu 17</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Bẫy F(x)=P(X≤x) của sách khác</span></div>
+  <p>Gọi $X$ là số lần một bệnh nhân phải chụp lại phim X-quang quanh chóp trong một lần khám, nhận các giá trị $0;1;2$ với xác suất $0{,}2;\,0{,}5;\,0{,}3$. Một tài liệu nước ngoài dùng quy ước <b>khác</b> $G(x)=P(X\le x)$ và viết:</p>
+  $$G(x)=\begin{cases}0 &amp; x&lt;0\\ 0{,}2 &amp; 0\le x&lt;1\\ 0{,}7 &amp; 1\le x&lt;2\\ 1 &amp; x\ge2\end{cases}$$
+  <p>Theo quy ước của giáo trình, $F(x)=P(X&lt;x)$. Cặp giá trị $\big(F(1);\,F(2)\big)$ là:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(0{,}2;\,0{,}7)$</button>
+      <button data-k="b"><b>B.</b> $(0{,}7;\,1)$</button>
+      <button data-k="c"><b>C.</b> $(0{,}5;\,0{,}3)$</button>
+      <button data-k="d"><b>D.</b> $(0{,}2;\,1)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$F(1)=P(X&lt;1)=P(X=0)=0{,}2$; $F(2)=P(X&lt;2)=0{,}2+0{,}5=0{,}7$. Hai quy ước chỉ khác nhau <b>tại đúng các điểm nhảy</b>: ở đó $F$ lấy bậc dưới, $G$ lấy bậc trên.</div>
+    <div class="qc-fb" data-k="b">$(0{,}7;\,1)=\big(G(1);\,G(2)\big)$ — bạn chép thẳng từ tài liệu dùng $P(X\le x)$, tức đã cộng cả $P(X=1)$ và $P(X=2)$. Với dấu &lt; chặt, giá trị tại chính điểm đó chưa được cộng.</div>
+    <div class="qc-fb" data-k="c">$0{,}5$ và $0{,}3$ là $P(X=1)$, $P(X=2)$ — xác suất tại điểm (độ cao bước nhảy), không phải xác suất dồn. $F(1)$ phải cộng mọi giá trị nhỏ hơn hẳn 1.</div>
+    <div class="qc-fb" data-k="d">$F(1)=0{,}2$ đúng, nhưng $F(2)=1$ là đọc theo $G$: $1=P(X\le2)$ đã gồm cả $X=2$. Phải làm nhất quán: $F(2)=P(X&lt;2)=0{,}7$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> đừng chép công thức từ sách khác; quay về bảng phân phối và tính lại theo đúng dấu &lt;.</li>
+      <li><span class="step-label">Bước 1 – $F(1)$:</span> $X&lt;1$ chỉ có $X=0$: $F(1)=0{,}2$ (trong khi $G(1)=0{,}7$).</li>
+      <li><span class="step-label">Bước 2 – $F(2)$:</span> $X&lt;2$ gồm $X=0;1$: $F(2)=0{,}2+0{,}5=0{,}7$ (trong khi $G(2)=1$).</li>
+      <li><span class="step-label">Nhận xét:</span> hai hàm có cùng các bậc $0;\,0{,}2;\,0{,}7;\,1$; chỉ khác chỗ đặt dấu "=" ở đầu mút: giáo trình viết $0&lt;x\le1$, sách kia viết $0\le x&lt;1$. Vì vậy đáp án là $(0{,}2;\,0{,}7)$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q18">
+  <div class="ex-head"><span class="ex-num">Câu 18</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Lập F(x) · chọn không hoàn lại</span></div>
+  <p>Phòng chờ của một phòng khám nha có $12$ bệnh nhân gồm $7$ nam và $5$ nữ. Y tá gọi ngẫu nhiên <b>lần lượt</b> $2$ người vào ghế (người đã gọi không quay lại phòng chờ). Gọi $X$ là số bệnh nhân nữ trong 2 người được gọi. Hàm phân phối $F(x)=P(X&lt;x)$ của $X$ là:</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $F(x)=\begin{cases}0 &amp; x\le0\\ \frac{49}{144} &amp; 0&lt;x\le1\\ \frac{119}{144} &amp; 1&lt;x\le2\\ 1 &amp; x&gt;2\end{cases}$</button>
+      <button data-k="b"><b>B.</b> $F(x)=\begin{cases}0 &amp; x\le0\\ \frac{7}{22} &amp; 0&lt;x\le1\\ \frac{7}{12} &amp; 1&lt;x\le2\\ 1 &amp; x&gt;2\end{cases}$</button>
+      <button data-k="c"><b>C.</b> $F(x)=\begin{cases}0 &amp; x\le0\\ \frac{7}{22} &amp; 0&lt;x\le1\\ \frac{28}{33} &amp; 1&lt;x\le2\\ 1 &amp; x&gt;2\end{cases}$</button>
+      <button data-k="d"><b>D.</b> $F(x)=\begin{cases}0 &amp; x&lt;0\\ \frac{7}{22} &amp; 0\le x&lt;1\\ \frac{28}{33} &amp; 1\le x&lt;2\\ 1 &amp; x\ge2\end{cases}$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Đây là kết quả khi gọi <b>có hoàn lại</b> (mỗi lần xác suất nam vẫn là $\frac7{12}$): $P(X=0)=\big(\frac7{12}\big)^2=\frac{49}{144}$. Nhưng người đã gọi không quay lại, nên lần 2 chỉ còn 11 người: $P(X=0)=\frac7{12}\cdot\frac6{11}=\frac7{22}$.</div>
+    <div class="qc-fb" data-k="b">Bậc thứ hai sai vì $P(X=1)$ thiếu một thứ tự. "Đúng 1 nữ" xảy ra theo 2 cách: (nam, nữ) <b>hoặc</b> (nữ, nam), mỗi cách $\frac{35}{132}$, nên $P(X=1)=\frac{70}{132}=\frac{35}{66}$. Bạn chỉ tính một cách: $\frac7{22}+\frac{35}{132}=\frac7{12}$.</div>
+    <div class="qc-fb" data-k="c">$P(X=0)=\frac7{22}$, $P(X=1)=\frac{35}{66}$, $P(X=2)=\frac5{33}$. Cộng dồn: $\frac7{22}$ rồi $\frac7{22}+\frac{35}{66}=\frac{28}{33}$ rồi $1$, trên các khoảng $a&lt;x\le b$ (dấu $\le$ bên phải) đúng quy ước $P(X&lt;x)$.</div>
+    <div class="qc-fb" data-k="d">Các giá trị đúng nhưng khoảng viết kiểu $a\le x&lt;b$ — đó là hàm $P(X\le x)$ của sách khác. Thử $x=1$: $F(1)=P(X&lt;1)=P(X=0)=\frac7{22}$, nhưng phương án này cho $\frac{28}{33}$ (đã cộng nhầm $P(X=1)$).</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> lập bảng phân phối trước (gọi lần lượt, không hoàn lại → dùng quy tắc nhân với xác suất có điều kiện, nhớ đếm đủ thứ tự), sau đó cộng dồn và đặt dấu $\le$ ở bên phải mỗi khoảng.</li>
+      <li><span class="step-label">Bước 1 – Giá trị của X:</span> 2 người được gọi có thể có $0$, $1$ hoặc $2$ nữ: $X\in\{0;1;2\}$.</li>
+      <li><span class="step-label">Bước 2 – $P(X=0)$:</span> cả hai là nam: $\frac7{12}\cdot\frac6{11}=\frac{42}{132}=\frac7{22}$ (lần 2 còn 6 nam trong 11 người).</li>
+      <li><span class="step-label">Bước 3 – $P(X=1)$:</span> (nam, nữ): $\frac7{12}\cdot\frac5{11}=\frac{35}{132}$; (nữ, nam): $\frac5{12}\cdot\frac7{11}=\frac{35}{132}$. Cộng: $\frac{70}{132}=\frac{35}{66}$.</li>
+      <li><span class="step-label">Bước 4 – $P(X=2)$:</span> cả hai là nữ: $\frac5{12}\cdot\frac4{11}=\frac{20}{132}=\frac5{33}$. Kiểm tra: $\frac{42+70+20}{132}=1$.</li>
+      <li><span class="step-label">Bước 5 – Cộng dồn:</span> $x\le0$: $F=0$; $0&lt;x\le1$: $F=\frac7{22}$; $1&lt;x\le2$: $F=\frac{42+70}{132}=\frac{28}{33}$; $x&gt;2$: $F=1$. Đó là phương án C.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b2-tn-c4">Chặng 4 · Biến liên tục: mật độ, hàm phân phối, phân vị</h3>
+<p>Với biến liên tục, mọi câu hỏi đều quy về <b>diện tích dưới đường mật độ</b> $f(x)$, tức là một tích phân. Chặng này đi từ việc nhận ra một hàm có phải mật độ hay không, tới tìm hằng số $k$, tính xác suất, viết $F(x)$, tính $E(X)$, $D(X)$, tìm trung vị, và cuối cùng là bài hai ẩn (cho hai điều kiện, lập hệ hai phương trình). Dạng này gần như luôn có trong đề thi, và lỗi hay gặp nhất là <b>tính sai nguyên hàm</b> hoặc <b>lấy giá trị $f$ thay cho diện tích</b>.</p>
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Bộ công thức cần thuộc</span></div>
+<ol class="steps">
+<li><span class="step-label">Hai điều kiện của mật độ:</span> (i) $f(x)\ge0$ với mọi $x$; (ii) $\int_{-\infty}^{+\infty}f(x)\,dx=1$ (tổng diện tích bằng 1). Nếu $f=0$ ngoài đoạn $[a;b]$ thì chỉ cần tính $\int_a^b$.</li>
+<li><span class="step-label">Nguyên hàm:</span> $\int x^n\,dx=\dfrac{x^{n+1}}{n+1}$ — tăng số mũ lên 1 rồi <b>chia cho số mũ mới</b>. Ví dụ $\int x\,dx=\frac{x^2}{2}$, $\int x^2dx=\frac{x^3}{3}$, $\int 1\,dx=x$.</li>
+<li><span class="step-label">Xác suất:</span> $P(c&lt;X&lt;d)=\int_c^d f(x)\,dx$ (dấu $&lt;$ hay $\le$ đều như nhau vì $P(X=c)=0$).</li>
+<li><span class="step-label">Hàm phân phối:</span> $F(x)=P(X&lt;x)=\int_{-\infty}^{x}f(t)\,dt$; luôn kiểm tra $F$ tại mút phải bằng 1.</li>
+<li><span class="step-label">Kỳ vọng, phương sai:</span> $E(X)=\int x f(x)\,dx$; $E(X^2)=\int x^2f(x)\,dx$; $D(X)=E(X^2)-[E(X)]^2$.</li>
+<li><span class="step-label">Phân vị:</span> giải $F(x_\alpha)=\alpha$ (diện tích <b>bên trái</b> bằng $\alpha$); trung vị là $x_{0{,}5}$. Chỉ nhận nghiệm nằm trong đoạn mà $f&gt;0$.</li>
+</ol>
+</div>
+
+<div class="ex mcq" id="b2q19">
+  <div class="ex-head"><span class="ex-num">Câu 19</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Điều kiện (i), (ii) của mật độ</span></div>
+  <p>Gọi $X$ (giờ) là thời gian từ lúc bệnh nhân súc miệng bằng dung dịch chlorhexidine đến khi nồng độ thuốc trong nước bọt giảm dưới ngưỡng tác dụng; $X$ chỉ nhận giá trị trong đoạn $[0;3]$. Trong các hàm dưới đây (mỗi hàm đều bằng $0$ khi $x\notin[0;3]$), hàm nào <b>có thể</b> là hàm mật độ của $X$?</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $f(x)=\dfrac{2x-1}{6}$ với $0\le x\le3$</button>
+      <button data-k="b"><b>B.</b> $f(x)=\dfrac{x}{3}$ với $0\le x\le3$</button>
+      <button data-k="c"><b>C.</b> $f(x)=\dfrac{x^2}{9}$ với $0\le x\le3$</button>
+      <button data-k="d"><b>D.</b> $f(x)=\dfrac{3-x}{9}$ với $0\le x\le3$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Hàm này qua được điều kiện (ii): $\int_0^3\frac{2x-1}{6}dx=\frac{(x^2-x)\big|_0^3}{6}=\frac{6}{6}=1$. Nhưng nó <b>vi phạm (i)</b>: với $0\le x&lt;0{,}5$ thì $2x-1&lt;0$, ví dụ $f(0)=-\frac16&lt;0$. Mật độ không bao giờ được âm. Phải kiểm tra <b>cả hai</b> điều kiện.</div>
+    <div class="qc-fb" data-k="b">$f(x)=\frac x3\ge0$ nên (i) đúng, nhưng (ii) sai: $\int_0^3\frac x3dx=\frac{x^2}{6}\Big|_0^3=\frac96=1{,}5\ne1$. Tổng diện tích dưới đường mật độ phải đúng bằng 1.</div>
+    <div class="qc-fb" data-k="c">(i) $\frac{x^2}{9}\ge0$ với mọi $x$. (ii) $\int_0^3\frac{x^2}{9}dx=\frac{x^3}{27}\Big|_0^3=\frac{27}{27}=1$. Cả hai điều kiện đều thoả nên đây là một hàm mật độ.</div>
+    <div class="qc-fb" data-k="d">$\frac{3-x}{9}\ge0$ trên $[0;3]$ nên (i) đúng, nhưng (ii) sai: $\int_0^3\frac{3-x}{9}dx=\frac19\Big(3x-\frac{x^2}{2}\Big)\Big|_0^3=\frac{4{,}5}{9}=0{,}5\ne1$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Nhớ lại:</span> $f$ là mật độ khi (i) $f(x)\ge0$ mọi $x$ và (ii) $\int_{-\infty}^{+\infty}f(x)dx=1$. Ở đây $f=0$ ngoài $[0;3]$ nên (ii) chỉ còn $\int_0^3f(x)dx=1$.</li>
+      <li><span class="step-label">Bước 1 – Xét dấu:</span> B, C, D không âm trên $[0;3]$. A âm khi $x&lt;0{,}5$ → loại A ngay.</li>
+      <li><span class="step-label">Bước 2 – Tính diện tích:</span>
+        B: $\frac{x^2}{6}\big|_0^3=1{,}5$; C: $\frac{x^3}{27}\big|_0^3=1$; D: $\frac19\big(3x-\frac{x^2}2\big)\big|_0^3=0{,}5$.</li>
+      <li><span class="step-label">Kết luận:</span> chỉ C thoả cả (i) và (ii). Chọn <b>C</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q20">
+  <div class="ex-head"><span class="ex-num">Câu 20</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Tìm k · P(X &gt; c)</span></div>
+  <p>Gọi $X$ (tuần) là thời gian một miếng trám tạm còn bám tốt trên răng. $X$ có hàm mật độ</p>
+  <p>$$f(x)=\begin{cases}k(x+1) &amp; \text{khi } 0\le x\le2\\ 0 &amp; \text{khi } x\notin[0;2]\end{cases}$$</p>
+  <p>Tỉ lệ miếng trám tạm còn bám tốt <b>hơn 1 tuần</b>, tức $P(X&gt;1)$, bằng:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}625$</button>
+      <button data-k="b"><b>B.</b> $0{,}375$</button>
+      <button data-k="c"><b>C.</b> $0{,}667$</button>
+      <button data-k="d"><b>D.</b> $0{,}75$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\int_0^2(x+1)dx=\big(\frac{x^2}2+x\big)\big|_0^2=4$ nên $k=\frac14$. Rồi $P(X&gt;1)=\frac14\big(\frac{x^2}2+x\big)\big|_1^2=\frac14(4-1{,}5)=0{,}625$.</div>
+    <div class="qc-fb" data-k="b">$0{,}375=\frac14\big(\frac{x^2}2+x\big)\big|_0^1$ là $P(X&lt;1)$ — tỉ lệ bong <b>trước</b> 1 tuần. Đề hỏi "hơn 1 tuần" nên cần diện tích bên phải mốc 1: $1-0{,}375=0{,}625$.</div>
+    <div class="qc-fb" data-k="c">Số này ra khi lấy nguyên hàm của $x$ là $x^2$ (quên chia 2): $\int_0^2(x+1)dx=(x^2+x)\big|_0^2=6$ → $k=\frac16$, rồi $\frac{6-2}{6}\approx0{,}667$. Đúng phải là $\int x\,dx=\frac{x^2}{2}$.</div>
+    <div class="qc-fb" data-k="d">$0{,}75=f(2)=\frac14(2+1)$ là <b>chiều cao</b> đường mật độ tại $x=2$, không phải xác suất. Xác suất là <b>diện tích</b> dưới đường $f$ từ 1 đến 2.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Tìm $k$ từ điều kiện (ii):</span> $\int_0^2k(x+1)dx=k\Big(\frac{x^2}{2}+x\Big)\Big|_0^2=k(2+2)=4k=1\Rightarrow k=\frac14$. (Khi đó $f\ge0$ trên $[0;2]$, điều kiện (i) cũng thoả.)</li>
+      <li><span class="step-label">Bước 2 – Viết xác suất thành tích phân:</span> $X\le2$ nên "$X&gt;1$" là $1&lt;X\le2$: $P(X&gt;1)=\int_1^2\frac14(x+1)dx$.</li>
+      <li><span class="step-label">Bước 3 – Tính:</span>
+        $$\begin{aligned}P(X&gt;1)&amp;=\tfrac14\Big(\tfrac{x^2}{2}+x\Big)\Big|_1^2\\ &amp;=\tfrac14\big[(2+2)-(0{,}5+1)\big]\\ &amp;=\tfrac14\cdot2{,}5=0{,}625.\end{aligned}$$</li>
+      <li><span class="step-label">Đọc kết quả:</span> khoảng 62,5% miếng trám tạm còn bám tốt sau 1 tuần. Chọn <b>A</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q21">
+  <div class="ex-head"><span class="ex-num">Câu 21</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Viết hàm phân phối F(x)</span></div>
+  <p>Gọi $X$ (giờ) là thời gian bệnh nhân phải cắn gạc cầm máu sau nhổ răng. $X$ có hàm mật độ</p>
+  <p>$$f(x)=\begin{cases}1-\dfrac{x}{2} &amp; \text{khi } 0\le x\le2\\ 0 &amp; \text{khi } x\notin[0;2]\end{cases}$$</p>
+  <p>Biết $F(x)=P(X&lt;x)$ bằng $0$ khi $x\le0$ và bằng $1$ khi $x&gt;2$. Với $0&lt;x\le2$, hàm phân phối $F(x)$ bằng:</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $F(x)=x-\dfrac{x^2}{2}$</button>
+      <button data-k="b"><b>B.</b> $F(x)=1-\dfrac{x}{2}$</button>
+      <button data-k="c"><b>C.</b> $F(x)=1-x+\dfrac{x^2}{4}$</button>
+      <button data-k="d"><b>D.</b> $F(x)=x-\dfrac{x^2}{4}$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Lỗi nguyên hàm: $\int\frac{t}{2}dt=\frac{t^2}{4}$ chứ không phải $\frac{t^2}{2}$. Dấu hiệu nhận ra sai: với công thức này $F(2)=2-2=0$, trong khi tại mút phải $F$ phải bằng 1.</div>
+    <div class="qc-fb" data-k="b">Đây chính là $f(x)$, chưa lấy tích phân. $F$ là <b>diện tích tích luỹ</b> từ trái tới $x$ nên phải là $\int_0^x f(t)dt$. Thêm nữa $1-\frac x2$ giảm dần, trong khi $F$ luôn tăng (không giảm).</div>
+    <div class="qc-fb" data-k="c">$1-x+\frac{x^2}4=1-\big(x-\frac{x^2}4\big)$ là $P(X\ge x)$ — diện tích <b>bên phải</b>. $F(x)=P(X&lt;x)$ đo diện tích <b>bên trái</b> mốc $x$. Kiểm tra: công thức này cho $F(0)=1$, vô lí vì $F(0)$ phải bằng 0.</div>
+    <div class="qc-fb" data-k="d">$F(x)=\int_0^x\big(1-\frac t2\big)dt=\big(t-\frac{t^2}{4}\big)\big|_0^x=x-\frac{x^2}{4}$. Kiểm tra hai mút: $F(0)=0$ và $F(2)=2-1=1$ — khớp, nối liền với hai khúc ngoài.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Định nghĩa:</span> $F(x)=P(X&lt;x)$ là diện tích dưới $f$ bên trái mốc $x$. Với $0&lt;x\le2$, phần bên trái 0 có $f=0$ (diện tích 0), nên $F(x)=\int_0^x f(t)\,dt$.</li>
+      <li><span class="step-label">Bước 2 – Nguyên hàm:</span> $\int\big(1-\frac t2\big)dt=t-\frac12\cdot\frac{t^2}{2}=t-\frac{t^2}{4}$.</li>
+      <li><span class="step-label">Bước 3 – Thay cận:</span> $F(x)=\big(x-\frac{x^2}4\big)-(0-0)=x-\frac{x^2}{4}$.</li>
+      <li><span class="step-label">Bước 4 – Tự kiểm tra:</span> $F(0)=0$, $F(2)=1$, và $F'(x)=1-\frac x2=f(x)$. Chọn <b>D</b>.</li>
+      <li><span class="step-label">Ví dụ đọc:</span> $F(1)=1-\frac14=0{,}75$: 75% bệnh nhân cắn gạc dưới 1 giờ.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q22">
+  <div class="ex-head"><span class="ex-num">Câu 22</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">E(X), D(X) của biến liên tục</span></div>
+  <p>Gọi $X$ (mm) là mức tụt nướu sau 5 năm tại một vị trí răng được theo dõi. $X$ có hàm mật độ</p>
+  <p>$$f(x)=\begin{cases}\dfrac{3}{8}x^2 &amp; \text{khi } 0\le x\le2\\ 0 &amp; \text{khi } x\notin[0;2]\end{cases}$$</p>
+  <p>Phương sai $D(X)$ bằng:</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $2{,}4$</button>
+      <button data-k="b"><b>B.</b> $0{,}15$</button>
+      <button data-k="c"><b>C.</b> $0{,}387$</button>
+      <button data-k="d"><b>D.</b> $0{,}9$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$2{,}4$ mới là $E(X^2)=\int_0^2x^2\cdot\frac38x^2dx=\frac38\cdot\frac{32}{5}$. Còn phải trừ $[E(X)]^2=1{,}5^2=2{,}25$.</div>
+    <div class="qc-fb" data-k="b">$E(X)=\frac38\cdot\frac{x^4}{4}\big|_0^2=1{,}5$; $E(X^2)=\frac38\cdot\frac{x^5}{5}\big|_0^2=2{,}4$; $D(X)=2{,}4-1{,}5^2=0{,}15$ (mm²).</div>
+    <div class="qc-fb" data-k="c">$0{,}387\approx\sqrt{0{,}15}$ là <b>độ lệch chuẩn</b> $\sigma(X)$. Đề hỏi phương sai nên không khai căn.</div>
+    <div class="qc-fb" data-k="d">$0{,}9=2{,}4-1{,}5$ ra khi trừ $E(X)$ mà quên <b>bình phương</b>. Công thức là $D(X)=E(X^2)-[E(X)]^2=2{,}4-2{,}25$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Kỳ vọng:</span> nhân thêm $x$ vào mật độ rồi lấy tích phân:
+        $$\begin{aligned}E(X)&amp;=\int_0^2x\cdot\tfrac38x^2dx=\tfrac38\int_0^2x^3dx\\ &amp;=\tfrac38\cdot\tfrac{x^4}{4}\Big|_0^2=\tfrac38\cdot4=1{,}5.\end{aligned}$$</li>
+      <li><span class="step-label">Bước 2 – $E(X^2)$:</span> nhân thêm $x^2$:
+        $$\begin{aligned}E(X^2)&amp;=\tfrac38\int_0^2x^4dx=\tfrac38\cdot\tfrac{x^5}{5}\Big|_0^2\\ &amp;=\tfrac38\cdot\tfrac{32}{5}=2{,}4.\end{aligned}$$</li>
+      <li><span class="step-label">Bước 3 – Phương sai:</span> $D(X)=E(X^2)-[E(X)]^2=2{,}4-2{,}25=0{,}15$. Chọn <b>B</b>.</li>
+      <li><span class="step-label">Bấm máy (kiểm tra):</span> MENU 1, phím $\int$: nhập $\frac38x^4$, cận $0$ → $2$ được $2{,}4$; rồi trừ $1{,}5^2$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q23">
+  <div class="ex-head"><span class="ex-num">Câu 23</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Tìm k → F(x) → trung vị</span></div>
+  <p>Gọi $X$ (giờ) là thời gian từ lúc bệnh nhân uống viên giảm đau sau tiểu phẫu đến khi thấy đỡ đau. $X$ có hàm mật độ</p>
+  <p>$$f(x)=\begin{cases}k(3-x) &amp; \text{khi } 0\le x\le3\\ 0 &amp; \text{khi } x\notin[0;3]\end{cases}$$</p>
+  <p><b>Trung vị</b> của $X$ (làm tròn 2 chữ số thập phân) là:</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}75$ giờ</button>
+      <button data-k="b"><b>B.</b> $0{,}88$ giờ</button>
+      <button data-k="c"><b>C.</b> $1{,}00$ giờ</button>
+      <button data-k="d"><b>D.</b> $1{,}50$ giờ</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}75$ ra khi giải $f(x)=0{,}5$, tức $\frac29(3-x)=0{,}5$. Trung vị là mốc mà <b>diện tích</b> bên trái bằng 0,5, nên phải giải $F(x)=0{,}5$ chứ không phải cho chiều cao $f$ bằng 0,5.</div>
+    <div class="qc-fb" data-k="b">$k=\frac29$, $F(x)=\frac{6x-x^2}{9}$ trên $[0;3]$. Giải $\frac{6x-x^2}{9}=0{,}5$ ⇔ $x^2-6x+4{,}5=0$ ⇔ $x=3\pm\sqrt{4{,}5}$; chỉ $3-\sqrt{4{,}5}\approx0{,}88$ nằm trong $[0;3]$.</div>
+    <div class="qc-fb" data-k="c">$1{,}00$ là <b>kỳ vọng</b> $E(X)=\int_0^3x\cdot\frac29(3-x)dx=1$. Trung vị và kỳ vọng chỉ trùng nhau khi mật độ đối xứng; ở đây mật độ lệch (dồn về bên trái) nên chúng khác nhau.</div>
+    <div class="qc-fb" data-k="d">$1{,}5$ là điểm giữa đoạn $[0;3]$. Trung vị chia đôi <b>diện tích</b>, không chia đôi <b>đoạn</b>. Mật độ $k(3-x)$ cao ở bên trái nên nửa diện tích đã đủ trước mốc 1,5: $F(1{,}5)=\frac{9-2{,}25}{9}=0{,}75&gt;0{,}5$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> trung vị $x_{0{,}5}$ thoả $F(x_{0{,}5})=P(X&lt;x_{0{,}5})=0{,}5$. Muốn có $F$ thì phải biết $k$ trước. Vậy đi 3 bước: $k$ → $F(x)$ → giải phương trình.</li>
+      <li><span class="step-label">Bước 1 – Tìm $k$:</span> $\int_0^3k(3-x)dx=k\Big(3x-\frac{x^2}{2}\Big)\Big|_0^3=k(9-4{,}5)=4{,}5k=1\Rightarrow k=\frac{1}{4{,}5}=\frac29$.</li>
+      <li><span class="step-label">Bước 2 – Hàm phân phối trên $[0;3]$:</span>
+        $$\begin{aligned}F(x)&amp;=\int_0^x\tfrac29(3-t)dt\\ &amp;=\tfrac29\Big(3x-\tfrac{x^2}{2}\Big)=\tfrac{6x-x^2}{9}.\end{aligned}$$</li>
+      <li><span class="step-label">Bước 3 – Giải $F(x)=0{,}5$:</span> $6x-x^2=4{,}5\iff x^2-6x+4{,}5=0$. Biệt thức $\Delta'=9-4{,}5=4{,}5$, nên $x=3\pm\sqrt{4{,}5}$, tức $x\approx0{,}879$ hoặc $x\approx5{,}121$.</li>
+      <li><span class="step-label">Bước 4 – Chọn nghiệm:</span> $X$ chỉ nằm trong $[0;3]$ nên loại $5{,}121$. Trung vị $\approx0{,}88$ giờ (khoảng 53 phút). Kiểm tra: $F(0{,}879)=\frac{6\cdot0{,}879-0{,}879^2}{9}\approx0{,}5$. Chọn <b>B</b>.</li>
+      <li><span class="step-label">Bấm máy (kiểm tra):</span> MENU 1, phím $\int$: nhập $\frac29(3-x)$, cận $0$ → $0{,}879$, kết quả xấp xỉ $0{,}5$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q24">
+  <div class="ex-head"><span class="ex-num">Câu 24</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hệ 2 ẩn từ ∫f = 1 và E(X)</span></div>
+  <p>Gọi $X$ (giờ) là thời gian một ca lấy cao răng bằng máy siêu âm (không ca nào quá 1 giờ). $X$ có hàm mật độ</p>
+  <p>$$f(x)=\begin{cases}ax+bx^2 &amp; \text{khi } 0\le x\le1\\ 0 &amp; \text{khi } x\notin[0;1]\end{cases}$$</p>
+  <p>với $a$, $b$ là hằng số. Biết thời gian trung bình một ca là $E(X)=0{,}7$ giờ. Tỉ lệ ca lấy cao răng xong <b>dưới nửa giờ</b>, $P(X&lt;0{,}5)$, bằng:</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}80$</button>
+      <button data-k="b"><b>B.</b> $0{,}45$</button>
+      <button data-k="c"><b>C.</b> $0{,}90$</button>
+      <button data-k="d"><b>D.</b> $0{,}20$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}8=1-0{,}2$ là $P(X&gt;0{,}5)$ — tỉ lệ ca kéo dài <b>hơn</b> nửa giờ. "Dưới nửa giờ" là diện tích bên trái mốc 0,5.</div>
+    <div class="qc-fb" data-k="b">Hệ đã giải đúng ($a=b=1{,}2$) nhưng ở bước cuối quên chia cho số mũ mới: lấy $a\cdot0{,}5^2+b\cdot0{,}5^3=0{,}3+0{,}15=0{,}45$. Đúng là $\frac{a\cdot0{,}5^2}{2}+\frac{b\cdot0{,}5^3}{3}=0{,}15+0{,}05=0{,}2$.</div>
+    <div class="qc-fb" data-k="c">$0{,}9=f(0{,}5)=1{,}2\cdot0{,}5+1{,}2\cdot0{,}25$ là <b>chiều cao</b> đường mật độ tại $0{,}5$, không phải xác suất. Xác suất là diện tích $\int_0^{0{,}5}f(x)dx$.</div>
+    <div class="qc-fb" data-k="d">Hệ $\frac a2+\frac b3=1$ và $\frac a3+\frac b4=0{,}7$ cho $a=b=1{,}2$. Khi đó $P(X&lt;0{,}5)=\Big(\frac{1{,}2x^2}{2}+\frac{1{,}2x^3}{3}\Big)\Big|_0^{0{,}5}=0{,}15+0{,}05=0{,}2$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> có <b>hai</b> ẩn $a$, $b$ nên cần <b>hai</b> phương trình. Phương trình thứ nhất luôn có sẵn: tổng diện tích bằng 1. Phương trình thứ hai lấy từ dữ kiện $E(X)=0{,}7$.</li>
+      <li><span class="step-label">Bước 1 – Điều kiện (ii):</span> $\int_0^1(ax+bx^2)dx=\Big(\frac{ax^2}{2}+\frac{bx^3}{3}\Big)\Big|_0^1=\frac a2+\frac b3=1$.</li>
+      <li><span class="step-label">Bước 2 – Kỳ vọng:</span> $E(X)=\int_0^1x(ax+bx^2)dx=\int_0^1(ax^2+bx^3)dx=\frac a3+\frac b4=0{,}7$.</li>
+      <li><span class="step-label">Bước 3 – Giải hệ:</span> nhân phương trình (1) với 6 và (2) với 12:
+        $$\begin{cases}3a+2b=6\\ 4a+3b=8{,}4\end{cases}$$
+        Lấy $3\times$(1) $-\,2\times$(2): $9a-8a=18-16{,}8$ ⇒ $a=1{,}2$; thay lại: $2b=6-3{,}6=2{,}4$ ⇒ $b=1{,}2$. Vậy $f(x)=1{,}2x+1{,}2x^2\ge0$ trên $[0;1]$ (điều kiện (i) thoả).</li>
+      <li><span class="step-label">Bước 4 – Xác suất:</span>
+        $$\begin{aligned}P(X&lt;0{,}5)&amp;=\Big(0{,}6x^2+0{,}4x^3\Big)\Big|_0^{0{,}5}\\ &amp;=0{,}6\cdot0{,}25+0{,}4\cdot0{,}125\\ &amp;=0{,}15+0{,}05=0{,}2.\end{aligned}$$</li>
+      <li><span class="step-label">Đọc kết quả:</span> chỉ 20% ca xong dưới 30 phút — hợp lí vì mật độ tăng dần, dồn về phía gần 1 giờ (trung bình 0,7 giờ). Chọn <b>D</b>.</li>
+      <li><span class="step-label">Bấm máy (kiểm tra):</span> MENU 1, phím $\int$: nhập $1{,}2x+1{,}2x^2$, cận $0$ → $0{,}5$, được $0{,}2$; cận $0$ → $1$ phải được $1$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b2-tn-c5">Chặng 5 · Phân phối nhị thức</h3>
+<p>Phân phối nhị thức là "món chính" của phần xác suất trong đề thi: đếm số người bệnh, số miếng trám bong, số mẫu nhiễm khuẩn… trong $n$ lần thử. Chặng này đi từ nhận dạng (khi nào <b>là</b> và khi nào <b>không là</b> nhị thức), qua công thức $P(X=k)$, "ít nhất / nhiều nhất", số có khả năng nhất, rồi tới bài toán ngược (tìm $n$, $p$ từ $E$, $D$) và biến đổi tuyến tính $a+bX$.</p>
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Bộ công thức $B(n;p)$</span></div>
+<ol class="steps">
+<li><span class="step-label">Nhận dạng:</span> có $n$ lần thử <b>độc lập</b>, mỗi lần chỉ hai kết quả (xảy ra / không), xác suất "xảy ra" <b>như nhau</b> bằng $p$ ở mọi lần; $X$ = số lần xảy ra. Khi đó $X\sim B(n;p)$, $q=1-p$.</li>
+<li><span class="step-label">Xác suất:</span> $P(X=k)=C_n^k\,p^k\,q^{n-k}$. "Ít nhất $k$" thường tính qua phần bù: $P(X\ge k)=1-P(X\le k-1)$. "Nhiều nhất $k$" là $P(X=0)+\dots+P(X=k)$.</li>
+<li><span class="step-label">Đặc trưng:</span> $E(X)=np$, $D(X)=npq$, $\sigma(X)=\sqrt{npq}$. Số có khả năng nhất $m_0$ là số nguyên thoả $np-q\le m_0\le np+p$.</li>
+<li><span class="step-label">Tuyến tính:</span> $E(a+bX)=a+bE(X)$; $D(a+bX)=b^2D(X)$.</li>
+</ol>
+</div>
+
+<div class="ex mcq" id="b2q25">
+  <div class="ex-head"><span class="ex-num">Câu 25</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Nhận dạng B(n;p)</span></div>
+  <p>Trong các biến ngẫu nhiên $X$ dưới đây, biến nào có phân phối <b>nhị thức</b>?</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> Một tủ có 20 hồ sơ, trong đó 6 hồ sơ viêm nướu. Rút lần lượt <b>không hoàn lại</b> 4 hồ sơ; $X$ = số hồ sơ viêm nướu rút được.</button>
+      <button data-k="b"><b>B.</b> Khám lần lượt từng học sinh (mỗi em sâu răng với xác suất $0{,}4$, độc lập) cho tới khi gặp em sâu răng <b>đầu tiên</b>; $X$ = số em đã khám.</button>
+      <button data-k="c"><b>C.</b> 8 bệnh nhân tẩy trắng răng, mỗi người độc lập bị ê buốt với xác suất $0{,}15$; $X$ = số người bị ê buốt.</button>
+      <button data-k="d"><b>D.</b> 3 bệnh nhân có xác suất bong mão sứ trong 5 năm lần lượt là $0{,}05$; $0{,}1$; $0{,}2$ (độc lập); $X$ = số người bị bong mão.</button>
+    </div>
+    <div class="qc-fb" data-k="a">Rút <b>không hoàn lại</b> nên các lần rút <b>không độc lập</b>: lần đầu xác suất viêm nướu là $\frac{6}{20}$, nhưng nếu lần đầu đã rút trúng thì lần hai chỉ còn $\frac{5}{19}$. Xác suất thay đổi từng lần → không phải nhị thức (đây là phân phối siêu bội).</div>
+    <div class="qc-fb" data-k="b">Ở đây số lần thử <b>không cố định</b> — khám đến khi nào gặp em sâu răng thì dừng, nên $X$ có thể là $1,2,3,\dots$ không giới hạn. Nhị thức đòi hỏi $n$ cố định từ trước, và $X$ đếm số lần "xảy ra" chứ không đếm số lần thử.</div>
+    <div class="qc-fb" data-k="c">Đủ cả ba điều kiện: $n=8$ cố định, 8 người <b>độc lập</b>, mỗi người cùng xác suất $p=0{,}15$. Vậy $X\sim B(8;\,0{,}15)$.</div>
+    <div class="qc-fb" data-k="d">Ba người độc lập và $n=3$ cố định, nhưng xác suất <b>khác nhau</b> ($0{,}05$; $0{,}1$; $0{,}2$). Nhị thức bắt buộc mọi lần thử có <b>cùng</b> một $p$, nên không dùng được $C_3^k p^k q^{3-k}$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Danh sách kiểm tra:</span> (i) số lần thử $n$ cố định; (ii) các lần thử độc lập; (iii) mỗi lần cùng xác suất $p$; (iv) $X$ đếm số lần "xảy ra".</li>
+      <li><span class="step-label">Bước 2 – Loại A:</span> không hoàn lại → vi phạm (ii) và (iii).</li>
+      <li><span class="step-label">Bước 3 – Loại B:</span> dừng khi gặp ca đầu tiên → vi phạm (i), $X$ đếm số lần thử.</li>
+      <li><span class="step-label">Bước 4 – Loại D:</span> ba xác suất khác nhau → vi phạm (iii).</li>
+      <li><span class="step-label">Kết luận:</span> chỉ C thoả cả bốn điều kiện: $X\sim B(8;\,0{,}15)$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q26">
+  <div class="ex-head"><span class="ex-num">Câu 26</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">E = np, D = npq</span></div>
+  <p>Kiểm tra nước của đường ống ghế nha: mỗi mẫu nước độc lập có xác suất vượt ngưỡng vi khuẩn cho phép là $0{,}2$. Lấy 25 mẫu; gọi $X$ là số mẫu vượt ngưỡng, $X\sim B(25;\,0{,}2)$. Kỳ vọng $E(X)$ và phương sai $D(X)$ lần lượt là:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $E(X)=5$; $D(X)=4$</button>
+      <button data-k="b"><b>B.</b> $E(X)=5$; $D(X)=5$</button>
+      <button data-k="c"><b>C.</b> $E(X)=5$; $D(X)=2$</button>
+      <button data-k="d"><b>D.</b> $E(X)=20$; $D(X)=4$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$E(X)=np=25\cdot0{,}2=5$ và $D(X)=npq=25\cdot0{,}2\cdot0{,}8=4$. Trung bình cứ 25 mẫu thì có 5 mẫu vượt ngưỡng.</div>
+    <div class="qc-fb" data-k="b">Bạn cho $D(X)=np$ — quên nhân thêm $q=0{,}8$. Phương sai nhị thức là $npq=5\cdot0{,}8=4$, luôn <b>nhỏ hơn</b> $E(X)$ vì $q&lt;1$.</div>
+    <div class="qc-fb" data-k="c">$2$ là <b>độ lệch chuẩn</b> $\sigma=\sqrt{npq}=\sqrt4$. Đề hỏi phương sai $D(X)=npq=4$, không khai căn.</div>
+    <div class="qc-fb" data-k="d">$20=25\cdot0{,}8=nq$ là số mẫu <b>đạt</b> trung bình. $X$ đếm mẫu <b>vượt ngưỡng</b> nên $E(X)=np=25\cdot0{,}2=5$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Đọc tham số:</span> $n=25$, $p=0{,}2$ (xác suất "vượt ngưỡng"), $q=1-0{,}2=0{,}8$.</li>
+      <li><span class="step-label">Bước 2 – Kỳ vọng:</span> $E(X)=np=25\cdot0{,}2=5$.</li>
+      <li><span class="step-label">Bước 3 – Phương sai:</span> $D(X)=npq=25\cdot0{,}2\cdot0{,}8=4$ (nếu cần độ lệch chuẩn thì $\sigma=\sqrt4=2$).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q27">
+  <div class="ex-head"><span class="ex-num">Câu 27</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ít nhất · phần bù</span></div>
+  <p>Xác suất một miếng trám composite bị bong trong 2 năm là $0{,}1$, các miếng trám bong độc lập với nhau. Một bệnh nhân có 6 miếng trám. Xác suất có <b>ít nhất 2</b> miếng bị bong trong 2 năm là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}4686$</button>
+      <button data-k="b"><b>B.</b> $0{,}0984$</button>
+      <button data-k="c"><b>C.</b> $0{,}4095$</button>
+      <button data-k="d"><b>D.</b> $0{,}1143$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}4686=1-0{,}9^6=1-P(X=0)$ là xác suất "ít nhất <b>1</b>". "Ít nhất 2" còn phải bỏ thêm trường hợp $X=1$: $1-P(X=0)-P(X=1)$.</div>
+    <div class="qc-fb" data-k="b">$0{,}0984=P(X=2)=C_6^2\cdot0{,}1^2\cdot0{,}9^4$ chỉ là "<b>đúng</b> 2". "Ít nhất 2" gồm cả $X=2,3,4,5,6$.</div>
+    <div class="qc-fb" data-k="c">Bạn tính $P(X=1)=0{,}1\cdot0{,}9^5=0{,}0590$ mà quên hệ số $C_6^1=6$ (miếng bong có thể là bất kì miếng nào trong 6). Đúng là $P(X=1)=6\cdot0{,}1\cdot0{,}9^5=0{,}3543$.</div>
+    <div class="qc-fb" data-k="d">$P(X\ge2)=1-P(X=0)-P(X=1)=1-0{,}5314-0{,}3543\approx0{,}1143$. Dùng phần bù chỉ cần 2 số hạng thay vì 5.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Mô hình:</span> $X$ = số miếng trám bong, $X\sim B(6;\,0{,}1)$, $q=0{,}9$.</li>
+      <li><span class="step-label">Bước 2 – Phần bù:</span> "ít nhất 2" ($X\ge2$) có phần bù là "nhiều nhất 1" ($X=0$ hoặc $X=1$), nên $P(X\ge2)=1-P(X=0)-P(X=1)$.</li>
+      <li><span class="step-label">Bước 3 – $P(X=0)$:</span> $C_6^0\cdot0{,}1^0\cdot0{,}9^6=0{,}531441$.</li>
+      <li><span class="step-label">Bước 4 – $P(X=1)$:</span> $C_6^1\cdot0{,}1\cdot0{,}9^5=6\cdot0{,}1\cdot0{,}59049=0{,}354294$.</li>
+      <li><span class="step-label">Bước 5 – Kết quả:</span> $1-0{,}531441-0{,}354294=0{,}114265\approx0{,}1143$.</li>
+      <li><span class="step-label">Bấm máy:</span> MENU 7 → ▼ 1 (Binomial CD), x = 1, N = 6, p = 0,1 → ra $P(X\le1)=0{,}885735$; lấy $1-0{,}885735$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q28">
+  <div class="ex-head"><span class="ex-num">Câu 28</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Số có khả năng nhất</span></div>
+  <p>Mỗi buổi sáng phòng khám có 12 bệnh nhân đặt lịch; mỗi người độc lập <b>lỡ hẹn</b> với xác suất $0{,}15$. Gọi $X$ là số người lỡ hẹn trong buổi sáng, $X\sim B(12;\,0{,}15)$. Số người lỡ hẹn <b>có khả năng xảy ra nhất</b> $m_0$ và xác suất tương ứng (làm tròn 4 chữ số thập phân) là:</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $m_0=2$; $P\approx0{,}2924$</button>
+      <button data-k="b"><b>B.</b> $m_0=1$; $P\approx0{,}3012$</button>
+      <button data-k="c"><b>C.</b> $m_0=1$; $P\approx0{,}0251$</button>
+      <button data-k="d"><b>D.</b> $m_0=0$; $P\approx0{,}1422$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn làm tròn $np=1{,}8$ thành 2. Mod không phải "$np$ làm tròn": khoảng $[np-q;\ np+p]=[0{,}95;\ 1{,}95]$ chỉ chứa số nguyên 1. Thật vậy $P(X=2)\approx0{,}2924&lt;P(X=1)\approx0{,}3012$.</div>
+    <div class="qc-fb" data-k="b">$np-q=0{,}95\le m_0\le np+p=1{,}95$ nên $m_0=1$, và $P(X=1)=C_{12}^1\cdot0{,}15\cdot0{,}85^{11}\approx0{,}3012$ — cột cao nhất của biểu đồ.</div>
+    <div class="qc-fb" data-k="c">$m_0=1$ đúng, nhưng $0{,}0251=0{,}15\cdot0{,}85^{11}$ là xác suất cho <b>một</b> thứ tự cụ thể (người thứ nhất lỡ hẹn, 11 người sau đến). Có $C_{12}^1=12$ cách chọn người lỡ hẹn, nên phải nhân 12: $\approx0{,}3012$.</div>
+    <div class="qc-fb" data-k="d">Bạn lấy phần nguyên của $np-q=0{,}95$ thành 0. Nhưng $m_0$ phải <b>không nhỏ hơn</b> $np-q=0{,}95$, nên số nguyên nhỏ nhất được phép là 1. $P(X=0)=0{,}85^{12}\approx0{,}1422$ nhỏ hơn $P(X=1)$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Tham số:</span> $n=12$, $p=0{,}15$, $q=0{,}85$, $np=1{,}8$.</li>
+      <li><span class="step-label">Bước 2 – Khoảng chứa mod:</span> $np-q=1{,}8-0{,}85=0{,}95$; $np+p=1{,}8+0{,}15=1{,}95$. Vậy $0{,}95\le m_0\le1{,}95$.</li>
+      <li><span class="step-label">Bước 3 – Chọn số nguyên:</span> số nguyên duy nhất trong $[0{,}95;\ 1{,}95]$ là $m_0=1$.</li>
+      <li><span class="step-label">Bước 4 – Xác suất:</span> $P(X=1)=C_{12}^1\cdot0{,}15^1\cdot0{,}85^{11}=12\cdot0{,}15\cdot0{,}85^{11}\approx0{,}3012$.</li>
+      <li><span class="step-label">Kiểm tra:</span> $P(X=0)\approx0{,}1422$, $P(X=2)\approx0{,}2924$ đều nhỏ hơn $0{,}3012$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q29">
+  <div class="ex-head"><span class="ex-num">Câu 29</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Tìm n, p từ E, D · nhiều nhất</span></div>
+  <p>Một xét nghiệm nhanh phát hiện mức vi khuẩn <i>S. mutans</i> cao trong nước bọt. Trong một lớp có $n$ học sinh, gọi $X$ là số em có kết quả dương tính; biết $X\sim B(n;p)$ với $E(X)=6$ và $D(X)=4{,}2$. Xác suất có <b>nhiều nhất 2</b> em dương tính là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}0076$</button>
+      <button data-k="b"><b>B.</b> $0{,}0278$</button>
+      <button data-k="c"><b>C.</b> $0{,}0355$</button>
+      <button data-k="d"><b>D.</b> $0{,}9645$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}0076=P(X=0)+P(X=1)=P(X\le1)$ — bạn hiểu "nhiều nhất 2" thành "ít hơn 2". "Nhiều nhất 2" là $X\le2$, phải cộng thêm $P(X=2)\approx0{,}0278$.</div>
+    <div class="qc-fb" data-k="b">$0{,}0278=P(X=2)=C_{20}^2\cdot0{,}3^2\cdot0{,}7^{18}$ chỉ là "đúng 2". "Nhiều nhất 2" gồm $X=0$, $X=1$, $X=2$.</div>
+    <div class="qc-fb" data-k="c">Từ $q=\frac{D}{E}=\frac{4{,}2}{6}=0{,}7$ suy ra $p=0{,}3$, $n=\frac{6}{0{,}3}=20$; rồi $P(X\le2)=0{,}0008+0{,}0068+0{,}0278\approx0{,}0355$.</div>
+    <div class="qc-fb" data-k="d">$0{,}9645=1-P(X\le2)$ là xác suất "<b>ít nhất 3</b>" em dương tính. Đề hỏi "nhiều nhất 2", tức chính $P(X\le2)$, không lấy phần bù.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> chưa biết $n$, $p$ thì chưa dùng được $C_n^kp^kq^{n-k}$. Hai dữ kiện $E=np$ và $D=npq$ là hệ 2 ẩn; chia $D$ cho $E$ thì $np$ triệt tiêu, còn lại đúng $q$.</li>
+      <li><span class="step-label">Bước 1 – Tìm $q$, $p$:</span> $\dfrac{D(X)}{E(X)}=\dfrac{npq}{np}=q=\dfrac{4{,}2}{6}=0{,}7$, nên $p=1-0{,}7=0{,}3$.</li>
+      <li><span class="step-label">Bước 2 – Tìm $n$:</span> $n=\dfrac{E(X)}{p}=\dfrac{6}{0{,}3}=20$ (số nguyên ✓). Vậy $X\sim B(20;\,0{,}3)$.</li>
+      <li><span class="step-label">Bước 3 – Dịch đề:</span> "nhiều nhất 2" là $X\le2$: $P(X\le2)=P(X=0)+P(X=1)+P(X=2)$.</li>
+      <li><span class="step-label">Bước 4 – Từng số hạng:</span> $P(X=0)=0{,}7^{20}\approx0{,}000798$; $P(X=1)=20\cdot0{,}3\cdot0{,}7^{19}\approx0{,}006839$; $P(X=2)=190\cdot0{,}09\cdot0{,}7^{18}\approx0{,}027846$.</li>
+      <li><span class="step-label">Bước 5 – Cộng:</span> $P(X\le2)\approx0{,}035483\approx0{,}0355$.</li>
+      <li><span class="step-label">Bấm máy:</span> MENU 7 → ▼ 1 (Binomial CD), x = 2, N = 20, p = 0,3 → $0{,}03548$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q30">
+  <div class="ex-head"><span class="ex-num">Câu 30</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">E(a+bX), D(a+bX)</span></div>
+  <p>Mỗi tháng phòng khám nhận 40 bệnh nhân cạo vôi răng, mỗi người trả 300 nghìn đồng. Mỗi người độc lập có xác suất $0{,}25$ cần điều trị nha chu bổ sung và khi đó trả <b>thêm</b> 500 nghìn đồng. Gọi $T$ (nghìn đồng) là tổng doanh thu của tháng từ nhóm bệnh nhân này. Kỳ vọng $E(T)$ và độ lệch chuẩn $\sigma(T)$ (làm tròn 1 chữ số thập phân) là:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $E(T)=17\,000$; $\sigma(T)\approx1369{,}3$</button>
+      <button data-k="b"><b>B.</b> $E(T)=5\,000$; $\sigma(T)\approx1369{,}3$</button>
+      <button data-k="c"><b>C.</b> $E(T)=17\,000$; $\sigma(T)\approx61{,}2$</button>
+      <button data-k="d"><b>D.</b> $E(T)=17\,000$; $\sigma(T)\approx1581{,}1$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$T=12\,000+500X$ với $X\sim B(40;\,0{,}25)$: $E(T)=12\,000+500\cdot10=17\,000$, $D(T)=500^2\cdot7{,}5$ nên $\sigma(T)=500\sqrt{7{,}5}\approx1369{,}3$.</div>
+    <div class="qc-fb" data-k="b">$5\,000=500\cdot E(X)$ chỉ là phần thu <b>thêm</b>. Cả 40 người đều trả 300 nghìn, tức phần cố định $a=40\cdot300=12\,000$ phải cộng vào: $E(T)=12\,000+5\,000$. (Độ lệch chuẩn thì đúng, vì hằng số không làm đổi $\sigma$.)</div>
+    <div class="qc-fb" data-k="c">Bạn dùng $D(T)=500\cdot D(X)=3750$ rồi khai căn ra $61{,}2$ — quên <b>bình phương</b> hệ số: $D(a+bX)=b^2D(X)=500^2\cdot7{,}5$, nên $\sigma(T)=500\sqrt{7{,}5}\approx1369{,}3$.</div>
+    <div class="qc-fb" data-k="d">$1581{,}1=500\sqrt{10}$: bạn lấy $D(X)=np=10$, quên nhân $q=0{,}75$. Đúng là $D(X)=npq=7{,}5$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> doanh thu chỉ "ngẫu nhiên" ở chỗ có bao nhiêu người cần điều trị thêm. Đặt $X$ là số người đó, viết $T$ thành dạng $a+bX$ rồi dùng công thức tuyến tính.</li>
+      <li><span class="step-label">Bước 1 – Mô hình $X$:</span> $X$ = số người cần điều trị bổ sung, $X\sim B(40;\,0{,}25)$; $E(X)=40\cdot0{,}25=10$; $D(X)=40\cdot0{,}25\cdot0{,}75=7{,}5$.</li>
+      <li><span class="step-label">Bước 2 – Lập $T$:</span> phần cố định $40\cdot300=12\,000$; phần thêm $500X$. Vậy $T=12\,000+500X$ ($a=12\,000$, $b=500$).</li>
+      <li><span class="step-label">Bước 3 – Kỳ vọng:</span> $E(T)=12\,000+500\cdot E(X)=12\,000+5\,000=17\,000$ (nghìn đồng).</li>
+      <li><span class="step-label">Bước 4 – Phương sai:</span> $D(T)=500^2\cdot D(X)=250\,000\cdot7{,}5=1\,875\,000$; hằng số $12\,000$ biến mất.</li>
+      <li><span class="step-label">Bước 5 – Độ lệch chuẩn:</span> $\sigma(T)=\sqrt{1\,875\,000}=500\sqrt{7{,}5}\approx1369{,}3$ (nghìn đồng).</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b2-tn-c6">Chặng 6 · Phân phối chuẩn</h3>
+<p>Chặng này luyện phân phối chuẩn từ chỗ đọc kí hiệu tới bài toán ngược. Đầu tiên là đọc đúng $N(\mu;\sigma^2)$ (số thứ hai là <b>phương sai</b>, muốn có $\sigma$ phải khai căn), đọc đỉnh và trục đối xứng của hình chuông. Sau đó là tính xác suất bằng bảng $\varphi$, đổi xác suất ra số người trung bình. Cuối chặng là hai bài toán ngược: biết xác suất, tìm ngưỡng $x_0$, và biết chiều cao đỉnh, suy ra $\sigma$. Đề thi gần như luôn có một câu chuẩn hoá, và lỗi hay gặp nhất là quên khai căn $\sigma^2$.</p>
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Bộ công thức cần thuộc</span></div>
+<ol class="steps">
+<li><span class="step-label">Đọc kí hiệu:</span> $X\sim N(\mu;\sigma^2)$ thì $E(X)=\mu$, $D(X)=\sigma^2$, $\sigma=\sqrt{D(X)}$. Đồ thị mật độ đối xứng qua đường thẳng $x=\mu$, đỉnh tại $M\big(\mu;\tfrac{1}{\sigma\sqrt{2\pi}}\big)$: $\sigma$ càng nhỏ thì đỉnh càng cao, chuông càng hẹp.</li>
+<li><span class="step-label">Chuẩn hoá:</span> đổi $x$ thành $z=\dfrac{x-\mu}{\sigma}$ (làm tròn 2 chữ số rồi tra bảng $\varphi$). Khi đó $P(a&lt;X&lt;b)=\varphi\big(\tfrac{b-\mu}{\sigma}\big)-\varphi\big(\tfrac{a-\mu}{\sigma}\big)$, $P(X&gt;a)=0{,}5-\varphi\big(\tfrac{a-\mu}{\sigma}\big)$, $P(X&lt;b)=0{,}5+\varphi\big(\tfrac{b-\mu}{\sigma}\big)$.</li>
+<li><span class="step-label">Đối xứng quanh $\mu$:</span> $P(|X-\mu|&lt;\varepsilon)=2\varphi(\varepsilon/\sigma)$. Có hai trường hợp riêng: quy tắc $2\sigma$ là $P(|X-\mu|&lt;2\sigma)=2\varphi(2)=0{,}9544$, quy tắc $3\sigma$ là $P(|X-\mu|&lt;3\sigma)=2\varphi(3)\approx0{,}9973$.</li>
+<li><span class="step-label">Nhớ:</span> $\varphi$ là diện tích từ $0$ tới $x$, <b>không</b> phải từ $-\infty$. Vì vậy luôn phải cộng hoặc trừ với $0{,}5$ khi tính một phía.</li>
+</ol>
+</div>
+
+<div class="ex mcq" id="b2q31">
+  <div class="ex-head"><span class="ex-num">Câu 31</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Kí hiệu $N(\mu;\sigma^2)$ · đỉnh · trục đối xứng</span></div>
+  <p>Thời gian (phút) để hoàn tất một ca cạo vôi răng tại một phòng khám là biến ngẫu nhiên $X\sim N(30;\,25)$. Mệnh đề nào sau đây <b>đúng</b>?</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> Độ lệch chuẩn của $X$ là $25$ phút.</button>
+      <button data-k="b"><b>B.</b> Đỉnh đồ thị mật độ của $X$ là $M\big(30;\tfrac{1}{5\sqrt{2\pi}}\big)$.</button>
+      <button data-k="c"><b>C.</b> Đồ thị mật độ của $X$ đối xứng qua đường thẳng $x=25$.</button>
+      <button data-k="d"><b>D.</b> $P(X&lt;25)=P(X&gt;30)$.</button>
+    </div>
+    <div class="qc-fb" data-k="a">$25$ là <b>phương sai</b>, vì trong $N(\mu;\sigma^2)$ số thứ hai là $\sigma^2$. Độ lệch chuẩn phải khai căn: $\sigma=\sqrt{25}=5$ phút.</div>
+    <div class="qc-fb" data-k="b">Ở đây $\mu=30$, $\sigma=\sqrt{25}=5$. Đỉnh hình chuông nằm ngay trên $x=\mu$ và cao $\frac{1}{\sigma\sqrt{2\pi}}=\frac{1}{5\sqrt{2\pi}}\approx0{,}0798$.</div>
+    <div class="qc-fb" data-k="c">Trục đối xứng là $x=\mu=30$, không phải $x=25$. Số $25$ là phương sai, nó nói chuông rộng hay hẹp chứ không nói chuông nằm ở đâu.</div>
+    <div class="qc-fb" data-k="d">Hai vùng đuôi bằng nhau khi chúng cách $\mu=30$ cùng một khoảng. Vì $25$ cách $30$ đúng 5 phút về bên trái nên $P(X&lt;25)=P(X&gt;35)\approx0{,}1587$, còn $P(X&gt;30)=0{,}5$ (một nửa chuông).</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Đọc kí hiệu:</span> $N(30;25)$ cho biết $\mu=E(X)=30$ phút và $\sigma^2=D(X)=25$, nên $\sigma=\sqrt{25}=5$ phút.</li>
+      <li><span class="step-label">Bước 2 – Trục đối xứng:</span> hình chuông đối xứng qua đường thẳng $x=\mu=30$, nên C sai.</li>
+      <li><span class="step-label">Bước 3 – Đỉnh:</span> $M\big(\mu;\frac{1}{\sigma\sqrt{2\pi}}\big)=M\big(30;\frac{1}{5\sqrt{2\pi}}\big)$, nên B đúng.</li>
+      <li><span class="step-label">Bước 4 – Loại A, D:</span> A nhầm phương sai với độ lệch chuẩn. Ở D, điểm $25$ cách tâm $30$ một khoảng $5$, nên vùng đối xứng với nó là $X&gt;35$ chứ không phải $X&gt;30$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q32">
+  <div class="ex-head"><span class="ex-num">Câu 32</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Nhận dạng phân phối từ hình chuông</span></div>
+  <p>Lượng máu mất (ml) trong một ca nhổ răng khôn hàm dưới là biến ngẫu nhiên liên tục $X$. Đồ thị hàm mật độ của $X$ có dạng hình chuông, đối xứng qua đường thẳng $x=40$, và đỉnh có tung độ $\dfrac{1}{6\sqrt{2\pi}}$. $X$ có phân phối nào?</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $N(40;\,6)$</button>
+      <button data-k="b"><b>B.</b> $N(6;\,40)$</button>
+      <button data-k="c"><b>C.</b> $N(40;\,\sqrt6)$</button>
+      <button data-k="d"><b>D.</b> $N(40;\,36)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Từ chiều cao đỉnh bạn đã đọc đúng $\sigma=6$, nhưng lại ghi $\sigma$ vào chỗ thứ hai. Chỗ thứ hai trong $N(\mu;\sigma^2)$ là <b>phương sai</b>: $\sigma^2=6^2=36$.</div>
+    <div class="qc-fb" data-k="b">Bạn đảo vị trí. Trục đối xứng $x=40$ cho $\mu=40$ (số thứ nhất). Số $6$ ở đỉnh là $\sigma$, nên số thứ hai phải là $\sigma^2=36$.</div>
+    <div class="qc-fb" data-k="c">Bạn khai căn sai chiều: $6$ đã là $\sigma$ rồi. Muốn ra phương sai thì phải <b>bình phương</b> ($36$), không phải khai căn ($\sqrt6$).</div>
+    <div class="qc-fb" data-k="d">Trục đối xứng $x=40$ cho $\mu=40$. So $\frac{1}{\sigma\sqrt{2\pi}}$ với $\frac{1}{6\sqrt{2\pi}}$ được $\sigma=6$, nên $\sigma^2=36$. Vậy $X\sim N(40;36)$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Tìm $\mu$:</span> hình chuông chuẩn đối xứng qua $x=\mu$, nên $\mu=40$ ml.</li>
+      <li><span class="step-label">Bước 2 – Tìm $\sigma$:</span> đỉnh cao $\frac{1}{\sigma\sqrt{2\pi}}$, đặt bằng $\frac{1}{6\sqrt{2\pi}}$ thì được $\sigma=6$ ml.</li>
+      <li><span class="step-label">Bước 3 – Viết kí hiệu:</span> $N(\mu;\sigma^2)=N(40;6^2)=N(40;36)$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q33">
+  <div class="ex-head"><span class="ex-num">Câu 33</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Quy tắc $2\sigma$, $3\sigma$</span></div>
+  <p>Chiều dài chân răng nanh hàm trên (mm) ở người trưởng thành là $X\sim N(17;\,1{,}44)$. Theo quy tắc $2\sigma$, khoảng nào chứa khoảng $95{,}44\%$ số răng nanh hàm trên?</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(14{,}6;\ 19{,}4)$</button>
+      <button data-k="b"><b>B.</b> $(14{,}12;\ 19{,}88)$</button>
+      <button data-k="c"><b>C.</b> $(15{,}8;\ 18{,}2)$</button>
+      <button data-k="d"><b>D.</b> $(13{,}4;\ 20{,}6)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\sigma=\sqrt{1{,}44}=1{,}2$ mm, nên $2\sigma=2{,}4$. Khoảng cần tìm là $(17-2{,}4;\ 17+2{,}4)=(14{,}6;\ 19{,}4)$, và $P(|X-17|&lt;2{,}4)=2\varphi(2)=0{,}9544$.</div>
+    <div class="qc-fb" data-k="b">Bạn lấy $2\cdot1{,}44=2{,}88$, tức là dùng <b>phương sai</b> làm $\sigma$. Phải khai căn trước: $\sigma=\sqrt{1{,}44}=1{,}2$.</div>
+    <div class="qc-fb" data-k="c">Đây là $\mu\pm1\sigma=17\pm1{,}2$, chỉ chứa khoảng $2\varphi(1)=68{,}26\%$. Đề hỏi $95{,}44\%$ nên cần $\pm2\sigma$.</div>
+    <div class="qc-fb" data-k="d">Đây là $\mu\pm3\sigma=17\pm3{,}6$, tức quy tắc $3\sigma$, chứa khoảng $99{,}73\%$. Đề hỏi $95{,}44\%$ nên chỉ cần $\pm2\sigma$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Độ lệch chuẩn:</span> $\sigma=\sqrt{1{,}44}=1{,}2$ mm.</li>
+      <li><span class="step-label">Bước 2 – Quy tắc $2\sigma$:</span> $P(|X-\mu|&lt;2\sigma)=2\varphi(2)=2\cdot0{,}4772=0{,}9544$, tức khoảng $95{,}44\%$ giá trị nằm trong $(\mu-2\sigma;\ \mu+2\sigma)$.</li>
+      <li><span class="step-label">Bước 3 – Thay số:</span> $(17-2\cdot1{,}2;\ 17+2\cdot1{,}2)=(14{,}6;\ 19{,}4)$ mm.</li>
+      <li><span class="step-label">Ghi nhớ:</span> $\pm1\sigma$ chứa $68{,}26\%$, $\pm2\sigma$ chứa $95{,}44\%$, $\pm3\sigma$ chứa $99{,}73\%$ (gần như chắc chắn).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q34">
+  <div class="ex-head"><span class="ex-num">Câu 34</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">$P(X&gt;a)$ bằng bảng $\varphi$</span></div>
+  <p>Thời gian (phút) một ca trám răng bằng composite là $X\sim N(45;\,64)$. Xác suất để một ca trám kéo dài <b>hơn</b> $55$ phút là (tra bảng $\varphi$, làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}3944$</button>
+      <button data-k="b"><b>B.</b> $0{,}4364$</button>
+      <button data-k="c"><b>C.</b> $0{,}1056$</button>
+      <button data-k="d"><b>D.</b> $0{,}8944$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}3944=\varphi(1{,}25)$ là diện tích từ <b>tâm</b> tới $z=1{,}25$, chưa phải phần đuôi bên phải. Phải lấy nửa chuông bên phải trừ đi phần đó: $0{,}5-0{,}3944=0{,}1056$.</div>
+    <div class="qc-fb" data-k="b">Bạn chia cho $64$ (phương sai): $z=\frac{10}{64}\approx0{,}16$, được $0{,}5-\varphi(0{,}16)=0{,}5-0{,}0636=0{,}4364$. Phải chia cho $\sigma=\sqrt{64}=8$.</div>
+    <div class="qc-fb" data-k="c">$\sigma=8$, $z=\frac{55-45}{8}=1{,}25$, nên $P(X&gt;55)=0{,}5-\varphi(1{,}25)=0{,}5-0{,}3944=0{,}1056$. Khoảng 1 trong 10 ca kéo dài hơn 55 phút.</div>
+    <div class="qc-fb" data-k="d">$0{,}5+\varphi(1{,}25)=0{,}8944$ là $P(X&lt;55)$, tức phía bên <b>trái</b>. Đề hỏi "hơn 55 phút" là phía bên phải, nên dùng $0{,}5-\varphi$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Đọc kí hiệu:</span> $\mu=45$, $\sigma^2=64$, nên $\sigma=8$ phút.</li>
+      <li><span class="step-label">Bước 2 – Chuẩn hoá:</span> $z=\dfrac{55-45}{8}=1{,}25$. Nghĩa là 55 phút lệch trên trung bình $1{,}25$ độ lệch chuẩn.</li>
+      <li><span class="step-label">Bước 3 – Tra bảng:</span> $\varphi(1{,}25)=0{,}3944$ (hàng $1{,}2$, cột $0{,}05$).</li>
+      <li><span class="step-label">Bước 4 – Lấy đuôi phải:</span> $P(X&gt;55)=0{,}5-\varphi(1{,}25)=0{,}5-0{,}3944=0{,}1056$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q35">
+  <div class="ex-head"><span class="ex-num">Câu 35</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">$P(a&lt;X&lt;b)$ · số người trung bình</span></div>
+  <p>Chiều rộng gần – xa của răng cửa giữa hàm trên (mm) ở người trưởng thành là $X\sim N(8{,}6;\,0{,}25)$. Khám $400$ người, trung bình có bao nhiêu người có chiều rộng răng này nằm trong khoảng từ $8{,}1$ mm đến $9{,}4$ mm? (Tra bảng $\varphi$.)</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $314{,}6$ người</button>
+      <button data-k="b"><b>B.</b> $41{,}56$ người</button>
+      <button data-k="c"><b>C.</b> $390{,}6$ người</button>
+      <button data-k="d"><b>D.</b> $378{,}08$ người</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\sigma=0{,}5$, $z_1=-1$, $z_2=1{,}6$, nên $P=\varphi(1{,}6)-\varphi(-1)=0{,}4452+0{,}3413=0{,}7865$. Số người trung bình là $400\cdot0{,}7865=314{,}6$.</div>
+    <div class="qc-fb" data-k="b">Bạn tính $\varphi(1{,}6)-\varphi(1)=0{,}1039$, tức quên rằng $\varphi(-1)=-\varphi(1)$. Hai cận nằm ở <b>hai phía</b> của $\mu$ nên hai mảnh diện tích phải <b>cộng</b> lại.</div>
+    <div class="qc-fb" data-k="c">Bạn chia cho $0{,}25$ (phương sai): $z_1=-2$, $z_2=3{,}2$, được $400\,(0{,}49931+0{,}4772)\approx390{,}6$. Phải chia cho $\sigma=\sqrt{0{,}25}=0{,}5$.</div>
+    <div class="qc-fb" data-k="d">$400\,(0{,}5+0{,}4452)=378{,}08$ là số người có chiều rộng <b>dưới</b> $9{,}4$ mm. Bạn quên bỏ phần dưới $8{,}1$ mm, nên phải trừ $P(X&lt;8{,}1)=0{,}5-0{,}3413$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Đọc kí hiệu:</span> $\mu=8{,}6$, $\sigma=\sqrt{0{,}25}=0{,}5$ mm.</li>
+      <li><span class="step-label">Bước 2 – Chuẩn hoá hai cận:</span> $z_1=\dfrac{8{,}1-8{,}6}{0{,}5}=-1$, $z_2=\dfrac{9{,}4-8{,}6}{0{,}5}=1{,}6$.</li>
+      <li><span class="step-label">Bước 3 – Xác suất cho 1 người:</span> $$\begin{aligned}&amp;P(8{,}1&lt;X&lt;9{,}4)\\ &amp;=\varphi(1{,}6)-\varphi(-1)\\ &amp;=0{,}4452+0{,}3413\\ &amp;=0{,}7865\end{aligned}$$</li>
+      <li><span class="step-label">Bước 4 – Đổi ra số người:</span> số người đạt tiêu chí trong 400 người là biến nhị thức $B(400;\,0{,}7865)$, có kỳ vọng $np=400\cdot0{,}7865=314{,}6$ người.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q36">
+  <div class="ex-head"><span class="ex-num">Câu 36</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">$P(|X-\mu|&lt;\varepsilon)$ · phần bù · số người</span></div>
+  <p>Thời gian chờ khám (phút) của bệnh nhân tại một phòng khám nha là $X\sim N(20;\,36)$. Trong $250$ bệnh nhân, trung bình có bao nhiêu người có thời gian chờ lệch khỏi $20$ phút <b>quá</b> $9$ phút, tức $|X-20|&gt;9$? (Tra bảng $\varphi$.)</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $216{,}6$ người</button>
+      <button data-k="b"><b>B.</b> $141{,}7$ người</button>
+      <button data-k="c"><b>C.</b> $200{,}65$ người</button>
+      <button data-k="d"><b>D.</b> $33{,}4$ người</button>
+    </div>
+    <div class="qc-fb" data-k="a">$250\cdot2\varphi(1{,}5)=250\cdot0{,}8664=216{,}6$ là số người chờ lệch <b>không quá</b> 9 phút. Đề hỏi "quá 9 phút" nên phải lấy phần bù $1-0{,}8664$.</div>
+    <div class="qc-fb" data-k="b">Bạn dùng $1-\varphi(1{,}5)=0{,}5668$, quên nhân 2. Khoảng $|X-20|&lt;9$ trải ra <b>hai phía</b> của tâm nên xác suất là $2\varphi(1{,}5)$.</div>
+    <div class="qc-fb" data-k="c">Bạn chia cho $36$ (phương sai): $\frac{9}{36}=0{,}25$, được $250\,(1-2\cdot0{,}0987)=200{,}65$. Phải chia cho $\sigma=\sqrt{36}=6$.</div>
+    <div class="qc-fb" data-k="d">$\sigma=6$, $P(|X-20|&lt;9)=2\varphi(1{,}5)=0{,}8664$, nên $P(|X-20|&gt;9)=0{,}1336$. Số người trung bình là $250\cdot0{,}1336=33{,}4$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Đọc kí hiệu:</span> $\mu=20$, $\sigma=\sqrt{36}=6$ phút.</li>
+      <li><span class="step-label">Bước 2 – Lệch không quá 9 phút:</span> $P(|X-20|&lt;9)=2\varphi\big(\tfrac{9}{6}\big)=2\varphi(1{,}5)=2\cdot0{,}4332=0{,}8664$.</li>
+      <li><span class="step-label">Bước 3 – Phần bù:</span> $P(|X-20|&gt;9)=1-0{,}8664=0{,}1336$. Vì $X$ liên tục nên dấu "=" không làm thay đổi kết quả.</li>
+      <li><span class="step-label">Bước 4 – Số người:</span> kỳ vọng của $B(250;\,0{,}1336)$ là $250\cdot0{,}1336=33{,}4$ người.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q37">
+  <div class="ex-head"><span class="ex-num">Câu 37</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bài toán ngược · tìm $x_0$ từ $P(X-\mu&gt;x_0)$</span></div>
+  <p>Thời gian lành thương (ngày) sau nhổ răng khôn là $X\sim N(10;\,2{,}25)$. Bác sĩ muốn tìm số $x_0$ sao cho chỉ $5\%$ bệnh nhân có thời gian lành vượt trung bình hơn $x_0$ ngày, tức $P(X-10&gt;x_0)=0{,}05$. Giá trị $x_0$ xấp xỉ bằng (làm tròn 2 chữ số thập phân):</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $3{,}70$</button>
+      <button data-k="b"><b>B.</b> $2{,}94$</button>
+      <button data-k="c"><b>C.</b> $2{,}47$</button>
+      <button data-k="d"><b>D.</b> $0{,}19$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$2{,}25\cdot1{,}645\approx3{,}70$: bạn nhân với <b>phương sai</b>. Phải dùng $\sigma=\sqrt{2{,}25}=1{,}5$.</div>
+    <div class="qc-fb" data-k="b">$1{,}5\cdot1{,}96=2{,}94$ là ngưỡng của bài <b>hai phía</b> ($2{,}5\%$ mỗi đuôi). Ở đây chỉ có một đuôi phải là $5\%$, nên $\varphi(z)=0{,}45$ và $z=1{,}645$.</div>
+    <div class="qc-fb" data-k="c">Ta có $0{,}5-\varphi\big(\tfrac{x_0}{1{,}5}\big)=0{,}05$, nên $\varphi\big(\tfrac{x_0}{1{,}5}\big)=0{,}45$ và $\tfrac{x_0}{1{,}5}=1{,}645$. Vậy $x_0=2{,}4675\approx2{,}47$ ngày.</div>
+    <div class="qc-fb" data-k="d">Bạn giải $\varphi(z)=0{,}05$, ra $z\approx0{,}125$ và $x_0\approx0{,}19$. Nhưng $0{,}05$ là diện tích <b>đuôi</b> bên phải, còn $\varphi$ đo từ tâm. Phải đặt $0{,}5-\varphi(z)=0{,}05$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> đây là bài toán ngược: biết diện tích đuôi, tìm ngưỡng. Ta chuẩn hoá $X-10$ thành $Z$, viết diện tích đuôi theo $\varphi$, rồi tra bảng <b>theo chiều ngược</b> (tìm $z$ khi biết $\varphi(z)$).</li>
+      <li><span class="step-label">Bước 1 – Đọc kí hiệu:</span> $\mu=10$, $\sigma=\sqrt{2{,}25}=1{,}5$ ngày.</li>
+      <li><span class="step-label">Bước 2 – Chuẩn hoá:</span> $P(X-10&gt;x_0)=P\big(Z&gt;\tfrac{x_0}{1{,}5}\big)=0{,}5-\varphi\big(\tfrac{x_0}{1{,}5}\big)$.</li>
+      <li><span class="step-label">Bước 3 – Lập phương trình:</span> $0{,}5-\varphi\big(\tfrac{x_0}{1{,}5}\big)=0{,}05$, nên $\varphi\big(\tfrac{x_0}{1{,}5}\big)=0{,}45$.</li>
+      <li><span class="step-label">Bước 4 – Tra ngược:</span> bảng có $\varphi(1{,}64)=0{,}4495$ và $\varphi(1{,}65)=0{,}4505$; $0{,}45$ nằm giữa nên lấy $z=1{,}645$ (chính là $z_{0{,}95}$).</li>
+      <li><span class="step-label">Bước 5 – Ra $x_0$:</span> $x_0=1{,}5\cdot1{,}645=2{,}4675\approx2{,}47$ ngày. Hiểu là chỉ $5\%$ bệnh nhân cần quá $12{,}47$ ngày để lành.</li>
+      <li><span class="step-label">Bấm máy:</span> MENU 7 → 3 (Inverse Normal), Area $=0{,}95$ (diện tích bên <b>trái</b>), $\sigma=1{,}5$, $\mu=0$, ra $\approx2{,}4673$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q38">
+  <div class="ex-head"><span class="ex-num">Câu 38</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Suy $\sigma$ từ đỉnh · tìm $x_0$ từ $P(X&lt;x_0)$</span></div>
+  <p>Lượng nước bọt kích thích tiết ra trong 5 phút (ml) ở người trưởng thành là biến ngẫu nhiên $X$ có phân phối chuẩn. Đồ thị hàm mật độ của $X$ có đỉnh tại điểm $(6;\,0{,}1995)$. Người có lượng nước bọt dưới ngưỡng $x_0$ được xếp vào nhóm "nguy cơ khô miệng", và nhóm này chiếm $10\%$ dân số, tức $P(X&lt;x_0)=0{,}1$. Tìm $x_0$ (tra bảng $\varphi$, làm tròn 2 chữ số thập phân).</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $8{,}56$ ml</button>
+      <button data-k="b"><b>B.</b> $3{,}44$ ml</button>
+      <button data-k="c"><b>C.</b> $0{,}88$ ml</button>
+      <button data-k="d"><b>D.</b> $5{,}50$ ml</button>
+    </div>
+    <div class="qc-fb" data-k="a">$6+1{,}28\cdot2=8{,}56$ là ngưỡng mà $10\%$ người có lượng nước bọt <b>cao hơn</b>, tức $P(X&lt;x_0)=0{,}9$. Nhóm khô miệng nằm ở đuôi <b>trái</b> nên $x_0&lt;\mu$: $z=-1{,}28$.</div>
+    <div class="qc-fb" data-k="b">Từ đỉnh, $\sigma=\frac{1}{0{,}1995\sqrt{2\pi}}\approx2$. Đuôi trái $10\%$ ứng với $\varphi(z)=-0{,}4$, nên $z=-1{,}28$. Vậy $x_0=6-1{,}28\cdot2=3{,}44$ ml.</div>
+    <div class="qc-fb" data-k="c">$6-1{,}28\cdot4=0{,}88$: bạn coi $4$ là $\sigma$, nhưng $4$ là $\sigma^2$. Chiều cao đỉnh $\frac{1}{\sigma\sqrt{2\pi}}$ cho thẳng $\sigma\approx2$, không cần bình phương.</div>
+    <div class="qc-fb" data-k="d">Bạn giải $\varphi(z)=0{,}1$, ra $z\approx0{,}25$ và $x_0=6-0{,}5=5{,}5$. Nhưng $0{,}1$ là diện tích từ $-\infty$ tới $x_0$, còn $\varphi$ đo từ tâm. Phải đặt $0{,}5+\varphi(z)=0{,}1$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> bài này có hai tầng. Đầu tiên đọc $\mu$ và $\sigma$ từ đỉnh hình chuông, vì hoành độ đỉnh là $\mu$ và tung độ đỉnh chứa $\sigma$. Sau đó làm bài toán ngược với đuôi trái $10\%$.</li>
+      <li><span class="step-label">Bước 1 – Tìm $\mu$:</span> đỉnh ở $x=6$, nên $\mu=6$ ml.</li>
+      <li><span class="step-label">Bước 2 – Tìm $\sigma$:</span> $\frac{1}{\sigma\sqrt{2\pi}}=0{,}1995$, nên $$\begin{aligned}\sigma&amp;=\frac{1}{0{,}1995\cdot\sqrt{2\pi}}\\ &amp;\approx\frac{1}{0{,}5001}\approx2\text{ ml}\end{aligned}$$</li>
+      <li><span class="step-label">Bước 3 – Lập phương trình:</span> $P(X&lt;x_0)=0{,}5+\varphi\big(\tfrac{x_0-6}{2}\big)=0{,}1$, nên $\varphi\big(\tfrac{x_0-6}{2}\big)=-0{,}4$, tức $\varphi\big(\tfrac{6-x_0}{2}\big)=0{,}4$.</li>
+      <li><span class="step-label">Bước 4 – Tra ngược:</span> $\varphi(1{,}28)=0{,}3997$ gần $0{,}4$ nhất (còn $\varphi(1{,}29)=0{,}4015$), nên $\frac{6-x_0}{2}=1{,}28$.</li>
+      <li><span class="step-label">Bước 5 – Ra $x_0$:</span> $x_0=6-2\cdot1{,}28=3{,}44$ ml. Ngưỡng nằm dưới trung bình, đúng như mong đợi cho đuôi trái.</li>
+      <li><span class="step-label">Bấm máy:</span> MENU 7 → 3 (Inverse Normal), Area $=0{,}1$, $\sigma=2$, $\mu=6$, ra $\approx3{,}437$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b2-tn-c7">Chặng 7 · Phối hợp: tổ hợp tuyến tính, chuẩn + nhị thức, chuẩn + Bayes</h3>
+<p>Đây là chặng "trùm cuối" của Bài 2: mỗi câu ghép <b>hai hoặc ba công cụ</b> đã luyện ở các chặng trước. Đề thi rất hay ra kiểu này: câu trước tính một xác suất từ phân phối chuẩn, câu sau lấy đúng con số đó làm $p$ cho nhị thức, hoặc làm "xác suất có điều kiện" cho công thức toàn phần – Bayes. Bí quyết là <b>tách bài thành từng tầng</b>, làm xong tầng dưới (ra một con số) rồi mới bước lên tầng trên.</p>
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Ba "khớp nối" cần nhớ</span></div>
+<ol class="steps">
+<li><span class="step-label">Tổ hợp tuyến tính:</span> $X$, $Y$ độc lập thì $E(aX+bY+c)=aE(X)+bE(Y)+c$ và $D(aX+bY+c)=a^2D(X)+b^2D(Y)$ — phương sai luôn <b>cộng</b>, hằng số $c$ biến mất. Nếu $X$, $Y$ đều chuẩn thì $aX+bY+c$ cũng <b>chuẩn</b>, nên tính được xác suất bằng bảng $\varphi$.</li>
+<li><span class="step-label">Chuẩn → nhị thức:</span> tính $p=P(\text{một người "đạt" điều kiện})$ bằng phân phối chuẩn; rồi số người đạt trong $n$ người độc lập là $B(n;p)$, dùng $C_n^kp^kq^{n-k}$.</li>
+<li><span class="step-label">Chuẩn → Bayes:</span> mỗi nhóm có một phân phối chuẩn riêng → tính $P(\text{sự kiện}\mid\text{nhóm})$ cho từng nhóm bằng bảng $\varphi$ → ghép bằng công thức toàn phần, rồi Bayes = "phần của nhóm đó" chia "tổng".</li>
+</ol>
+</div>
+
+<div class="ex mcq" id="b2q39">
+  <div class="ex-head"><span class="ex-num">Câu 39</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Tổ hợp tuyến tính hai biến chuẩn</span></div>
+  <p>Một nghiên cứu sâu răng dùng hai đại lượng đo trên mỗi trẻ: $X$ là điểm nguy cơ từ bảng hỏi chế độ ăn, $X\sim N(4;\,0{,}25)$; $Y$ là pH nước bọt, $Y\sim N(6{,}8;\,0{,}16)$; $X$ và $Y$ <b>độc lập</b>. Các nhà nghiên cứu lập chỉ số nguy cơ $R=3X-2Y+20$. Luật phân phối của $R$ là:</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $R\sim N(18{,}4;\,1{,}61)$</button>
+      <button data-k="b"><b>B.</b> $R\sim N(18{,}4;\,2{,}89)$</button>
+      <button data-k="c"><b>C.</b> $R\sim N(45{,}6;\,2{,}89)$</button>
+      <button data-k="d"><b>D.</b> $R\sim N(18{,}4;\,1{,}07)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$1{,}61=9\cdot0{,}25-4\cdot0{,}16$: bạn đã <b>trừ</b> phương sai theo dấu trừ của $-2Y$. Hệ số $-2$ khi vào $D$ bị bình phương thành $(-2)^2=+4$, nên phải cộng: $2{,}25+0{,}64=2{,}89$.</div>
+    <div class="qc-fb" data-k="b">$E(R)=3\cdot4-2\cdot6{,}8+20=18{,}4$; $D(R)=3^2\cdot0{,}25+(-2)^2\cdot0{,}16=2{,}89$ (nên $\sigma(R)=1{,}7$). Tổ hợp tuyến tính của hai biến chuẩn độc lập vẫn là biến chuẩn.</div>
+    <div class="qc-fb" data-k="c">$45{,}6=3\cdot4+2\cdot6{,}8+20$: bạn bỏ mất dấu trừ trước $2Y$ khi tính kỳ vọng. Với $E$, dấu giữ nguyên: $E(R)=12-13{,}6+20=18{,}4$. (Chỉ ở $D$ hệ số mới bị bình phương.)</div>
+    <div class="qc-fb" data-k="d">$1{,}07=3\cdot0{,}25+2\cdot0{,}16$: bạn nhân hệ số trực tiếp mà quên <b>bình phương</b>. Đúng là $D(aX)=a^2D(X)$: $9\cdot0{,}25+4\cdot0{,}16=2{,}89$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Đọc dữ kiện:</span> $X\sim N(4;\,0{,}25)$ nghĩa là $E(X)=4$, $D(X)=0{,}25$ (số thứ hai là <b>phương sai</b>). Tương tự $E(Y)=6{,}8$, $D(Y)=0{,}16$.</li>
+      <li><span class="step-label">Bước 2 – Kỳ vọng:</span> $E(R)=3E(X)-2E(Y)+20=12-13{,}6+20=18{,}4$.</li>
+      <li><span class="step-label">Bước 3 – Phương sai:</span> hằng số $20$ không làm đổi độ phân tán; hệ số bình phương, $X$, $Y$ độc lập nên cộng:
+      $$\begin{aligned}D(R)&amp;=3^2D(X)+(-2)^2D(Y)\\&amp;=9\cdot0{,}25+4\cdot0{,}16\\&amp;=2{,}25+0{,}64=2{,}89\end{aligned}$$</li>
+      <li><span class="step-label">Bước 4 – Kết luận:</span> $R$ là tổ hợp tuyến tính của hai biến chuẩn độc lập nên $R\sim N(18{,}4;\,2{,}89)$, độ lệch chuẩn $\sigma(R)=\sqrt{2{,}89}=1{,}7$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q40">
+  <div class="ex-head"><span class="ex-num">Câu 40</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Tổng hai biến chuẩn · tính xác suất</span></div>
+  <p>Một ca nhổ răng khôn gồm hai giai đoạn độc lập: gây tê và chờ thuốc ngấm mất $Y$ phút, $Y\sim N(10;\,36)$; phẫu thuật mất $X$ phút, $X\sim N(30;\,64)$. Phòng khám xếp lịch mỗi ca $55$ phút. Xác suất một ca <b>kéo dài quá 55 phút</b> (tổng $T=X+Y&gt;55$) là:</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}1423$</button>
+      <button data-k="b"><b>B.</b> $0{,}4404$</button>
+      <button data-k="c"><b>C.</b> $0{,}9332$</button>
+      <button data-k="d"><b>D.</b> $0{,}0668$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn đã cộng hai <b>độ lệch chuẩn</b>: $8+6=14$, rồi $z=15/14\approx1{,}07$, $0{,}5-0{,}3577=0{,}1423$. Phải cộng <b>phương sai</b> trước: $64+36=100$, rồi mới khai căn $\sigma_T=10$.</div>
+    <div class="qc-fb" data-k="b">Bạn dùng phương sai $100$ như độ lệch chuẩn: $z=15/100=0{,}15$, $0{,}5-0{,}0596=0{,}4404$. Phải khai căn: $\sigma_T=\sqrt{100}=10$, $z=1{,}5$.</div>
+    <div class="qc-fb" data-k="c">$0{,}9332=0{,}5+\varphi(1{,}5)$ là $P(T&lt;55)$ — xác suất ca xong <b>trong</b> 55 phút. Đề hỏi "quá 55 phút" là phần bên phải: $0{,}5-\varphi(1{,}5)$.</div>
+    <div class="qc-fb" data-k="d">$T\sim N(40;\,100)$, $\sigma_T=10$; $P(T&gt;55)=0{,}5-\varphi(1{,}5)=0{,}5-0{,}4332=0{,}0668$. Cộng phương sai trước, khai căn sau.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Luật của tổng:</span> $E(T)=30+10=40$; $X$, $Y$ độc lập nên $D(T)=64+36=100$. Tổng hai biến chuẩn độc lập là chuẩn: $T\sim N(40;\,100)$, $\sigma_T=\sqrt{100}=10$ phút.</li>
+      <li><span class="step-label">Bước 2 – Chuẩn hoá:</span> $z=\dfrac{55-40}{10}=1{,}5$.</li>
+      <li><span class="step-label">Bước 3 – Tra bảng:</span> "quá 55" là đuôi bên phải: $P(T&gt;55)=0{,}5-\varphi(1{,}5)=0{,}5-0{,}4332=0{,}0668$.</li>
+      <li><span class="step-label">Ý nghĩa:</span> khoảng $6{,}7\%$ số ca (cứ 15 ca thì khoảng 1 ca) sẽ làm trễ lịch hẹn kế tiếp.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q41">
+  <div class="ex-head"><span class="ex-num">Câu 41</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">p từ chuẩn → nhị thức</span></div>
+  <p>Huyết áp tâm thu (mmHg) của bệnh nhân đến nhổ răng là $X\sim N(125;\,225)$. Bác sĩ <b>hoãn</b> nhổ răng nếu huyết áp tâm thu lớn hơn $140$ mmHg. Một buổi sáng có $6$ bệnh nhân (độc lập). Xác suất có <b>đúng 1</b> bệnh nhân phải hoãn là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}4013$</button>
+      <button data-k="b"><b>B.</b> $0{,}0669$</button>
+      <button data-k="c"><b>C.</b> $0{,}2539$</button>
+      <button data-k="d"><b>D.</b> $0{,}1161$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$p=P(X&gt;140)=0{,}5-\varphi(1)=0{,}1587$; số người hoãn $\sim B(6;\,0{,}1587)$; $P=C_6^1\cdot0{,}1587\cdot0{,}8413^5\approx0{,}4013$. Tầng chuẩn cho $p$, tầng nhị thức cho "đúng 1 trong 6".</div>
+    <div class="qc-fb" data-k="b">$0{,}0669=0{,}1587\cdot0{,}8413^5$ là xác suất của <b>một thứ tự cụ thể</b> (chẳng hạn chỉ người thứ nhất bị hoãn). Người bị hoãn có thể là bất kỳ ai trong 6 người, nên phải nhân $C_6^1=6$.</div>
+    <div class="qc-fb" data-k="c">Bạn lấy $p=\varphi(1)=0{,}3413$ — đó là diện tích từ $125$ đến $140$, không phải phần "lớn hơn 140". Đuôi phải là $0{,}5-0{,}3413=0{,}1587$.</div>
+    <div class="qc-fb" data-k="d">Bạn quên khai căn: $z=\dfrac{140-125}{225}\approx0{,}07$, $p=0{,}4721$. Số $225$ là phương sai, $\sigma=\sqrt{225}=15$ nên $z=15/15=1$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> mỗi bệnh nhân là một "phép thử" chỉ có hai kết quả (hoãn / không hoãn) với cùng xác suất $p$ → nhị thức. Nhưng $p$ chưa cho sẵn, phải tính bằng phân phối chuẩn trước.</li>
+      <li><span class="step-label">Bước 1 – Tính p:</span> $\sigma=\sqrt{225}=15$; $z=\dfrac{140-125}{15}=1$; $p=P(X&gt;140)=0{,}5-\varphi(1)=0{,}5-0{,}3413=0{,}1587$, $q=0{,}8413$.</li>
+      <li><span class="step-label">Bước 2 – Nhị thức:</span> gọi $H$ là số người bị hoãn trong 6 người, $H\sim B(6;\,0{,}1587)$.</li>
+      <li><span class="step-label">Bước 3 – Tính:</span>
+      $$\begin{aligned}P(H=1)&amp;=C_6^1\cdot0{,}1587\cdot0{,}8413^5\\&amp;=6\cdot0{,}1587\cdot0{,}42146\\&amp;\approx0{,}4013\end{aligned}$$</li>
+      <li><span class="step-label">Bấm máy:</span> MENU 7 → 4 (Binomial PD), nhập $x=1$, $N=6$, $p=0{,}1587$ → $0{,}4013$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q42">
+  <div class="ex-head"><span class="ex-num">Câu 42</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hiệu hai biến chuẩn · nhiều tầng</span></div>
+  <p>Hai bác sĩ An và Bình cùng bắt đầu lấy cao răng cho mỗi người một bệnh nhân. Thời gian (phút) của An là $X\sim N(25;\,16)$, của Bình là $Y\sim N(30;\,9)$, hai thời gian <b>độc lập</b>. Việc này lặp lại ở $3$ buổi độc lập (mỗi buổi mỗi bác sĩ làm một ca). Xác suất <b>cả 3 buổi</b> An đều xong trước Bình là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}8413$</button>
+      <button data-k="b"><b>B.</b> $0{,}4409$</button>
+      <button data-k="c"><b>C.</b> $0{,}5955$</button>
+      <button data-k="d"><b>D.</b> $0{,}9144$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}8413$ chỉ là xác suất An xong trước trong <b>một</b> buổi. Ba buổi độc lập cùng xảy ra thì nhân: $0{,}8413^3\approx0{,}5955$.</div>
+    <div class="qc-fb" data-k="b">Bạn cộng hai độ lệch chuẩn $4+3=7$: $z=5/7\approx0{,}71$, $0{,}5+0{,}2611=0{,}7611$, mũ 3 ra $0{,}4409$. Phải cộng <b>phương sai</b>: $16+9=25$, $\sigma=5$.</div>
+    <div class="qc-fb" data-k="c">$X-Y\sim N(-5;\,25)$; $P(X-Y&lt;0)=0{,}5+\varphi(1)=0{,}8413$; ba buổi độc lập: $0{,}8413^3\approx0{,}5955$.</div>
+    <div class="qc-fb" data-k="d">Bạn <b>trừ</b> phương sai: $16-9=7$, $\sigma\approx2{,}65$, $z\approx1{,}89$, $0{,}9706^3\approx0{,}9144$. Với hiệu hai biến độc lập, $D(X-Y)=D(X)+D(Y)=25$ — trừ biến vẫn làm độ phân tán tăng.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> "An xong trước Bình" là $X&lt;Y$, tức $X-Y&lt;0$. Hai biến chuẩn thì không so sánh trực tiếp được bằng bảng, nhưng <b>hiệu</b> của chúng là một biến chuẩn duy nhất → đưa về một bài $P(W&lt;0)$ quen thuộc. Sau đó ba buổi độc lập → nhân.</li>
+      <li><span class="step-label">Bước 1 – Luật của hiệu:</span> đặt $W=X-Y$. $E(W)=25-30=-5$; $D(W)=1^2\cdot16+(-1)^2\cdot9=25$. Vậy $W\sim N(-5;\,25)$, $\sigma=5$.</li>
+      <li><span class="step-label">Bước 2 – Một buổi:</span> $z=\dfrac{0-(-5)}{5}=1$; $P(W&lt;0)=0{,}5+\varphi(1)=0{,}5+0{,}3413=0{,}8413$.</li>
+      <li><span class="step-label">Bước 3 – Ba buổi:</span> các buổi độc lập nên $P=0{,}8413^3\approx0{,}5955$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q43">
+  <div class="ex-head"><span class="ex-num">Câu 43</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hai nhóm chuẩn · toàn phần</span></div>
+  <p>Ở một khoa nội nha, $60\%$ ca điều trị tủy là răng <b>một chân</b>, thời gian (phút) $X_1\sim N(40;\,100)$; $40\%$ là răng <b>nhiều chân</b>, thời gian $X_2\sim N(70;\,225)$. Mỗi ca được hẹn $50$ phút. Chọn ngẫu nhiên một ca. Xác suất ca đó <b>vượt quá 50 phút</b> là (làm tròn 4 chữ số thập phân, $z$ làm tròn 2 chữ số):</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}4585$</button>
+      <button data-k="b"><b>B.</b> $0{,}1319$</button>
+      <button data-k="c"><b>C.</b> $0{,}6084$</button>
+      <button data-k="d"><b>D.</b> $0{,}5335$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$P(&gt;50\mid\text{một chân})=0{,}1587$, $P(&gt;50\mid\text{nhiều chân})=0{,}9082$; toàn phần: $0{,}6\cdot0{,}1587+0{,}4\cdot0{,}9082=0{,}4585$.</div>
+    <div class="qc-fb" data-k="b">Với răng nhiều chân, $z=\dfrac{50-70}{15}=-1{,}33$ <b>âm</b>: mốc 50 nằm bên trái trung bình 70, nên phần "lớn hơn 50" phải là $0{,}5+\varphi(1{,}33)=0{,}9082$, không phải $0{,}5-\varphi(1{,}33)=0{,}0918$. Vẽ nhanh hình chuông sẽ thấy ngay.</div>
+    <div class="qc-fb" data-k="c">Bạn ghép nhầm tỉ lệ nhóm: $0{,}4\cdot0{,}1587+0{,}6\cdot0{,}9082$. Răng <b>một chân</b> chiếm $60\%$ nên trọng số $0{,}6$ đi với $0{,}1587$.</div>
+    <div class="qc-fb" data-k="d">$0{,}5335$ là trung bình cộng $(0{,}1587+0{,}9082)/2$ — coi hai nhóm đông bằng nhau. Công thức toàn phần phải dùng đúng trọng số $0{,}6$ và $0{,}4$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> ca được chọn thuộc một trong hai nhóm (hệ đầy đủ $\{M, N\}$: một chân / nhiều chân). Mỗi nhóm có phân phối chuẩn riêng nên tính xác suất vượt giờ <b>trong từng nhóm</b>, rồi ghép bằng công thức toàn phần.</li>
+      <li><span class="step-label">Bước 1 – Nhóm một chân:</span> $\sigma_1=\sqrt{100}=10$, $z=\dfrac{50-40}{10}=1$; $P(V\mid M)=0{,}5-\varphi(1)=0{,}5-0{,}3413=0{,}1587$ ($V$: vượt 50 phút).</li>
+      <li><span class="step-label">Bước 2 – Nhóm nhiều chân:</span> $\sigma_2=\sqrt{225}=15$, $z=\dfrac{50-70}{15}\approx-1{,}33$. Mốc 50 nằm <b>trái</b> trung bình nên phần bên phải lớn hơn một nửa: $P(V\mid N)=0{,}5+\varphi(1{,}33)=0{,}5+0{,}4082=0{,}9082$.</li>
+      <li><span class="step-label">Bước 3 – Toàn phần:</span>
+      $$\begin{aligned}P(V)&amp;=0{,}6\cdot0{,}1587+0{,}4\cdot0{,}9082\\&amp;=0{,}09522+0{,}36328\\&amp;=0{,}4585\end{aligned}$$</li>
+      <li><span class="step-label">Ý nghĩa:</span> gần một nửa số ca vượt lịch hẹn 50 phút, chủ yếu do răng nhiều chân — gợi ý nên hẹn răng nhiều chân dài hơn.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q44">
+  <div class="ex-head"><span class="ex-num">Câu 44</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hai nhóm chuẩn · Bayes</span></div>
+  <p>Trước phẫu thuật cấy ghép implant, bệnh nhân được đo hemoglobin (Hb, g/dL). Trong số bệnh nhân, $55\%$ là nam với Hb $\sim N(14{,}5;\,1{,}44)$ và $45\%$ là nữ với Hb $\sim N(13;\,1)$. Một bệnh nhân có Hb <b>dưới 12</b> g/dL. Xác suất bệnh nhân đó là <b>nữ</b> là (theo bảng $\varphi$, $z$ làm tròn 2 chữ số, kết quả làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}1587$</button>
+      <button data-k="b"><b>B.</b> $0{,}7605$</button>
+      <button data-k="c"><b>C.</b> $0{,}1265$</button>
+      <button data-k="d"><b>D.</b> $0{,}8735$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}1587$ là $P(\text{Hb}&lt;12\mid\text{nữ})$ — xác suất một phụ nữ có Hb thấp. Đề hỏi chiều <b>ngược lại</b>: biết Hb thấp, hỏi khả năng là nữ, tức $P(\text{nữ}\mid\text{Hb}&lt;12)$ → phải dùng Bayes.</div>
+    <div class="qc-fb" data-k="b">Bạn quên khai căn ở nhóm nam: $z=\dfrac{12-14{,}5}{1{,}44}\approx-1{,}74$ cho $0{,}0409$. Số $1{,}44$ là phương sai, $\sigma=\sqrt{1{,}44}=1{,}2$ nên $z\approx-2{,}08$ và $P(\text{Hb}&lt;12\mid\text{nam})=0{,}0188$.</div>
+    <div class="qc-fb" data-k="c">$0{,}1265$ là xác suất bệnh nhân đó là <b>nam</b>: $0{,}01034/0{,}081755$. Đề hỏi nữ: $1-0{,}1265=0{,}8735$.</div>
+    <div class="qc-fb" data-k="d">Toàn phần: $P(\text{Hb}&lt;12)=0{,}55\cdot0{,}0188+0{,}45\cdot0{,}1587=0{,}081755$; Bayes: $\dfrac{0{,}071415}{0{,}081755}\approx0{,}8735$. Hb thấp làm khả năng là nữ tăng từ $45\%$ lên khoảng $87\%$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> đây là Bayes "ngược": biết kết quả (Hb thấp), hỏi nguyên nhân (nhóm nào). Cần $P(\text{Hb}&lt;12\mid\text{nhóm})$ của từng nhóm — lấy từ phân phối chuẩn của nhóm đó; rồi toàn phần cho mẫu số, Bayes cho tỉ lệ.</li>
+      <li><span class="step-label">Bước 1 – Nhóm nam:</span> $\sigma=\sqrt{1{,}44}=1{,}2$; $z=\dfrac{12-14{,}5}{1{,}2}\approx-2{,}08$; $P(L\mid\text{nam})=0{,}5-\varphi(2{,}08)=0{,}5-0{,}4812=0{,}0188$ ($L$: Hb dưới 12).</li>
+      <li><span class="step-label">Bước 2 – Nhóm nữ:</span> $\sigma=1$; $z=\dfrac{12-13}{1}=-1$; $P(L\mid\text{nữ})=0{,}5-\varphi(1)=0{,}1587$.</li>
+      <li><span class="step-label">Bước 3 – Toàn phần:</span>
+      $$\begin{aligned}P(L)&amp;=0{,}55\cdot0{,}0188+0{,}45\cdot0{,}1587\\&amp;=0{,}01034+0{,}071415\\&amp;=0{,}081755\end{aligned}$$</li>
+      <li><span class="step-label">Bước 4 – Bayes:</span>
+      $$\begin{aligned}P(\text{nữ}\mid L)&amp;=\frac{0{,}071415}{0{,}081755}\\&amp;\approx0{,}8735\end{aligned}$$</li>
+      <li><span class="step-label">Ghi chú:</span> tính chính xác bằng máy (không làm tròn $z$) được khoảng $0{,}8746$; đáp án theo cách tra bảng là $0{,}8735$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b2-tn-c8">Chặng 8 · Xấp xỉ chuẩn · phân vị · χ², Student, Fisher · trung bình mẫu</h3>
+<p>Chặng cuối gom các dạng "tra bảng" mà đề thi hay hỏi: đổi qua lại giữa $\varphi$ và phân vị $z_\alpha$; đọc đúng phân vị $\chi^2$, Student, Fisher (luôn là <b>diện tích bên trái</b>); dùng phân phối chuẩn để tính gần đúng xác suất của số người trong một nhóm lớn (nhớ <b>hiệu chỉnh 0,5</b>); và luật phân phối của trung bình mẫu $\overline{X}$. Hai câu cuối phối hợp nhiều tầng: tự tìm $p$ từ phân phối chuẩn rồi mới xấp xỉ, và bài toán ngược với bảng Fisher.</p>
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Bộ quy tắc cần thuộc</span></div>
+<ol class="steps">
+<li><span class="step-label">Phân vị:</span> $P(Z&lt;z_\alpha)=\alpha$, nên $z_\alpha=a \iff 0{,}5+\varphi(a)=\alpha$. Đối xứng: $z_\alpha=-z_{1-\alpha}$, $t_\alpha(n)=-t_{1-\alpha}(n)$. $\chi^2$ và Fisher <b>không</b> đối xứng; Fisher có $F_{1-\alpha}(m;n)=\dfrac{1}{F_\alpha(n;m)}$ (đổi chỗ $m$, $n$).</li>
+<li><span class="step-label">Xấp xỉ chuẩn cho $X\sim B(n;p)$:</span> $\mu=np$, $\sigma=\sqrt{npq}$. Đổi về dạng "$\ge$, $\le$" rồi nới ra nửa đơn vị: $P(X\ge a)=P(X&gt;a-0{,}5)$, $P(X\le b)=P(X&lt;b+0{,}5)$; "hơn $m$" là $X\ge m+1$.</li>
+<li><span class="step-label">Trung bình mẫu:</span> $X\sim N(\mu;\sigma^2)$ thì $\overline{X}\sim N\big(\mu;\tfrac{\sigma^2}{n}\big)$ — chia <b>phương sai</b> cho $n$, rồi khai căn mới ra độ lệch chuẩn $\tfrac{\sigma}{\sqrt n}$.</li>
+</ol>
+</div>
+
+<div class="ex mcq" id="b2q45">
+  <div class="ex-head"><span class="ex-num">Câu 45</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">φ và phân vị z_α</span></div>
+  <p>Cho $Z\sim N(0;1)$ và biết từ bảng Laplace (Phụ lục 2): $\varphi(1{,}34)=0{,}4099$. Khẳng định nào sau đây <b>đúng</b>?</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $z_{0{,}4099}=1{,}34$</button>
+      <button data-k="b"><b>B.</b> $z_{0{,}9099}=1{,}34$</button>
+      <button data-k="c"><b>C.</b> $z_{0{,}0901}=1{,}34$</button>
+      <button data-k="d"><b>D.</b> $P(|Z|&lt;1{,}34)=0{,}4099$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\varphi(1{,}34)=0{,}4099$ chỉ là diện tích từ <b>0</b> đến 1,34. Phân vị $z_\alpha$ đo diện tích từ $-\infty$, nên còn phải cộng nửa trái $0{,}5$: $\alpha=0{,}5+0{,}4099=0{,}9099$.</div>
+    <div class="qc-fb" data-k="b">$P(Z&lt;1{,}34)=0{,}5+\varphi(1{,}34)=0{,}9099$, tức diện tích bên trái 1,34 là $0{,}9099$ — đúng định nghĩa $z_{0{,}9099}=1{,}34$.</div>
+    <div class="qc-fb" data-k="c">$0{,}0901=1-0{,}9099$ là diện tích <b>bên phải</b> 1,34. Theo quy ước bên trái, mốc có diện tích bên trái $0{,}0901$ nằm ở phía âm: $z_{0{,}0901}=-z_{0{,}9099}=-1{,}34$.</div>
+    <div class="qc-fb" data-k="d">$P(|Z|&lt;1{,}34)=P(-1{,}34&lt;Z&lt;1{,}34)$ gồm <b>hai</b> nửa đối xứng: $2\varphi(1{,}34)=0{,}8198$, không phải một nửa $0{,}4099$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Đọc $\varphi$:</span> $\varphi(1{,}34)=P(0&lt;Z&lt;1{,}34)=0{,}4099$ (diện tích từ 0 đến 1,34).</li>
+      <li><span class="step-label">Bước 2 – Cộng nửa trái:</span> $P(Z&lt;1{,}34)=P(Z&lt;0)+P(0&lt;Z&lt;1{,}34)=0{,}5+0{,}4099=0{,}9099$.</li>
+      <li><span class="step-label">Bước 3 – Dịch sang phân vị:</span> "diện tích bên trái 1,34 bằng $0{,}9099$" chính là $z_{0{,}9099}=1{,}34$. Theo đối xứng, $z_{0{,}0901}=-1{,}34$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q46">
+  <div class="ex-head"><span class="ex-num">Câu 46</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Phân vị z, χ², Student, Fisher</span></div>
+  <p>Các giá trị tra bảng: $\chi^2_{0{,}95}(8)=15{,}507$; $\chi^2_{0{,}05}(8)=2{,}733$; $t_{0{,}95}(12)=1{,}782$; $F_{0{,}95}(3;7)=4{,}35$; $F_{0{,}95}(7;3)=8{,}89$; $z_{0{,}975}=1{,}96$. Mọi phân vị đều theo quy ước diện tích <b>bên trái</b>. Khẳng định nào sau đây <b>đúng</b>?</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $\chi^2_{0{,}05}(8)=-\chi^2_{0{,}95}(8)=-15{,}507$</button>
+      <button data-k="b"><b>B.</b> $F_{0{,}95}(7;3)=F_{0{,}95}(3;7)=4{,}35$</button>
+      <button data-k="c"><b>C.</b> $z_{0{,}975}=1{,}96$ nghĩa là $P(Z&gt;1{,}96)=0{,}975$</button>
+      <button data-k="d"><b>D.</b> $t_{0{,}05}(12)=-t_{0{,}95}(12)=-1{,}782$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Quy tắc "soi gương" chỉ dùng cho phân phối <b>đối xứng quanh 0</b> (chuẩn, Student). $\chi^2$ là tổng các bình phương nên luôn $\ge0$, lệch phải: $\chi^2_{0{,}05}(8)=2{,}733$, không thể âm.</div>
+    <div class="qc-fb" data-k="b">Thứ tự bậc tự do $(m;n)$ của Fisher không đổi chỗ được: $F_{0{,}95}(7;3)=8{,}89$ còn $F_{0{,}95}(3;7)=4{,}35$ — hai phân phối khác nhau.</div>
+    <div class="qc-fb" data-k="c">Ngược phía. $z_{0{,}975}=1{,}96$ nghĩa là $P(Z&lt;1{,}96)=0{,}975$ (bên trái); phía bên phải chỉ còn $1-0{,}975=0{,}025$.</div>
+    <div class="qc-fb" data-k="d">Student đối xứng quanh 0 nên $t_\alpha(n)=-t_{1-\alpha}(n)$: $t_{0{,}05}(12)=-t_{0{,}95}(12)=-1{,}782$. Diện tích bên trái $-1{,}782$ là $0{,}05$, bên phải $1{,}782$ cũng là $0{,}05$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Nhớ nghĩa chung:</span> $z_\alpha$, $\chi^2_\alpha$, $t_\alpha$, $F_\alpha$ đều là mốc có diện tích <b>bên trái</b> bằng $\alpha$. Loại C (đọc thành bên phải).</li>
+      <li><span class="step-label">Bước 2 – Ai đối xứng?</span> Chuẩn tắc và Student đối xứng quanh 0 → được "soi gương": D đúng. $\chi^2$ chỉ nhận giá trị không âm → A sai (bảng cho $2{,}733$).</li>
+      <li><span class="step-label">Bước 3 – Fisher:</span> $F(m;n)$: $m$ là bậc tự do của tử, $n$ của mẫu; đổi chỗ là đổi phân phối → B sai.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q47">
+  <div class="ex-head"><span class="ex-num">Câu 47</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Xấp xỉ chuẩn · "hơn m người"</span></div>
+  <p>Ở một huyện, tỉ lệ học sinh có cao răng là $30\%$. Khám ngẫu nhiên $400$ học sinh (độc lập). Dùng xấp xỉ chuẩn có hiệu chỉnh liên tục (z làm tròn 2 chữ số rồi tra bảng $\varphi$), xác suất có <b>hơn 130</b> học sinh có cao răng xấp xỉ bằng:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}1251$</button>
+      <button data-k="b"><b>B.</b> $0{,}1379$</button>
+      <button data-k="c"><b>C.</b> $0{,}1492$</button>
+      <button data-k="d"><b>D.</b> $0{,}8749$</button>
+    </div>
+    <div class="qc-fb" data-k="a">"Hơn 130" là $X\ge131$, nới ra thành $X&gt;130{,}5$: $z=\frac{130{,}5-120}{9{,}165}\approx1{,}15$, $P\approx0{,}5-\varphi(1{,}15)=0{,}5-0{,}3749=0{,}1251$.</div>
+    <div class="qc-fb" data-k="b">Bạn quên hiệu chỉnh 0,5: dùng thẳng 130 được $z=\frac{10}{9{,}165}\approx1{,}09$ và $0{,}5-0{,}3621=0{,}1379$. Biến $X$ đếm người (rời rạc) nên phải nới nửa đơn vị.</div>
+    <div class="qc-fb" data-k="c">Hiệu chỉnh sai chiều: dùng $129{,}5$ ($z\approx1{,}04$, $0{,}5-0{,}3508=0{,}1492$) là đã tính cả trường hợp $X=130$. "Hơn 130" không gồm 130, nên mốc là $130{,}5$.</div>
+    <div class="qc-fb" data-k="d">$0{,}8749=0{,}5+\varphi(1{,}15)$ là xác suất <b>không quá</b> 130 người (phía bên trái). Đề hỏi "hơn", tức phía bên phải: $0{,}5-\varphi(1{,}15)$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Nhận dạng:</span> $X$ = số học sinh có cao răng trong 400 em, $X\sim B(400;\,0{,}3)$.</li>
+      <li><span class="step-label">Bước 2 – Tham số chuẩn:</span> $\mu=np=400\cdot0{,}3=120$; $\sigma^2=npq=120\cdot0{,}7=84$; $\sigma=\sqrt{84}\approx9{,}165$.</li>
+      <li><span class="step-label">Bước 3 – Hiệu chỉnh:</span> $P(X&gt;130)=P(X\ge131)=P(X&gt;130{,}5)$ (mọi số nguyên $\ge131$ đều nằm bên phải $130{,}5$, còn 130 bị loại).</li>
+      <li><span class="step-label">Bước 4 – Chuẩn hoá:</span> $z=\dfrac{130{,}5-120}{9{,}165}\approx1{,}1456\approx1{,}15$.</li>
+      <li><span class="step-label">Bước 5 – Tra bảng:</span> $P(Z&gt;1{,}15)=0{,}5-\varphi(1{,}15)=0{,}5-0{,}3749=0{,}1251$. (Tính chính xác theo nhị thức được $\approx0{,}1264$ — xấp xỉ khá sát.)</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q48">
+  <div class="ex-head"><span class="ex-num">Câu 48</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Trung bình mẫu X̄ · P(X̄&lt;c)</span></div>
+  <p>Lượng máu mất khi nhổ một răng khôn hàm dưới là $X$ (mL), với $X\sim N(45;\,64)$. Theo dõi ngẫu nhiên $16$ ca nhổ độc lập, gọi $\overline{X}$ là lượng máu mất trung bình của 16 ca. Luật phân phối của $\overline{X}$ và xác suất $P(\overline{X}&lt;48)$ lần lượt là:</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $\overline{X}\sim N(45;\,64)$; $0{,}6480$</button>
+      <button data-k="b"><b>B.</b> $\overline{X}\sim N(45;\,4)$; $0{,}4332$</button>
+      <button data-k="c"><b>C.</b> $\overline{X}\sim N(45;\,4)$; $0{,}9332$</button>
+      <button data-k="d"><b>D.</b> $\overline{X}\sim N(45;\,16)$; $0{,}7734$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn coi $\overline{X}$ dao động y như một ca lẻ. Trung bình của 16 ca ít dao động hơn: phương sai chia cho $n$. Với $\sigma=8$ thì $z=0{,}375\approx0{,}38$ và $0{,}5+0{,}1480=0{,}6480$ — sai từ bước luật phân phối.</div>
+    <div class="qc-fb" data-k="b">Luật phân phối đúng, nhưng $0{,}4332=\varphi(1{,}5)$ chỉ là diện tích từ $45$ đến $48$. "$&lt;48$" gồm cả nửa trái bên dưới $45$: cộng thêm $0{,}5$.</div>
+    <div class="qc-fb" data-k="c">$\overline{X}\sim N\big(45;\frac{64}{16}\big)=N(45;4)$, $\sigma_{\overline{X}}=2$, $z=\frac{48-45}{2}=1{,}5$, $P=0{,}5+\varphi(1{,}5)=0{,}9332$.</div>
+    <div class="qc-fb" data-k="d">Bạn chia phương sai cho $\sqrt{n}=4$ (được 16). Quy tắc là chia <b>phương sai</b> cho $n$ (hoặc chia <b>độ lệch chuẩn</b> cho $\sqrt n$). Với $\sigma=4$ thì $z=0{,}75$, ra $0{,}7734$ — sai.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Đọc đề:</span> $X\sim N(45;64)$: $\mu=45$ mL, phương sai $64$, nên $\sigma=8$ mL; cỡ mẫu $n=16$.</li>
+      <li><span class="step-label">Bước 2 – Luật của $\overline{X}$:</span> $\overline{X}\sim N\big(\mu;\frac{\sigma^2}{n}\big)=N\big(45;\frac{64}{16}\big)=N(45;4)$.</li>
+      <li><span class="step-label">Bước 3 – Khai căn:</span> $\sigma_{\overline{X}}=\sqrt4=2$ mL (cũng bằng $\frac{8}{\sqrt{16}}=2$).</li>
+      <li><span class="step-label">Bước 4 – Chuẩn hoá:</span> $z=\dfrac{48-45}{2}=1{,}5$.</li>
+      <li><span class="step-label">Bước 5 – Tra bảng:</span> $P(\overline{X}&lt;48)=0{,}5+\varphi(1{,}5)=0{,}5+0{,}4332=0{,}9332$.</li>
+    </ol>
+    <p class="small muted">Bấm máy: <span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd></span> Normal CD, Lower $=-10^{9}$ (hoặc một số rất nhỏ), Upper $=48$, σ $=2$, μ $=45$ → khoảng $0{,}9332$. Nhớ nhập σ của $\overline{X}$ là $2$, không phải $8$.</p>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q49">
+  <div class="ex-head"><span class="ex-num">Câu 49</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">p từ chuẩn → xấp xỉ "từ a đến b"</span></div>
+  <p>Huyết áp tâm thu $X$ (mmHg) của người lớn đến khám răng có phân phối $X\sim N(119;\,196)$. Người có $X\ge140$ được xếp vào nhóm cần hỏi ý kiến bác sĩ nội khoa trước khi gây tê. Trong $1000$ bệnh nhân (độc lập với nhau), dùng xấp xỉ chuẩn có hiệu chỉnh liên tục (mọi giá trị z làm tròn 2 chữ số rồi tra bảng $\varphi$), xác suất có <b>từ 60 đến 75</b> người thuộc nhóm này xấp xỉ bằng:</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}6559$</button>
+      <button data-k="b"><b>B.</b> $0{,}0431$</button>
+      <button data-k="c"><b>C.</b> $0{,}6246$</button>
+      <button data-k="d"><b>D.</b> $0{,}6855$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn quên hiệu chỉnh 0,5: dùng thẳng 60 và 75 được $z\approx-0{,}86$ và $1{,}04$, ra $0{,}3051+0{,}3508=0{,}6559$. "Từ 60 đến 75" gồm cả 60 và 75 nên phải nới ra $59{,}5$ và $75{,}5$.</div>
+    <div class="qc-fb" data-k="b">Lỗi dấu: $\varphi(-0{,}92)=-\varphi(0{,}92)$, nên $\varphi(1{,}10)-\varphi(-0{,}92)=0{,}3643+0{,}3212$. Bạn đã lấy $0{,}3643-0{,}3212=0{,}0431$ — một khoảng chứa trung bình 66,8 không thể có xác suất nhỏ như vậy.</div>
+    <div class="qc-fb" data-k="c">Hiệu chỉnh ngược chiều (thu vào $60{,}5$ và $74{,}5$): $z\approx-0{,}80$ và $0{,}98$, ra $0{,}2881+0{,}3365=0{,}6246$ — đã bỏ mất hai trường hợp $Y=60$ và $Y=75$. Với "từ… đến…" phải <b>nới ra</b>.</div>
+    <div class="qc-fb" data-k="d">$p=0{,}5-\varphi(1{,}5)=0{,}0668$; $Y\sim B(1000;0{,}0668)$, $\mu=66{,}8$, $\sigma\approx7{,}895$; $P(59{,}5&lt;Y&lt;75{,}5)\approx\varphi(1{,}10)+\varphi(0{,}92)=0{,}6855$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> đề không cho sẵn tỉ lệ $p$ của nhóm cần hỏi ý kiến — phải tự tính $p$ từ phân phối chuẩn của huyết áp, rồi mới dùng nhị thức cho 1000 người và xấp xỉ nó bằng chuẩn.</li>
+      <li><span class="step-label">Bước 1 – Tìm $p$:</span> $\sigma=\sqrt{196}=14$. $p=P(X\ge140)=P\big(Z\ge\frac{140-119}{14}\big)=P(Z\ge1{,}5)=0{,}5-\varphi(1{,}5)=0{,}5-0{,}4332=0{,}0668$.</li>
+      <li><span class="step-label">Bước 2 – Nhị thức:</span> $Y$ = số người thuộc nhóm trong 1000 người, $Y\sim B(1000;\,0{,}0668)$.</li>
+      <li><span class="step-label">Bước 3 – Tham số chuẩn:</span> $\mu=np=66{,}8$; $\sigma^2=npq=66{,}8\cdot0{,}9332\approx62{,}338$; $\sigma\approx7{,}895$.</li>
+      <li><span class="step-label">Bước 4 – Hiệu chỉnh:</span> $P(60\le Y\le75)=P(59{,}5&lt;Y&lt;75{,}5)$ (nới mỗi đầu nửa đơn vị để giữ cả 60 và 75).</li>
+      <li><span class="step-label">Bước 5 – Chuẩn hoá:</span> $$\begin{aligned}z_1&amp;=\tfrac{59{,}5-66{,}8}{7{,}895}\approx-0{,}92\\ z_2&amp;=\tfrac{75{,}5-66{,}8}{7{,}895}\approx1{,}10\end{aligned}$$</li>
+      <li><span class="step-label">Bước 6 – Tra bảng:</span> $$\begin{aligned}P&amp;\approx\varphi(1{,}10)-\varphi(-0{,}92)\\&amp;=0{,}3643+0{,}3212\\&amp;=0{,}6855\end{aligned}$$ (Tính chính xác theo nhị thức được $\approx0{,}6859$.)</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b2q50">
+  <div class="ex-head"><span class="ex-num">Câu 50</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Fisher · bài toán ngược hai đuôi</span></div>
+  <p>Khi so sánh độ đồng đều lực bám dính của hai loại composite, người ta dùng thống kê $F\sim F(6;\,10)$ (6 bậc tự do ở tử, 10 ở mẫu). Cho bảng: $F_{0{,}95}(6;10)=3{,}22$ và $F_{0{,}95}(10;6)=4{,}06$. Tìm hai số $a&lt;b$ sao cho $P(F&lt;a)=0{,}05$ và $P(F&gt;b)=0{,}05$ (tức $P(a&lt;F&lt;b)=0{,}90$, hai đuôi bằng nhau). Làm tròn 3 chữ số thập phân:</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $a=0{,}311$; $b=3{,}22$</button>
+      <button data-k="b"><b>B.</b> $a=0{,}246$; $b=3{,}22$</button>
+      <button data-k="c"><b>C.</b> $a=-3{,}22$; $b=3{,}22$</button>
+      <button data-k="d"><b>D.</b> $a=0{,}246$; $b=4{,}06$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn lấy $a=\frac{1}{3{,}22}$, tức quên <b>đổi chỗ</b> bậc tự do. Công thức là $F_{0{,}05}(6;10)=\dfrac{1}{F_{0{,}95}(10;6)}=\dfrac{1}{4{,}06}$.</div>
+    <div class="qc-fb" data-k="b">$b=F_{0{,}95}(6;10)=3{,}22$ (bên trái $b$ là $0{,}95$, bên phải còn $0{,}05$) và $a=F_{0{,}05}(6;10)=\frac{1}{F_{0{,}95}(10;6)}=\frac1{4{,}06}\approx0{,}246$.</div>
+    <div class="qc-fb" data-k="c">"Soi gương" chỉ dùng cho phân phối đối xứng quanh 0 (chuẩn, Student). $F$ là tỉ số hai đại lượng dương nên luôn $&gt;0$; $a$ âm thì $P(F&lt;a)=0$, không phải $0{,}05$.</div>
+    <div class="qc-fb" data-k="d">$a$ đúng nhưng $b$ sai: $4{,}06=F_{0{,}95}(10;6)$ là phân vị của phân phối khác ($F(10;6)$). Đuôi phải của $F(6;10)$ phải tra đúng cặp $(6;10)$: $b=3{,}22$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> chuyển cả hai điều kiện về dạng "diện tích bên trái" để thành phân vị, rồi xử lí mức nhỏ $0{,}05$ (bảng không có) bằng công thức nghịch đảo của Fisher.</li>
+      <li><span class="step-label">Bước 1 – Mốc $b$:</span> $P(F&gt;b)=0{,}05\iff P(F&lt;b)=0{,}95$, nên $b=F_{0{,}95}(6;10)=3{,}22$ (cột $m=6$, hàng $n=10$).</li>
+      <li><span class="step-label">Bước 2 – Mốc $a$:</span> $P(F&lt;a)=0{,}05$, nên $a=F_{0{,}05}(6;10)$ — bảng chỉ in mức $0{,}95$; $0{,}975$; $0{,}99$.</li>
+      <li><span class="step-label">Bước 3 – Công thức nghịch đảo:</span> $F_{1-\alpha}(m;n)=\dfrac{1}{F_\alpha(n;m)}$ với $\alpha=0{,}95$: $$\begin{aligned}a&amp;=F_{0{,}05}(6;10)\\&amp;=\frac{1}{F_{0{,}95}(10;6)}\\&amp;=\frac{1}{4{,}06}\approx0{,}246\end{aligned}$$ (Vì sao đổi chỗ: nếu $F\sim F(6;10)$ thì $\frac1F\sim F(10;6)$ — tử và mẫu đổi vai.)</li>
+      <li><span class="step-label">Bước 4 – Kiểm tra:</span> $0&lt;0{,}246&lt;3{,}22$ ✓, và $P(0{,}246&lt;F&lt;3{,}22)=0{,}95-0{,}05=0{,}90$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
 </main>
 </div>
 

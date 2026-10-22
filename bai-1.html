@@ -1391,6 +1391,1440 @@ $$\ln(a^n)=\ln(\underbrace{a\cdot a\cdots a}_{n\text{ thừa số}})=\underbrace
 </div>
 
 <div class="pager" id="pager"></div>
+
+<!-- =============================================================== -->
+<h2 id="trac-nghiem" data-toc="16. Trắc nghiệm luyện tập"><span class="num">16</span>Trắc nghiệm luyện tập (50 câu)</h2>
+<p>Đề soạn mới theo đúng các dạng hay gặp trong bài thu hoạch và đề thi trắc nghiệm của lớp, chia thành từng <b>chặng</b>: mỗi chặng đi từ <span class="lvl l1">Thông hiểu</span> → <span class="lvl l2">Vận dụng</span> → <span class="lvl l3">Vận dụng cao</span>. Bấm vào một phương án để chấm ngay: sai thì đọc lời giải thích vì sao sai rồi chọn lại; đúng rồi thì mở “Xem lời giải từng bước” để đối chiếu cách làm.</p>
+<p class="small muted">Mẹo: làm nháp ra giấy trước khi bấm — mục tiêu là đúng ngay lần đầu.</p>
+<h3 id="b1-tn-c1">Chặng 1 · Biến cố và phép toán</h3>
+<p>Chặng khởi động: dịch câu chữ ("ít nhất một", "đúng một", "không… nào") sang kí hiệu biến cố, phân biệt <b>xung khắc</b> với <b>độc lập</b>, nhận ra một <b>hệ đầy đủ</b>, rồi tính xác suất bằng <b>đếm tổ hợp</b> và bằng <b>tỉ lệ diện tích</b>. Đề thi hay "gài" ngay từ bước dịch câu chữ — dịch sai một chữ là cả bài sai, nên luyện chắc phần này trước.</p>
+
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Ba "phím tắt" cần nhớ</span></div>
+  <ul>
+    <li><b>Phủ định "ít nhất một"</b> = "không có cái nào". Phủ định "tất cả" = "có ít nhất một cái không".</li>
+    <li><b>De Morgan:</b> $\overline{S\cup V}=\overline S\cap\overline V$ (không mắc bệnh nào) và $\overline{S\cap V}=\overline S\cup\overline V$ (không mắc cả hai = mắc nhiều nhất một bệnh).</li>
+    <li><b>Xung khắc</b> ($P(S\cap V)=0$) là chuyện "không cùng xảy ra"; <b>độc lập</b> ($P(S\cap V)=P(S)P(V)$) là chuyện "không ảnh hưởng nhau". Hai biến cố xung khắc, mỗi cái có xác suất dương thì <b>không thể</b> độc lập.</li>
+  </ul>
+</div>
+
+<div class="ex mcq" id="b1q01">
+  <div class="ex-head"><span class="ex-num">Câu 1</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Biến cố đối lập</span></div>
+  <p>Bác sĩ khám 3 răng cối lớn hàm dưới của một bệnh nhân. Gọi $S$ là biến cố "có ít nhất một răng (trong 3 răng) bị sâu". Biến cố đối lập $\overline S$ là biến cố nào?</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> Cả 3 răng đều bị sâu.</button>
+      <button data-k="b"><b>B.</b> Có nhiều nhất một răng bị sâu.</button>
+      <button data-k="c"><b>C.</b> Không có răng nào bị sâu.</button>
+      <button data-k="d"><b>D.</b> Có ít nhất một răng không bị sâu.</button>
+    </div>
+    <div class="qc-fb" data-k="a">"Cả 3 răng sâu" là một trường hợp <b>nằm trong</b> $S$ (3 răng sâu thì chắc chắn có ít nhất một răng sâu), nên nó không thể là đối của $S$. Biến cố đối phải chiếm đúng phần còn lại, không trùng chút nào với $S$.</div>
+    <div class="qc-fb" data-k="b">"Nhiều nhất một răng sâu" gồm cả trường hợp "đúng 1 răng sâu" — mà trường hợp này lại thuộc $S$. Hai biến cố bị chồng nhau nên không phải đối lập.</div>
+    <div class="qc-fb" data-k="c">$S$ gồm các trường hợp có 1, 2 hoặc 3 răng sâu; phần còn lại duy nhất là "0 răng sâu". Phủ định "ít nhất một" chính là "không có cái nào".</div>
+    <div class="qc-fb" data-k="d">Đây là lỗi "chỉ thêm chữ không vào giữa câu". "Có ít nhất một răng không sâu" là đối của "cả 3 răng đều sâu", không phải đối của $S$. Ví dụ: 1 răng sâu, 2 răng lành thì cả $S$ lẫn câu này cùng xảy ra.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Liệt kê theo số răng sâu: có thể là 0, 1, 2 hoặc 3 răng.</li>
+      <li><span class="step-label">Bước 2:</span> $S$ = "ít nhất 1 răng sâu" = {1, 2, 3 răng sâu}.</li>
+      <li><span class="step-label">Bước 3:</span> $\overline S$ là phần còn lại = {0 răng sâu} = "không có răng nào bị sâu". Đáp án <b>C</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q02">
+  <div class="ex-head"><span class="ex-num">Câu 2</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Viết biến cố bằng kí hiệu · De Morgan</span></div>
+  <p>Chọn ngẫu nhiên một bệnh nhân đến khám. Gọi $S$: "bệnh nhân bị sâu răng", $V$: "bệnh nhân bị viêm nướu". Biểu thức nào biểu diễn biến cố "bệnh nhân mắc <b>đúng một</b> trong hai bệnh"?</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(S\cap\overline V)\cup(\overline S\cap V)$</button>
+      <button data-k="b"><b>B.</b> $S\cup V$</button>
+      <button data-k="c"><b>C.</b> $\overline{S\cap V}$</button>
+      <button data-k="d"><b>D.</b> $\overline S\cap\overline V$</button>
+    </div>
+    <div class="qc-fb" data-k="a">"Đúng một" nghĩa là: sâu mà không viêm ($S\cap\overline V$) <b>hoặc</b> viêm mà không sâu ($\overline S\cap V$). Hai mảnh này rời nhau, ghép lại bằng phép hợp.</div>
+    <div class="qc-fb" data-k="b">$S\cup V$ là "mắc <b>ít nhất</b> một bệnh" — nó gồm cả người mắc cả hai bệnh, trong khi "đúng một" phải loại người này ra.</div>
+    <div class="qc-fb" data-k="c">Theo De Morgan, $\overline{S\cap V}=\overline S\cup\overline V$ là "không mắc cả hai" = mắc <b>nhiều nhất</b> một bệnh. Nó còn chứa người không mắc bệnh nào, nên rộng hơn "đúng một".</div>
+    <div class="qc-fb" data-k="d">Theo De Morgan, $\overline S\cap\overline V=\overline{S\cup V}$ là "không mắc bệnh nào" — ngược hẳn với yêu cầu có mắc một bệnh.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Có 4 khả năng: mắc cả hai ($S\cap V$), chỉ sâu răng ($S\cap\overline V$), chỉ viêm nướu ($\overline S\cap V$), không mắc bệnh nào ($\overline S\cap\overline V$).</li>
+      <li><span class="step-label">Bước 2:</span> "Đúng một" lấy hai khả năng giữa: chỉ sâu răng <b>hoặc</b> chỉ viêm nướu.</li>
+      <li><span class="step-label">Bước 3:</span> "Hoặc" là phép hợp, nên kết quả là $(S\cap\overline V)\cup(\overline S\cap V)$. Đáp án <b>A</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q03">
+  <div class="ex-head"><span class="ex-num">Câu 3</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Xung khắc khác độc lập</span></div>
+  <p>Ở một phòng khám, mỗi lượt khám chỉ làm <b>đúng một</b> thủ thuật. Chọn ngẫu nhiên một lượt khám. Gọi $N$: "lượt khám đó là nhổ răng", có $P(N)=0{,}25$; $T$: "lượt khám đó là trám răng", có $P(T)=0{,}45$. Khẳng định nào <b>đúng</b>?</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $N$, $T$ độc lập nên $P(N\cap T)=0{,}25\cdot0{,}45=0{,}1125$.</button>
+      <button data-k="b"><b>B.</b> $P(N\cup T)=0{,}25+0{,}45-0{,}1125=0{,}5875$.</button>
+      <button data-k="c"><b>C.</b> $N$, $T$ vừa xung khắc vừa độc lập, vì $P(N\cap T)=0$.</button>
+      <button data-k="d"><b>D.</b> $P(N\cup T)=0{,}7$ và $N$, $T$ không độc lập.</button>
+    </div>
+    <div class="qc-fb" data-k="a">Mỗi lượt chỉ làm một thủ thuật nên không thể vừa nhổ vừa trám: $P(N\cap T)=0$, chứ không phải $0{,}1125$. Lỗi ở đây là thấy "hai việc khác nhau" liền cho là độc lập.</div>
+    <div class="qc-fb" data-k="b">Phép tính này dùng $P(N\cap T)=P(N)P(T)=0{,}1125$ (giả thiết độc lập). Nhưng $N$, $T$ xung khắc nên $P(N\cap T)=0$, do đó $P(N\cup T)=0{,}25+0{,}45-0=0{,}7$.</div>
+    <div class="qc-fb" data-k="c">Đúng là xung khắc, nhưng độc lập đòi hỏi $P(N\cap T)=P(N)P(T)=0{,}1125$. Ở đây $P(N\cap T)=0\ne0{,}1125$ nên <b>không</b> độc lập.</div>
+    <div class="qc-fb" data-k="d">Xung khắc nên $P(N\cup T)=P(N)+P(T)=0{,}7$. Kiểm tra độc lập: $P(N)P(T)=0{,}1125\ne0=P(N\cap T)$, nên không độc lập. Biết lượt khám là nhổ răng thì chắc chắn nó không phải trám răng — tức là $N$ có ảnh hưởng tới $T$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Mỗi lượt chỉ có đúng một thủ thuật, nên $N$ và $T$ không thể cùng xảy ra: $P(N\cap T)=0$ (xung khắc).</li>
+      <li><span class="step-label">Bước 2:</span> Công thức cộng: $P(N\cup T)=P(N)+P(T)-P(N\cap T)=0{,}25+0{,}45-0=0{,}7$.</li>
+      <li><span class="step-label">Bước 3:</span> Kiểm tra độc lập: $P(N)\cdot P(T)=0{,}1125$, khác $P(N\cap T)=0$, nên $N$, $T$ <b>không</b> độc lập. Đáp án <b>D</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q04">
+  <div class="ex-head"><span class="ex-num">Câu 4</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Hệ đầy đủ</span></div>
+  <p>Chọn ngẫu nhiên một bệnh nhân. Gọi $X$ là số răng sâu của bệnh nhân đó ($X$ nhận một trong các giá trị $0, 1, 2, \dots, 32$). Nhớ lại: một nhóm biến cố là <b>hệ đầy đủ</b> khi hợp của chúng bằng $\Omega$ và chúng xung khắc từng đôi. Nhóm nào dưới đây là một hệ đầy đủ?</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $\{X=0;\ X=1;\ X=2\}$</button>
+      <button data-k="b"><b>B.</b> $\{X=0;\ 1\le X\le 3;\ X\ge 4\}$</button>
+      <button data-k="c"><b>C.</b> $\{X\le 2;\ X\ge 2\}$</button>
+      <button data-k="d"><b>D.</b> $\{X=0;\ X\ge 1;\ X\ge 4\}$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Ba biến cố này đúng là xung khắc từng đôi, nhưng <b>thiếu</b> các trường hợp $X\ge3$ (bệnh nhân có từ 3 răng sâu trở lên). Hợp của chúng không bằng $\Omega$.</div>
+    <div class="qc-fb" data-k="b">Mọi giá trị của $X$ rơi vào <b>đúng một</b> nhóm: 0 · từ 1 đến 3 · từ 4 trở lên. Như vậy hợp bằng $\Omega$ và các nhóm không chồng nhau, nên đây là hệ đầy đủ.</div>
+    <div class="qc-fb" data-k="c">Hợp thì bằng $\Omega$, nhưng giá trị $X=2$ nằm trong cả hai biến cố nên chúng <b>không xung khắc</b>.</div>
+    <div class="qc-fb" data-k="d">"$X\ge4$" nằm trọn trong "$X\ge1$" (ví dụ $X=5$ thuộc cả hai), nên hai biến cố này <b>không xung khắc</b>.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Kiểm tra điều kiện "phủ kín": mọi giá trị $0,1,\dots,32$ có thuộc ít nhất một nhóm không? Phương án A trượt ở bước này (thiếu $X\ge3$).</li>
+      <li><span class="step-label">Bước 2:</span> Kiểm tra điều kiện "không chồng nhau": có giá trị nào thuộc hai nhóm cùng lúc không? C trượt ($X=2$), D trượt ($X\ge4$ đã nằm trong $X\ge1$).</li>
+      <li><span class="step-label">Bước 3:</span> Chỉ B qua được cả hai bước. Đáp án <b>B</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q05">
+  <div class="ex-head"><span class="ex-num">Câu 5</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Xác suất cổ điển · tổ hợp</span></div>
+  <p>Một hộp có 12 ống thuốc tê, trong đó có 3 ống đã hết hạn. Lấy ngẫu nhiên cùng lúc 4 ống (không hoàn lại). Xác suất trong 4 ống lấy ra có <b>đúng 1</b> ống hết hạn là bao nhiêu? (làm tròn 4 chữ số thập phân)</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}4219$</button>
+      <button data-k="b"><b>B.</b> $0{,}5091$</button>
+      <button data-k="c"><b>C.</b> $0{,}1697$</button>
+      <button data-k="d"><b>D.</b> $0{,}7455$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Số này là $C_4^1\cdot0{,}25\cdot0{,}75^3$ — tức là coi như lấy <b>có hoàn lại</b> (mỗi lần xác suất hết hạn luôn là $3/12=0{,}25$). Nhưng 4 ống được lấy cùng lúc, không trả lại, nên phải đếm bằng tổ hợp.</div>
+    <div class="qc-fb" data-k="b">$n(\Omega)=C_{12}^4=495$; $n(A)=C_3^1\cdot C_9^3=3\cdot84=252$; $P=252/495\approx0{,}5091$.</div>
+    <div class="qc-fb" data-k="c">Số này là $C_9^3/C_{12}^4=84/495$: đã đếm cách chọn 3 ống còn hạn nhưng <b>quên nhân $C_3^1=3$</b> (số cách chọn 1 ống hết hạn trong 3 ống).</div>
+    <div class="qc-fb" data-k="d">Số này là $1-C_9^4/C_{12}^4=1-126/495$, tức xác suất có <b>ít nhất</b> 1 ống hết hạn (gồm cả 2 hoặc 3 ống hết hạn). Đề hỏi "đúng 1".</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Không gian mẫu:</span> Mỗi cách lấy 4 ống trong 12 ống là một kết quả, các kết quả đồng khả năng: $n(\Omega)=C_{12}^4=495$.</li>
+      <li><span class="step-label">Bước 2 – Đếm thuận lợi:</span> Chọn 1 ống trong 3 ống hết hạn: $C_3^1=3$ cách; chọn 3 ống còn lại trong 9 ống còn hạn: $C_9^3=84$ cách. Hai việc làm liên tiếp nên nhân: $n(A)=3\cdot84=252$.</li>
+      <li><span class="step-label">Bước 3:</span> $P(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{252}{495}\approx0{,}5091$. Đáp án <b>B</b>.</li>
+      <li><span class="step-label">Bấm máy:</span> <code>3 × 9 SHIFT ÷ 3 ÷ 12 SHIFT ÷ 4 =</code> (SHIFT ÷ là $nCr$).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q06">
+  <div class="ex-head"><span class="ex-num">Câu 6</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Xác suất hình học · diện tích</span></div>
+  <p>Một phim X-quang hình chữ nhật kích thước $3\text{ cm}\times4\text{ cm}$. Vùng tổn thương quanh chóp trên phim là một hình tròn bán kính $0{,}8$ cm, nằm trọn trong phim. Một hạt bụi rơi ngẫu nhiên lên phim (mọi điểm trên phim đều có khả năng như nhau). Xác suất hạt bụi <b>không</b> rơi vào vùng tổn thương là bao nhiêu? (làm tròn 4 chữ số thập phân)</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}8324$</button>
+      <button data-k="b"><b>B.</b> $0{,}1676$</button>
+      <button data-k="c"><b>C.</b> $0{,}7906$</button>
+      <button data-k="d"><b>D.</b> $0{,}5811$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Diện tích hình tròn $\pi\cdot0{,}8^2\approx2{,}0106$ cm², diện tích phim $12$ cm². Xác suất rơi vào vùng tròn là $0{,}16755\ldots$, nên xác suất không rơi vào là $1-0{,}16755\ldots\approx0{,}8324$.</div>
+    <div class="qc-fb" data-k="b">$0{,}1676$ là xác suất hạt bụi <b>rơi vào</b> vùng tổn thương. Đề hỏi "không rơi vào", nên còn phải lấy phần bù: $1-0{,}1676$.</div>
+    <div class="qc-fb" data-k="c">Số này là $1-\pi\cdot0{,}8/12$: <b>quên bình phương</b> bán kính. Diện tích hình tròn là $\pi r^2=\pi\cdot0{,}64$, không phải $\pi\cdot0{,}8$.</div>
+    <div class="qc-fb" data-k="d">Số này là $1-2\pi\cdot0{,}8/12$: đã dùng <b>chu vi</b> $2\pi r$ thay cho diện tích $\pi r^2$. Xác suất hình học trong mặt phẳng là tỉ lệ <b>diện tích</b>.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> Mọi điểm trên phim có khả năng như nhau, nên xác suất rơi vào một vùng bằng $\dfrac{\text{diện tích vùng đó}}{\text{diện tích cả phim}}$.</li>
+      <li><span class="step-label">Bước 1:</span> Diện tích phim: $3\cdot4=12$ cm².</li>
+      <li><span class="step-label">Bước 2:</span> Diện tích vùng tổn thương: $\pi r^2=\pi\cdot0{,}8^2=0{,}64\pi\approx2{,}0106$ cm².</li>
+      <li><span class="step-label">Bước 3:</span> Gọi $R$: "hạt bụi rơi vào vùng tổn thương": $P(R)=\dfrac{0{,}64\pi}{12}=0{,}16755\ldots$ (giữ nguyên, chưa làm tròn).</li>
+      <li><span class="step-label">Bước 4:</span> Lấy phần bù: $P(\overline R)=1-0{,}16755\ldots=0{,}83244\ldots\approx0{,}8324$. Đáp án <b>A</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q07">
+  <div class="ex-head"><span class="ex-num">Câu 7</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Xác suất hình học · bài toán hẹn gặp</span></div>
+  <p>Hai bệnh nhân Lan và Minh, mỗi người đến phòng khám vào một thời điểm ngẫu nhiên trong khoảng 8 giờ đến 9 giờ (mọi thời điểm có khả năng như nhau, hai người đến độc lập với nhau). Xác suất hai người đến <b>cách nhau không quá 15 phút</b> là bao nhiêu?</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}25$</button>
+      <button data-k="b"><b>B.</b> $0{,}5625$</button>
+      <button data-k="c"><b>C.</b> $0{,}4375$</button>
+      <button data-k="d"><b>D.</b> $0{,}71875$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Số này là $15/60$ — chỉ xét thời điểm đến của <b>một</b> người trên một trục. Ở đây có hai người cùng đến ngẫu nhiên, nên phải xét cặp $(x;y)$ trên một hình vuông và tính theo diện tích.</div>
+    <div class="qc-fb" data-k="b">Số này là $(45/60)^2=2025/3600$, tức diện tích hai tam giác góc — đó là xác suất hai người đến cách nhau <b>hơn</b> 15 phút. Còn phải lấy phần bù.</div>
+    <div class="qc-fb" data-k="c">Miền thuận lợi $|x-y|\le15$ là hình vuông $60\times60$ bỏ đi hai tam giác vuông cạnh $45$: $\dfrac{3600-2025}{3600}=0{,}4375$.</div>
+    <div class="qc-fb" data-k="d">Số này là $1-\dfrac{1012{,}5}{3600}$: chỉ trừ <b>một</b> tam giác. Có hai trường hợp đến cách xa: Lan đến trước Minh hơn 15 phút, <b>hoặc</b> Minh đến trước Lan hơn 15 phút — nên có hai tam giác.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> Một lần "thử" gồm <b>hai</b> con số ngẫu nhiên (giờ đến của Lan, giờ đến của Minh). Mỗi cặp số là một điểm trong hình vuông; mọi điểm có khả năng như nhau, nên xác suất = tỉ lệ diện tích.</li>
+      <li><span class="step-label">Bước 1 – Đặt ẩn:</span> $x$, $y$ = số phút sau 8 giờ mà Lan, Minh đến; $0\le x\le60$, $0\le y\le60$. Toàn miền là hình vuông cạnh 60, diện tích $3600$.</li>
+      <li><span class="step-label">Bước 2 – Dịch câu chữ:</span> "Cách nhau không quá 15 phút" là $|x-y|\le15$, tức $-15\le x-y\le15$: dải nằm giữa hai đường thẳng $y=x-15$ và $y=x+15$.</li>
+      <li><span class="step-label">Bước 3 – Tính phần bị loại:</span> Ngoài dải là hai tam giác vuông ở hai góc ($y&gt;x+15$ và $y&lt;x-15$), mỗi tam giác có hai cạnh góc vuông $60-15=45$: diện tích mỗi tam giác $\dfrac{45\cdot45}{2}=1012{,}5$; cả hai: $2025$.</li>
+      <li><span class="step-label">Bước 4:</span> Diện tích miền thuận lợi: $3600-2025=1575$. Vậy $P=\dfrac{1575}{3600}=0{,}4375$. Đáp án <b>C</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b1-tn-c2">Chặng 2 · Cộng, nhân, có điều kiện từ tỉ lệ dân số</h3>
+<p>Đề thi rất hay cho hai bệnh (hoặc hai đặc điểm) trong một cộng đồng, kèm vài con số phần trăm, rồi hỏi liên tiếp: bị cả hai, có ít nhất một, không bị bệnh nào, biết bị bệnh này thì xác suất bị bệnh kia… Chặng này luyện kĩ năng quan trọng nhất của dạng đó: <b>đọc đúng mỗi con số phần trăm là xác suất gì</b>, rồi ghép công thức nhân, công thức cộng, phần bù và Bayes. Câu cuối là bài toán ngược: phải tự suy ra một tỉ lệ mà đề không cho.</p>
+
+<div class="box tip">
+  <div class="box-title"><span class="tag">Cách làm dạng này</span><span>Dịch câu chữ sang kí hiệu trước khi tính</span></div>
+  <ul>
+    <li>“15% dân số bị đái tháo đường” → $P(D)=0{,}15$ (tính trên <b>cả cộng đồng</b>).</li>
+    <li>“Trong số người đái tháo đường, 60% bị viêm quanh răng” → $P(Q\mid D)=0{,}6$ (chỉ tính trong <b>nhóm $D$</b>, nhóm đứng sau chữ “trong số” là nhóm điều kiện, viết sau dấu $\mid$).</li>
+    <li>Cả hai: $P(D\cap Q)=P(D)\cdot P(Q\mid D)$ (công thức nhân). Ít nhất một: $P(D\cup Q)=P(D)+P(Q)-P(D\cap Q)$. Không bệnh nào: $1-P(D\cup Q)$.</li>
+    <li>Đổi chiều điều kiện (Bayes): $P(D\mid Q)=\dfrac{P(D\cap Q)}{P(Q)}$.</li>
+  </ul>
+</div>
+
+<div class="box example">
+  <div class="box-title"><span class="tag">Tình huống chung</span><span>Câu 8 – 10</span></div>
+  <p>Khám sàng lọc người trưởng thành ở một xã: $15\%$ bị đái tháo đường ($D$), $40\%$ bị viêm quanh răng ($Q$). Trong số người bị đái tháo đường, $60\%$ bị viêm quanh răng. Chọn ngẫu nhiên một người trong xã.</p>
+</div>
+
+<div class="ex mcq" id="b1q08">
+  <div class="ex-head"><span class="ex-num">Câu 8</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Công thức nhân</span></div>
+  <p>Ở một xã, $15\%$ người trưởng thành bị đái tháo đường ($D$), $40\%$ bị viêm quanh răng ($Q$); trong số người bị đái tháo đường có $60\%$ bị viêm quanh răng. Chọn ngẫu nhiên một người. Xác suất người đó bị <b>cả hai</b> bệnh là:</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}6$</button>
+      <button data-k="b"><b>B.</b> $0{,}24$</button>
+      <button data-k="c"><b>C.</b> $0{,}09$</button>
+      <button data-k="d"><b>D.</b> $0{,}06$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}6$ là $P(Q\mid D)$: tỉ lệ viêm quanh răng <b>chỉ trong nhóm đái tháo đường</b>. Câu hỏi tính trên cả xã nên còn phải nhân với tỉ lệ nhóm đó: $0{,}15\cdot0{,}6$.</div>
+    <div class="qc-fb" data-k="b">Bạn đã nhân $P(Q)\cdot P(Q\mid D)=0{,}4\cdot0{,}6$. Con số $60\%$ là tỉ lệ <b>trong nhóm $D$</b>, nên phải nhân với $P(D)=0{,}15$ chứ không phải $P(Q)$.</div>
+    <div class="qc-fb" data-k="c">Công thức nhân: $P(D\cap Q)=P(D)\cdot P(Q\mid D)=0{,}15\cdot0{,}6=0{,}09$. Lấy $15\%$ dân số, rồi lấy $60\%$ của nhóm đó.</div>
+    <div class="qc-fb" data-k="d">$0{,}15\cdot0{,}4=0{,}06$ là công thức của trường hợp <b>độc lập</b>. Ở đây đề cho $P(Q\mid D)=0{,}6\neq P(Q)=0{,}4$ (người đái tháo đường dễ bị viêm quanh răng hơn), nên không được nhân thẳng hai tỉ lệ.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Dịch đề:</span> $P(D)=0{,}15$; $P(Q)=0{,}4$; “trong số người $D$ có $60\%$ bị $Q$” là $P(Q\mid D)=0{,}6$.</li>
+      <li><span class="step-label">Bước 2 – Chọn công thức:</span> “cả hai” là giao $D\cap Q$. Đã biết xác suất có điều kiện nên dùng công thức nhân $P(D\cap Q)=P(D)\cdot P(Q\mid D)$.</li>
+      <li><span class="step-label">Bước 3 – Tính:</span> $P(D\cap Q)=0{,}15\cdot0{,}6=\mathbf{0{,}09}$. Nghĩa là $9\%$ dân số bị cả hai bệnh.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q09">
+  <div class="ex-head"><span class="ex-num">Câu 9</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Công thức cộng · Phần bù</span></div>
+  <p>Ở xã trên: $P(D)=0{,}15$ (đái tháo đường), $P(Q)=0{,}4$ (viêm quanh răng) và $P(D\cap Q)=0{,}09$ (bị cả hai, tính ở Câu 8). Chọn ngẫu nhiên một người. Xác suất người đó <b>không bị bệnh nào</b> trong hai bệnh là:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}54$</button>
+      <button data-k="b"><b>B.</b> $0{,}46$</button>
+      <button data-k="c"><b>C.</b> $0{,}45$</button>
+      <button data-k="d"><b>D.</b> $0{,}91$</button>
+    </div>
+    <div class="qc-fb" data-k="a">“Không bệnh nào” là phần bù của “ít nhất một bệnh”: $1-(0{,}15+0{,}4-0{,}09)=1-0{,}46=0{,}54$.</div>
+    <div class="qc-fb" data-k="b">$0{,}46=P(D\cup Q)$ là xác suất bị <b>ít nhất một</b> bệnh. Bạn quên bước cuối: lấy phần bù $1-0{,}46$.</div>
+    <div class="qc-fb" data-k="c">Bạn tính $1-(0{,}15+0{,}4)=0{,}45$, quên trừ phần giao. Nhóm $9\%$ bị cả hai đã được đếm hai lần (một lần trong $0{,}15$, một lần trong $0{,}4$) nên phải trừ đi một lần: $P(D\cup Q)=0{,}55-0{,}09=0{,}46$.</div>
+    <div class="qc-fb" data-k="d">$1-0{,}09=0{,}91$ là xác suất <b>không đồng thời</b> bị cả hai bệnh, tức là gồm cả người chỉ bị một bệnh. “Không bệnh nào” chặt hơn: không $D$ <b>và</b> không $Q$, tức $\overline D\cap\overline Q=\overline{D\cup Q}$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Dịch đề:</span> “không bệnh nào” = không $D$ và không $Q$ $=\overline D\cap\overline Q$. Theo De Morgan, $\overline D\cap\overline Q=\overline{D\cup Q}$.</li>
+      <li><span class="step-label">Bước 2 – Ít nhất một bệnh:</span> $P(D\cup Q)=P(D)+P(Q)-P(D\cap Q)=0{,}15+0{,}4-0{,}09=0{,}46$.</li>
+      <li><span class="step-label">Bước 3 – Phần bù:</span> $P(\overline D\cap\overline Q)=1-0{,}46=\mathbf{0{,}54}$.</li>
+      <li><span class="step-label">Kiểm tra bằng 4 vùng:</span> chỉ $D$: $0{,}15-0{,}09=0{,}06$; cả hai: $0{,}09$; chỉ $Q$: $0{,}4-0{,}09=0{,}31$; không bệnh: $0{,}54$. Tổng $0{,}06+0{,}09+0{,}31+0{,}54=1$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q10">
+  <div class="ex-head"><span class="ex-num">Câu 10</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Đổi chiều điều kiện · Bayes</span></div>
+  <p>Ở xã trên: $15\%$ người trưởng thành bị đái tháo đường ($D$), $40\%$ bị viêm quanh răng ($Q$), và trong số người đái tháo đường có $60\%$ bị viêm quanh răng. Một người đến khám được chẩn đoán <b>viêm quanh răng</b>. Xác suất người này bị đái tháo đường là:</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}6$</button>
+      <button data-k="b"><b>B.</b> $0{,}09$</button>
+      <button data-k="c"><b>C.</b> $0{,}15$</button>
+      <button data-k="d"><b>D.</b> $0{,}225$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}6$ là $P(Q\mid D)$: biết đái tháo đường, hỏi viêm quanh răng. Câu này hỏi chiều ngược lại $P(D\mid Q)$: biết viêm quanh răng, hỏi đái tháo đường. Hai chiều này nói chung khác nhau.</div>
+    <div class="qc-fb" data-k="b">$0{,}09=P(D\cap Q)$ là tỉ lệ bị cả hai trên <b>cả xã</b>. Người này đã biết là viêm quanh răng, nên phải thu hẹp về nhóm $Q$: chia cho $P(Q)=0{,}4$.</div>
+    <div class="qc-fb" data-k="c">$0{,}15$ là tỉ lệ đái tháo đường chung, chưa dùng thông tin “đã bị viêm quanh răng”. Thông tin này làm xác suất tăng lên, vì hai bệnh có liên quan với nhau.</div>
+    <div class="qc-fb" data-k="d">$P(D\mid Q)=\dfrac{P(D\cap Q)}{P(Q)}=\dfrac{0{,}15\cdot0{,}6}{0{,}4}=\dfrac{0{,}09}{0{,}4}=0{,}225$. Thu hẹp về nhóm viêm quanh răng ($40\%$), trong đó phần bị đái tháo đường là $9\%$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Dịch câu hỏi:</span> “đã biết viêm quanh răng, hỏi đái tháo đường” → cần $P(D\mid Q)$ ($Q$ là điều kiện, đứng sau dấu $\mid$). Đề lại cho chiều kia, $P(Q\mid D)=0{,}6$.</li>
+      <li><span class="step-label">Bước 2 – Tính giao:</span> $P(D\cap Q)=P(D)\cdot P(Q\mid D)=0{,}15\cdot0{,}6=0{,}09$.</li>
+      <li><span class="step-label">Bước 3 – Chia cho xác suất của điều kiện:</span> $P(D\mid Q)=\dfrac{0{,}09}{0{,}4}=\mathbf{0{,}225}$.</li>
+      <li><span class="step-label">Hiểu kết quả:</span> trong $1000$ người có $400$ người viêm quanh răng, trong đó $90$ người cũng đái tháo đường: $90/400=0{,}225$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q11">
+  <div class="ex-head"><span class="ex-num">Câu 11</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Bảng 2×2 · Kiểm tra độc lập</span></div>
+  <p>Một phòng khám ghi nhận $500$ bệnh nhân theo thói quen hút thuốc lá ($H$) và tình trạng viêm nướu ($V$):</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th></th><th>$V$ (viêm nướu)</th><th>$\overline V$ (không viêm)</th><th>Tổng</th></tr>
+    <tr><th>$H$ (hút thuốc)</th><td>$72$</td><td>$48$</td><td>$120$</td></tr>
+    <tr><th>$\overline H$ (không hút)</th><td>$108$</td><td>$272$</td><td>$380$</td></tr>
+    <tr><th>Tổng</th><td>$180$</td><td>$320$</td><td>$500$</td></tr>
+  </table></div>
+  <p>Chọn ngẫu nhiên một bệnh nhân. Khẳng định nào <b>đúng</b>?</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $P(V\mid H)=0{,}40$ và $H$, $V$ không độc lập</button>
+      <button data-k="b"><b>B.</b> $P(V\mid H)=0{,}60$ và $H$, $V$ không độc lập</button>
+      <button data-k="c"><b>C.</b> $P(V\mid H)=0{,}144$ và $H$, $V$ không độc lập</button>
+      <button data-k="d"><b>D.</b> $P(V\mid H)=0{,}36$ và $H$, $V$ độc lập</button>
+    </div>
+    <div class="qc-fb" data-k="a">$72/180=0{,}40$ là $P(H\mid V)$: bạn chia cho tổng <b>cột</b> viêm nướu. $P(V\mid H)$ thì điều kiện là “hút thuốc”, nên phải chia cho tổng <b>hàng</b> $H$: $72/120$.</div>
+    <div class="qc-fb" data-k="b">Trong $120$ người hút thuốc có $72$ người viêm nướu: $P(V\mid H)=72/120=0{,}6$, khác $P(V)=180/500=0{,}36$. Biết “hút thuốc” làm thay đổi xác suất viêm nướu, nên $H$ và $V$ không độc lập.</div>
+    <div class="qc-fb" data-k="c">$72/500=0{,}144$ là $P(H\cap V)$, chia cho cả $500$ người. Xác suất có điều kiện phải chia cho số người của <b>nhóm điều kiện</b> ($120$ người hút thuốc).</div>
+    <div class="qc-fb" data-k="d">$180/500=0{,}36$ là $P(V)$ trên cả phòng khám, chưa thu hẹp về nhóm hút thuốc. Vì lấy nhầm $P(V)$ làm $P(V\mid H)$ nên hai số “bằng nhau” và bạn kết luận sai là độc lập.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Xác suất có điều kiện:</span> điều kiện $H$ → chỉ nhìn hàng $H$ ($120$ người), trong đó $72$ người có $V$: $P(V\mid H)=\dfrac{72}{120}=0{,}6$.</li>
+      <li><span class="step-label">Bước 2 – Xác suất không điều kiện:</span> $P(V)=\dfrac{180}{500}=0{,}36$.</li>
+      <li><span class="step-label">Bước 3 – Kiểm tra độc lập:</span> $H$, $V$ độc lập khi $P(V\mid H)=P(V)$. Ở đây $0{,}6\neq0{,}36$ → <b>không độc lập</b>.</li>
+      <li><span class="step-label">Cách kiểm tra thứ hai:</span> $P(H)\cdot P(V)=\dfrac{120}{500}\cdot\dfrac{180}{500}=0{,}24\cdot0{,}36=0{,}0864$, còn $P(H\cap V)=\dfrac{72}{500}=0{,}144$. Hai số khác nhau → không độc lập (cùng kết luận).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q12">
+  <div class="ex-head"><span class="ex-num">Câu 12</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Cộng 3 biến cố · Phần bù</span></div>
+  <p>$100$ bệnh nhân bị nhiệt miệng (loét áp-tơ) tái phát lần lượt được dùng thử ba loại gel bôi I, II, III. Số người đáp ứng: với gel I là $45$, gel II là $40$, gel III là $30$; với cả I và II là $18$, cả I và III là $12$, cả II và III là $10$; với cả ba loại là $5$. Chọn ngẫu nhiên một bệnh nhân. Xác suất người đó <b>không đáp ứng với loại gel nào</b> là:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}20$</button>
+      <button data-k="b"><b>B.</b> $0{,}25$</button>
+      <button data-k="c"><b>C.</b> $0{,}30$</button>
+      <button data-k="d"><b>D.</b> $0{,}80$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Ít nhất một loại: $(45+40+30-18-12-10+5)/100=0{,}80$. Không loại nào là phần bù: $1-0{,}80=0{,}20$.</div>
+    <div class="qc-fb" data-k="b">Bạn quên <b>cộng lại bộ ba</b>: $45+40+30-18-12-10=75$ → $1-0{,}75=0{,}25$. Nhóm $5$ người đáp ứng cả ba được cộng 3 lần ở các đơn, rồi bị trừ 3 lần ở các đôi, nên phải cộng lại một lần.</div>
+    <div class="qc-fb" data-k="c">Bạn đã <b>trừ</b> bộ ba: $45+40+30-18-12-10-5=70$ → $1-0{,}70=0{,}30$. Quy luật dấu là “cộng các đơn, trừ các đôi, <b>cộng</b> bộ ba”.</div>
+    <div class="qc-fb" data-k="d">$0{,}80$ là xác suất đáp ứng với <b>ít nhất một</b> loại gel. Câu hỏi là “không loại nào” nên còn bước lấy phần bù $1-0{,}80$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1 – Đặt tên:</span> $G_1, G_2, G_3$: đáp ứng với gel I, II, III. “Không loại nào” $=\overline{G_1\cup G_2\cup G_3}$ (De Morgan).</li>
+      <li><span class="step-label">Bước 2 – Công thức cộng 3 biến cố (đếm số người):</span> $$\begin{aligned}&amp;N(G_1\cup G_2\cup G_3)\\ &amp;=45+40+30\\ &amp;\quad-18-12-10+5\\ &amp;=80\end{aligned}$$</li>
+      <li><span class="step-label">Bước 3 – Phần bù:</span> $100-80=20$ người không đáp ứng → $P=\dfrac{20}{100}=\mathbf{0{,}20}$.</li>
+      <li><span class="step-label">Kiểm tra bằng các vùng:</span> chỉ I: $45-18-12+5=20$; chỉ II: $40-18-10+5=17$; chỉ III: $30-12-10+5=13$; đúng I và II: $18-5=13$; đúng I và III: $12-5=7$; đúng II và III: $10-5=5$; cả ba: $5$. Tổng $20+17+13+13+7+5+5=80$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q13">
+  <div class="ex-head"><span class="ex-num">Câu 13</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bài toán ngược · Hai chiều điều kiện</span></div>
+  <p>Ở một trường đại học, $30\%$ sinh viên bị viêm nướu ($V$). Trong số sinh viên viêm nướu, $50\%$ bị chảy máu chân răng khi chải ($C$). Trong số sinh viên bị chảy máu chân răng, $75\%$ bị viêm nướu. Chọn ngẫu nhiên một sinh viên. Xác suất sinh viên đó <b>không viêm nướu và cũng không chảy máu chân răng</b> là:</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}35$</button>
+      <button data-k="b"><b>B.</b> $0{,}85$</button>
+      <button data-k="c"><b>C.</b> $0{,}65$</button>
+      <button data-k="d"><b>D.</b> $0{,}7375$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Có hai đường dẫn tới $0{,}35$. (1) Bạn tính đúng $P(V\cup C)=0{,}35$ nhưng quên lấy phần bù. (2) Bạn coi $50\%$ là $P(C)$: $1-(0{,}3+0{,}5-0{,}15)=0{,}35$. Nhưng $50\%$ chỉ tính <b>trong nhóm viêm nướu</b>, tức $P(C\mid V)$, không phải tỉ lệ chảy máu của cả trường.</div>
+    <div class="qc-fb" data-k="b">$1-0{,}15=0{,}85$ là xác suất <b>không đồng thời</b> có cả hai, gồm cả người chỉ có một dấu hiệu. Câu hỏi là không $V$ <b>và</b> không $C$, tức $\overline{V\cup C}$.</div>
+    <div class="qc-fb" data-k="c">$P(V\cap C)=0{,}3\cdot0{,}5=0{,}15$; $P(C)=\dfrac{0{,}15}{0{,}75}=0{,}2$; $P(V\cup C)=0{,}3+0{,}2-0{,}15=0{,}35$; phần bù $1-0{,}35=0{,}65$. Mấu chốt là dùng $P(V\mid C)=0{,}75$ để tìm ngược ra $P(C)$.</div>
+    <div class="qc-fb" data-k="d">Bạn tính $P(C)=0{,}15\cdot0{,}75=0{,}1125$ (nhân thay vì chia), rồi $1-(0{,}3+0{,}1125-0{,}15)=0{,}7375$. Số này vô lí: $P(C)=0{,}1125$ lại nhỏ hơn $P(V\cap C)=0{,}15$, trong khi $V\cap C$ nằm trong $C$. Từ $P(V\cap C)=P(C)\cdot P(V\mid C)$ phải <b>chia</b>: $P(C)=0{,}15/0{,}75$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> muốn có “không $V$ và không $C$” $=\overline{V\cup C}$ thì cần $P(V)$, $P(C)$, $P(V\cap C)$. Đề <b>không cho</b> $P(C)$, nhưng cho hai tỉ lệ có điều kiện theo hai chiều. Cả hai chiều cùng chứa một giao $V\cap C$: dùng chiều thứ nhất để tính giao, rồi dùng chiều thứ hai để suy ngược ra $P(C)$.</li>
+      <li><span class="step-label">Bước 1 – Dịch đề:</span> $P(V)=0{,}3$; “trong số người viêm nướu, $50\%$ chảy máu” là $P(C\mid V)=0{,}5$; “trong số người chảy máu, $75\%$ viêm nướu” là $P(V\mid C)=0{,}75$.</li>
+      <li><span class="step-label">Bước 2 – Giao:</span> $P(V\cap C)=P(V)\cdot P(C\mid V)=0{,}3\cdot0{,}5=0{,}15$.</li>
+      <li><span class="step-label">Bước 3 – Suy ngược $P(C)$:</span> công thức nhân theo chiều kia: $P(V\cap C)=P(C)\cdot P(V\mid C)$, tức $0{,}15=P(C)\cdot0{,}75$. Chia hai vế cho $0{,}75$: $P(C)=\dfrac{0{,}15}{0{,}75}=0{,}2$.</li>
+      <li><span class="step-label">Bước 4 – Ít nhất một:</span> $P(V\cup C)=0{,}3+0{,}2-0{,}15=0{,}35$.</li>
+      <li><span class="step-label">Bước 5 – Phần bù:</span> $P(\overline V\cap\overline C)=1-0{,}35=\mathbf{0{,}65}$.</li>
+      <li><span class="step-label">Kiểm tra bằng 4 vùng:</span> chỉ $V$: $0{,}3-0{,}15=0{,}15$; cả hai: $0{,}15$; chỉ $C$: $0{,}2-0{,}15=0{,}05$; không có gì: $0{,}65$. Tổng bằng $1$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b1-tn-c3">Chặng 3 · Xét nghiệm: độ nhạy, độ đặc hiệu, giá trị tiên đoán</h3>
+<p>Chặng này luyện bốn con số của một xét nghiệm: độ nhạy $Se$, độ đặc hiệu $Sp$, giá trị tiên đoán $PV^+$, $PV^-$, cùng xác suất dương tính và xác suất xét nghiệm cho kết quả đúng. Đề thi gần như luôn có một bài dạng này, và cái bẫy lớn nhất là <b>đảo chiều điều kiện</b>: $P(T^+\mid M^+)$ khác hẳn $P(M^+\mid T^+)$. Kí hiệu: $M^+$ = mắc bệnh, $M^-$ = không mắc, $T^+$ = xét nghiệm dương tính, $T^-$ = âm tính <span class="muted">(giáo trình viết $B^+$, $B^-$ thay cho $M^+$, $M^-$)</span>.</p>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Cách làm dạng này</span>Nhìn điều kiện đứng sau dấu “|”</div>
+  <ul>
+    <li><b>Điều kiện là bệnh</b> ($\mid M^+$ hoặc $\mid M^-$) → đặc tính của xét nghiệm: $Se=P(T^+\mid M^+)$, âm giả $=P(T^-\mid M^+)=1-Se$; $Sp=P(T^-\mid M^-)$, dương giả $=P(T^+\mid M^-)=1-Sp$. Trên bảng 2×2: đọc theo <b>cột</b>.</li>
+    <li><b>Điều kiện là kết quả</b> ($\mid T^+$ hoặc $\mid T^-$) → giá trị tiên đoán: $PV^+=P(M^+\mid T^+)$, $PV^-=P(M^-\mid T^-)$. Trên bảng 2×2: đọc theo <b>hàng</b>. Không có bảng thì dùng Bayes.</li>
+    <li>$P(T^+)=P(M^+)\,Se+P(M^-)\,(1-Sp)$ (toàn phần); $P(\text{đúng})=P(M^+)\,Se+P(M^-)\,Sp$.</li>
+  </ul>
+</div>
+
+<div class="ex mcq" id="b1q14">
+  <div class="ex-head"><span class="ex-num">Câu 14</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Định nghĩa dương giả</span></div>
+  <p>Que thử nhanh aMMP-8 trong dịch nướu dùng để phát hiện viêm nha chu. Gọi $M^+$: người được thử có viêm nha chu, $M^-$: không có; $T^+$: que dương tính, $T^-$: que âm tính. Que thử có độ đặc hiệu $Sp=0{,}94$. <b>Dương giả</b> của que thử là xác suất nào và bằng bao nhiêu?</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $P(M^-\mid T^+)=0{,}06$</button>
+      <button data-k="b"><b>B.</b> $P(T^-\mid M^+)=0{,}06$</button>
+      <button data-k="c"><b>C.</b> $P(T^+\mid M^-)=0{,}06$</button>
+      <button data-k="d"><b>D.</b> $P(T^+\mid M^-)=0{,}94$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Biểu thức bị đảo chiều điều kiện. $P(M^-\mid T^+)$ là “trong số người dương tính, bao nhiêu người thật ra không bệnh”, tức là $1-PV^+$. Muốn tính nó cần biết tỉ lệ mắc bệnh, nên nó không thể suy ra chỉ từ $Sp$. Dương giả lấy điều kiện là <b>không bệnh</b>: $P(T^+\mid M^-)$.</div>
+    <div class="qc-fb" data-k="b">$P(T^-\mid M^+)$ là <b>âm giả</b>: người có bệnh mà que báo âm (bỏ sót bệnh), và nó bằng $1-Se$ chứ không bằng $1-Sp$. Dương giả là chiều ngược lại: không bệnh mà que báo dương.</div>
+    <div class="qc-fb" data-k="c">Dương giả là “<b>không bệnh</b> ($M^-$) mà que báo <b>dương</b> ($T^+$)”, nên bằng $P(T^+\mid M^-)$. Người không bệnh chỉ có hai khả năng: âm tính (xác suất $Sp$) hoặc dương tính, vì vậy dương giả $=1-Sp=1-0{,}94=0{,}06$.</div>
+    <div class="qc-fb" data-k="d">Biểu thức đúng nhưng con số sai: $0{,}94$ là $Sp=P(T^-\mid M^-)$, xác suất người không bệnh được báo <b>âm</b>. Dương giả là phần còn lại: $1-0{,}94=0{,}06$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Tách tên gọi “dương giả”: chữ “dương” là kết quả que ($T^+$), chữ “giả” nghĩa là kết quả đó sai với sự thật, tức là người đó <b>không bệnh</b> ($M^-$).</li>
+      <li><span class="step-label">Bước 2:</span> “Giả” là so với sự thật, nên ta xét trong nhóm người không bệnh. Nhóm đứng sau dấu “|” là nhóm ta đang xét: dương giả $=P(T^+\mid M^-)$.</li>
+      <li><span class="step-label">Bước 3:</span> Trong nhóm $M^-$ chỉ có hai kết quả $T^+$ hoặc $T^-$, nên $P(T^+\mid M^-)=1-P(T^-\mid M^-)=1-Sp=1-0{,}94=\mathbf{0{,}06}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q15">
+  <div class="ex-head"><span class="ex-num">Câu 15</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Viết Se, Sp bằng XS có điều kiện</span></div>
+  <p>Phim X quang cánh cắn dùng để phát hiện sâu mặt bên (sâu kẽ răng). Kí hiệu $M^+$: răng có sâu mặt bên, $M^-$: răng không sâu; $T^+$: phim kết luận có sâu, $T^-$: phim kết luận không sâu. Nhà sản xuất công bố độ nhạy $0{,}87$ và độ đặc hiệu $0{,}91$. Cách viết nào <b>đúng</b>?</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $P(T^+\mid M^+)=0{,}87$ và $P(T^-\mid M^-)=0{,}91$</button>
+      <button data-k="b"><b>B.</b> $P(M^+\mid T^+)=0{,}87$ và $P(M^-\mid T^-)=0{,}91$</button>
+      <button data-k="c"><b>C.</b> $P(T^+\mid M^+)=0{,}87$ và $P(T^+\mid M^-)=0{,}91$</button>
+      <button data-k="d"><b>D.</b> $P(T^-\mid M^+)=0{,}13$ và $P(T^+\mid M^-)=0{,}91$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Độ nhạy lấy điều kiện là răng <b>có sâu</b> và hỏi phim có phát hiện được không: $P(T^+\mid M^+)$. Độ đặc hiệu lấy điều kiện là răng <b>không sâu</b> và hỏi phim có báo đúng là không sâu không: $P(T^-\mid M^-)$.</div>
+    <div class="qc-fb" data-k="b">Đây là hai <b>giá trị tiên đoán</b> $PV^+$, $PV^-$, vì điều kiện là kết quả phim. Độ nhạy và độ đặc hiệu thì lấy điều kiện là tình trạng răng thật ($M^+$, $M^-$). Nhầm chiều này là lỗi hay gặp nhất của chặng.</div>
+    <div class="qc-fb" data-k="c">Vế đầu đúng. Vế sau, $P(T^+\mid M^-)$ là <b>dương giả</b> (răng không sâu mà phim báo sâu), nên nó bằng $1-0{,}91=0{,}09$ chứ không bằng $0{,}91$. Độ đặc hiệu phải là $P(T^-\mid M^-)$.</div>
+    <div class="qc-fb" data-k="d">Vế đầu đúng: âm giả $P(T^-\mid M^+)=1-0{,}87=0{,}13$. Vế sau sai: dương giả $P(T^+\mid M^-)=1-0{,}91=0{,}09$, còn $0{,}91$ là $P(T^-\mid M^-)$. Chỉ cần một vế sai là cả phương án sai.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Độ nhạy trả lời câu hỏi: “<b>trong số răng có sâu</b>, phim phát hiện được bao nhiêu phần?” Nhóm đang xét là $M^+$ nên viết sau dấu “|”: $Se=P(T^+\mid M^+)=0{,}87$.</li>
+      <li><span class="step-label">Bước 2:</span> Độ đặc hiệu trả lời câu hỏi: “<b>trong số răng không sâu</b>, phim báo đúng ‘không sâu’ bao nhiêu phần?” Vậy $Sp=P(T^-\mid M^-)=0{,}91$.</li>
+      <li><span class="step-label">Bước 3:</span> Kéo theo: âm giả $P(T^-\mid M^+)=0{,}13$, dương giả $P(T^+\mid M^-)=0{,}09$. Chỉ phương án A ghi đúng cả hai vế.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q16">
+  <div class="ex-head"><span class="ex-num">Câu 16</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Bảng 2×2 · giá trị tiên đoán âm</span></div>
+  <p>Một khoa Răng Hàm Mặt chụp phim cánh cắn cho $400$ răng, sau đó mở xoang kiểm tra trực tiếp để biết răng có sâu mặt bên thật hay không ($M^+$: có sâu, $M^-$: không sâu; $T^+$: phim báo sâu, $T^-$: phim báo không sâu). Kết quả:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th></th><th>$M^+$</th><th>$M^-$</th><th>Tổng</th></tr>
+    <tr><th>$T^+$</th><td>96</td><td>21</td><td>117</td></tr>
+    <tr><th>$T^-$</th><td>24</td><td>259</td><td>283</td></tr>
+    <tr><th>Tổng</th><td>120</td><td>280</td><td>400</td></tr>
+  </table></div>
+  <p>Một răng được phim báo <b>không sâu</b>. Xác suất răng đó thật sự không sâu (giá trị tiên đoán âm $PV^-$) là bao nhiêu? (làm tròn 4 chữ số thập phân)</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}9250$</button>
+      <button data-k="b"><b>B.</b> $0{,}8875$</button>
+      <button data-k="c"><b>C.</b> $0{,}0848$</button>
+      <button data-k="d"><b>D.</b> $0{,}9152$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\frac{259}{280}=0{,}925$ là <b>độ đặc hiệu</b> $Sp=P(T^-\mid M^-)$, vì bạn đã chia cho tổng <b>cột</b> $M^-$. Câu hỏi cho biết “phim báo không sâu”, tức điều kiện là $T^-$, nên phải chia cho tổng <b>hàng</b> $T^-$ là $283$.</div>
+    <div class="qc-fb" data-k="b">$\frac{96+259}{400}=0{,}8875$ là xác suất phim cho <b>kết quả đúng</b> (dương thật cộng âm thật, chia cho cả 400 răng). Đề hỏi riêng trong nhóm phim báo âm tính, nên chỉ xét hàng $T^-$.</div>
+    <div class="qc-fb" data-k="c">$\frac{24}{283}\approx0{,}0848$ là $P(M^+\mid T^-)$: phim báo không sâu nhưng răng <b>có</b> sâu. Đây là phần bù của $PV^-$. Đề hỏi răng thật sự không sâu, tức ô $259$.</div>
+    <div class="qc-fb" data-k="d">Điều kiện là “phim báo không sâu”, nên ta chỉ xét hàng $T^-$ gồm $283$ răng. Trong hàng đó có $259$ răng thật sự không sâu: $PV^-=\frac{259}{283}\approx0{,}9152$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Viết đại lượng cần tìm: $PV^-=P(M^-\mid T^-)$. Điều kiện là $T^-$, nên “thế giới” mới là <b>hàng</b> $T^-$.</li>
+      <li><span class="step-label">Bước 2:</span> Hàng $T^-$ có $24+259=283$ răng. Trong đó số răng không sâu ($M^-$) là $259$.</li>
+      <li><span class="step-label">Bước 3:</span> $PV^-=\dfrac{259}{283}\approx\mathbf{0{,}9152}$.</li>
+      <li><span class="step-label">Đối chiếu:</span> cùng bảng này: $Se=\frac{96}{120}=0{,}8$; $Sp=\frac{259}{280}=0{,}925$ (đọc theo cột); $PV^+=\frac{96}{117}\approx0{,}8205$ (đọc theo hàng); $P(\text{đúng})=\frac{96+259}{400}=0{,}8875$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q17">
+  <div class="ex-head"><span class="ex-num">Câu 17</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Xác suất kết quả đúng</span></div>
+  <p>Ở nhóm người đeo hàm giả tháo lắp, tỉ lệ nhiễm nấm Candida miệng là $25\%$. Một que thử nhanh phát hiện Candida có độ nhạy $0{,}86$ và độ đặc hiệu $0{,}92$. Chọn ngẫu nhiên một người trong nhóm để thử. Xác suất que thử cho <b>kết quả đúng</b> (người nhiễm thì dương tính, người không nhiễm thì âm tính) là bao nhiêu?</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}89$</button>
+      <button data-k="b"><b>B.</b> $0{,}905$</button>
+      <button data-k="c"><b>C.</b> $0{,}7912$</button>
+      <button data-k="d"><b>D.</b> $0{,}275$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\frac{0{,}86+0{,}92}{2}=0{,}89$ là trung bình cộng <b>không có trọng số</b>. Số người nhiễm (25%) và không nhiễm (75%) chênh nhau, nên $Sp$ phải được nhân với $0{,}75$, $Se$ nhân với $0{,}25$.</div>
+    <div class="qc-fb" data-k="b">Kết quả đúng gồm hai trường hợp xung khắc: nhiễm và dương tính, <b>hoặc</b> không nhiễm và âm tính. $P=0{,}25\cdot0{,}86+0{,}75\cdot0{,}92=0{,}215+0{,}69=0{,}905$.</div>
+    <div class="qc-fb" data-k="c">$0{,}86\cdot0{,}92=0{,}7912$ là phép <b>nhân</b>, như thể người đó phải vừa dương tính đúng vừa âm tính đúng. Một người chỉ ở một trong hai nhóm (nhiễm hoặc không nhiễm), nên ta <b>cộng</b> hai trường hợp, mỗi trường hợp có trọng số là tỉ lệ của nhóm.</div>
+    <div class="qc-fb" data-k="d">$0{,}25\cdot0{,}86+0{,}75\cdot0{,}08=0{,}275$ là $P(T^+)$, xác suất que <b>dương tính</b>. Số hạng thứ hai $0{,}75\cdot0{,}08$ là dương giả, tức là kết quả <b>sai</b>. Kết quả đúng ở người không nhiễm là âm tính, xác suất $Sp=0{,}92$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Ghi dữ kiện: $P(M^+)=0{,}25$, $P(M^-)=0{,}75$, $Se=P(T^+\mid M^+)=0{,}86$, $Sp=P(T^-\mid M^-)=0{,}92$.</li>
+      <li><span class="step-label">Bước 2:</span> “Đúng” $=M^+T^+ + M^-T^-$. Hai biến cố này xung khắc, vì một người không thể vừa nhiễm vừa không nhiễm, nên ta cộng xác suất.</li>
+      <li><span class="step-label">Bước 3:</span> Công thức nhân: $P(M^+T^+)=P(M^+)\,Se=0{,}25\cdot0{,}86=0{,}215$; $P(M^-T^-)=P(M^-)\,Sp=0{,}75\cdot0{,}92=0{,}69$.</li>
+      <li><span class="step-label">Bước 4:</span> $P(\text{đúng})=0{,}215+0{,}69=\mathbf{0{,}905}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q18">
+  <div class="ex-head"><span class="ex-num">Câu 18</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Toàn phần · Bayes · PV⁺</span></div>
+  <p>Trước khi làm thủ thuật tạo khí dung, một phòng khám nha khoa cho bệnh nhân làm test nhanh kháng nguyên cúm A. Trong mùa dịch, tỉ lệ bệnh nhân đến khám đang nhiễm cúm A là $8\%$. Test có độ nhạy $0{,}85$ và độ đặc hiệu $0{,}95$. Một bệnh nhân có test <b>dương tính</b>. Xác suất bệnh nhân này thật sự nhiễm cúm A là bao nhiêu? (làm tròn 4 chữ số thập phân)</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}85$</button>
+      <button data-k="b"><b>B.</b> $0{,}068$</button>
+      <button data-k="c"><b>C.</b> $0{,}5965$</button>
+      <button data-k="d"><b>D.</b> $0{,}0722$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}85$ là độ nhạy $P(T^+\mid M^+)$: biết người đó <b>nhiễm</b>, hỏi test có dương không. Đề thì cho biết test <b>dương</b> và hỏi người đó có nhiễm không, tức $P(M^+\mid T^+)$, phải dùng Bayes.</div>
+    <div class="qc-fb" data-k="b">$0{,}08\cdot0{,}85=0{,}068$ là $P(M^+T^+)$, xác suất “vừa nhiễm vừa dương tính” tính trên tất cả bệnh nhân. Bạn mới tính tử số Bayes và quên chia cho $P(T^+)=0{,}114$.</div>
+    <div class="qc-fb" data-k="c">Bayes: $PV^+=\frac{0{,}08\cdot0{,}85}{0{,}08\cdot0{,}85+0{,}92\cdot0{,}05}=\frac{0{,}068}{0{,}114}\approx0{,}5965$. Test khá tốt nhưng tỉ lệ nhiễm chỉ 8%, nên cứ khoảng 10 người dương tính thì có 4 người là dương giả.</div>
+    <div class="qc-fb" data-k="d">Ở mẫu số bạn đã dùng $Sp=0{,}95$ thay cho dương giả $1-Sp=0{,}05$: $\frac{0{,}068}{0{,}068+0{,}92\cdot0{,}95}\approx0{,}0722$. Người không nhiễm mà <b>dương tính</b> có xác suất $1-Sp$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Dữ kiện: $P(M^+)=0{,}08$, $P(M^-)=0{,}92$, $Se=0{,}85$, $1-Sp=0{,}05$. Cần tìm $PV^+=P(M^+\mid T^+)$.</li>
+      <li><span class="step-label">Bước 2:</span> Xác suất dương tính (toàn phần, hệ đầy đủ $\{M^+,M^-\}$):
+        $$\begin{aligned}P(T^+)&amp;=0{,}08\cdot0{,}85+0{,}92\cdot0{,}05\\&amp;=0{,}068+0{,}046=0{,}114\end{aligned}$$</li>
+      <li><span class="step-label">Bước 3:</span> Bayes: $PV^+=\dfrac{P(M^+)\,Se}{P(T^+)}=\dfrac{0{,}068}{0{,}114}\approx\mathbf{0{,}5965}$.</li>
+      <li><span class="step-label">Hiểu:</span> tưởng tượng 1000 bệnh nhân: 80 người nhiễm cho 68 test dương; 920 người không nhiễm cho 46 test dương giả. Trong 114 test dương, chỉ có 68 người nhiễm thật.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q19">
+  <div class="ex-head"><span class="ex-num">Câu 19</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">PV⁺ theo tỉ lệ mắc · bài toán ngược</span></div>
+  <p>Xét nghiệm tế bào học bằng bàn chải phát hiện tổn thương tiền ung thư niêm mạc miệng có độ nhạy $0{,}92$ và độ đặc hiệu $0{,}96$. Ở phòng khám chuyên khoa niêm mạc miệng, $30\%$ người được làm xét nghiệm có tổn thương, nên $PV^+\approx0{,}91$. Sở Y tế định dùng xét nghiệm này để sàng lọc cộng đồng, với độ nhạy và độ đặc hiệu vẫn như cũ. Tỉ lệ người có tổn thương trong cộng đồng $p=P(M^+)$ bằng bao nhiêu thì giá trị tiên đoán dương chỉ còn đúng $0{,}5$ (cứ hai người dương tính thì một người là dương giả)? (làm tròn 4 chữ số thập phân)</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}0417$</button>
+      <button data-k="b"><b>B.</b> $0{,}0435$</button>
+      <button data-k="c"><b>C.</b> $0{,}0800$</button>
+      <button data-k="d"><b>D.</b> $0{,}5106$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$PV^+=0{,}5$ nghĩa là dương thật bằng dương giả: $0{,}92\,p=0{,}04\,(1-p)$, suy ra $0{,}96\,p=0{,}04$ và $p=\frac{0{,}04}{0{,}96}=\frac1{24}\approx0{,}0417$. Tỉ lệ mắc tụt từ 30% xuống khoảng 4% đã đủ kéo $PV^+$ từ $0{,}91$ xuống $0{,}5$.</div>
+    <div class="qc-fb" data-k="b">Bạn đã viết dương giả là $0{,}04$ thay vì $0{,}04\,(1-p)$, tức là quên nhân với tỉ lệ người <b>không</b> mắc $P(M^-)=1-p$: $0{,}92\,p=0{,}04$ cho $p\approx0{,}0435$. Thử lại với $p=0{,}0435$ thì $PV^+\approx0{,}511$, không đúng $0{,}5$.</div>
+    <div class="qc-fb" data-k="c">Bạn đã dùng âm giả $1-Se=0{,}08$ cho nhóm không mắc: $0{,}92\,p=0{,}08\,(1-p)$, ra $p=0{,}08$. Người không mắc mà dương tính có xác suất dương giả $1-Sp=0{,}04$, không phải $1-Se$. (Với $p=0{,}08$, $PV^+\approx0{,}667$.)</div>
+    <div class="qc-fb" data-k="d">Bạn đã dùng $Sp=0{,}96$ thay cho dương giả $1-Sp=0{,}04$: $0{,}92\,p=0{,}96\,(1-p)$, ra $p\approx0{,}5106$. Người không mắc chỉ dương tính với xác suất $0{,}04$. Hơn nữa, tỉ lệ mắc cao hơn 30% thì $PV^+$ phải <b>tăng</b> chứ không thể giảm xuống $0{,}5$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> $Se$, $Sp$ là đặc tính của xét nghiệm nên không đổi. $PV^+$ thì phụ thuộc tỉ lệ mắc $p$. Viết $PV^+$ theo $p$ bằng Bayes, cho bằng $0{,}5$, rồi giải phương trình bậc nhất một ẩn.</li>
+      <li><span class="step-label">Bước 1:</span> Kiểm tra số liệu phòng khám ($p=0{,}3$): $PV^+=\frac{0{,}3\cdot0{,}92}{0{,}3\cdot0{,}92+0{,}7\cdot0{,}04}=\frac{0{,}276}{0{,}304}\approx0{,}908$ ✓.</li>
+      <li><span class="step-label">Bước 2:</span> Với tỉ lệ $p$ bất kì:
+        $$PV^+=\frac{0{,}92\,p}{0{,}92\,p+0{,}04\,(1-p)}$$</li>
+      <li><span class="step-label">Bước 3:</span> Một phân số bằng $\frac12$ khi mẫu số gấp đôi tử số, tức là hai số hạng ở mẫu bằng nhau (dương thật = dương giả):
+        $$0{,}92\,p=0{,}04\,(1-p)=0{,}04-0{,}04\,p$$</li>
+      <li><span class="step-label">Bước 4:</span> Chuyển $0{,}04\,p$ sang vế trái: $0{,}96\,p=0{,}04$, nên $p=\dfrac{0{,}04}{0{,}96}=\dfrac1{24}\approx\mathbf{0{,}0417}$.</li>
+      <li><span class="step-label">Thử lại:</span> $0{,}92\cdot\frac1{24}\approx0{,}0383$ và $0{,}04\cdot\frac{23}{24}\approx0{,}0383$, hai số bằng nhau nên $PV^+=0{,}5$ ✓.</li>
+      <li><span class="step-label">Hiểu:</span> nếu cộng đồng chỉ có 1% người có tổn thương thì $PV^+=\frac{0{,}0092}{0{,}0092+0{,}0396}\approx0{,}19$: khoảng 4 trên 5 người dương tính là dương giả. Vì vậy sàng lọc cộng đồng luôn cần thêm một bước xét nghiệm khẳng định.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b1-tn-c4">Chặng 4 · Xác suất toàn phần và Bayes nhiều nguồn</h3>
+<p>Chặng này luyện dạng "kết quả đến từ nhiều nguồn": bệnh nhân đến từ nhiều cơ sở, mão răng đến từ nhiều máy, ống mẫu đến từ nhiều khay hay từ những lần rút trước. Hỏi xuôi (xác suất ra kết quả) thì dùng <b>công thức toàn phần</b>; hỏi ngược (đã thấy kết quả, hỏi nó đến từ nguồn nào) thì dùng <b>Bayes</b>. Đây là dạng gần như chắc chắn có trong đề thi, và cũng là dạng dễ nhầm $P(B\mid T)$ với $P(T\mid B)$ nhất.</p>
+
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Bốn bước cho mọi bài toàn phần – Bayes</span></div>
+<ol class="steps">
+  <li><span class="step-label">Bước 1 · Tìm các nguồn:</span> liệt kê các "nguồn" $H_1, H_2, \dots$ sao cho mỗi kết quả đến từ <b>đúng một</b> nguồn (hệ đầy đủ: xung khắc từng đôi, hợp lại là $\Omega$). Ghi $P(H_i)$ — tổng phải bằng $1$.</li>
+  <li><span class="step-label">Bước 2 · Tỉ lệ trong từng nguồn:</span> ghi $P(A\mid H_i)$ — đây là các con số "tỉ lệ lỗi / tỉ lệ bệnh / tỉ lệ đạt" mà đề cho theo từng nhóm.</li>
+  <li><span class="step-label">Bước 3 · Toàn phần (hỏi xuôi):</span> $P(A)=\sum P(H_i)\,P(A\mid H_i)$ — cộng tất cả các nhánh của cây dẫn tới $A$.</li>
+  <li><span class="step-label">Bước 4 · Bayes (hỏi ngược):</span> $P(H_k\mid A)=\dfrac{P(H_k)\,P(A\mid H_k)}{P(A)}$ = "nhánh của nguồn $H_k$" chia "tổng mọi nhánh". Nếu đề nói "biết <b>không</b> bị…" thì làm y hệt với $\overline{A}$, dùng $P(\overline{A}\mid H_i)=1-P(A\mid H_i)$.</li>
+</ol>
+</div>
+
+<div class="ex mcq" id="b1q20">
+  <div class="ex-head"><span class="ex-num">Câu 20</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Công thức toàn phần · 2 nhóm</span></div>
+  <p>Một hệ thống nha khoa có hai cơ sở. Cơ sở I tiếp nhận $60\%$ tổng số bệnh nhân, cơ sở II tiếp nhận $40\%$. Tỉ lệ bệnh nhân cần điều trị tủy ở cơ sở I là $15\%$, ở cơ sở II là $25\%$. Chọn ngẫu nhiên một hồ sơ trong toàn hệ thống. Xác suất bệnh nhân đó cần điều trị tủy là:</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}20$</button>
+      <button data-k="b"><b>B.</b> $0{,}40$</button>
+      <button data-k="c"><b>C.</b> $0{,}19$</button>
+      <button data-k="d"><b>D.</b> $0{,}09$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn lấy trung bình cộng $\frac{0{,}15+0{,}25}{2}=0{,}20$. Làm vậy là coi hai cơ sở đông bằng nhau. Thực ra cơ sở I đông hơn ($60\%$), nên tỉ lệ $15\%$ phải được tính nặng hơn: dùng trọng số $0{,}6$ và $0{,}4$.</div>
+    <div class="qc-fb" data-k="b">Bạn cộng thẳng $0{,}15+0{,}25=0{,}40$. Hai tỉ lệ này là của hai nhóm người khác nhau, mỗi nhóm chỉ là một phần của toàn hệ thống. Phải nhân mỗi tỉ lệ với tỉ trọng của nhóm đó trước rồi mới cộng.</div>
+    <div class="qc-fb" data-k="c">Công thức toàn phần: $0{,}6\cdot0{,}15+0{,}4\cdot0{,}25=0{,}09+0{,}10=0{,}19$. Mỗi nhánh của cây = (tỉ trọng nhóm) × (tỉ lệ trong nhóm), rồi cộng các nhánh lại.</div>
+    <div class="qc-fb" data-k="d">$0{,}09=0{,}6\cdot0{,}15$ mới chỉ là nhánh "đến cơ sở I <b>và</b> cần điều trị tủy". Bạn còn thiếu nhánh cơ sở II: $0{,}4\cdot0{,}25=0{,}10$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Kí hiệu:</span> $H_1$: bệnh nhân thuộc cơ sở I; $H_2$: thuộc cơ sở II; $T$: cần điều trị tủy.</li>
+      <li><span class="step-label">Bước 1:</span> $\{H_1, H_2\}$ là hệ đầy đủ (mỗi người thuộc đúng một cơ sở): $P(H_1)=0{,}6$, $P(H_2)=0{,}4$, tổng bằng $1$.</li>
+      <li><span class="step-label">Bước 2:</span> Tỉ lệ trong từng nhóm: $P(T\mid H_1)=0{,}15$, $P(T\mid H_2)=0{,}25$.</li>
+      <li><span class="step-label">Bước 3:</span> Toàn phần:
+        $$\begin{aligned}P(T)&amp;=0{,}6\cdot0{,}15+0{,}4\cdot0{,}25\\&amp;=0{,}09+0{,}10=0{,}19.\end{aligned}$$</li>
+      <li><span class="step-label">Kiểm tra nhanh:</span> kết quả phải nằm <b>giữa</b> hai tỉ lệ $0{,}15$ và $0{,}25$, và gần $0{,}15$ hơn vì cơ sở I đông hơn. $0{,}19$ thoả cả hai.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q21">
+  <div class="ex-head"><span class="ex-num">Câu 21</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Bayes · điều kiện phủ định · số người</span></div>
+  <p>Một bệnh viện Răng Hàm Mặt có $1200$ bệnh nhân đang theo dõi, trong đó có $500$ nam. Tỉ lệ viêm nha chu ở nam là $30\%$, ở nữ là $20\%$. Chọn ngẫu nhiên một bệnh nhân và biết người đó <b>không</b> bị viêm nha chu. Xác suất người đó là nam bằng (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}3846$</button>
+      <button data-k="b"><b>B.</b> $0{,}5172$</button>
+      <button data-k="c"><b>C.</b> $0{,}2917$</button>
+      <button data-k="d"><b>D.</b> $0{,}7000$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Trong $910$ người không viêm nha chu có $350$ nam: $\frac{350}{910}=\frac{5}{13}\approx0{,}3846$. Bayes với điều kiện phủ định: dùng tỉ lệ <b>không</b> bệnh $0{,}7$ (nam) và $0{,}8$ (nữ).</div>
+    <div class="qc-fb" data-k="b">$0{,}5172=\frac{150}{290}$ là xác suất là nam khi biết người đó <b>có</b> viêm nha chu. Đề cho biết người đó <b>không</b> bị bệnh, nên phải dùng $1-0{,}3=0{,}7$ và $1-0{,}2=0{,}8$.</div>
+    <div class="qc-fb" data-k="c">$0{,}2917=\frac{350}{1200}$ là xác suất "là nam <b>và</b> không bệnh" (mẫu số là cả bệnh viện). Biết người đó không bệnh tức là đã thu hẹp xuống còn $910$ người không bệnh: phải chia cho $910$ chứ không phải $1200$.</div>
+    <div class="qc-fb" data-k="d">$0{,}7$ là $P(\overline{V}\mid N)$: tỉ lệ không bệnh <b>trong nhóm nam</b>. Đề hỏi chiều ngược lại, $P(N\mid\overline{V})$: tỉ lệ nam <b>trong nhóm không bệnh</b>. Hai xác suất này khác nhau.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Kí hiệu:</span> $N$: bệnh nhân là nam; $\overline{N}$: là nữ; $V$: bị viêm nha chu; $\overline{V}$: không bị. Cần tìm $P(N\mid\overline{V})$.</li>
+      <li><span class="step-label">Bước 1:</span> Đổi số người ra xác suất: $P(N)=\frac{500}{1200}=\frac{5}{12}$, $P(\overline{N})=\frac{700}{1200}=\frac{7}{12}$.</li>
+      <li><span class="step-label">Bước 2:</span> Tỉ lệ <b>không</b> bệnh trong từng nhóm: $P(\overline{V}\mid N)=1-0{,}3=0{,}7$; $P(\overline{V}\mid\overline{N})=1-0{,}2=0{,}8$.</li>
+      <li><span class="step-label">Bước 3:</span> Đếm bằng số người cho dễ thấy: nam không bệnh $500\cdot0{,}7=350$ người; nữ không bệnh $700\cdot0{,}8=560$ người; tổng không bệnh $910$ người. (Tương đương toàn phần: $P(\overline{V})=\frac{910}{1200}\approx0{,}7583$.)</li>
+      <li><span class="step-label">Bước 4:</span> Bayes = nhánh nam chia tổng:
+        $$\begin{aligned}P(N\mid\overline{V})&amp;=\frac{350}{350+560}\\&amp;=\frac{350}{910}=\frac{5}{13}\approx0{,}3846.\end{aligned}$$</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q22">
+  <div class="ex-head"><span class="ex-num">Câu 22</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ba nguồn · toàn phần + Bayes</span></div>
+  <p>Một labo nha khoa làm mão sứ trên ba máy CAD/CAM. Máy $M_1$ làm $45\%$ số mão, máy $M_2$ làm $35\%$, máy $M_3$ làm $20\%$. Tỉ lệ mão bị hở bờ (lỗi) của ba máy lần lượt là $2\%$, $4\%$, $6\%$. Lấy ngẫu nhiên một mão trong kho thì thấy mão bị hở bờ. Xác suất mão đó do máy $M_2$ làm là:</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}35$</button>
+      <button data-k="b"><b>B.</b> $0{,}014$</button>
+      <button data-k="c"><b>C.</b> $0{,}3333$</button>
+      <button data-k="d"><b>D.</b> $0{,}40$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}35$ là tỉ trọng của $M_2$ <b>trước khi</b> biết mão bị lỗi. Thông tin "mão bị hở bờ" làm thay đổi xác suất: $M_2$ lỗi nhiều hơn $M_1$ nên khả năng mão lỗi đến từ $M_2$ phải tăng lên.</div>
+    <div class="qc-fb" data-k="b">$0{,}014=0{,}35\cdot0{,}04$ mới là nhánh "do $M_2$ làm <b>và</b> bị lỗi". Bayes còn phải chia cho tổng mọi nhánh lỗi $P(L)=0{,}035$.</div>
+    <div class="qc-fb" data-k="c">$\frac{0{,}04}{0{,}02+0{,}04+0{,}06}\approx0{,}3333$: bạn chỉ so sánh tỉ lệ lỗi mà quên nhân với tỉ trọng sản lượng. Ba máy làm số mão khác nhau ($45\%$, $35\%$, $20\%$) nên phải nhân vào.</div>
+    <div class="qc-fb" data-k="d">$P(L)=0{,}009+0{,}014+0{,}012=0{,}035$, nên $P(M_2\mid L)=\frac{0{,}014}{0{,}035}=0{,}40$. Bayes = nhánh của $M_2$ chia tổng các nhánh dẫn tới lỗi.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Kí hiệu:</span> $M_i$: mão do máy thứ $i$ làm; $L$: mão bị hở bờ. Cần tìm $P(M_2\mid L)$.</li>
+      <li><span class="step-label">Bước 1:</span> Hệ đầy đủ $\{M_1,M_2,M_3\}$: $P(M_1)=0{,}45$, $P(M_2)=0{,}35$, $P(M_3)=0{,}20$ (tổng $=1$).</li>
+      <li><span class="step-label">Bước 2:</span> Tính từng nhánh "máy và lỗi":
+        $$\begin{aligned}&amp;0{,}45\cdot0{,}02=0{,}009\\&amp;0{,}35\cdot0{,}04=0{,}014\\&amp;0{,}20\cdot0{,}06=0{,}012\end{aligned}$$</li>
+      <li><span class="step-label">Bước 3:</span> Toàn phần: $P(L)=0{,}009+0{,}014+0{,}012=0{,}035$.</li>
+      <li><span class="step-label">Bước 4:</span> Bayes:
+        $$P(M_2\mid L)=\frac{0{,}014}{0{,}035}=0{,}40.$$</li>
+      <li><span class="step-label">Nhận xét:</span> trước khi thấy lỗi, $M_2$ chiếm $35\%$; sau khi thấy lỗi, khả năng là $M_2$ tăng lên $40\%$. Còn $M_1$ giảm từ $45\%$ xuống $\frac{0{,}009}{0{,}035}\approx25{,}7\%$ vì $M_1$ ít lỗi nhất.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q23">
+  <div class="ex-head"><span class="ex-num">Câu 23</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Chọn nhóm rồi lấy mẫu · tổ hợp</span></div>
+  <p>Phòng thủ thuật có hai khay ống thuốc tê. Khay I có $10$ ống, trong đó $7$ ống còn hạn và $3$ ống đã hết hạn. Khay II có $6$ ống, trong đó $4$ ống còn hạn và $2$ ống hết hạn. Một trợ thủ chọn ngẫu nhiên một khay (hai khay đồng khả năng), rồi từ khay đó lấy ngẫu nhiên cùng lúc $2$ ống. Xác suất cả $2$ ống đều còn hạn bằng (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}4583$</button>
+      <button data-k="b"><b>B.</b> $0{,}4333$</button>
+      <button data-k="c"><b>C.</b> $0{,}8667$</button>
+      <button data-k="d"><b>D.</b> $0{,}4672$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\frac{C_{11}^2}{C_{16}^2}=\frac{55}{120}\approx0{,}4583$: bạn đã gộp hai khay thành một hộp $16$ ống. Nhưng $2$ ống được lấy từ <b>cùng một khay</b> đã chọn, nên phải tách hai nhánh "chọn khay I" và "chọn khay II".</div>
+    <div class="qc-fb" data-k="b">$P(C)=0{,}5\cdot\frac{21}{45}+0{,}5\cdot\frac{6}{15}=\frac{13}{30}\approx0{,}4333$. Nguồn là khay được chọn; trong từng khay tính bằng tổ hợp, rồi ghép lại bằng công thức toàn phần.</div>
+    <div class="qc-fb" data-k="c">$\frac{21}{45}+\frac{6}{15}\approx0{,}8667$: bạn quên nhân với xác suất chọn mỗi khay $0{,}5$. Dấu hiệu sai: tổng hai xác suất có điều kiện thì có thể vượt $1$, không thể là một xác suất toàn phần.</div>
+    <div class="qc-fb" data-k="d">$0{,}5\cdot0{,}7^2+0{,}5\cdot\left(\frac46\right)^2\approx0{,}4672$: bạn coi như lấy <b>có hoàn lại</b> (ống thứ hai vẫn có xác suất còn hạn như ống thứ nhất). Lấy cùng lúc $2$ ống là không hoàn lại, phải dùng $C_7^2/C_{10}^2$ và $C_4^2/C_6^2$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Kí hiệu:</span> $K_1$: chọn khay I; $K_2$: chọn khay II; $C$: cả $2$ ống lấy ra đều còn hạn.</li>
+      <li><span class="step-label">Bước 1:</span> Hệ đầy đủ $\{K_1,K_2\}$ với $P(K_1)=P(K_2)=0{,}5$.</li>
+      <li><span class="step-label">Bước 2:</span> Trong khay I (10 ống, 7 còn hạn), số cách lấy 2 ống bất kì là $C_{10}^2=45$, số cách lấy 2 ống còn hạn là $C_7^2=21$:
+        $$P(C\mid K_1)=\frac{21}{45}\approx0{,}4667.$$</li>
+      <li><span class="step-label">Bước 3:</span> Trong khay II (6 ống, 4 còn hạn): $C_6^2=15$, $C_4^2=6$:
+        $$P(C\mid K_2)=\frac{6}{15}=0{,}4.$$</li>
+      <li><span class="step-label">Bước 4:</span> Toàn phần:
+        $$\begin{aligned}P(C)&amp;=0{,}5\cdot\tfrac{21}{45}+0{,}5\cdot\tfrac{6}{15}\\&amp;=\tfrac{13}{30}\approx0{,}4333.\end{aligned}$$</li>
+      <li><span class="step-label">Bấm máy:</span> MENU 1, nhập <code>0.5×(7 SHIFT ÷ 2)÷(10 SHIFT ÷ 2)+0.5×(4 SHIFT ÷ 2)÷(6 SHIFT ÷ 2)</code> rồi bấm <code>=</code> (SHIFT ÷ là $nCr$).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q24">
+  <div class="ex-head"><span class="ex-num">Câu 24</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Toàn phần qua các lần rút không hoàn lại</span></div>
+  <p>Một hộp có $12$ mũi khoan nội nha, trong đó $8$ mũi mới và $4$ mũi đã dùng. Bác sĩ lấy lần lượt từng mũi, <b>không hoàn lại</b>, và không nhìn trước. Xác suất mũi lấy ra ở <b>lần thứ 3</b> là mũi mới bằng (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}6000$</button>
+      <button data-k="b"><b>B.</b> $0{,}2545$</button>
+      <button data-k="c"><b>C.</b> $0{,}6667$</button>
+      <button data-k="d"><b>D.</b> $0{,}4970$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\frac{6}{10}=0{,}6$ đúng là xác suất mũi thứ 3 mới <b>nếu</b> hai mũi đầu đều mới. Nhưng đề không cho biết hai mũi đầu ra sao, nên phải xét đủ cả $4$ khả năng của hai lần đầu (mới–mới, mới–cũ, cũ–mới, cũ–cũ).</div>
+    <div class="qc-fb" data-k="b">$\frac{8}{12}\cdot\frac{7}{11}\cdot\frac{6}{10}\approx0{,}2545$ là xác suất <b>cả ba</b> mũi đều mới. Đề chỉ hỏi về mũi thứ 3; hai mũi đầu mới hay cũ đều được.</div>
+    <div class="qc-fb" data-k="c">Cộng $4$ nhánh: $\frac{336+224+224+96}{1320}=\frac{880}{1320}=\frac23\approx0{,}6667$. Đúng bằng tỉ lệ mũi mới ban đầu $\frac{8}{12}$: khi không biết gì về các lần trước, lần rút thứ mấy cũng có cùng xác suất.</div>
+    <div class="qc-fb" data-k="d">$\frac{656}{1320}\approx0{,}4970$: bạn đã bỏ sót một trong hai nhánh giữa (mới–cũ hoặc cũ–mới). "Mũi 1 mới, mũi 2 cũ" và "mũi 1 cũ, mũi 2 mới" là hai nhánh khác nhau, mỗi nhánh $\frac{224}{1320}$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> kết quả lần 3 phụ thuộc vào việc hai lần đầu đã lấy đi những mũi gì. Vậy "nguồn" chính là kết quả của hai lần đầu. Có 4 khả năng, chúng lập thành hệ đầy đủ, nên dùng công thức toàn phần.</li>
+      <li><span class="step-label">Kí hiệu:</span> $M_k$: mũi lấy ở lần thứ $k$ là mũi mới; $\overline{M_k}$: mũi đã dùng.</li>
+      <li><span class="step-label">Bước 1:</span> Xác suất 4 nhánh của hai lần đầu (12 mũi: 8 mới, 4 cũ; lấy xong không trả lại):
+        $$\begin{aligned}&amp;P(M_1M_2)=\tfrac{8}{12}\cdot\tfrac{7}{11}=\tfrac{56}{132}\\&amp;P(M_1\overline{M_2})=\tfrac{8}{12}\cdot\tfrac{4}{11}=\tfrac{32}{132}\\&amp;P(\overline{M_1}M_2)=\tfrac{4}{12}\cdot\tfrac{8}{11}=\tfrac{32}{132}\\&amp;P(\overline{M_1}\,\overline{M_2})=\tfrac{4}{12}\cdot\tfrac{3}{11}=\tfrac{12}{132}\end{aligned}$$
+        Kiểm tra: $56+32+32+12=132$, tổng bằng $1$.</li>
+      <li><span class="step-label">Bước 2:</span> Sau hai lần đầu còn $10$ mũi. Số mũi mới còn lại tương ứng là $6$, $7$, $7$, $8$, nên xác suất lần 3 mới là $\frac{6}{10}$, $\frac{7}{10}$, $\frac{7}{10}$, $\frac{8}{10}$.</li>
+      <li><span class="step-label">Bước 3:</span> Toàn phần:
+        $$\begin{aligned}P(M_3)&amp;=\tfrac{56}{132}\cdot\tfrac{6}{10}+\tfrac{32}{132}\cdot\tfrac{7}{10}\\&amp;\quad+\tfrac{32}{132}\cdot\tfrac{7}{10}+\tfrac{12}{132}\cdot\tfrac{8}{10}\\&amp;=\tfrac{336+224+224+96}{1320}\\&amp;=\tfrac{880}{1320}=\tfrac23\approx0{,}6667.\end{aligned}$$</li>
+      <li><span class="step-label">Nhận xét:</span> kết quả đúng bằng $\frac{8}{12}$. Nếu chưa biết gì về các lần trước, mũi thứ 3 cũng "ngẫu nhiên như mũi đầu tiên". Mẹo này giúp kiểm tra nhanh đáp án, nhưng khi đề cho thêm thông tin về các lần trước thì phải tính lại (xem Câu 25).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q25">
+  <div class="ex-head"><span class="ex-num">Câu 25</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bayes "ngược thời gian" · chọn nhóm rồi rút</span></div>
+  <p>Phòng xét nghiệm có hai khay ống mẫu nước bọt. Khay A có $8$ ống, trong đó $6$ ống đạt chuẩn. Khay B có $6$ ống, trong đó $3$ ống đạt chuẩn. Kĩ thuật viên chọn ngẫu nhiên một khay (hai khay đồng khả năng), rồi từ khay đó lấy lần lượt $2$ ống, <b>không hoàn lại</b>. Biết <b>ống thứ hai</b> đạt chuẩn. Xác suất <b>ống thứ nhất</b> cũng đạt chuẩn bằng (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}5886$</button>
+      <button data-k="b"><b>B.</b> $0{,}3679$</button>
+      <button data-k="c"><b>C.</b> $0{,}5571$</button>
+      <button data-k="d"><b>D.</b> $0{,}6154$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$P(Đ_1\mid Đ_2)=\frac{P(Đ_1Đ_2)}{P(Đ_2)}=\frac{0{,}36786}{0{,}625}\approx0{,}5886$. Tử số và mẫu số đều tính bằng toàn phần theo hai khay. Thông tin về lần sau vẫn được dùng để suy ngược về lần trước.</div>
+    <div class="qc-fb" data-k="b">$0{,}3679$ là $P(Đ_1Đ_2)$, xác suất <b>cả hai</b> ống đạt. Đề đã cho biết ống thứ hai đạt, nên phải chia cho $P(Đ_2)=0{,}625$.</div>
+    <div class="qc-fb" data-k="c">$\frac12\left(\frac57+\frac25\right)\approx0{,}5571$: bạn vẫn giữ trọng số $0{,}5$ cho mỗi khay. Nhưng "ống thứ hai đạt" là dấu hiệu nghiêng về khay A (khay A nhiều ống đạt hơn). Sau thông tin này, xác suất là khay A tăng lên $0{,}6$ và khay B giảm còn $0{,}4$: $0{,}6\cdot\frac57+0{,}4\cdot\frac25\approx0{,}5886$.</div>
+    <div class="qc-fb" data-k="d">$\frac{8}{13}\approx0{,}6154$: bạn đã gộp hai khay thành một hộp $14$ ống ($9$ đạt). Hai ống được lấy từ <b>cùng một khay</b>, nên phải tách nhánh theo khay đã chọn.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> "Biết ống 2, hỏi ống 1" là xác suất có điều kiện bình thường: $P(Đ_1\mid Đ_2)=\frac{P(Đ_1Đ_2)}{P(Đ_2)}$. Thời gian không quan trọng, chỉ cần tính được tử và mẫu. Vì chưa biết khay nào, cả hai đều tính bằng toàn phần theo hệ đầy đủ {khay A, khay B}.</li>
+      <li><span class="step-label">Kí hiệu:</span> $A$: chọn khay A; $B$: chọn khay B; $Đ_k$: ống lấy ở lần thứ $k$ đạt chuẩn. $P(A)=P(B)=0{,}5$.</li>
+      <li><span class="step-label">Bước 1 · $P(Đ_2\mid A)$:</span> trong khay A ($8$ ống, $6$ đạt), xét hai khả năng của ống 1:
+        $$\begin{aligned}P(Đ_2\mid A)&amp;=\tfrac68\cdot\tfrac57+\tfrac28\cdot\tfrac67\\&amp;=\tfrac{30+12}{56}=\tfrac68=0{,}75.\end{aligned}$$
+        Tương tự khay B ($6$ ống, $3$ đạt): $P(Đ_2\mid B)=\frac36=0{,}5$ (giống Câu 24: chưa biết ống 1 thì ống 2 có xác suất như ống 1).</li>
+      <li><span class="step-label">Bước 2 · Mẫu số:</span>
+        $$\begin{aligned}P(Đ_2)&amp;=0{,}5\cdot0{,}75+0{,}5\cdot0{,}5\\&amp;=0{,}625.\end{aligned}$$</li>
+      <li><span class="step-label">Bước 3 · Tử số:</span> cả hai ống đạt, tính trong từng khay rồi ghép:
+        $$\begin{aligned}P(Đ_1Đ_2)&amp;=0{,}5\cdot\tfrac68\cdot\tfrac57\\&amp;\quad+0{,}5\cdot\tfrac36\cdot\tfrac25\\&amp;\approx0{,}26786+0{,}1\\&amp;=0{,}36786.\end{aligned}$$</li>
+      <li><span class="step-label">Bước 4:</span>
+        $$\begin{aligned}P(Đ_1\mid Đ_2)&amp;=\frac{0{,}36786}{0{,}625}\\&amp;=\frac{103}{175}\approx0{,}5886.\end{aligned}$$</li>
+      <li><span class="step-label">Kiểm tra bằng cách khác:</span> Bayes cho khay: $P(A\mid Đ_2)=\frac{0{,}5\cdot0{,}75}{0{,}625}=0{,}6$, $P(B\mid Đ_2)=0{,}4$. Biết ống 2 đạt, trong khay A còn $7$ ống cho lần 1 với $5$ ống đạt, nên xác suất là $\frac57$; khay B là $\frac25$. Vậy $0{,}6\cdot\frac57+0{,}4\cdot\frac25\approx0{,}5886$, trùng kết quả.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b1-tn-c5">Chặng 5 · Đề chỉ cho câu so sánh — tự lập phương trình</h3>
+<p>Chặng này luyện đúng dạng dễ bí nhất: đề cho tỉ lệ khỏi của từng phương pháp nhưng <b>không</b> nói bao nhiêu phần trăm bệnh nhân được điều trị bằng mỗi phương pháp — con số đó bị giấu trong một câu so sánh (“gấp đôi”, “bằng nhau”, “nhiều hơn 25%”, “nhiều hơn 115 người”…). Làm hết 8 câu, bạn sẽ gặp đủ các kiểu nói, cả kiểu nói ngược chiều, kiểu so sánh số người <b>được điều trị</b>, kiểu cho số người cụ thể, hệ hai ẩn và biến thể với xét nghiệm.</p>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Cách làm dạng này</span><span>4 bước — lần nào cũng như nhau</span></div>
+  <ol class="steps">
+    <li><span class="step-label">Bước 1 — Đặt ẩn:</span> $x=P(\mathrm I)$ là tỉ lệ bệnh nhân điều trị bằng phương pháp I; $\{\mathrm I,\mathrm{II}\}$ là hệ đầy đủ nên $P(\mathrm{II})=1-x$. Tỉ lệ khỏi đề cho là xác suất có điều kiện: $a=P(K\mid\mathrm I)$, $b=P(K\mid\mathrm{II})$.</li>
+    <li><span class="step-label">Bước 2 — Dịch câu so sánh thành “gấp $k$ lần”:</span> “số người khỏi của I” tỉ lệ với $P(\mathrm I\cap K)=x\,a$, “số người khỏi của II” tỉ lệ với $(1-x)\,b$. Câu “số người khỏi của II gấp $k$ lần của I” thành $(1-x)\,b=k\,x\,a$. Bảng dịch:
+      <div class="table-wrap"><table class="compact">
+        <tr><th class="left">Đề nói (II so với I)</th><th>$k$</th></tr>
+        <tr><td class="left">bằng nhau</td><td>$1$</td></tr>
+        <tr><td class="left">gấp rưỡi · gấp đôi · gấp 3</td><td>$1{,}5$ · $2$ · $3$</td></tr>
+        <tr><td class="left">bằng một nửa</td><td>$0{,}5$</td></tr>
+        <tr><td class="left">nhiều hơn $25\%$</td><td>$1+0{,}25=1{,}25$</td></tr>
+        <tr><td class="left">ít hơn $20\%$</td><td>$1-0{,}2=0{,}8$</td></tr>
+      </table></div>
+      Đề nói ngược chiều (“của <b>I</b> gấp $k$ lần của II”) thì viết đúng theo câu chữ: $x\,a=k\,(1-x)\,b$.</li>
+    <li><span class="step-label">Bước 3 — Giải</span> phương trình bậc nhất theo $x$ (đưa hết số hạng chứa $x$ về một vế rồi chia).</li>
+    <li><span class="step-label">Bước 4 — Dùng $x$:</span> toàn phần $P(K)=x\,a+(1-x)\,b$; Bayes $P(\mathrm I\mid K)=\dfrac{x\,a}{P(K)}$, $P(\mathrm I\mid\overline K)=\dfrac{x\,(1-a)}{1-P(K)}$.</li>
+  </ol>
+  <p class="small"><b>Đường tắt</b> $P(\mathrm I\mid K)=\dfrac{1}{1+k}$ chỉ đúng khi câu so sánh nói về <b>số người khỏi</b>. Nếu đề so sánh số người <b>được điều trị</b>, hoặc hỏi người <b>không khỏi</b>, thì phải tính đủ bằng Bayes. Xem lại lí thuyết ở <a href="#nd-lap-pt">mục 12.1</a>.</p>
+</div>
+
+<div class="ex mcq" id="b1q26">
+  <div class="ex-head"><span class="ex-num">Câu 26</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Lập phương trình · gấp đôi</span></div>
+  <p>Một phòng khám điều trị ê buốt răng (nhạy cảm ngà) bằng hai phương pháp, mỗi bệnh nhân dùng đúng một phương pháp: phương pháp I (bôi vecni fluor) có tỉ lệ khỏi $40\%$, phương pháp II (chiếu laser) có tỉ lệ khỏi $70\%$. Biết <b>số người khỏi bệnh của phương pháp II gấp đôi số người khỏi bệnh của phương pháp I</b>. Tỉ lệ bệnh nhân được điều trị bằng phương pháp I là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}3333$</button>
+      <button data-k="b"><b>B.</b> $0{,}4667$</button>
+      <button data-k="c"><b>C.</b> $0{,}5333$</button>
+      <button data-k="d"><b>D.</b> $0{,}7778$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\frac13=\frac{1}{1+2}$ là kết quả khi hiểu nhầm thành “số người <b>được điều trị</b> bằng II gấp đôi I” ($1-x=2x$). Đề nói số người <b>khỏi</b>, nên phải nhân tỉ lệ khỏi: $(1-x)\cdot0{,}7=2\cdot0{,}4x$.</div>
+    <div class="qc-fb" data-k="b">$(1-x)\cdot0{,}7=2\cdot0{,}4x\Rightarrow0{,}7=1{,}5x\Rightarrow x=\frac{7}{15}\approx0{,}4667$.</div>
+    <div class="qc-fb" data-k="c">$0{,}5333=\frac{8}{15}$ là $1-x=P(\mathrm{II})$ — tỉ lệ bệnh nhân của phương pháp II. Câu hỏi hỏi phương pháp I.</div>
+    <div class="qc-fb" data-k="d">Đây là kết quả khi viết ngược chiều: $0{,}4x=2\cdot0{,}7(1-x)$ (“I gấp đôi II”) $\Rightarrow x=\frac{1{,}4}{1{,}8}\approx0{,}7778$. Đề nói số người khỏi của <b>II</b> gấp đôi của I.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Đặt tên:</span> $\mathrm I$, $\mathrm{II}$: điều trị bằng phương pháp I, II; $K$: khỏi. $P(K\mid\mathrm I)=0{,}4$, $P(K\mid\mathrm{II})=0{,}7$.</li>
+      <li><span class="step-label">Đặt ẩn:</span> $x=P(\mathrm I)$, $P(\mathrm{II})=1-x$.</li>
+      <li><span class="step-label">Dịch câu so sánh:</span> số người khỏi của I tỉ lệ với $P(\mathrm I\cap K)=0{,}4x$; của II tỉ lệ với $P(\mathrm{II}\cap K)=0{,}7(1-x)$. “Gấp đôi” ($k=2$): $$0{,}7(1-x)=2\cdot0{,}4x.$$</li>
+      <li><span class="step-label">Giải:</span> $0{,}7-0{,}7x=0{,}8x\Rightarrow0{,}7=1{,}5x\Rightarrow x=\dfrac{0{,}7}{1{,}5}=\dfrac{7}{15}\approx\mathbf{0{,}4667}$.</li>
+      <li><span class="step-label">Thử lại:</span> trên 15 người: I có 7 người, khỏi $2{,}8$; II có 8 người, khỏi $5{,}6=2\cdot2{,}8$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q27">
+  <div class="ex-head"><span class="ex-num">Câu 27</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Lập phương trình · bằng nhau · toàn phần</span></div>
+  <p>Viêm nướu được điều trị bằng hai cách (mỗi người đúng một cách): cách I (súc miệng chlorhexidine) khỏi $75\%$, cách II (chỉ hướng dẫn chải răng đúng) khỏi $60\%$. Biết <b>số người khỏi bệnh của hai cách bằng nhau</b>. Tỉ lệ khỏi bệnh chung của tất cả bệnh nhân là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}3333$</button>
+      <button data-k="b"><b>B.</b> $0{,}675$</button>
+      <button data-k="c"><b>C.</b> $0{,}6833$</button>
+      <button data-k="d"><b>D.</b> $0{,}6667$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}3333$ chỉ là $P(\mathrm I\cap K)=\frac49\cdot0{,}75$ — mới tính số người khỏi của một cách. Toàn phần phải cộng cả hai: $\frac13+\frac13$.</div>
+    <div class="qc-fb" data-k="b">$0{,}675=\frac{0{,}75+0{,}6}{2}$ là lấy trung bình cộng, tức coi như hai cách có <b>số bệnh nhân</b> bằng nhau. Đề nói số người <b>khỏi</b> bằng nhau, nên cách II (khỏi ít hơn) phải có nhiều bệnh nhân hơn.</div>
+    <div class="qc-fb" data-k="c">$0{,}6833$ là khi đặt nhầm $x=\frac{0{,}75}{1{,}35}=\frac59$ (đảo vai $a$ và $b$). Từ $0{,}75x=0{,}6(1-x)$ ra $x=\frac{0{,}6}{1{,}35}=\frac49$ — nhóm khỏi nhiều hơn phải ít người hơn.</div>
+    <div class="qc-fb" data-k="d">$x=\frac49$, $P(K)=\frac49\cdot0{,}75+\frac59\cdot0{,}6=\frac13+\frac13=\frac23\approx0{,}6667$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Đặt ẩn:</span> $x=P(\mathrm I)$, $P(\mathrm{II})=1-x$; $P(K\mid\mathrm I)=0{,}75$, $P(K\mid\mathrm{II})=0{,}6$.</li>
+      <li><span class="step-label">Dịch “bằng nhau” ($k=1$):</span> $0{,}75x=0{,}6(1-x)$.</li>
+      <li><span class="step-label">Giải:</span> $0{,}75x+0{,}6x=0{,}6\Rightarrow1{,}35x=0{,}6\Rightarrow x=\dfrac{0{,}6}{1{,}35}=\dfrac49$.</li>
+      <li><span class="step-label">Toàn phần:</span> $$\begin{aligned}P(K)&amp;=\tfrac49\cdot0{,}75+\tfrac59\cdot0{,}6\\&amp;=\tfrac13+\tfrac13=\tfrac23\approx\mathbf{0{,}6667}.\end{aligned}$$</li>
+      <li><span class="step-label">Nhận xét:</span> hai phần $P(\mathrm I\cap K)$ và $P(\mathrm{II}\cap K)$ bằng nhau đúng như câu so sánh — nên $P(\mathrm I\mid K)=\frac12$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q28">
+  <div class="ex-head"><span class="ex-num">Câu 28</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Lập phương trình · nhiều hơn 25% · toàn phần</span></div>
+  <p>Loét áp-tơ miệng được điều trị bằng hai phương pháp (mỗi người đúng một phương pháp): phương pháp I (thuốc bôi corticoid) khỏi $70\%$, phương pháp II (laser công suất thấp) khỏi $80\%$. Biết <b>số người khỏi bệnh của phương pháp II nhiều hơn số người khỏi bệnh của phương pháp I là $25\%$</b>. Tỉ lệ khỏi bệnh chung là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}7522$</button>
+      <button data-k="b"><b>B.</b> $0{,}75$</button>
+      <button data-k="c"><b>C.</b> $0{,}7179$</button>
+      <button data-k="d"><b>D.</b> $0{,}7396$</button>
+    </div>
+    <div class="qc-fb" data-k="a">“Nhiều hơn $25\%$” là $k=1{,}25$: $0{,}8(1-x)=1{,}25\cdot0{,}7x\Rightarrow x=\frac{0{,}8}{1{,}675}\approx0{,}4776$, rồi $P(K)=0{,}7x+0{,}8(1-x)\approx0{,}7522$.</div>
+    <div class="qc-fb" data-k="b">$0{,}75$ là trung bình cộng $\frac{0{,}7+0{,}8}{2}$ — coi như hai nhóm đông bằng nhau. Câu so sánh cho biết hai nhóm <b>không</b> đông bằng nhau; phải tìm $x$ trước.</div>
+    <div class="qc-fb" data-k="c">Đây là kết quả khi lấy $k=0{,}25$ (chỉ lấy “phần nhiều hơn”). Nhiều hơn $25\%$ nghĩa là bằng của I cộng thêm $25\%$ của I: $k=1+0{,}25=1{,}25$.</div>
+    <div class="qc-fb" data-k="d">Đây là kết quả khi lấy $k=0{,}75=1-0{,}25$ — đó là “<b>ít hơn</b> $25\%$”. Đề nói nhiều hơn nên $k=1{,}25$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> muốn tính $P(K)$ bằng toàn phần phải có $P(\mathrm I)$, mà đề giấu nó trong câu so sánh → đặt ẩn, dịch câu so sánh, giải, rồi mới toàn phần.</li>
+      <li><span class="step-label">Đặt ẩn:</span> $x=P(\mathrm I)$, $P(\mathrm{II})=1-x$; $a=0{,}7$, $b=0{,}8$.</li>
+      <li><span class="step-label">Dịch “nhiều hơn $25\%$”:</span> số người khỏi của II $=$ của I $+\,25\%$ của I $=1{,}25$ lần của I: $$0{,}8(1-x)=1{,}25\cdot0{,}7x=0{,}875x.$$</li>
+      <li><span class="step-label">Giải:</span> $0{,}8=0{,}8x+0{,}875x=1{,}675x\Rightarrow x=\dfrac{0{,}8}{1{,}675}=\dfrac{32}{67}\approx0{,}4776$.</li>
+      <li><span class="step-label">Toàn phần:</span> $$\begin{aligned}P(K)&amp;=0{,}7\cdot\tfrac{32}{67}+0{,}8\cdot\tfrac{35}{67}\\&amp;=\tfrac{22{,}4+28}{67}=\tfrac{50{,}4}{67}\\&amp;\approx\mathbf{0{,}7522}.\end{aligned}$$</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q29">
+  <div class="ex-head"><span class="ex-num">Câu 29</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Đề nói ngược chiều · Bayes với “không khỏi”</span></div>
+  <p>Viêm quanh cuống răng được điều trị bằng hai phương pháp (mỗi người đúng một phương pháp): phương pháp I (điều trị nội nha lại) khỏi $90\%$, phương pháp II (chỉ dùng kháng sinh) khỏi $60\%$. Biết <b>số người khỏi bệnh của phương pháp I gấp 3 lần số người khỏi bệnh của phương pháp II</b>. Chọn ngẫu nhiên một bệnh nhân <b>không khỏi</b>. Xác suất người đó đã được điều trị bằng phương pháp I là:</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $\frac34$</button>
+      <button data-k="b"><b>B.</b> $\frac23$</button>
+      <button data-k="c"><b>C.</b> $\frac13$</button>
+      <button data-k="d"><b>D.</b> $\frac{1}{19}\approx0{,}0526$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\frac34=\frac{3}{1+3}$ là $P(\mathrm I\mid K)$ — xác suất thuộc I của người <b>đã khỏi</b> (đường tắt). Câu hỏi về người <b>không khỏi</b>, đường tắt không dùng được, phải tính Bayes với $\overline K$.</div>
+    <div class="qc-fb" data-k="b">$\frac23$ là $x=P(\mathrm I)$ — tỉ lệ của I trong <b>tất cả</b> bệnh nhân. Biết người đó không khỏi thì phải chia cho $P(\overline K)$.</div>
+    <div class="qc-fb" data-k="c">$x=\frac23$, $P(\overline K)=\frac23\cdot0{,}1+\frac13\cdot0{,}4=0{,}2$, nên $P(\mathrm I\mid\overline K)=\frac{\frac23\cdot0{,}1}{0{,}2}=\frac13$.</div>
+    <div class="qc-fb" data-k="d">Đây là kết quả khi viết phương trình theo thói quen “II gấp 3 I”: $0{,}6(1-x)=3\cdot0{,}9x\Rightarrow x=\frac{2}{11}$. Đề nói ngược chiều: số người khỏi của <b>I</b> gấp 3 của II, tức $0{,}9x=3\cdot0{,}6(1-x)$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> Bayes cho người không khỏi cần $P(\mathrm I)$ và $P(\overline K\mid\mathrm I)=1-0{,}9$. Tìm $P(\mathrm I)$ từ câu so sánh — chú ý câu nói <b>I gấp 3 II</b>.</li>
+      <li><span class="step-label">Đặt ẩn:</span> $x=P(\mathrm I)$, $P(\mathrm{II})=1-x$.</li>
+      <li><span class="step-label">Dịch đúng chiều:</span> (số khỏi của I) $=3\cdot$(số khỏi của II): $$0{,}9x=3\cdot0{,}6(1-x)=1{,}8-1{,}8x.$$</li>
+      <li><span class="step-label">Giải:</span> $2{,}7x=1{,}8\Rightarrow x=\dfrac{1{,}8}{2{,}7}=\dfrac23$.</li>
+      <li><span class="step-label">Xác suất không khỏi (toàn phần):</span> $P(\overline K\mid\mathrm I)=0{,}1$, $P(\overline K\mid\mathrm{II})=0{,}4$: $$\begin{aligned}P(\overline K)&amp;=\tfrac23\cdot0{,}1+\tfrac13\cdot0{,}4\\&amp;=\tfrac{0{,}2+0{,}4}{3}=0{,}2.\end{aligned}$$</li>
+      <li><span class="step-label">Bayes:</span> $P(\mathrm I\mid\overline K)=\dfrac{\frac23\cdot0{,}1}{0{,}2}=\dfrac{0{,}2/3}{0{,}2}=\mathbf{\dfrac13}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q30">
+  <div class="ex-head"><span class="ex-num">Câu 30</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">So sánh số người được điều trị · ít hơn 20% · Bayes</span></div>
+  <p>Nấm miệng (candida) được điều trị bằng hai phương pháp (mỗi người đúng một phương pháp): phương pháp I (thuốc bôi nystatin) khỏi $55\%$, phương pháp II (thuốc uống fluconazole) khỏi $85\%$. Biết <b>số bệnh nhân được điều trị bằng phương pháp II ít hơn số bệnh nhân được điều trị bằng phương pháp I là $20\%$</b>. Gặp ngẫu nhiên một người đã khỏi bệnh, xác suất người đó được điều trị bằng phương pháp I là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}5556$</button>
+      <button data-k="b"><b>B.</b> $0{,}4472$</button>
+      <button data-k="c"><b>C.</b> $0{,}7639$</button>
+      <button data-k="d"><b>D.</b> $0{,}3411$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}5556=\frac59$ vừa là $P(\mathrm I)$, vừa là đường tắt $\frac{1}{1+0{,}8}$. Đường tắt chỉ đúng khi so sánh số người <b>khỏi</b>; ở đây so sánh số người <b>được điều trị</b>, nên phải tính Bayes đầy đủ.</div>
+    <div class="qc-fb" data-k="b">$1-x=0{,}8x\Rightarrow x=\frac59$; $P(K)=\frac59\cdot0{,}55+\frac49\cdot0{,}85\approx0{,}6833$; $P(\mathrm I\mid K)=\frac{2{,}75}{6{,}15}\approx0{,}4472$.</div>
+    <div class="qc-fb" data-k="c">Đây là kết quả khi lấy $k=0{,}2$ ($1-x=0{,}2x$). “Ít hơn $20\%$” là bằng của I bớt đi $20\%$: $k=1-0{,}2=0{,}8$.</div>
+    <div class="qc-fb" data-k="d">Đây là kết quả khi viết ngược: $x=0{,}8(1-x)$ (I ít hơn II $20\%$) $\Rightarrow x=\frac49$. Đề nói nhóm <b>II</b> ít hơn nhóm I.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> câu so sánh nói về số người <b>được điều trị</b>, tức so sánh thẳng $P(\mathrm{II})$ với $P(\mathrm I)$ — không nhân tỉ lệ khỏi. Tìm $x$ xong mới dùng Bayes.</li>
+      <li><span class="step-label">Đặt ẩn:</span> $x=P(\mathrm I)$, $P(\mathrm{II})=1-x$.</li>
+      <li><span class="step-label">Dịch “ít hơn $20\%$” ($k=0{,}8$):</span> $1-x=0{,}8x\Rightarrow1=1{,}8x\Rightarrow x=\dfrac{1}{1{,}8}=\dfrac59$.</li>
+      <li><span class="step-label">Hai phần của toàn phần:</span> $P(\mathrm I\cap K)=\frac59\cdot0{,}55=\frac{2{,}75}{9}$; $P(\mathrm{II}\cap K)=\frac49\cdot0{,}85=\frac{3{,}4}{9}$; cộng lại $P(K)=\frac{6{,}15}{9}\approx0{,}6833$.</li>
+      <li><span class="step-label">Bayes:</span> $$\begin{aligned}P(\mathrm I\mid K)&amp;=\frac{2{,}75/9}{6{,}15/9}=\frac{2{,}75}{6{,}15}\\&amp;\approx\mathbf{0{,}4472}.\end{aligned}$$</li>
+      <li><span class="step-label">So sánh:</span> nhóm I đông hơn ($55{,}6\%$ bệnh nhân) nhưng chỉ chiếm $44{,}7\%$ người khỏi, vì tỉ lệ khỏi của I thấp hơn.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q31">
+  <div class="ex-head"><span class="ex-num">Câu 31</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Cho số người cụ thể · Bayes với “không khỏi”</span></div>
+  <p>Một khoa răng hàm mặt điều trị $500$ bệnh nhân viêm lợi trùm răng khôn bằng hai phương pháp (mỗi người đúng một phương pháp): phương pháp I (bơm rửa và kháng sinh) khỏi $70\%$, phương pháp II (cắt lợi trùm) khỏi $85\%$. Biết <b>số người khỏi bệnh của phương pháp II nhiều hơn của phương pháp I là $115$ người</b>. Chọn ngẫu nhiên một bệnh nhân <b>không khỏi</b>. Xác suất người đó được điều trị bằng phương pháp II là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}6$</button>
+      <button data-k="b"><b>B.</b> $0{,}5714$</button>
+      <button data-k="c"><b>C.</b> $0{,}6456$</button>
+      <button data-k="d"><b>D.</b> $0{,}4286$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}6=P(\mathrm{II})$ là tỉ lệ nhóm II trong <b>tất cả</b> $500$ bệnh nhân. Biết người đó không khỏi thì chỉ xét $105$ người không khỏi.</div>
+    <div class="qc-fb" data-k="b">$0{,}5714=\frac{60}{105}$ là xác suất thuộc phương pháp <b>I</b>. Câu hỏi hỏi phương pháp II: $\frac{45}{105}$.</div>
+    <div class="qc-fb" data-k="c">$0{,}6456=\frac{255}{395}$ là $P(\mathrm{II}\mid K)$ — xét người <b>đã khỏi</b>. Câu hỏi về người <b>không khỏi</b>.</div>
+    <div class="qc-fb" data-k="d">$500\cdot0{,}85(1-x)-500\cdot0{,}7x=115\Rightarrow x=0{,}4$: I có $200$ người ($60$ không khỏi), II có $300$ người ($45$ không khỏi) $\Rightarrow\frac{45}{105}=\frac37\approx0{,}4286$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> câu so sánh là một <b>hiệu số người</b>, không phải “gấp $k$ lần”, nên tổng $N=500$ không biến mất — phải giữ nó trong phương trình.</li>
+      <li><span class="step-label">Đặt ẩn:</span> $x=P(\mathrm I)$. Số người khỏi của I: $500\cdot0{,}7x=350x$; của II: $500\cdot0{,}85(1-x)=425-425x$.</li>
+      <li><span class="step-label">Lập phương trình:</span> $(425-425x)-350x=115$.</li>
+      <li><span class="step-label">Giải:</span> $425-775x=115\Rightarrow775x=310\Rightarrow x=0{,}4$. Vậy I có $200$ người, II có $300$ người.</li>
+      <li><span class="step-label">Thử lại:</span> khỏi của I $=200\cdot0{,}7=140$, của II $=300\cdot0{,}85=255$; $255-140=115$ ✓.</li>
+      <li><span class="step-label">Đếm người không khỏi:</span> I: $200-140=60$; II: $300-255=45$; tổng $105$ (tức $P(\overline K)=0{,}21$).</li>
+      <li><span class="step-label">Bayes:</span> $P(\mathrm{II}\mid\overline K)=\dfrac{45}{105}=\dfrac37\approx\mathbf{0{,}4286}$ (cùng kết quả với $\frac{0{,}6\cdot0{,}15}{0{,}21}$).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q32">
+  <div class="ex-head"><span class="ex-num">Câu 32</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hệ hai ẩn · tỉ lệ khỏi chung · bằng một nửa</span></div>
+  <p>Hôi miệng được điều trị bằng hai phương pháp (mỗi người đúng một phương pháp): phương pháp I (cạo lưỡi kết hợp súc miệng) có tỉ lệ khỏi $70\%$; tỉ lệ khỏi $b$ của phương pháp II <b>chưa biết</b>. Tỉ lệ khỏi chung của tất cả bệnh nhân là $63\%$, và <b>số người khỏi bệnh của phương pháp I bằng một nửa số người khỏi bệnh của phương pháp II</b>. Gọi $x$ là tỉ lệ bệnh nhân được điều trị bằng phương pháp I. Cặp $(x;\,b)$ đúng là:</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $\big(\tfrac13;\ 0{,}595\big)$</button>
+      <button data-k="b"><b>B.</b> $(0{,}3;\ 0{,}42)$</button>
+      <button data-k="c"><b>C.</b> $(0{,}3;\ 0{,}6)$</button>
+      <button data-k="d"><b>D.</b> $(0{,}5;\ 0{,}56)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Đây là kết quả khi hiểu nhầm thành số người <b>được điều trị</b> của I bằng một nửa của II ($x=0{,}5(1-x)\Rightarrow x=\frac13$). Đề so sánh số người <b>khỏi</b>.</div>
+    <div class="qc-fb" data-k="b">$x=0{,}3$ đúng, nhưng $0{,}42$ là $P(\mathrm{II}\cap K)=(1-x)\,b$ chứ chưa phải $b$. Phải chia cho $1-x=0{,}7$: $b=\frac{0{,}42}{0{,}7}=0{,}6$.</div>
+    <div class="qc-fb" data-k="c">Gọi $u=0{,}7x$ là phần khỏi của I thì phần khỏi của II là $2u$, nên $3u=0{,}63\Rightarrow u=0{,}21$, $x=0{,}3$, $(1-x)\,b=0{,}42\Rightarrow b=0{,}6$.</div>
+    <div class="qc-fb" data-k="d">Đây là khi coi hai nhóm đông bằng nhau ($x=0{,}5$, $0{,}63=\frac{0{,}7+b}{2}$). Không có dữ kiện nào nói vậy — và khi đó số người khỏi của I ($0{,}35$) lại nhiều hơn của II ($0{,}28$), trái đề.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> có hai ẩn ($x$ và $b$) nên cần hai phương trình: một từ tỉ lệ khỏi chung (toàn phần), một từ câu so sánh. Mẹo: coi cả cụm $(1-x)\,b$ là một khối để khỏi phải nhân hai ẩn với nhau.</li>
+      <li><span class="step-label">Phương trình 1 (toàn phần):</span> $P(K)=0{,}7x+(1-x)\,b=0{,}63$.</li>
+      <li><span class="step-label">Phương trình 2 (câu so sánh, $k=0{,}5$):</span> $0{,}7x=0{,}5\,(1-x)\,b$, tức $(1-x)\,b=2\cdot0{,}7x=1{,}4x$.</li>
+      <li><span class="step-label">Thế 2 vào 1:</span> $0{,}7x+1{,}4x=0{,}63\Rightarrow2{,}1x=0{,}63\Rightarrow x=0{,}3$.</li>
+      <li><span class="step-label">Tìm $b$:</span> $(1-0{,}3)\,b=1{,}4\cdot0{,}3=0{,}42\Rightarrow b=\dfrac{0{,}42}{0{,}7}=0{,}6$. Đáp số $(x;b)=\mathbf{(0{,}3;\ 0{,}6)}$.</li>
+      <li><span class="step-label">Thử lại:</span> khỏi của I $=0{,}21$, của II $=0{,}7\cdot0{,}6=0{,}42$ (gấp đôi ✓); tổng $0{,}63$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q33">
+  <div class="ex-head"><span class="ex-num">Câu 33</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Lập phương trình bằng toàn phần · độ nhạy</span></div>
+  <p>Ở một cộng đồng, tỉ lệ người bị viêm nha chu ($B$) là $26\%$. Khám bằng dấu hiệu “chảy máu khi thăm dò túi lợi”: $T^+$ là có chảy máu, $T^-$ là không. Biết trong những người $T^+$ có $60\%$ bị viêm nha chu, còn trong những người $T^-$ chỉ có $10\%$ bị viêm nha chu, tức $P(B\mid T^+)=0{,}6$, $P(B\mid T^-)=0{,}1$. Đề <b>không</b> cho tỉ lệ người có $T^+$. Độ nhạy $P(T^+\mid B)$ của dấu hiệu này là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}7385$</button>
+      <button data-k="b"><b>B.</b> $0{,}32$</button>
+      <button data-k="c"><b>C.</b> $0{,}6$</button>
+      <button data-k="d"><b>D.</b> $0{,}2615$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}26=0{,}6y+0{,}1(1-y)\Rightarrow y=P(T^+)=0{,}32$; rồi $P(T^+\mid B)=\frac{0{,}32\cdot0{,}6}{0{,}26}=\frac{48}{65}\approx0{,}7385$.</div>
+    <div class="qc-fb" data-k="b">$0{,}32$ là $P(T^+)$ — mới xong bước lập phương trình. Câu hỏi hỏi độ nhạy $P(T^+\mid B)$, còn một bước Bayes nữa.</div>
+    <div class="qc-fb" data-k="c">$0{,}6$ là $P(B\mid T^+)$ (giá trị tiên đoán dương), đề cho sẵn. Độ nhạy là $P(T^+\mid B)$ — đổi chiều điều kiện thì phải dùng Bayes.</div>
+    <div class="qc-fb" data-k="d">$0{,}2615=\frac{0{,}68\cdot0{,}1}{0{,}26}$ là $P(T^-\mid B)$ — tỉ lệ <b>âm giả</b>. Độ nhạy là phần còn lại: $1-0{,}2615$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> giống hệt dạng hai phương pháp: $\{T^+,T^-\}$ là hệ đầy đủ (đóng vai I, II), $P(B)$ là “tỉ lệ chung” đã biết, ẩn là $y=P(T^+)$. Lập phương trình bằng công thức toàn phần.</li>
+      <li><span class="step-label">Đặt ẩn:</span> $y=P(T^+)$, $P(T^-)=1-y$.</li>
+      <li><span class="step-label">Toàn phần:</span> $$\begin{aligned}P(B)&amp;=P(T^+)P(B\mid T^+)\\&amp;\quad+P(T^-)P(B\mid T^-)\\0{,}26&amp;=0{,}6y+0{,}1(1-y).\end{aligned}$$</li>
+      <li><span class="step-label">Giải:</span> $0{,}26=0{,}1+0{,}5y\Rightarrow0{,}5y=0{,}16\Rightarrow y=0{,}32$.</li>
+      <li><span class="step-label">Bayes (đổi chiều điều kiện):</span> $P(B\cap T^+)=0{,}32\cdot0{,}6=0{,}192$, nên $$P(T^+\mid B)=\frac{0{,}192}{0{,}26}=\frac{48}{65}\approx\mathbf{0{,}7385}.$$</li>
+      <li><span class="step-label">Kiểm tra:</span> âm giả $P(T^-\mid B)=\frac{0{,}68\cdot0{,}1}{0{,}26}\approx0{,}2615$, cộng với độ nhạy bằng $1$ ✓.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b1-tn-c6">Chặng 6 · Nhiều biến cố độc lập</h3>
+<p>Chặng này luyện các bài có <b>nhiều đối tượng độc lập</b>: hai địa phương mỗi nơi khám một người, nhiều thuốc phối hợp, nhiều máy trong phòng khám, ba lô hàng mỗi lô lấy một mẫu. Đây là dạng gần như chắc chắn có trong đề thi. Mấu chốt chỉ có ba ý: “và” thì <b>nhân</b>; “có ít nhất một” thì đi đường <b>phần bù</b>; “đúng k” thì <b>liệt kê từng trường hợp</b> rồi cộng lại.</p>
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Ba công thức dùng hoài</span></div>
+  <ol class="steps">
+    <li><span class="step-label">Cả hai (cả ba):</span> nhân các xác suất, vì độc lập: $P(A_1A_2A_3)=P(A_1)P(A_2)P(A_3)$.</li>
+    <li><span class="step-label">Có ít nhất một:</span> đối lập của nó là “không có ai cả”, nên $P=1-P(\overline{A_1})P(\overline{A_2})\cdots$. Không được cộng thẳng $P(A_1)+P(A_2)$ vì hai biến cố có thể cùng xảy ra (bị đếm hai lần).</li>
+    <li><span class="step-label">Đúng k:</span> viết ra mỗi trường hợp (ai xảy ra, ai không), mỗi trường hợp là một tích; các trường hợp xung khắc nên cộng lại.</li>
+  </ol>
+</div>
+
+<div class="ex mcq" id="b1q34">
+  <div class="ex-head"><span class="ex-num">Câu 34</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Độc lập · Có ít nhất một</span></div>
+  <p>Tỉ lệ người lớn bị viêm nướu ở phường Đông là $0{,}35$, ở phường Tây là $0{,}45$. Mỗi phường khám ngẫu nhiên một người, kết quả hai nơi độc lập với nhau. Gọi $V_1$, $V_2$ lần lượt là biến cố người ở phường Đông, phường Tây bị viêm nướu. Xác suất để <b>có người</b> bị viêm nướu (ít nhất một trong hai người) là:</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}1575$</button>
+      <button data-k="b"><b>B.</b> $0{,}80$</button>
+      <button data-k="c"><b>C.</b> $0{,}6425$</button>
+      <button data-k="d"><b>D.</b> $0{,}485$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}35\cdot0{,}45=0{,}1575$ là xác suất <b>cả hai</b> cùng bị viêm nướu. “Có người” nghĩa là ít nhất một người, rộng hơn nhiều so với “cả hai”.</div>
+    <div class="qc-fb" data-k="b">$0{,}35+0{,}45=0{,}80$ là cộng thẳng. Cách này đếm hai lần trường hợp cả hai cùng bệnh, vì $V_1$ và $V_2$ không xung khắc. Muốn cộng thì phải trừ phần chung: $0{,}80-0{,}1575=0{,}6425$.</div>
+    <div class="qc-fb" data-k="c">Đi đường phần bù: không ai bị bệnh có xác suất $0{,}65\cdot0{,}55=0{,}3575$, nên có người bị bệnh có xác suất $1-0{,}3575=0{,}6425$.</div>
+    <div class="qc-fb" data-k="d">$0{,}485$ là xác suất <b>đúng một</b> người bị bệnh ($0{,}35\cdot0{,}55+0{,}65\cdot0{,}45$). Bạn bỏ sót trường hợp cả hai cùng bị bệnh, mà trường hợp này cũng là “có người”.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Biến cố đối lập của “có người bị viêm nướu” là “không ai bị”, tức $\overline{V_1}\,\overline{V_2}$.</li>
+      <li><span class="step-label">Bước 2:</span> $P(\overline{V_1})=1-0{,}35=0{,}65$; $P(\overline{V_2})=1-0{,}45=0{,}55$. Độc lập nên $P(\overline{V_1}\,\overline{V_2})=0{,}65\cdot0{,}55=0{,}3575$.</li>
+      <li><span class="step-label">Bước 3:</span> $P(V_1+V_2)=1-0{,}3575=0{,}6425$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q35">
+  <div class="ex-head"><span class="ex-num">Câu 35</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Phối hợp ba thuốc</span></div>
+  <p>Một bệnh nhân bị nhiễm khuẩn quanh chóp răng được điều trị phối hợp ba kháng sinh. Tỉ lệ chủng vi khuẩn kháng amoxicillin là $20\%$, kháng metronidazol là $15\%$, kháng clindamycin là $10\%$; việc kháng từng thuốc độc lập với nhau. Bệnh nhân khỏi khi <b>ít nhất một</b> thuốc có tác dụng (vi khuẩn không kháng thuốc đó). Xác suất bệnh nhân khỏi bệnh là:</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}997$</button>
+      <button data-k="b"><b>B.</b> $0{,}612$</button>
+      <button data-k="c"><b>C.</b> $0{,}55$</button>
+      <button data-k="d"><b>D.</b> $0{,}003$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bệnh nhân <b>không</b> khỏi chỉ khi vi khuẩn kháng cả ba thuốc: $0{,}2\cdot0{,}15\cdot0{,}1=0{,}003$. Vậy khỏi bệnh: $1-0{,}003=0{,}997$.</div>
+    <div class="qc-fb" data-k="b">$0{,}8\cdot0{,}85\cdot0{,}9=0{,}612$ là xác suất <b>cả ba</b> thuốc cùng có tác dụng. Đề chỉ cần ít nhất một thuốc có tác dụng là khỏi, nên đáp số phải lớn hơn nhiều.</div>
+    <div class="qc-fb" data-k="c">$1-(0{,}2+0{,}15+0{,}1)=0{,}55$: bạn cộng các tỉ lệ kháng. Nhưng “không khỏi” là kháng <b>cả ba</b> thuốc cùng lúc (chữ “và”), nên phải <b>nhân</b>, không cộng.</div>
+    <div class="qc-fb" data-k="d">$0{,}003$ là xác suất vi khuẩn kháng cả ba thuốc, tức là xác suất <b>không khỏi</b>. Bạn quên lấy phần bù $1-0{,}003$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Gọi $K_1, K_2, K_3$ là biến cố vi khuẩn kháng amoxicillin, metronidazol, clindamycin: $P(K_1)=0{,}2$, $P(K_2)=0{,}15$, $P(K_3)=0{,}1$.</li>
+      <li><span class="step-label">Bước 2:</span> “Không khỏi” xảy ra khi không thuốc nào có tác dụng, tức kháng cả ba: $K_1K_2K_3$. Độc lập nên $P(K_1K_2K_3)=0{,}2\cdot0{,}15\cdot0{,}1=0{,}003$.</li>
+      <li><span class="step-label">Bước 3:</span> $P(\text{khỏi})=1-0{,}003=0{,}997$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q36">
+  <div class="ex-head"><span class="ex-num">Câu 36</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Nối tiếp · Song song</span></div>
+  <p>Ghế nha của một phòng khám chỉ dùng được khi <b>máy nén khí</b> chạy <b>và</b> có <b>ít nhất một</b> trong hai máy hút nước bọt chạy. Trong một buổi, máy nén khí chạy tốt với xác suất $0{,}95$; máy hút I chạy tốt với xác suất $0{,}9$; máy hút II chạy tốt với xác suất $0{,}8$; ba máy hoạt động độc lập. Xác suất ghế nha dùng được trong buổi đó là:</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}684$</button>
+      <button data-k="b"><b>B.</b> $0{,}999$</button>
+      <button data-k="c"><b>C.</b> $0{,}98$</button>
+      <button data-k="d"><b>D.</b> $0{,}931$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}95\cdot0{,}9\cdot0{,}8=0{,}684$: bạn đòi cả ba máy cùng chạy (coi như ba máy nối tiếp). Thật ra hai máy hút là dự phòng cho nhau (song song), chỉ cần một máy chạy là đủ.</div>
+    <div class="qc-fb" data-k="b">$1-0{,}05\cdot0{,}1\cdot0{,}2=0{,}999$: bạn coi cả ba máy song song, tức chỉ cần một máy bất kỳ chạy. Nhưng máy nén khí <b>bắt buộc</b> phải chạy (nối tiếp), nên không được gộp chung như vậy.</div>
+    <div class="qc-fb" data-k="c">$0{,}98$ chỉ là xác suất cụm hai máy hút có ít nhất một máy chạy. Bạn quên nhân thêm xác suất máy nén khí chạy là $0{,}95$.</div>
+    <div class="qc-fb" data-k="d">Cụm máy hút (song song): $1-0{,}1\cdot0{,}2=0{,}98$. Nối tiếp với máy nén khí: $0{,}95\cdot0{,}98=0{,}931$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> “Phải chạy cả hai phần” là nối tiếp, nên nhân. “Chỉ cần một trong hai” là song song, nên đi đường phần bù.</li>
+      <li><span class="step-label">Bước 1:</span> Cụm máy hút hỏng khi cả hai máy cùng hỏng: $(1-0{,}9)(1-0{,}8)=0{,}1\cdot0{,}2=0{,}02$. Vậy cụm máy hút chạy được: $1-0{,}02=0{,}98$.</li>
+      <li><span class="step-label">Bước 2:</span> Ghế dùng được khi máy nén chạy <b>và</b> cụm máy hút chạy: $0{,}95\cdot0{,}98=0{,}931$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q37">
+  <div class="ex-head"><span class="ex-num">Câu 37</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Đúng k · xác suất khác nhau</span></div>
+  <p>Ba lô ống thuốc tê do ba nhà cung cấp khác nhau giao đến. Tỉ lệ ống đạt chuẩn của lô A là $0{,}9$, lô B là $0{,}8$, lô C là $0{,}75$. Từ mỗi lô lấy ngẫu nhiên 1 ống để kiểm tra (độc lập). Xác suất trong 3 ống lấy ra có <b>đúng 2 ống đạt chuẩn</b> là:</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}54$</button>
+      <button data-k="b"><b>B.</b> $0{,}375$</button>
+      <button data-k="c"><b>C.</b> $0{,}18$</button>
+      <button data-k="d"><b>D.</b> $0{,}08$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}9\cdot0{,}8\cdot0{,}75=0{,}54$ là xác suất <b>cả ba</b> ống đạt chuẩn, không phải đúng 2 ống.</div>
+    <div class="qc-fb" data-k="b">Có ba trường hợp (ống hỏng nằm ở lô A, ở lô B hoặc ở lô C): $0{,}06+0{,}135+0{,}18=0{,}375$.</div>
+    <div class="qc-fb" data-k="c">$0{,}9\cdot0{,}8\cdot0{,}25=0{,}18$ chỉ là <b>một</b> trường hợp (ống hỏng thuộc lô C). Còn hai trường hợp: ống hỏng thuộc lô B ($0{,}135$) và thuộc lô A ($0{,}06$).</div>
+    <div class="qc-fb" data-k="d">$0{,}08$ là xác suất <b>đúng 1</b> ống đạt chuẩn (tức đúng 2 ống hỏng). Bạn đọc nhầm “đạt” thành “hỏng”.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> Ba lô có tỉ lệ khác nhau nên <b>không</b> dùng được Bernoulli $C_3^2p^2q$. Phải liệt kê xem ống hỏng là ống của lô nào.</li>
+      <li><span class="step-label">Bước 1:</span> Tỉ lệ hỏng: lô A $0{,}1$, lô B $0{,}2$, lô C $0{,}25$.</li>
+      <li><span class="step-label">Bước 2:</span> Ống hỏng thuộc lô A: $0{,}1\cdot0{,}8\cdot0{,}75=0{,}06$. Ống hỏng thuộc lô B: $0{,}9\cdot0{,}2\cdot0{,}75=0{,}135$. Ống hỏng thuộc lô C: $0{,}9\cdot0{,}8\cdot0{,}25=0{,}18$.</li>
+      <li><span class="step-label">Bước 3:</span> Ba trường hợp xung khắc nên cộng lại: $0{,}06+0{,}135+0{,}18=0{,}375$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q38">
+  <div class="ex-head"><span class="ex-num">Câu 38</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Độc lập · Có điều kiện</span></div>
+  <p>Ba lô ống thuốc tê có tỉ lệ ống đạt chuẩn lần lượt là: lô A $0{,}9$, lô B $0{,}8$, lô C $0{,}75$. Từ mỗi lô lấy ngẫu nhiên 1 ống (độc lập). Biết rằng trong 3 ống lấy ra có <b>đúng 2 ống đạt chuẩn</b>. Xác suất để ống không đạt chuẩn là ống của <b>lô C</b> là:</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}25$</button>
+      <button data-k="b"><b>B.</b> $0{,}3333$</button>
+      <button data-k="c"><b>C.</b> $0{,}18$</button>
+      <button data-k="d"><b>D.</b> $0{,}48$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}25$ là tỉ lệ hỏng của lô C khi <b>chưa</b> có thông tin gì. Đề đã cho biết “có đúng 2 ống đạt”, nên phải tính xác suất có điều kiện.</div>
+    <div class="qc-fb" data-k="b">$\frac13$: bạn coi ba lô có khả năng như nhau để chứa ống hỏng. Nhưng lô C có tỉ lệ hỏng cao nhất nên khả năng nó chứa ống hỏng cũng lớn nhất.</div>
+    <div class="qc-fb" data-k="c">$0{,}18$ là $P(\text{ống C hỏng, A và B đạt})$, tức mới là tử số. Bạn quên chia cho xác suất của điều kiện $P(\text{đúng 2 đạt})=0{,}375$.</div>
+    <div class="qc-fb" data-k="d">$P=\dfrac{0{,}18}{0{,}375}=0{,}48$: lấy trường hợp “ống hỏng thuộc lô C” chia cho tổng ba trường hợp “đúng 2 ống đạt”.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> Câu “biết rằng…” là dấu hiệu xác suất có điều kiện: $P(H\mid D)=\dfrac{P(HD)}{P(D)}$, với $D$ = “đúng 2 ống đạt”, $H$ = “ống hỏng là ống lô C”.</li>
+      <li><span class="step-label">Bước 1:</span> Liệt kê ba trường hợp của $D$ (tỉ lệ hỏng: A $0{,}1$, B $0{,}2$, C $0{,}25$): hỏng ở A: $0{,}1\cdot0{,}8\cdot0{,}75=0{,}06$; hỏng ở B: $0{,}9\cdot0{,}2\cdot0{,}75=0{,}135$; hỏng ở C: $0{,}9\cdot0{,}8\cdot0{,}25=0{,}18$.</li>
+      <li><span class="step-label">Bước 2:</span> $P(D)=0{,}06+0{,}135+0{,}18=0{,}375$.</li>
+      <li><span class="step-label">Bước 3:</span> $HD$ là đúng trường hợp “hỏng ở C, A và B đạt”: $P(HD)=0{,}18$.</li>
+      <li><span class="step-label">Bước 4:</span> $P(H\mid D)=\dfrac{0{,}18}{0{,}375}=0{,}48$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q39">
+  <div class="ex-head"><span class="ex-num">Câu 39</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Tìm p chưa biết · Đúng một</span></div>
+  <p>Tỉ lệ trẻ bị sâu răng sữa ở trường mầm non Hoa Sen là $p$; ở trường Hướng Dương, tỉ lệ này <b>gấp đôi</b> trường Hoa Sen. Mỗi trường khám ngẫu nhiên 1 trẻ, kết quả độc lập. Biết xác suất để <b>có ít nhất một</b> trẻ bị sâu răng là $0{,}52$. Xác suất để <b>đúng một</b> trẻ bị sâu răng là (làm tròn 2 chữ số thập phân):</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}44$</button>
+      <button data-k="b"><b>B.</b> $0{,}08$</button>
+      <button data-k="c"><b>C.</b> $0{,}48$</button>
+      <button data-k="d"><b>D.</b> $0{,}40$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Giải $(1-p)(1-2p)=0{,}48$ được $p=0{,}2$, nên hai tỉ lệ là $0{,}2$ và $0{,}4$. Đúng một trẻ: $0{,}2\cdot0{,}6+0{,}8\cdot0{,}4=0{,}12+0{,}32=0{,}44$.</div>
+    <div class="qc-fb" data-k="b">$0{,}2\cdot0{,}4=0{,}08$ là xác suất <b>cả hai</b> trẻ bị sâu răng. Tìm $p$ đúng rồi nhưng bạn tính nhầm biến cố.</div>
+    <div class="qc-fb" data-k="c">$0{,}8\cdot0{,}6=0{,}48$ là xác suất <b>không trẻ nào</b> bị sâu răng (đây là con số dùng để lập phương trình), chưa phải đáp số.</div>
+    <div class="qc-fb" data-k="d">$0{,}40$ đến từ phương trình sai $p+2p=0{,}52$ (cộng thẳng “ít nhất một”), cho $p\approx0{,}1733$, rồi tính tiếp được $\approx0{,}40$. “Ít nhất một” phải đi đường phần bù: $1-(1-p)(1-2p)=0{,}52$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> Ẩn $p$ nằm trong điều kiện “có ít nhất một”. Viết điều kiện đó bằng phần bù để được phương trình theo $p$, giải ra $p$, rồi mới tính “đúng một”.</li>
+      <li><span class="step-label">Bước 1:</span> Gọi $S_1$, $S_2$ là biến cố trẻ ở Hoa Sen, Hướng Dương bị sâu răng: $P(S_1)=p$, $P(S_2)=2p$.</li>
+      <li><span class="step-label">Bước 2:</span> Không trẻ nào bị: $(1-p)(1-2p)=1-0{,}52=0{,}48$.</li>
+      <li><span class="step-label">Bước 3:</span> Khai triển: $1-3p+2p^2=0{,}48$, tức $2p^2-3p+0{,}52=0$. Biệt thức $\Delta=9-4\cdot2\cdot0{,}52=4{,}84$, $\sqrt{\Delta}=2{,}2$.
+        $$p=\frac{3\pm2{,}2}{4}\ \Rightarrow\ p=0{,}2\ \text{hoặc}\ p=1{,}3$$
+        Xác suất không vượt quá 1 (và $2p$ cũng phải $\le1$), nên loại $1{,}3$; chọn $p=0{,}2$, tức $P(S_2)=0{,}4$.</li>
+      <li><span class="step-label">Bước 4:</span> Đúng một trẻ: $P(S_1\overline{S_2})+P(\overline{S_1}S_2)=0{,}2\cdot0{,}6+0{,}8\cdot0{,}4=0{,}12+0{,}32=0{,}44$.</li>
+      <li><span class="step-label">Kiểm tra lại:</span> $1-(1-0{,}2)(1-0{,}4)=1-0{,}48=0{,}52$, khớp với đề.</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b1-tn-c7">Chặng 7 · Công thức Bernoulli</h3>
+<p>Chặng này luyện công thức Bernoulli $P_n(m)=C_n^m\,p^m\,q^{\,n-m}$ từ dễ đến khó: đúng $m$ lần, ít nhất 1, ít nhất 2, nhiều nhất $k$, số lần có khả năng nhất, rồi tới hai dạng hay gặp trong đề thi: $p$ phải <b>tự tính</b> từ một xác suất có điều kiện (giá trị tiên đoán dương), và Bernoulli lồng trong xác suất toàn phần (chưa biết lấy từ lô nào). Phần lớn lỗi sai ở dạng này không nằm ở công thức mà ở chỗ <b>chọn sai $p$</b> hoặc <b>dịch sai câu chữ</b> “ít nhất / nhiều nhất”.</p>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Cách làm dạng này</span><span>3 câu hỏi trước khi bấm $C_n^m$</span></div>
+  <ol class="steps">
+    <li><span class="step-label">1. Có đủ 3 điều kiện không?</span> $n$ lần thử độc lập, mỗi lần chỉ hỏi “thành công hay không”, xác suất thành công $p$ như nhau ở mọi lần.</li>
+    <li><span class="step-label">2. “Thành công” là gì, $p$ bằng mấy?</span> Đặt tên rõ (vd K = “miếng trám còn nguyên”) rồi mới lấy $p=P(K)$. Nếu đề chọn người trong nhóm dương tính thì $p$ là $P(B\mid T^+)$, không phải tỉ lệ bệnh.</li>
+    <li><span class="step-label">3. Dịch câu chữ:</span> “ít nhất 1” $=1-P_n(0)$; “ít nhất 2” $=1-P_n(0)-P_n(1)$; “nhiều nhất $k$” $=P_n(0)+\dots+P_n(k)$ (có cả $k$); số có khả năng nhất $m_0$: $np-q\le m_0\le np+p$.</li>
+  </ol>
+</div>
+
+<div class="ex mcq" id="b1q40">
+  <div class="ex-head"><span class="ex-num">Câu 40</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Bernoulli · đúng m lần</span></div>
+  <p>Tỉ lệ một miếng trám composite răng sau còn nguyên vẹn sau 5 năm là $0{,}8$. Một bệnh nhân có 5 miếng trám, các miếng độc lập nhau. Xác suất để sau 5 năm có <b>đúng 3</b> miếng còn nguyên vẹn là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}0205$</button>
+      <button data-k="b"><b>B.</b> $0{,}0512$</button>
+      <button data-k="c"><b>C.</b> $0{,}2048$</button>
+      <button data-k="d"><b>D.</b> $0{,}5120$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn tính $0{,}8^3\cdot0{,}2^2=0{,}02048$ — đó mới là xác suất của <b>một</b> dãy cụ thể (vd 3 miếng đầu nguyên, 2 miếng sau hỏng). Còn thiếu hệ số $C_5^3=10$ = số cách chọn 3 miếng nguyên trong 5 miếng.</div>
+    <div class="qc-fb" data-k="b">Bạn đổi chỗ $p$ và $q$: $C_5^3\cdot0{,}2^3\cdot0{,}8^2=0{,}0512$ là xác suất có đúng 3 miếng <b>hỏng</b>. “Thành công” ở đây là còn nguyên, $p=0{,}8$ phải đi với số mũ 3.</div>
+    <div class="qc-fb" data-k="c">$P_5(3)=C_5^3\cdot0{,}8^3\cdot0{,}2^2=10\cdot0{,}512\cdot0{,}04=0{,}2048$. Đủ 3 thành phần: số cách chọn vị trí, $p^m$, $q^{n-m}$.</div>
+    <div class="qc-fb" data-k="d">$0{,}8^3=0{,}512$ chỉ nói 3 miếng nào đó còn nguyên mà <b>bỏ qua 2 miếng còn lại</b>. “Đúng 3” nghĩa là 2 miếng kia phải hỏng (nhân thêm $0{,}2^2$), và còn phải nhân $C_5^3$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Đặt K = “một miếng trám còn nguyên sau 5 năm”. 5 miếng độc lập, mỗi miếng $P(K)=p=0{,}8$, $q=0{,}2$ → đủ điều kiện Bernoulli với $n=5$.</li>
+      <li><span class="step-label">Bước 2:</span> “Đúng 3 miếng nguyên” → $m=3$, còn $n-m=2$ miếng hỏng.</li>
+      <li><span class="step-label">Bước 3:</span> $P_5(3)=C_5^3\cdot0{,}8^3\cdot0{,}2^2=10\cdot0{,}512\cdot0{,}04=\mathbf{0{,}2048}$.</li>
+      <li><span class="step-label">Bấm máy:</span> <span class="keys"><kbd>5</kbd><kbd class="fn">SHIFT</kbd><kbd>÷</kbd><kbd>3</kbd><kbd>×</kbd><kbd>0.8</kbd><kbd>x<sup>■</sup></kbd><kbd>3</kbd><kbd>▶</kbd><kbd>×</kbd><kbd>0.2</kbd><kbd>x²</kbd><kbd>=</kbd></span> → <span class="lcd">0.2048</span>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q41">
+  <div class="ex-head"><span class="ex-num">Câu 41</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Bernoulli · ít nhất 1</span></div>
+  <p>Tỉ lệ một mũi gây tê thất bại (bệnh nhân vẫn đau, phải tiêm bổ sung) là $0{,}08$. Buổi sáng bác sĩ gây tê cho 6 bệnh nhân, các lần gây tê độc lập. Xác suất để có <b>ít nhất 1</b> mũi gây tê thất bại là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}3936$</button>
+      <button data-k="b"><b>B.</b> $0{,}4800$</button>
+      <button data-k="c"><b>C.</b> $0{,}3164$</button>
+      <button data-k="d"><b>D.</b> $0{,}6064$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Biến cố đối của “ít nhất 1 mũi thất bại” là “cả 6 mũi đều thành công”: $P=1-P_6(0)=1-0{,}92^6=1-0{,}6064=0{,}3936$.</div>
+    <div class="qc-fb" data-k="b">Bạn cộng $6\cdot0{,}08=0{,}48$. Cộng chỉ đúng khi các biến cố <b>xung khắc</b>, mà mũi 1 thất bại và mũi 2 thất bại hoàn toàn có thể cùng xảy ra — cách cộng đếm trùng. (Thử với 13 mũi: $13\cdot0{,}08=1{,}04&gt;1$, vô lí.)</div>
+    <div class="qc-fb" data-k="c">$C_6^1\cdot0{,}08\cdot0{,}92^5=0{,}3164$ là xác suất <b>đúng 1</b> mũi thất bại. “Ít nhất 1” còn gồm cả trường hợp 2, 3, …, 6 mũi thất bại.</div>
+    <div class="qc-fb" data-k="d">$0{,}92^6=0{,}6064$ là xác suất <b>không mũi nào</b> thất bại — chính là biến cố đối. Bạn quên bước cuối: lấy $1$ trừ đi.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> “Thành công” của lược đồ ở đây là sự kiện ta đang đếm: H = “một mũi gây tê thất bại”, $p=0{,}08$, $q=0{,}92$, $n=6$.</li>
+      <li><span class="step-label">Bước 2:</span> “Ít nhất 1” gồm 6 trường hợp (1, 2, …, 6 mũi). Biến cố đối chỉ có 1 trường hợp: 0 mũi thất bại.</li>
+      <li><span class="step-label">Bước 3:</span> $P_6(0)=C_6^0\cdot0{,}08^0\cdot0{,}92^6=0{,}92^6\approx0{,}6064$.</li>
+      <li><span class="step-label">Bước 4:</span> $P(\text{ít nhất 1})=1-0{,}6064=\mathbf{0{,}3936}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q42">
+  <div class="ex-head"><span class="ex-num">Câu 42</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Bernoulli · nhiều nhất k · nam/nữ</span></div>
+  <p>Trong số bệnh nhân đến khám nha chu tại một bệnh viện, $35\%$ là nam. Chọn ngẫu nhiên 8 bệnh nhân (số bệnh nhân rất lớn nên coi các lần chọn là độc lập). Xác suất để trong 8 người có <b>nhiều nhất 2</b> người là nam là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}1691$</button>
+      <button data-k="b"><b>B.</b> $0{,}5722$</button>
+      <button data-k="c"><b>C.</b> $0{,}0253$</button>
+      <button data-k="d"><b>D.</b> $0{,}4278$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$P_8(0)+P_8(1)=0{,}1691$ là “<b>ít hơn</b> 2 người nam”. “Nhiều nhất 2” nghĩa là $\le 2$, phải tính cả trường hợp đúng 2 nam ($P_8(2)=0{,}2587$).</div>
+    <div class="qc-fb" data-k="b">$1-0{,}4278=0{,}5722$ là xác suất có <b>từ 3 nam trở lên</b> — biến cố đối của biến cố đề hỏi. “Nhiều nhất 2” đã là tổng ít số hạng (0, 1, 2) nên tính thẳng, không cần lấy $1$ trừ.</div>
+    <div class="qc-fb" data-k="c">Bạn dùng $p=0{,}65$ (tỉ lệ nữ) trong khi đang đếm số <b>nam</b>. Với $p=0{,}65$, tổng $P_8(0)+P_8(1)+P_8(2)=0{,}0253$ là xác suất có nhiều nhất 2 <b>nữ</b>.</div>
+    <div class="qc-fb" data-k="d">X = số nam, $X\sim B(8;\,0{,}35)$: $P(X\le2)=P_8(0)+P_8(1)+P_8(2)=0{,}03186+0{,}13726+0{,}25869=0{,}4278$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Đang đếm số <b>nam</b> → “thành công” = chọn được nam, $p=0{,}35$, $q=0{,}65$, $n=8$.</li>
+      <li><span class="step-label">Bước 2:</span> “Nhiều nhất 2 nam” = 0 nam hoặc 1 nam hoặc 2 nam (xung khắc → cộng).</li>
+      <li><span class="step-label">Bước 3:</span> $P_8(0)=0{,}65^8\approx0{,}03186$; $P_8(1)=C_8^1\cdot0{,}35\cdot0{,}65^7\approx0{,}13726$; $P_8(2)=C_8^2\cdot0{,}35^2\cdot0{,}65^6\approx0{,}25869$.</li>
+      <li><span class="step-label">Bước 4:</span> $P=0{,}03186+0{,}13726+0{,}25869=0{,}42781\approx\mathbf{0{,}4278}$.</li>
+      <li><span class="step-label">Bấm máy:</span> <span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>▼</kbd><kbd>1</kbd><span class="lcd">Binomial CD</span><kbd>2</kbd></span> rồi nhập x = 2, N = 8, p = 0.35 → <span class="lcd">0.4278</span>… ($P(X\le2)$, đúng “nhiều nhất 2”).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q43">
+  <div class="ex-head"><span class="ex-num">Câu 43</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Bernoulli · số có khả năng nhất</span></div>
+  <p>Tỉ lệ một răng hàm đã trám bít hố rãnh còn giữ chất trám sau 1 năm là $0{,}62$. Kiểm tra 12 răng đã trám bít (độc lập nhau). Số răng còn giữ chất trám <b>có khả năng nhất</b> (tức là số $m_0$ làm $P_{12}(m)$ lớn nhất) là:</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $7$</button>
+      <button data-k="b"><b>B.</b> $8$</button>
+      <button data-k="c"><b>C.</b> $7$ và $8$</button>
+      <button data-k="d"><b>D.</b> $7{,}44$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn lấy $np=7{,}44$ rồi làm tròn xuống. Số có khả năng nhất không phải là làm tròn $np$; phải dùng khoảng $np-q\le m_0\le np+p$, tức $7{,}06\le m_0\le8{,}06$ → chỉ có $8$. Kiểm tra: $P_{12}(7)\approx0{,}2210&lt;P_{12}(8)\approx0{,}2254$.</div>
+    <div class="qc-fb" data-k="b">$np-q=7{,}44-0{,}38=7{,}06$ và $np+p=7{,}44+0{,}62=8{,}06$; số nguyên duy nhất trong $[7{,}06;\,8{,}06]$ là $m_0=8$ ($P_{12}(8)\approx0{,}2254$, lớn nhất).</div>
+    <div class="qc-fb" data-k="c">Có hai giá trị khả năng nhất chỉ khi $np-q$ là số nguyên (khi đó hai đầu khoảng đều nguyên). Ở đây khoảng $[7{,}06;\,8{,}06]$ không chứa $7$, nên chỉ có $m_0=8$.</div>
+    <div class="qc-fb" data-k="d">$np=7{,}44$ là <b>kỳ vọng</b> (trung bình số răng còn giữ), không phải số răng — số răng phải là số nguyên. Số có khả năng nhất là giá trị nguyên có xác suất lớn nhất.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Bước 1:</span> Bernoulli với $n=12$, $p=0{,}62$, $q=0{,}38$.</li>
+      <li><span class="step-label">Bước 2:</span> $np=12\cdot0{,}62=7{,}44$.</li>
+      <li><span class="step-label">Bước 3:</span> $np-q=7{,}44-0{,}38=7{,}06$; $np+p=7{,}44+0{,}62=8{,}06$.</li>
+      <li><span class="step-label">Bước 4:</span> $7{,}06\le m_0\le8{,}06$ và $m_0$ nguyên → $m_0=\mathbf{8}$.</li>
+      <li><span class="step-label">Kiểm tra:</span> $P_{12}(7)=C_{12}^7\,0{,}62^7\,0{,}38^5\approx0{,}2210$; $P_{12}(8)=C_{12}^8\,0{,}62^8\,0{,}38^4\approx0{,}2254$; $P_{12}(9)\approx0{,}1634$ → cột cao nhất ở $8$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q44">
+  <div class="ex-head"><span class="ex-num">Câu 44</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bernoulli · p = giá trị tiên đoán dương</span></div>
+  <p>Một xét nghiệm nước bọt sàng lọc bệnh nha chu có độ nhạy $0{,}95$ và độ đặc hiệu $0{,}88$. Trong cộng đồng, tỉ lệ mắc bệnh là $0{,}12$. Chọn ngẫu nhiên 5 người trong số những người có <b>kết quả dương tính</b> (số người dương tính rất lớn). Xác suất để trong 5 người này có <b>ít nhất 2</b> người thực sự mắc bệnh là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}1125$</button>
+      <button data-k="b"><b>B.</b> $0{,}9743$</button>
+      <button data-k="c"><b>C.</b> $0{,}8355$</button>
+      <button data-k="d"><b>D.</b> $0{,}3033$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn dùng $p=0{,}12$ (tỉ lệ bệnh trong <b>cả cộng đồng</b>). Nhưng 5 người được chọn trong nhóm <b>dương tính</b>, nên xác suất mỗi người bị bệnh là $P(B\mid T^+)\approx0{,}5191$, cao hơn hẳn $0{,}12$.</div>
+    <div class="qc-fb" data-k="b">$0{,}9743=1-P_5(0)$ là xác suất có <b>ít nhất 1</b> người bệnh. “Ít nhất 2” còn phải trừ thêm $P_5(1)\approx0{,}1388$.</div>
+    <div class="qc-fb" data-k="c">$p=P(B\mid T^+)=\frac{0{,}114}{0{,}2196}\approx0{,}5191$; $P=1-P_5(0)-P_5(1)=1-0{,}0257-0{,}1388=0{,}8355$.</div>
+    <div class="qc-fb" data-k="d">Bạn dùng $p=P(T^+)=0{,}2196$ — đó là xác suất một người <b>bất kì</b> có kết quả dương tính, không phải xác suất một người dương tính <b>bị bệnh</b>. Cần $P(B\mid T^+)=\frac{P(B)P(T^+\mid B)}{P(T^+)}$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> Mỗi người được chọn từ nhóm dương tính, nên “thành công” = người đó thực sự mắc bệnh, với $p=P(B\mid T^+)$ là <b>giá trị tiên đoán dương</b>. Tính $p$ bằng Bayes trước, sau đó mới dùng Bernoulli.</li>
+      <li><span class="step-label">Bước 1:</span> B = “mắc bệnh”: $P(B)=0{,}12$, $P(\overline B)=0{,}88$; $P(T^+\mid B)=0{,}95$ (độ nhạy); $P(T^+\mid \overline B)=1-0{,}88=0{,}12$ (dương giả).</li>
+      <li><span class="step-label">Bước 2:</span> Toàn phần: $$\begin{aligned}&amp;P(T^+)=0{,}12\cdot0{,}95+0{,}88\cdot0{,}12\\ &amp;=0{,}114+0{,}1056=0{,}2196\end{aligned}$$</li>
+      <li><span class="step-label">Bước 3:</span> Bayes: $p=P(B\mid T^+)=\dfrac{0{,}114}{0{,}2196}\approx0{,}5191$, $q\approx0{,}4809$.</li>
+      <li><span class="step-label">Bước 4:</span> Bernoulli $n=5$: $P_5(0)=q^5\approx0{,}0257$; $P_5(1)=C_5^1\,p\,q^4\approx0{,}1388$.</li>
+      <li><span class="step-label">Bước 5:</span> $P(\text{ít nhất 2})=1-0{,}0257-0{,}1388=\mathbf{0{,}8355}$.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q45">
+  <div class="ex-head"><span class="ex-num">Câu 45</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bernoulli · toàn phần (chọn lô)</span></div>
+  <p>Phòng khám có hai hộp mũi khoan kim cương đã qua sử dụng: hộp I có $90\%$ mũi còn sắc, hộp II có $60\%$ mũi còn sắc. Trợ thủ chọn ngẫu nhiên một hộp (mỗi hộp xác suất $\tfrac12$), rồi từ hộp đó lấy <b>có hoàn lại</b> 4 lần, mỗi lần 1 mũi (lấy ra kiểm tra rồi trả lại hộp). Xác suất để trong 4 lần có <b>đúng 3</b> lần lấy được mũi còn sắc là (làm tròn 4 chữ số thập phân):</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}3186$</button>
+      <button data-k="b"><b>B.</b> $0{,}4219$</button>
+      <button data-k="c"><b>C.</b> $0{,}6372$</button>
+      <button data-k="d"><b>D.</b> $0{,}0797$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Toàn phần theo hộp, mỗi hộp là một lược đồ Bernoulli: $\tfrac12\cdot0{,}2916+\tfrac12\cdot0{,}3456=0{,}3186$.</div>
+    <div class="qc-fb" data-k="b">Bạn gộp thành $p=\frac{0{,}9+0{,}6}{2}=0{,}75$ rồi tính $C_4^3\cdot0{,}75^3\cdot0{,}25=0{,}4219$. Sai vì cả 4 lần đều lấy từ <b>cùng một hộp</b>: lần đầu ra mũi sắc làm tăng khả năng đang cầm hộp I, nên 4 lần <b>không độc lập</b> khi chưa biết hộp. Chỉ khi đã cố định hộp thì mới có Bernoulli.</div>
+    <div class="qc-fb" data-k="c">$0{,}2916+0{,}3456=0{,}6372$: bạn cộng hai xác suất có điều kiện mà quên nhân với xác suất chọn mỗi hộp $\tfrac12$ (trọng số của công thức toàn phần).</div>
+    <div class="qc-fb" data-k="d">$\tfrac12(0{,}9^3\cdot0{,}1+0{,}6^3\cdot0{,}4)=0{,}0797$: thiếu hệ số $C_4^3=4$ (số cách chọn lần nào là lần lấy phải mũi cùn) trong cả hai số hạng.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> Chưa biết hộp nào → dùng hệ đầy đủ $\{H_1, H_2\}$ ($H_i$ = “chọn hộp $i$”). Khi đã biết hộp, 4 lần lấy có hoàn lại là 4 phép thử độc lập cùng $p$ → Bernoulli. Ghép lại bằng công thức xác suất toàn phần.</li>
+      <li><span class="step-label">Bước 1:</span> A = “đúng 3 lần được mũi sắc”. $P(H_1)=P(H_2)=0{,}5$.</li>
+      <li><span class="step-label">Bước 2:</span> Hộp I ($p=0{,}9$): $P(A\mid H_1)=C_4^3\cdot0{,}9^3\cdot0{,}1=4\cdot0{,}729\cdot0{,}1=0{,}2916$.</li>
+      <li><span class="step-label">Bước 3:</span> Hộp II ($p=0{,}6$): $P(A\mid H_2)=C_4^3\cdot0{,}6^3\cdot0{,}4=4\cdot0{,}216\cdot0{,}4=0{,}3456$.</li>
+      <li><span class="step-label">Bước 4:</span> Toàn phần: $$\begin{aligned}&amp;P(A)=0{,}5\cdot0{,}2916+0{,}5\cdot0{,}3456\\ &amp;=0{,}1458+0{,}1728=\mathbf{0{,}3186}\end{aligned}$$</li>
+    </ol>
+  </div></details>
+</div>
+
+<h3 id="b1-tn-c8">Chặng 8 · Tìm n nhỏ nhất · dừng ở lần thứ k · nhiều tầng</h3>
+<p>Chặng cuối của Bài 1 gom các dạng "vận dụng cao" hay làm người học bí trong đề thi: tìm số lần thử <b>ít nhất</b> để chắc chắn gặp được một ca, bài "khám lần lượt rồi dừng", bài phải <b>tự tìm p</b> từ một điều kiện Bernoulli, và bài Bernoulli lồng trong Bayes. Mỗi câu chỉ cần ghép lại những viên gạch đã học ở các chặng trước — bí quyết là viết rõ biến cố trước khi bấm số.</p>
+
+<div class="box tip"><div class="box-title"><span class="tag">Cách làm dạng này</span><span>Ba "khuôn" cần nhớ</span></div>
+<ol class="steps">
+<li><span class="step-label">n nhỏ nhất:</span> "ít nhất một" $= 1-q^n$. Giải $1-q^n\ge\gamma \iff q^n\le 1-\gamma$. Lấy $\ln$ hai vế; vì $\ln q&lt;0$ (do $0&lt;q&lt;1$) nên khi chia cho $\ln q$ phải <b>đổi chiều</b>: $n\ge \dfrac{\ln(1-\gamma)}{\ln q}$, rồi <b>làm tròn lên</b>.</li>
+<li><span class="step-label">Dừng ở lần k khi đủ r ca:</span> lần thứ k <b>phải</b> là ca thứ r, còn $r-1$ ca kia nằm đâu đó trong $k-1$ lần đầu: $C_{k-1}^{r-1}p^{r}q^{k-r}$.</li>
+<li><span class="step-label">Rút không hoàn lại tới mẫu lỗi đầu tiên:</span> nhân dây chuyền các xác suất có điều kiện, mẫu số giảm 1 sau mỗi lần rút.</li>
+</ol>
+</div>
+
+<div class="ex mcq" id="b1q46">
+  <div class="ex-head"><span class="ex-num">Câu 46</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Bernoulli · n nhỏ nhất</span></div>
+  <p>Ở một trường tiểu học, mỗi học sinh (độc lập nhau) có xác suất $0{,}08$ bị sâu răng sữa nặng cần chữa tủy. Bác sĩ cần khám ít nhất bao nhiêu học sinh để xác suất gặp được ít nhất một em cần chữa tủy không nhỏ hơn $0{,}95$?</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $35$ học sinh</button>
+      <button data-k="b"><b>B.</b> $36$ học sinh</button>
+      <button data-k="c"><b>C.</b> $12$ học sinh</button>
+      <button data-k="d"><b>D.</b> $1$ học sinh</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn tính đúng $n\ge \frac{\ln 0{,}05}{\ln 0{,}92}\approx 35{,}93$ nhưng lại làm tròn <b>xuống</b>. Thử lại: $1-0{,}92^{35}\approx 0{,}9460&lt;0{,}95$ — chưa đạt. Điều kiện là "$n\ge$" nên phải làm tròn lên.</div>
+    <div class="qc-fb" data-k="b">Từ $0{,}92^n\le 0{,}05$ ta có $n\ge \frac{\ln 0{,}05}{\ln 0{,}92}\approx 35{,}93$, làm tròn lên được $36$; kiểm tra $1-0{,}92^{36}\approx 0{,}9503\ge 0{,}95$.</div>
+    <div class="qc-fb" data-k="c">$12$ đến từ phép chia $0{,}95/0{,}08\approx 11{,}9$ — coi như xác suất "cộng dồn" $0{,}08$ mỗi em. Xác suất không cộng như vậy (cộng mãi sẽ vượt 1); phải đi qua biến cố đối "không em nào": $0{,}92^n$.</div>
+    <div class="qc-fb" data-k="d">Số này đến từ $\frac{\ln 0{,}95}{\ln 0{,}92}\approx 0{,}62$: bạn đã dùng $0{,}95$ thay cho $1-0{,}95=0{,}05$. Bất phương trình đúng là $0{,}92^n\le 0{,}05$ (xác suất "không em nào" phải nhỏ hơn hoặc bằng 5%).</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Đặt biến cố:</span> $n$ = số học sinh được khám; $C$ = "có ít nhất một em cần chữa tủy". Mỗi em cần chữa tủy với $p=0{,}08$, không cần với $q=0{,}92$.</li>
+      <li><span class="step-label">Bước 1 — dùng biến cố đối:</span> $\overline{C}$ = "không em nào cần chữa tủy", $P(\overline{C})=0{,}92^n$, nên $P(C)=1-0{,}92^n$.</li>
+      <li><span class="step-label">Bước 2 — lập bất phương trình:</span> $1-0{,}92^n\ge 0{,}95 \iff 0{,}92^n\le 0{,}05$.</li>
+      <li><span class="step-label">Bước 3 — lấy ln:</span> $n\ln 0{,}92\le \ln 0{,}05$. Vì $\ln 0{,}92\approx-0{,}0834&lt;0$, chia hai vế cho số âm thì <b>đổi chiều</b>: $$\begin{aligned}n&amp;\ge \frac{\ln 0{,}05}{\ln 0{,}92}\approx\frac{-2{,}9957}{-0{,}0834}\\&amp;\approx 35{,}93.\end{aligned}$$</li>
+      <li><span class="step-label">Bước 4 — làm tròn lên và thử lại:</span> $n$ nguyên nhỏ nhất là $36$. Kiểm tra: $1-0{,}92^{35}\approx0{,}9460$ (chưa đủ), $1-0{,}92^{36}\approx 0{,}9503$ (đạt). Đáp án <b>B</b>.</li>
+      <li><span class="step-label">Bấm máy:</span> MENU 1, nhập <code>ln(0.05)÷ln(0.92)</code> rồi = được $35{,}93\ldots$</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q47">
+  <div class="ex-head"><span class="ex-num">Câu 47</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Rút không hoàn lại · dừng ở lần k</span></div>
+  <p>Một hộp có $12$ ống thuốc tê, trong đó có $3$ ống bị đục (lỗi), $9$ ống tốt. Phụ tá lấy lần lượt từng ống, <b>không hoàn lại</b>, cho tới khi gặp ống lỗi đầu tiên thì dừng. Tính xác suất phụ tá dừng ở <b>đúng lần lấy thứ 3</b> (làm tròn 4 chữ số thập phân).</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}1406$</button>
+      <button data-k="b"><b>B.</b> $0{,}6182$</button>
+      <button data-k="c"><b>C.</b> $0{,}2500$</button>
+      <button data-k="d"><b>D.</b> $0{,}1636$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}1406=\left(\frac34\right)^2\cdot\frac14$ là cách tính khi lấy <b>có hoàn lại</b> (tỉ lệ giữ nguyên mỗi lần). Ở đây ống đã lấy ra không trả lại, nên mẫu số giảm dần $12\to11\to10$ và số ống tốt cũng giảm $9\to 8$.</div>
+    <div class="qc-fb" data-k="b">$0{,}6182=1-\frac{9\cdot8\cdot7}{12\cdot11\cdot10}$ là xác suất dừng <b>trong 3 lần đầu</b> (lần 1, 2 hoặc 3), tức "không quá 3 lần". Đề hỏi dừng <b>đúng</b> lần thứ 3.</div>
+    <div class="qc-fb" data-k="c">$0{,}25=\frac{3}{12}$ chỉ là xác suất ống thứ 3 bị lỗi. Còn thiếu điều kiện hai ống đầu phải <b>tốt</b> — nếu một trong hai ống đầu đã lỗi thì phụ tá dừng sớm rồi.</div>
+    <div class="qc-fb" data-k="d">Dừng ở lần 3 nghĩa là tốt – tốt – lỗi: $\frac{9}{12}\cdot\frac{8}{11}\cdot\frac{3}{10}=\frac{216}{1320}\approx0{,}1636$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Đặt biến cố:</span> $T_i$ = "ống lấy lần thứ $i$ tốt", $L_i$ = "ống lấy lần thứ $i$ lỗi".</li>
+      <li><span class="step-label">Bước 1 — dịch "dừng ở lần 3":</span> hai lần đầu chưa gặp ống lỗi, lần ba gặp ống lỗi: biến cố $T_1.T_2.L_3$.</li>
+      <li><span class="step-label">Bước 2 — nhân dây chuyền:</span> $P(T_1)=\frac{9}{12}$; còn 11 ống (8 tốt) nên $P(T_2|T_1)=\frac{8}{11}$; còn 10 ống (3 lỗi) nên $P(L_3|T_1T_2)=\frac{3}{10}$.</li>
+      <li><span class="step-label">Bước 3 — kết quả:</span> $$P=\frac{9}{12}\cdot\frac{8}{11}\cdot\frac{3}{10}=\frac{216}{1320}\approx0{,}1636.$$ Đáp án <b>D</b>.</li>
+      <li><span class="step-label">Mở rộng:</span> dừng ở lần 1: $\frac{3}{12}=0{,}25$; lần 2: $\frac{9}{12}\cdot\frac{3}{11}\approx0{,}2045$; lần 3: $0{,}1636$. Cộng ba số được $0{,}6182$ — đúng bằng phương án B (dừng trong 3 lần đầu).</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q48">
+  <div class="ex-head"><span class="ex-num">Câu 48</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bernoulli · dừng khi đủ r ca</span></div>
+  <p>Ở người trẻ đến khám, mỗi người (độc lập nhau) có xác suất $0{,}25$ có răng khôn mọc lệch. Bác sĩ chụp phim lần lượt từng người, khi tìm đủ <b>2 người</b> có răng khôn mọc lệch thì dừng. Tính xác suất bác sĩ dừng ở <b>đúng người thứ 7</b> (làm tròn 4 chữ số thập phân).</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}0890$</button>
+      <button data-k="b"><b>B.</b> $0{,}3115$</button>
+      <button data-k="c"><b>C.</b> $0{,}0148$</button>
+      <button data-k="d"><b>D.</b> $0{,}2966$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Người thứ 7 bắt buộc là ca thứ hai, ca thứ nhất nằm ở một trong 6 người đầu: $C_6^1(0{,}25)^2(0{,}75)^5\approx0{,}0890$.</div>
+    <div class="qc-fb" data-k="b">$0{,}3115=C_7^2(0{,}25)^2(0{,}75)^5$ là xác suất "có đúng 2 ca trong 7 người" — tính cả những cách 2 ca nằm hết trong 6 người đầu (khi đó bác sĩ đã dừng sớm, không tới người thứ 7). Vị trí ca thứ hai đã bị cố định ở người 7, chỉ ca thứ nhất được chọn chỗ: $C_6^1$.</div>
+    <div class="qc-fb" data-k="c">$0{,}0148=(0{,}25)^2(0{,}75)^5$ mới là xác suất của <b>một</b> thứ tự cụ thể (vd ca ở người 1 và 7). Ca thứ nhất có 6 vị trí khả dĩ nên phải nhân thêm $C_6^1=6$.</div>
+    <div class="qc-fb" data-k="d">$0{,}2966=C_6^2(0{,}25)^2(0{,}75)^4$: bạn cho 2 ca nằm trong 6 người đầu — nhưng như vậy là dừng ở lần ≤ 6. Đúng ra 6 người đầu chỉ có <b>1</b> ca, và người 7 là ca thứ 2.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> "dừng ở người thứ 7" không chỉ là "có 2 ca trong 7 người" — nó còn ép người thứ 7 phải là ca thứ hai. Tách thành hai phần độc lập: (6 người đầu) và (người 7).</li>
+      <li><span class="step-label">Bước 1 — đặt biến cố:</span> $M_i$ = "người thứ $i$ có răng khôn mọc lệch", $p=0{,}25$, $q=0{,}75$. Biến cố cần tìm $D_7$ = "6 người đầu có đúng 1 ca" và "$M_7$".</li>
+      <li><span class="step-label">Bước 2 — 6 người đầu:</span> công thức Bernoulli $P(6;1)=C_6^1p^1q^5=6\cdot0{,}25\cdot0{,}75^5\approx0{,}3560$.</li>
+      <li><span class="step-label">Bước 3 — người thứ 7:</span> $P(M_7)=0{,}25$, độc lập với 6 người đầu, nên nhân: $$\begin{aligned}P(D_7)&amp;=C_6^1p^2q^5\\&amp;=6\cdot0{,}25^2\cdot0{,}75^5\\&amp;\approx0{,}0890.\end{aligned}$$ Đáp án <b>A</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q49">
+  <div class="ex-head"><span class="ex-num">Câu 49</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Tìm p từ Bernoulli · n nhỏ nhất</span></div>
+  <p>Mỗi người trong một cộng đồng (độc lập nhau) mang gen nguy cơ khe hở môi – vòm miệng với cùng xác suất $p$, biết $p&lt;0{,}5$. Xét nghiệm 2 người thì xác suất có <b>đúng 1 người</b> mang gen là $0{,}42$. Cần xét nghiệm ít nhất bao nhiêu người để xác suất có ít nhất một người mang gen không nhỏ hơn $0{,}99$?</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $4$ người</button>
+      <button data-k="b"><b>B.</b> $12$ người</button>
+      <button data-k="c"><b>C.</b> $13$ người</button>
+      <button data-k="d"><b>D.</b> $9$ người</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn lấy nghiệm $p=0{,}7$: $n\ge\frac{\ln0{,}01}{\ln0{,}3}\approx3{,}82\Rightarrow4$. Phương trình $2p(1-p)=0{,}42$ có hai nghiệm $0{,}3$ và $0{,}7$, nhưng đề cho $p&lt;0{,}5$ nên chỉ nhận $p=0{,}3$.</div>
+    <div class="qc-fb" data-k="b">Bạn tìm đúng $p=0{,}3$ và $n\ge\frac{\ln0{,}01}{\ln0{,}7}\approx12{,}91$ nhưng làm tròn xuống. Thử: $1-0{,}7^{12}\approx0{,}9862&lt;0{,}99$ — chưa đạt, phải lấy $13$.</div>
+    <div class="qc-fb" data-k="c">Giải $2p(1-p)=0{,}42$ được $p=0{,}3$ (vì $p&lt;0{,}5$), nên $q=0{,}7$; $0{,}7^n\le0{,}01\Rightarrow n\ge12{,}91$, làm tròn lên $13$ ($1-0{,}7^{13}\approx0{,}9903$).</div>
+    <div class="qc-fb" data-k="d">Bạn coi $0{,}42$ là $p$ luôn: $n\ge\frac{\ln0{,}01}{\ln0{,}58}\approx8{,}45\Rightarrow9$. Nhưng $0{,}42$ là xác suất "đúng 1 trong 2 người", tức $C_2^1pq$, chưa phải $p$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> bài hai tầng. Tầng 1: dịch "đúng 1 trong 2 người" thành phương trình Bernoulli để tìm $p$. Tầng 2: dùng $p$ vừa tìm cho bài "n nhỏ nhất".</li>
+      <li><span class="step-label">Bước 1 — lập phương trình:</span> $P(2;1)=C_2^1p(1-p)=2p(1-p)=0{,}42 \iff p^2-p+0{,}21=0$.</li>
+      <li><span class="step-label">Bước 2 — giải:</span> $\Delta=1-4\cdot0{,}21=0{,}16$, $\sqrt{\Delta}=0{,}4$, nên $p=\frac{1\pm0{,}4}{2}$, tức $p=0{,}3$ hoặc $p=0{,}7$. Vì $p&lt;0{,}5$: $p=0{,}3$, $q=0{,}7$.</li>
+      <li><span class="step-label">Bước 3 — n nhỏ nhất:</span> "ít nhất 1 người mang gen" có xác suất $1-0{,}7^n$. Cần $1-0{,}7^n\ge0{,}99\iff0{,}7^n\le0{,}01$.</li>
+      <li><span class="step-label">Bước 4 — lấy ln, đổi chiều:</span> $\ln0{,}7&lt;0$ nên $$\begin{aligned}n&amp;\ge\frac{\ln0{,}01}{\ln0{,}7}\approx\frac{-4{,}6052}{-0{,}3567}\\&amp;\approx12{,}91.\end{aligned}$$</li>
+      <li><span class="step-label">Bước 5 — làm tròn lên, thử lại:</span> $1-0{,}7^{12}\approx0{,}9862$ (chưa đủ), $1-0{,}7^{13}\approx0{,}9903$ (đạt). Đáp án <b>C</b>.</li>
+    </ol>
+  </div></details>
+</div>
+
+<div class="ex mcq" id="b1q50">
+  <div class="ex-head"><span class="ex-num">Câu 50</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Bernoulli + Bayes cập nhật</span></div>
+  <p>Một máy đo đường huyết ở phòng khám có thể ở một trong hai trạng thái: <b>chuẩn</b> (xác suất $0{,}8$), khi đó mỗi lần đo cho kết quả sai với xác suất $0{,}05$; hoặc <b>lệch chuẩn</b> (xác suất $0{,}2$), khi đó mỗi lần đo sai với xác suất $0{,}3$. Các lần đo độc lập với nhau khi đã biết trạng thái máy. Kĩ thuật viên đo thử 5 mẫu chuẩn và thấy <b>đúng 1 lần sai</b>. Tính xác suất máy đang lệch chuẩn (làm tròn 4 chữ số thập phân).</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}6388$</button>
+      <button data-k="b"><b>B.</b> $0{,}3066$</button>
+      <button data-k="c"><b>C.</b> $0{,}6934$</button>
+      <button data-k="d"><b>D.</b> $0{,}0720$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}6388=\frac{0{,}3602}{0{,}2036+0{,}3602}$: bạn bỏ quên xác suất ban đầu $0{,}8$ và $0{,}2$ (coi hai trạng thái ngang nhau). Máy chuẩn vốn phổ biến gấp 4 lần, nên phải nhân trọng số vào trước khi chia.</div>
+    <div class="qc-fb" data-k="b">Bayes với "bằng chứng" là kết quả Bernoulli: $\frac{0{,}2\cdot0{,}3602}{0{,}8\cdot0{,}2036+0{,}2\cdot0{,}3602}=\frac{0{,}0720}{0{,}2349}\approx0{,}3066$. Từ 20% ban đầu, sau 5 lần đo niềm tin "máy lệch" tăng lên khoảng 31%.</div>
+    <div class="qc-fb" data-k="c">$0{,}6934$ là xác suất máy <b>chuẩn</b> sau khi đo (phần bù của đáp án đúng). Đề hỏi xác suất máy <b>lệch chuẩn</b>.</div>
+    <div class="qc-fb" data-k="d">$0{,}0720=0{,}2\cdot0{,}3602$ mới là tử số $P(L.S_1)$ — xác suất "máy lệch <b>và</b> có đúng 1 lần sai". Còn phải chia cho xác suất toàn phần $P(S_1)\approx0{,}2349$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Ý tưởng:</span> hai tầng. Tầng trong: với mỗi trạng thái máy, "đúng 1 lần sai trong 5" là bài Bernoulli. Tầng ngoài: đã thấy kết quả, hỏi ngược lại nguyên nhân (trạng thái máy) → Bayes, với hệ đầy đủ {chuẩn, lệch}.</li>
+      <li><span class="step-label">Bước 1 — đặt biến cố:</span> $C$ = "máy chuẩn", $L$ = "máy lệch chuẩn" ($P(C)=0{,}8$, $P(L)=0{,}2$, hệ đầy đủ). $S_1$ = "đúng 1 lần sai trong 5 lần đo".</li>
+      <li><span class="step-label">Bước 2 — Bernoulli khi máy chuẩn:</span> $$\begin{aligned}P(S_1|C)&amp;=C_5^1\cdot0{,}05\cdot0{,}95^4\\&amp;\approx0{,}2036.\end{aligned}$$</li>
+      <li><span class="step-label">Bước 3 — Bernoulli khi máy lệch:</span> $$\begin{aligned}P(S_1|L)&amp;=C_5^1\cdot0{,}3\cdot0{,}7^4\\&amp;=0{,}36015.\end{aligned}$$</li>
+      <li><span class="step-label">Bước 4 — toàn phần:</span> $$\begin{aligned}P(S_1)&amp;=0{,}8\cdot0{,}2036+0{,}2\cdot0{,}3602\\&amp;\approx0{,}1629+0{,}0720\\&amp;\approx0{,}2349.\end{aligned}$$</li>
+      <li><span class="step-label">Bước 5 — Bayes:</span> $$\begin{aligned}P(L|S_1)&amp;=\frac{0{,}2\cdot0{,}36015}{0{,}2349}\\&amp;\approx0{,}3066.\end{aligned}$$ Đáp án <b>B</b>.</li>
+      <li><span class="step-label">Ghi chú:</span> hệ số $C_5^1=5$ xuất hiện ở cả tử và mẫu nên triệt tiêu — quên nó vẫn ra đúng, nhưng quên trọng số $0{,}8$, $0{,}2$ thì sai (phương án A).</li>
+    </ol>
+  </div></details>
+</div>
+
 </main>
 </div>
 
