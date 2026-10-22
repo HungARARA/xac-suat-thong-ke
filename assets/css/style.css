@@ -376,6 +376,44 @@ details.sol > .sol-body { padding: 4px 18px 10px; border-top: 1px solid var(--bo
 .lvl.l3 { background: var(--s8-soft); color: var(--s8); }
 .ex-skill { font-size: 13px; color: var(--muted); }
 .answer { display: inline-block; font-weight: 700; color: var(--s3); }
+
+/* ---------- câu hỏi chấm ngay ---------- */
+.qc {
+  margin: 16px 0; padding: 12px 16px 12px; border-radius: var(--radius-sm);
+  border: 1.5px dashed color-mix(in srgb, var(--s7) 55%, var(--border));
+  background: color-mix(in srgb, var(--s7-soft) 50%, var(--surface));
+}
+.ex .qc { border-style: solid; background: var(--surface-2); border-color: var(--border); }
+.qc-q { margin: 0 0 8px; }
+.qc-tag {
+  display: inline-block; margin-right: 6px; padding: 2px 8px; border-radius: 999px;
+  font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--s7); color: #fff; vertical-align: 1px;
+}
+.qc-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 8px; }
+.qc-opts button, .qc-check {
+  font: inherit; font-size: 15px; color: var(--text); text-align: left; cursor: pointer;
+  padding: 8px 12px; border-radius: var(--radius-sm); border: 1.5px solid var(--border-strong); background: var(--surface);
+  transition: border-color .12s ease, background .12s ease;
+}
+.qc-opts button:hover:not(:disabled), .qc-check:hover:not(:disabled) { border-color: var(--s7); }
+.qc-opts button.right { border-color: var(--s3); background: var(--s3-soft); font-weight: 600; }
+.qc-opts button.wrong { border-color: var(--s8); background: var(--s8-soft); }
+.qc-opts button:disabled:not(.right) { opacity: .45; cursor: default; }
+.qc-num { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.qc-num input {
+  font: inherit; font-size: 15px; width: 150px; padding: 8px 10px; color: var(--text);
+  border-radius: var(--radius-sm); border: 1.5px solid var(--border-strong); background: var(--surface);
+}
+.qc-num input.right { border-color: var(--s3); background: var(--s3-soft); }
+.qc-num input.wrong { border-color: var(--s8); background: var(--s8-soft); }
+.qc-check { text-align: center; font-weight: 700; color: var(--s7); }
+.qc-check:disabled { opacity: .5; cursor: default; }
+.qc-fb { display: none; margin-top: 10px; padding: 8px 12px; border-radius: var(--radius-sm); font-size: 15px; border-left: 4px solid var(--s8); background: var(--surface); }
+.qc-fb.show { display: block; }
+.qc-fb[data-k="ok"], .qc.solved .qc-fb.show { border-left-color: var(--s3); }
+.qc-fb::before { content: "✗ Chưa đúng. "; font-weight: 800; color: var(--s8); }
+.qc.solved .qc-fb.show::before { content: "✓ Đúng rồi! "; color: var(--s3); }
 .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; margin: 6px 0 10px; }
 
 /* ---------- widget tương tác ---------- */

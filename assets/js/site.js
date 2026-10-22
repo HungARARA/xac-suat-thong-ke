@@ -188,6 +188,51 @@ const COMING = [
   }
   window.renderMath = renderMath;
 
+  /* ---------- Câu hỏi chấm ngay (.qc) ----------
+     Trắc nghiệm: <div class="qc" data-ans="b"> … <div class="qc-opts"><button data-k="a">…</button>…</div>
+                  <div class="qc-fb" data-k="a">giải thích khi chọn a</div> …
+     Điền số:     <div class="qc" data-num="0,098" data-tol="0,0005"> … <div class="qc-num"><input><button class="qc-check">Kiểm tra</button></div>
+                  <div class="qc-fb" data-k="ok">…</div><div class="qc-fb" data-k="no">…</div>          */
+  const num = s => parseFloat(String(s).trim().replace(/\s/g, "").replace(",", "."));
+  function initQuiz(root) {
+    root.querySelectorAll(".qc").forEach(q => {
+      if (q.dataset.ready) return;
+      q.dataset.ready = "1";
+      const show = k => {
+        q.querySelectorAll(".qc-fb").forEach(fb => fb.classList.toggle("show", fb.dataset.k === k));
+      };
+      q.querySelectorAll(".qc-opts button").forEach(b => {
+        b.type = "button";
+        b.addEventListener("click", () => {
+          if (q.classList.contains("solved")) return;
+          const ok = b.dataset.k === q.dataset.ans;
+          b.classList.add(ok ? "right" : "wrong");
+          show(b.dataset.k);
+          if (ok) {
+            q.classList.add("solved");
+            q.querySelectorAll(".qc-opts button").forEach(o => { o.disabled = o !== b; });
+          }
+        });
+      });
+      const inp = q.querySelector(".qc-num input"), chk = q.querySelector(".qc-check");
+      if (inp && chk) {
+        const check = () => {
+          if (q.classList.contains("solved")) return;
+          const v = num(inp.value);
+          if (isNaN(v)) { inp.focus(); return; }
+          const ok = Math.abs(v - num(q.dataset.num)) <= num(q.dataset.tol || "0.0005") + 1e-12;
+          inp.classList.toggle("right", ok); inp.classList.toggle("wrong", !ok);
+          show(ok ? "ok" : "no");
+          if (ok) { q.classList.add("solved"); inp.readOnly = true; chk.disabled = true; }
+        };
+        chk.type = "button";
+        chk.addEventListener("click", check);
+        inp.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+      }
+    });
+  }
+  window.initQuiz = initQuiz;
+
   document.addEventListener("DOMContentLoaded", () => {
     const b = document.getElementById("themeBtn");
     if (b) {
@@ -209,6 +254,7 @@ const COMING = [
     buildHome();
     const heads = buildToc();          /* lấy chữ tiêu đề trước khi KaTeX đổi công thức */
     renderMath(document.body);
+    initQuiz(document.body);
     if (heads.length) scrollSpy(heads);
     document.dispatchEvent(new CustomEvent("siteready"));
 

@@ -397,4 +397,38 @@ document.addEventListener("siteready", () => {
     X.bind(["nmP", "nmG"], v => { st = v; render(); }, { nmP: v => f(v, 2), nmG: v => f(v, 2) });
     X.responsive($("nminPlot"), render);
   }
+
+  /* ---------------- GẤP k LẦN (mục 12.1) ---------------- */
+  if ($("kWidget")) {
+    const light = c => `color-mix(in srgb, ${c} 32%, var(--surface))`;
+    const n = v => X.fmt(v, 2, true);
+    let st = { kK: 1.5, kA: 0.6, kB: 0.8, kMode: "cured" };
+    const render = () => {
+      const k = st.kK, a = st.kA, b = st.kB, cured = st.kMode === "cured";
+      const x = cured ? b / (b + k * a) : 1 / (1 + k);
+      const PK = a * x + b * (1 - x), pIK = a * x / PK;
+      const c = X.chart($("kPlot"), { height: 250, xmin: -0.7, xmax: 1.7, ymin: 0, ymax: 110 });
+      c.axes({ xticks: [], yticks: [0, 25, 50, 75, 100], yfmt: v => String(v) });
+      const bars = [
+        { x: -0.17, y: 100 * x, fill: light("var(--s1)") }, { x: 0.17, y: 100 * a * x, fill: "var(--s1)" },
+        { x: 0.83, y: 100 * (1 - x), fill: light("var(--s2)") }, { x: 1.17, y: 100 * b * (1 - x), fill: "var(--s2)" },
+      ];
+      c.bars(bars, { maxW: 54, ratio: 0.8 });
+      bars.forEach(d => c.text(d.x, d.y, n(d.y), { dy: -6, class: "svg-strong", style: "font-size:12.5px" }));
+      c.text(0, 0, "Phương pháp I", { dy: 20, class: "svg-strong" });
+      c.text(1, 0, "Phương pháp II", { dy: 20, class: "svg-strong" });
+      const sub = cured
+        ? `Số người khỏi II : khỏi I = ${T(`${X.tfmt(100 * b * (1 - x), 2, true)}:${X.tfmt(100 * a * x, 2, true)}=${X.tfmt(k, 2, true)}=k`)} ✓`
+        : `Số người điều trị II : điều trị I = ${T(`${X.tfmt(100 * (1 - x), 2, true)}:${X.tfmt(100 * x, 2, true)}=${X.tfmt(k, 2, true)}=k`)} ✓`;
+      const eq = cured
+        ? `(1-x)\\,${X.tfmt(b, 2, true)}=${X.tfmt(k, 2, true)}\\cdot ${X.tfmt(a, 2, true)}\\,x\\ \\Rightarrow\\ x=\\frac{${X.tfmt(b, 2, true)}}{${X.tfmt(b, 2, true)}+${X.tfmt(k, 2, true)}\\cdot${X.tfmt(a, 2, true)}}=${X.tfmt(x, 4)}`
+        : `1-x=${X.tfmt(k, 2, true)}\\,x\\ \\Rightarrow\\ x=\\frac{1}{1+${X.tfmt(k, 2, true)}}=${X.tfmt(x, 4)}`;
+      $("kRead").innerHTML = `${T(eq)}<br>${sub}<br>` +
+        `${T(`P(K)=${X.tfmt(a, 2, true)}\\cdot${X.tfmt(x, 4)}+${X.tfmt(b, 2, true)}\\cdot${X.tfmt(1 - x, 4)}=${X.tfmt(PK, 4)}`)} · ` +
+        `${T(`P(\\mathrm I\\mid K)=${X.tfmt(pIK, 4)}`)}` +
+        (cured ? ` <span class="small muted">(đúng bằng ${T(`\\frac{1}{1+k}`)})</span>` : ` <span class="small muted">(ở chế độ này <b>không</b> bằng ${T(`\\frac{1}{1+k}`)})</span>`);
+    };
+    X.bind(["kK", "kA", "kB", "kMode"], v => { st = v; render(); }, { kK: v => n(v), kA: v => n(v), kB: v => n(v) });
+    X.responsive($("kPlot"), render);
+  }
 });

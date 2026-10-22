@@ -10,10 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=3">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=3"></script>
+  <script defer src="assets/js/site.js?v=4"></script>
 </head>
 <body data-lesson="may-tinh">
 <header class="topbar">
@@ -153,7 +153,7 @@
 <p><b>Máy làm gì?</b> Bạn gõ một hàm $f(x)$ và chọn $x$ chạy từ <b>Start</b> đến <b>End</b> với bước <b>Step</b>; máy thay lần lượt từng $x$ và in ra cột $f(x)$. Nếu $f(x)$ là công thức Bernoulli thì cột đó chính là <b>cả bảng phân phối</b>.</p>
 <h3 id="table-bernoulli">3.1. Cả phân phối Bernoulli trong một màn hình</h3>
 <div class="box calc">
-  <div class="box-title"><span class="tag">Bấm máy</span>Bài 1, Ví dụ 11.1 — vecni fluor, $n=6$, $p=0{,}7$</div>
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Bài 1, Ví dụ 11.1 — vecni fluor, $n=6$, $p=0{,}7$</span></div>
   <p>Gõ $f(x)=C_6^x\cdot0{,}7^x\cdot0{,}3^{\,6-x}$ ($x$ đóng vai số lần thành công $m$):</p>
   <ol class="keyseq">
     <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>8</kbd><span class="lcd">f(x)=</span></span></li>
@@ -217,11 +217,11 @@ n    = 1              → tổng các p bằng 1 ✓</div>
   <p class="small">Dòng $s_x$, $s_x^2$ không dùng ở đây (máy có thể báo lỗi ở hai dòng này vì chúng chia cho $n-1=0$ — không sao). Nhấn <span class="keys"><kbd>AC</kbd></span> để ra màn hình tính; muốn nhập bảng mới: <span class="keys"><kbd class="fn">OPTN</kbd><kbd>2</kbd><span class="lcd">Editor</span><kbd>2</kbd><span class="lcd">Delete All</span></span>.</p>
 </div>
 <div class="box trap">
-  <div class="box-title"><span class="tag">Bẫy</span>Lấy $\sigma_x$, không lấy $s_x$</div>
+  <div class="box-title"><span class="tag">Bẫy</span><span>Lấy $\sigma_x$, không lấy $s_x$</span></div>
   <p>$\sigma_x$ chia cho $\sum f_i$ — đúng định nghĩa phương sai của biến ngẫu nhiên. $s_x$ chia cho $n-1$ — đó là <b>độ lệch chuẩn mẫu</b>, sẽ dùng ở Bài 3 khi làm với số liệu thu thập được. Ngoài ra luôn nhìn dòng <span class="lcd">n</span>: phải bằng 1, nếu không là bạn đã nhập sai một xác suất.</p>
 </div>
 <div class="box tip">
-  <div class="box-title"><span class="tag">Thử nghiệm</span>Hai tính chất của $E$, $\sigma$ “nhìn thấy” trên máy</div>
+  <div class="box-title"><span class="tag">Thử nghiệm</span><span>Hai tính chất của $E$, $\sigma$ “nhìn thấy” trên máy</span></div>
   <ul>
     <li><b>Nhân mọi trọng số với cùng một số thì trung bình không đổi.</b> Nhập Freq là 6, 92, 398, 504 (tức $1000\,p_i$): $\bar x$ vẫn là 2,4 và $\sigma_x$ vẫn là 0,678…, chỉ có $n=1000$. Đây cũng là cách chữa cháy nếu máy không nhận tần số là số thập phân.</li>
     <li><b>$E(aX+b)=aE(X)+b$ và $\sigma(aX+b)=|a|\,\sigma(X)$</b> (Bài 2, Ví dụ 7.2 và 8.3): đổi cột $x$ thành 200, 700, 1200, 1700 (tức $500x+200$), giữ nguyên Freq → máy ra $\bar x=1400$ và $\sigma_x\approx339{,}1$.</li>
@@ -248,7 +248,7 @@ n    = 1              → tổng các p bằng 1 ✓</div>
   <p>$n$ lần thử độc lập, mỗi lần cùng một xác suất $p$ (<a href="bai-1.html#ber-khi-nao">Bài 1, mục 11.1</a>). Ví dụ 2.1 của Bài 2 (ba ca có $p$ khác nhau) hay bốc không hoàn lại từ hộp nhỏ thì <b>không</b> dùng được.</p>
 </div>
 <div class="box calc">
-  <div class="box-title"><span class="tag">Bấm máy</span>Bài 1, Ví dụ 11.1 — $n=6$, $p=0{,}7$</div>
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Bài 1, Ví dụ 11.1 — $n=6$, $p=0{,}7$</span></div>
   <ol class="keyseq">
     <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>4</kbd><span class="lcd">Binomial PD</span><kbd>2</kbd><span class="lcd">Variable</span></span> <span class="why">chọn “Variable” để tính cho <b>một</b> giá trị $x$ (“List” dùng khi muốn nhiều giá trị cùng lúc).</span></li>
     <li><span class="keys"><span class="lcd">x</span><kbd>4</kbd><kbd>=</kbd><span class="lcd">N</span><kbd>6</kbd><kbd>=</kbd><span class="lcd">p</span><kbd>0.7</kbd><kbd>=</kbd><kbd>=</kbd></span> <span class="why">máy ra <span class="lcd">0.324135</span> $=P(X=4)$ — câu (a).</span></li>
@@ -272,7 +272,7 @@ n    = 1              → tổng các p bằng 1 ✓</div>
 <h3 id="normal-cd">5.3. Phân phối chuẩn: Normal CD</h3>
 <p><b>Máy làm gì?</b> Normal CD trả về <b>diện tích dưới đường chuông</b> $N(\mu;\sigma^2)$ từ Lower đến Upper — chính là $P(\text{Lower}&lt;X&lt;\text{Upper})$. Máy tự làm bước chuẩn hoá, bạn không cần đổi sang $z$.</p>
 <div class="box calc">
-  <div class="box-title"><span class="tag">Bấm máy</span>Bài 2, Ví dụ 11.1 — huyết áp $X\sim N(118;\,100)$</div>
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Bài 2, Ví dụ 11.1 — huyết áp $X\sim N(118;\,100)$</span></div>
   <p>Phương sai 100 nên <b>độ lệch chuẩn $\sigma=10$</b> — ô σ của máy nhận độ lệch chuẩn, không nhận phương sai.</p>
   <ol class="keyseq">
     <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd><span class="lcd">Normal CD</span></span></li>
@@ -296,7 +296,7 @@ n    = 1              → tổng các p bằng 1 ✓</div>
 <h3 id="inverse-normal">5.4. Bài toán ngược: Inverse Normal</h3>
 <p><b>Máy làm gì?</b> Bạn đưa diện tích <b>bên trái</b> (Area $=P(X&lt;x)$), máy tìm mốc $x$. Máy này chỉ có kiểu “bên trái”, nên đề cho phần bên phải thì phải đổi trước.</p>
 <div class="box calc">
-  <div class="box-title"><span class="tag">Bấm máy</span>Ngưỡng huyết áp và phân vị $z_\alpha$</div>
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Ngưỡng huyết áp và phân vị $z_\alpha$</span></div>
   <ol class="keyseq">
     <li><span class="why"><b>Ví dụ 11.1(d):</b> “chỉ 5% cao hơn $h$” → phần <b>bên trái</b> $h$ là $1-0{,}05=0{,}95$.</span>
       <span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd><span class="lcd">Area</span><kbd>0.95</kbd><kbd>=</kbd><span class="lcd">σ</span><kbd>10</kbd><kbd>=</kbd><span class="lcd">μ</span><kbd>118</kbd><kbd>=</kbd><kbd>=</kbd></span>
@@ -319,7 +319,7 @@ n    = 1              → tổng các p bằng 1 ✓</div>
 </div>
 <p class="small">Ba hàm P, Q, R của máy chính là ba diện tích ở <a href="bai-2.html#ct-ba-ham">Bài 2, mục 11.1</a>: $P=G=0{,}5+\varphi$, $Q=\varphi$, $R=0{,}5-\varphi$.</p>
 <div class="box trap">
-  <div class="box-title"><span class="tag">Chú ý</span>Với $x$ âm, Q( khác $\varphi$ ở dấu</div>
+  <div class="box-title"><span class="tag">Chú ý</span><span>Với $x$ âm, Q( khác $\varphi$ ở dấu</span></div>
   <p>Bấm thử <span class="lcd">Q(−1)</span>, máy ra <span class="lcd">0.34134</span> — một số <b>dương</b>. Còn theo giáo trình $\varphi(-1)=-0{,}3413$. Lý do: Q( của máy luôn trả <b>độ lớn diện tích</b> giữa 0 và $x$ (diện tích thì không âm), còn $\varphi(x)=\int_0^x l(t)\,dt$ là tích phân <b>có hướng</b> — đi từ 0 sang trái thì mang dấu trừ (<a href="bai-2.html#ct-ba-ham">Bài 2, mục 11.1</a>). Vậy với $x$ âm: lấy Q( của số dương rồi <b>tự thêm dấu trừ</b>, ví dụ $\varphi(-1)=-Q(1)=-0{,}3413$. Normal CD (Lower 0, Upper $x$) cũng nên nhập Upper dương rồi tự đổi dấu như vậy.</p>
 </div>
 

@@ -10,12 +10,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=3">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=3"></script>
+  <script defer src="assets/js/site.js?v=4"></script>
   <script defer src="assets/js/plot.js"></script>
-  <script defer src="assets/js/bai1.js?v=2"></script>
+  <script defer src="assets/js/bai1.js?v=3"></script>
 </head>
 <body data-lesson="bai-1">
 <header class="topbar">
@@ -149,7 +149,7 @@
 <h3 id="dm-nhieu">2.4. Mở rộng cho nhiều biến cố</h3>
 <p>Gọi $K_i$ là “bệnh nhân thứ $i$ khỏi bệnh” ($i=1,2,\dots,n$). Luật De Morgan vẫn giữ nguyên dạng:</p>
 <div class="box formula">
-  <div class="box-title"><span class="tag">Công thức</span>De Morgan cho $n$ biến cố</div>
+  <div class="box-title"><span class="tag">Công thức</span><span>De Morgan cho $n$ biến cố</span></div>
   $$\overline{K_1\cup K_2\cup\dots\cup K_n}=\overline{K_1}\cap\overline{K_2}\cap\dots\cap\overline{K_n}$$
   $$\overline{K_1\cap K_2\cap\dots\cap K_n}=\overline{K_1}\cup\overline{K_2}\cup\dots\cup\overline{K_n}$$
 </div>
@@ -233,7 +233,7 @@ $$P(N\mid H)=\frac{20/100}{40/100}=\frac{P(N\cap H)}{P(H)}=\frac{0{,}2}{0{,}4}=0
   <li>“Trong số người <b>hút thuốc</b>, 50% bị nha chu” — $P(N\mid H)$.</li>
 </ul>
 <div class="box trap">
-  <div class="box-title"><span class="tag">Bẫy</span>$P(N\mid H)\neq P(H\mid N)$</div>
+  <div class="box-title"><span class="tag">Bẫy</span><span>$P(N\mid H)\neq P(H\mid N)$</span></div>
   <p>Câu “phần lớn bệnh nhân ung thư phổi hút thuốc” khác hẳn câu “phần lớn người hút thuốc bị ung thư phổi”. Đề bài thường cho một chiều và hỏi chiều ngược lại — chiều ngược lại phải tính bằng <b>công thức Bayes</b> (mục 8).</p>
 </div>
 
@@ -585,12 +585,12 @@ $$\begin{cases}H_1\cup H_2\cup\dots\cup H_n=\Omega & \text{(phủ kín: chắc c
 <h3 id="xn-se-sp">9.2. Độ nhạy và độ đặc hiệu</h3>
 <div class="grid2">
   <div class="box formula" style="margin:0">
-    <div class="box-title"><span class="tag">Độ nhạy</span>Sensitivity — $Se$</div>
+    <div class="box-title"><span class="tag">Độ nhạy</span><span>Sensitivity — $Se$</span></div>
     $$Se=P(T^+\mid M^+)=\frac{a}{a+c}$$
     <p class="small">“Trong số người <b>có bệnh</b>, bao nhiêu % được xét nghiệm phát hiện.” Âm giả: $P(T^-\mid M^+)=1-Se$.<br>Độ nhạy cao → ít <b>bỏ sót</b> người bệnh.</p>
   </div>
   <div class="box formula" style="margin:0">
-    <div class="box-title"><span class="tag">Độ đặc hiệu</span>Specificity — $Sp$</div>
+    <div class="box-title"><span class="tag">Độ đặc hiệu</span><span>Specificity — $Sp$</span></div>
     $$Sp=P(T^-\mid M^-)=\frac{d}{b+d}$$
     <p class="small">“Trong số người <b>không bệnh</b>, bao nhiêu % được xác nhận âm tính.” Dương giả: $P(T^+\mid M^-)=1-Sp$.<br>Độ đặc hiệu cao → ít <b>báo động nhầm</b>.</p>
   </div>
@@ -931,7 +931,7 @@ $$\ln(a^n)=\ln(\underbrace{a\cdot a\cdots a}_{n\text{ thừa số}})=\underbrace
   </div>
 </div>
 <div class="box trap">
-  <div class="box-title"><span class="tag">Bẫy</span>Bernoulli chỉ dùng khi $p$ không đổi</div>
+  <div class="box-title"><span class="tag">Bẫy</span><span>Bernoulli chỉ dùng khi $p$ không đổi</span></div>
   <p>Nếu mỗi lần có xác suất khác nhau (ví dụ 3 bệnh nhân với $0{,}7;\ 0{,}6;\ 0{,}8$) thì <b>không</b> dùng $C_n^m p^mq^{n-m}$ — phải liệt kê từng trường hợp như Ví dụ 6.2. Lấy không hoàn lại từ hộp nhỏ cũng không phải Bernoulli (dùng tổ hợp như Ví dụ 11.4).</p>
 </div>
 
@@ -950,7 +950,129 @@ $$\ln(a^n)=\ln(\underbrace{a\cdot a\cdots a}_{n\text{ thừa số}})=\underbrace
   <div class="rule"><span class="when">“Giá trị tiên đoán”, “dương tính thì khả năng mắc bệnh”</span><span class="arrow">→</span><span class="use">$P(M\mid T)$ — Bayes / đọc theo <b>hàng</b></span></div>
   <div class="rule"><span class="when">“Cần ít nhất bao nhiêu lần…”</span><span class="arrow">→</span><span class="use">$1-q^n\ge\gamma$, giải bằng logarit</span></div>
   <div class="rule"><span class="when">“Kiểm tra đến khi… thì dừng ở lần thứ $k$”</span><span class="arrow">→</span><span class="use">Lần $k$ bắt buộc trúng × ($k-1$ lần trước có đúng $r-1$ lần trúng)</span></div>
+  <div class="rule"><span class="when">Đề <b>không cho</b> tỉ lệ mỗi nhóm, chỉ cho câu so sánh: “số người … của nhóm II <b>gấp rưỡi / gấp đôi / gấp 3</b> nhóm I”, “bằng nhau”, “nhiều hơn 25%”…</span><span class="arrow">→</span><span class="use">Đặt ẩn $x=P(\text{nhóm I})$, dịch câu so sánh thành phương trình “gấp $k$ lần” (mục 12.1)</span></div>
 </div>
+
+<h3 id="nd-lap-pt">12.1. Dạng “đề chỉ cho câu so sánh” — tự lập phương trình (gấp $k$ lần)</h3>
+<p>Đây là dạng dễ bí nhất vì đề <b>thiếu</b> một con số quen thuộc: không nói bao nhiêu phần trăm bệnh nhân được điều trị bằng mỗi phương pháp. Con số đó bị “giấu” trong một câu so sánh. Việc của ta là <b>đặt nó làm ẩn</b> rồi dịch câu so sánh thành phương trình.</p>
+<p>Câu so sánh có nhiều cách nói — gấp rưỡi, gấp đôi, gấp 3, bằng nhau, bằng một nửa, nhiều hơn 25%… — nhưng <b>tất cả đều là “gấp $k$ lần”</b> với một con số $k$ phù hợp:</p>
+<div class="table-wrap"><table class="compact">
+  <tr><th class="left">Đề nói (II so với I)</th><th>$k$</th><th class="left">Vì sao</th></tr>
+  <tr><td class="left">bằng nhau</td><td>$1$</td><td class="left">gấp 1 lần là bằng</td></tr>
+  <tr><td class="left">gấp rưỡi</td><td>$1{,}5$</td><td class="left">“rưỡi” = thêm một nửa: $1+0{,}5$</td></tr>
+  <tr><td class="left">gấp đôi · gấp 3 · gấp 4</td><td>$2$ · $3$ · $4$</td><td class="left">đọc thẳng</td></tr>
+  <tr><td class="left">bằng một nửa</td><td>$0{,}5$</td><td class="left">gấp “nửa lần”</td></tr>
+  <tr><td class="left">nhiều hơn $25\%$</td><td>$1{,}25$</td><td class="left">bằng của I cộng thêm $25\%$ của I: $1+0{,}25$</td></tr>
+  <tr><td class="left">ít hơn $20\%$</td><td>$0{,}8$</td><td class="left">bằng của I bớt đi $20\%$: $1-0{,}2$</td></tr>
+</table></div>
+<p class="small muted">Nếu đề nói ngược chiều (“số người khỏi của I gấp $k$ lần của II”) thì chỉ cần đổi vai hai phương pháp, hoặc viết thẳng phương trình theo đúng câu chữ — xem khung “Công thức tổng quát” bên dưới.</p>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 12.1</span>Hai phương pháp điều trị viêm quanh răng</div>
+  <p>Một phòng khám điều trị viêm quanh răng bằng hai phương pháp: phương pháp I (nạo túi nha chu đơn thuần) có tỉ lệ khỏi bệnh $60\%$, phương pháp II (nạo kết hợp kháng sinh tại chỗ) có tỉ lệ khỏi bệnh $80\%$. Mỗi bệnh nhân được điều trị bằng đúng một phương pháp. Biết <b>số người khỏi bệnh của phương pháp II gấp rưỡi số người khỏi bệnh của phương pháp I</b>.<br>(a) Tỉ lệ bệnh nhân được điều trị bằng phương pháp I là bao nhiêu? (b) Tỉ lệ khỏi bệnh chung của phòng khám? (c) Gặp ngẫu nhiên một người đã khỏi bệnh, xác suất người đó được điều trị bằng phương pháp I?</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Đặt tên:</span> $\mathrm{I}$: “được điều trị bằng phương pháp I”, $\mathrm{II}$: “… phương pháp II”, $K$: “khỏi bệnh”. Đề cho $P(K\mid\mathrm I)=0{,}6$ và $P(K\mid\mathrm{II})=0{,}8$ (tỉ lệ khỏi <b>trong từng nhóm</b> là xác suất có điều kiện).</li>
+      <li><span class="step-label">Đặt ẩn cho con số bị giấu:</span> $x=P(\mathrm I)$. Vì mỗi người được điều trị bằng đúng một phương pháp nên $\{\mathrm I,\mathrm{II}\}$ là hệ đầy đủ: $P(\mathrm{II})=1-x$.</li>
+      <li><span class="step-label">Dịch “số người khỏi bệnh của phương pháp I”:</span> gọi $N$ là tổng số bệnh nhân. Số người vừa điều trị bằng I <b>vừa</b> khỏi bệnh là $N\cdot P(\mathrm I\cap K)=N\cdot P(\mathrm I)\,P(K\mid\mathrm I)=N\cdot0{,}6x$. Tương tự, số người khỏi bệnh của phương pháp II là $N\cdot(1-x)\cdot0{,}8$.</li>
+      <li><span class="step-label">Dịch “gấp rưỡi” ($=1{,}5$ lần):</span> $$N(1-x)\cdot0{,}8=1{,}5\cdot N\cdot0{,}6x.$$ Chia hai vế cho $N$ (vì $N&gt;0$) — $N$ biến mất, nên đề không cần cho $N$.</li>
+      <li><span class="step-label">Giải:</span> $0{,}8-0{,}8x=0{,}9x\Rightarrow0{,}8=1{,}7x\Rightarrow x=\dfrac{0{,}8}{1{,}7}=\dfrac{8}{17}\approx\mathbf{0{,}4706}$. Vậy (a) khoảng $47{,}06\%$ bệnh nhân điều trị bằng phương pháp I.</li>
+      <li><span class="step-label">(b) Toàn phần:</span> $P(K)=x\cdot0{,}6+(1-x)\cdot0{,}8=\dfrac{8}{17}\cdot0{,}6+\dfrac{9}{17}\cdot0{,}8=\dfrac{4{,}8+7{,}2}{17}=\dfrac{12}{17}\approx\mathbf{0{,}7059}$.</li>
+      <li><span class="step-label">(c) Bayes:</span> $P(\mathrm I\mid K)=\dfrac{P(\mathrm I\cap K)}{P(K)}=\dfrac{4{,}8/17}{12/17}=\dfrac{4{,}8}{12}=\mathbf{0{,}4}$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức tổng quát</span><span>“Số người khỏi của II gấp $k$ lần của I”</span></div>
+  <p>Gọi $a=P(K\mid\mathrm I)$, $b=P(K\mid\mathrm{II})$ là hai tỉ lệ khỏi đề cho, ẩn $x=P(\mathrm I)$. Làm y hệt Ví dụ 12.1, chỉ thay $1{,}5$ bằng $k$:</p>
+  <ol class="steps">
+    <li><span class="step-label">Lập phương trình:</span> $(1-x)\,b=k\cdot x\,a$.</li>
+    <li><span class="step-label">Khai triển:</span> $b-bx=kax\Rightarrow b=bx+kax=x\,(b+ka)$.</li>
+    <li><span class="step-label">Chia cho $(b+ka)$:</span> $$x=P(\mathrm I)=\frac{b}{b+k\,a}.$$</li>
+    <li><span class="step-label">Thử lại với Ví dụ 12.1</span> ($a=0{,}6$, $b=0{,}8$, $k=1{,}5$): $x=\dfrac{0{,}8}{0{,}8+1{,}5\cdot0{,}6}=\dfrac{0{,}8}{1{,}7}=\dfrac{8}{17}$ ✓.</li>
+  </ol>
+  <p class="small">Không cần học thuộc công thức này — chỉ cần nhớ <b>bước 1</b> (dịch câu chữ), phần còn lại là giải phương trình bậc nhất. Đề nói ngược chiều “số người khỏi của <b>I</b> gấp $k$ lần của II” thì bước 1 thành $x\,a=k\,(1-x)\,b$. Đề cho tổng số $N$ và hiệu số người (vd “II khỏi nhiều hơn I là 30 người”) thì $N$ không biến mất: $N(1-x)b-Nxa=30$.</p>
+</div>
+<p>Cùng hai tỉ lệ khỏi $a=0{,}6$, $b=0{,}8$, đổi $k$ thì kết quả đổi theo:</p>
+<div class="table-wrap"><table class="compact">
+  <tr><th>Câu so sánh</th><th>$k$</th><th>$x=P(\mathrm I)=\frac{b}{b+ka}$</th><th>$P(K)$</th><th>$P(\mathrm I\mid K)$</th></tr>
+  <tr><td>bằng một nửa</td><td>$0{,}5$</td><td>$\frac{8}{11}\approx0{,}7273$</td><td>$0{,}6545$</td><td>$\frac23$</td></tr>
+  <tr><td>bằng nhau</td><td>$1$</td><td>$\frac47\approx0{,}5714$</td><td>$0{,}6857$</td><td>$\frac12$</td></tr>
+  <tr><td>gấp rưỡi</td><td>$1{,}5$</td><td>$\frac{8}{17}\approx0{,}4706$</td><td>$0{,}7059$</td><td>$\frac25$</td></tr>
+  <tr><td>gấp đôi</td><td>$2$</td><td>$\frac25=0{,}4$</td><td>$0{,}72$</td><td>$\frac13$</td></tr>
+  <tr><td>gấp 3</td><td>$3$</td><td>$\frac{4}{13}\approx0{,}3077$</td><td>$0{,}7385$</td><td>$\frac14$</td></tr>
+</table></div>
+<p class="small">Nhận xét: $k$ càng lớn thì nhóm I càng <b>ít</b> người (muốn số người khỏi của II gấp nhiều lần thì nhóm II phải đông hơn hẳn); còn cột cuối luôn là $\frac{1}{1+k}$ — xem mẹo bên dưới.</p>
+<div class="widget" id="kWidget">
+  <div class="widget-title">Kéo hệ số $k$: “gấp $k$ lần” thay đổi điều gì?</div>
+  <div class="widget-sub">Tính trên 100 bệnh nhân. Mỗi phương pháp có 2 cột: <b>cột nhạt</b> = số người được điều trị, <b>cột đậm</b> = số người khỏi bệnh. Kéo $k$, $a$, $b$ hoặc đổi “câu so sánh nói về…” để xem $x$ phải bằng bao nhiêu thì câu so sánh mới đúng.</div>
+  <div class="controls">
+    <div class="ctrl"><label for="kK">Hệ số $k$ <output for="kK"></output></label><input type="range" id="kK" min="0.5" max="4" step="0.25" value="1.5"></div>
+    <div class="ctrl"><label for="kA">Tỉ lệ khỏi PP I: $a$ <output for="kA"></output></label><input type="range" id="kA" min="0.3" max="0.95" step="0.05" value="0.6"></div>
+    <div class="ctrl"><label for="kB">Tỉ lệ khỏi PP II: $b$ <output for="kB"></output></label><input type="range" id="kB" min="0.3" max="0.95" step="0.05" value="0.8"></div>
+    <div class="ctrl"><label for="kMode">Câu so sánh nói về</label><select id="kMode"><option value="cured">số người khỏi bệnh</option><option value="treated">số người được điều trị</option></select></div>
+  </div>
+  <div id="kPlot"></div>
+  <div class="readout" id="kRead"></div>
+</div>
+<p class="small"><b>Cách đọc hình:</b> ở chế độ “số người khỏi bệnh”, hai <b>cột đậm</b> luôn có tỉ lệ đúng bằng $k$ (cột đậm của II cao gấp $k$ lần cột đậm của I). Thử kéo $k$ từ 1 lên 3: cột nhạt của I thấp dần — phải bớt người ở nhóm I thì số người khỏi của II mới gấp nhiều lần được. Đổi sang “số người được điều trị”: lúc này hai <b>cột nhạt</b> mới có tỉ lệ $k$.</p>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Mẹo</span><span>Câu (c) có đường tắt — không cần tìm $x$</span></div>
+  <p>Trong <b>những người đã khỏi bệnh</b>, cứ 1 phần thuộc phương pháp I thì có $k$ phần thuộc phương pháp II (chính là câu “gấp $k$ lần”). Tổng cộng $1+k$ phần, nên $$P(\mathrm I\mid K)=\frac{1}{1+k},\qquad P(\mathrm{II}\mid K)=\frac{k}{1+k}.$$ Ví dụ 12.1 ($k=1{,}5$): $\frac{1}{2{,}5}=0{,}4$ — khớp bước 7. Gấp đôi: $\frac13$; gấp 3: $\frac14$; bằng nhau: $\frac12$.</p>
+</div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span><span>Đọc kĩ: “gấp $k$ lần” cái gì?</span></div>
+  <ul>
+    <li>“<b>Số người khỏi bệnh</b> của II gấp $k$ lần của I” → so sánh $P(\mathrm{II}\cap K)$ với $P(\mathrm I\cap K)$: $(1-x)\,b=k\,x\,a$ (như trên).</li>
+    <li>“<b>Số người được điều trị</b> bằng II gấp $k$ lần bằng I” → so sánh $P(\mathrm{II})$ với $P(\mathrm I)$: $1-x=kx\Rightarrow x=\dfrac{1}{1+k}$. Ví dụ $k=1{,}5$: $x=0{,}4$, $P(K)=0{,}4\cdot0{,}6+0{,}6\cdot0{,}8=0{,}72$ và $P(\mathrm I\mid K)=\frac{0{,}24}{0{,}72}=\frac13$ — <b>khác hẳn</b> kết quả $0{,}4$ của Ví dụ 12.1. (Đường tắt $\frac1{1+k}$ chỉ dùng cho câu nói về số người <b>khỏi</b>.)</li>
+    <li>“<b>Tỉ lệ khỏi</b> của II gấp $k$ lần của I” → so sánh $P(K\mid\mathrm{II})$ với $P(K\mid\mathrm I)$: $b=k\,a$ — đó là dữ kiện về hai tỉ lệ khỏi, <b>không</b> giúp tìm $x$.</li>
+  </ul>
+</div>
+<div class="qc" data-ans="b">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 1</span>Câu “số người khỏi bệnh của phương pháp II gấp rưỡi phương pháp I” dịch thành đẳng thức nào?</div>
+  <div class="qc-opts">
+    <button data-k="a">$P(\mathrm{II})=1{,}5\,P(\mathrm I)$</button>
+    <button data-k="b">$P(\mathrm{II}\cap K)=1{,}5\,P(\mathrm I\cap K)$</button>
+    <button data-k="c">$P(K\mid\mathrm{II})=1{,}5\,P(K\mid\mathrm I)$</button>
+  </div>
+  <div class="qc-fb" data-k="a">Đó là câu “số người <b>được điều trị</b> bằng II gấp rưỡi I”. Ở đây đề nói số người <b>khỏi bệnh</b>, tức là người vừa thuộc nhóm vừa khỏi: phải có $\cap K$.</div>
+  <div class="qc-fb" data-k="b">“Số người khỏi bệnh của phương pháp II” là số người vừa điều trị bằng II vừa khỏi bệnh, tỉ lệ với $P(\mathrm{II}\cap K)=P(\mathrm{II})\,P(K\mid\mathrm{II})$.</div>
+  <div class="qc-fb" data-k="c">$P(K\mid\mathrm{II})$ là tỉ lệ khỏi <b>trong nhóm</b> II — đề đã cho sẵn con số đó. “Số người khỏi” còn phụ thuộc nhóm đông hay ít, nên phải nhân thêm $P(\mathrm{II})$.</div>
+</div>
+<div class="qc" data-num="0,4286" data-tol="0,0006">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Phương pháp I chữa khỏi $50\%$, phương pháp II chữa khỏi $75\%$. Số người khỏi bệnh của phương pháp II <b>gấp đôi</b> của phương pháp I. Tìm $x=P(\mathrm I)$ (làm tròn 4 chữ số thập phân).</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập x"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">$(1-x)\cdot0{,}75=2\cdot0{,}5x\Rightarrow0{,}75=1{,}75x\Rightarrow x=\frac{3}{7}\approx0{,}4286$.</div>
+  <div class="qc-fb" data-k="no">Gợi ý: số người khỏi của I tỉ lệ với $0{,}5x$, của II tỉ lệ với $0{,}75(1-x)$. “Gấp đôi”: $0{,}75(1-x)=2\cdot0{,}5x$. Chuyển các số hạng chứa $x$ về một vế rồi chia.</div>
+</div>
+<div class="qc" data-ans="a">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 3</span>Vẫn đề vừa rồi (số người khỏi của II gấp đôi của I). Gặp ngẫu nhiên một người đã khỏi bệnh, xác suất người đó được điều trị bằng phương pháp I là?</div>
+  <div class="qc-opts">
+    <button data-k="a">$\frac13$</button>
+    <button data-k="b">$\frac12$</button>
+    <button data-k="c">$\frac37$</button>
+  </div>
+  <div class="qc-fb" data-k="a">Trong số người khỏi: I chiếm 1 phần, II chiếm 2 phần → $P(\mathrm I\mid K)=\frac{1}{1+2}=\frac13$. Kiểm tra bằng Bayes: $\frac{0{,}5\cdot\frac37}{0{,}5\cdot\frac37+0{,}75\cdot\frac47}=\frac{1{,}5}{4{,}5}=\frac13$.</div>
+  <div class="qc-fb" data-k="b">Hai phương pháp không chia đều người khỏi: số người khỏi của II gấp đôi I.</div>
+  <div class="qc-fb" data-k="c">$\frac37$ là $P(\mathrm I)$ — tỉ lệ trong <b>tất cả</b> bệnh nhân. Câu hỏi đã biết người đó <b>khỏi bệnh</b>, nên cần $P(\mathrm I\mid K)$.</div>
+</div>
+<div class="qc" data-ans="b">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 4</span>Đề viết: “số người khỏi bệnh của phương pháp II <b>nhiều hơn</b> của phương pháp I là $25\%$”. Hệ số $k$ trong phương trình $(1-x)\,b=k\,x\,a$ là?</div>
+  <div class="qc-opts">
+    <button data-k="a">$k=0{,}25$</button>
+    <button data-k="b">$k=1{,}25$</button>
+    <button data-k="c">$k=0{,}75$</button>
+  </div>
+  <div class="qc-fb" data-k="a">$0{,}25$ chỉ là <b>phần nhiều hơn</b>. Số người khỏi của II = của I + $25\%$ của I = $1{,}25$ lần của I.</div>
+  <div class="qc-fb" data-k="b">“Nhiều hơn $25\%$” nghĩa là bằng cái cũ cộng thêm một phần tư cái cũ: $1+0{,}25=1{,}25$.</div>
+  <div class="qc-fb" data-k="c">$0{,}75=1-0{,}25$ là “<b>ít hơn</b> $25\%$”. Đề nói nhiều hơn nên phải cộng: $1+0{,}25$.</div>
+</div>
+<div class="qc" data-num="0,3333" data-tol="0,0006">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 5</span>Phương pháp I chữa khỏi $50\%$, phương pháp II chữa khỏi $75\%$. Số người khỏi bệnh của phương pháp II <b>gấp 3</b> của phương pháp I. Tìm $x=P(\mathrm I)$ (làm tròn 4 chữ số thập phân).</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập x"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">$(1-x)\cdot0{,}75=3\cdot0{,}5x\Rightarrow0{,}75=0{,}75x+1{,}5x=2{,}25x\Rightarrow x=\frac{0{,}75}{2{,}25}=\frac13\approx0{,}3333$. Hoặc dùng công thức: $\frac{b}{b+ka}=\frac{0{,}75}{0{,}75+3\cdot0{,}5}=\frac13$.</div>
+  <div class="qc-fb" data-k="no">Gợi ý: $a=0{,}5$, $b=0{,}75$, $k=3$. Viết $(1-x)\cdot0{,}75=3\cdot0{,}5\cdot x$, đưa hết số hạng chứa $x$ sang một vế rồi chia.</div>
+</div>
+<p class="small">Muốn luyện thêm dạng này: xem <a href="#b1-tn-c5">Chặng 5 của phần Trắc nghiệm</a> (nhiều biến thể: gấp rưỡi, gấp đôi, gấp 3, bằng nhau, nhiều hơn/ít hơn %, đề nói ngược chiều, cho số người cụ thể, hệ hai ẩn).</p>
 
 <!-- =============================================================== -->
 <h2 id="loi-thuong-gap" data-toc="13. Lỗi thường gặp"><span class="num">13</span>Lỗi thường gặp</h2>
