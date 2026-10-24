@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=4"></script>
+  <script defer src="assets/js/site.js?v=5"></script>
 </head>
 <body data-lesson="may-tinh">
 <header class="topbar">
@@ -87,7 +87,7 @@
 <div class="table-wrap"><table>
   <tr><th>Phím</th><th>Tên trên màn hình</th><th class="left">Dùng để</th><th class="left">Gặp ở</th></tr>
   <tr><td><span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span></td><td><span class="lcd">Calculate</span></td><td class="left">tính thường: tổ hợp, Bernoulli, toàn phần, Bayes, tích phân $\int$</td><td class="left">mục 2, 6</td></tr>
-  <tr><td><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd></span></td><td><span class="lcd">Statistics</span></td><td class="left">kỳ vọng, phương sai của biến rời rạc; sau này: số liệu mẫu (Bài 3), hồi quy (Bài 8)</td><td class="left">mục 4</td></tr>
+  <tr><td><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd></span></td><td><span class="lcd">Statistics</span></td><td class="left">kỳ vọng, phương sai của biến rời rạc; số liệu mẫu (Bài 3); sau này: hồi quy (Bài 8)</td><td class="left">mục 4</td></tr>
   <tr><td><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd></span></td><td><span class="lcd">Distribution</span></td><td class="left">xác suất nhị thức, phân phối chuẩn, phân vị</td><td class="left">mục 5</td></tr>
   <tr><td><span class="keys"><kbd class="fn">MENU</kbd><kbd>8</kbd></span></td><td><span class="lcd">Table</span></td><td class="left">lập bảng giá trị $f(x)$ khi $x$ chạy — xem cả phân phối một lúc</td><td class="left">mục 3</td></tr>
 </table></div>
@@ -228,6 +228,43 @@ n    = 1              → tổng các p bằng 1 ✓</div>
   </ul>
 </div>
 
+
+<h3 id="stat-mau">4.3. Số liệu mẫu (Bài 3): $\overline x$, $s$, trung vị, tứ phân vị</h3>
+<p>Với số liệu đo được từ một mẫu, cột Freq là <b>tần số</b> (số người), không phải xác suất. Máy tính đúng các công thức của <a href="bai-3.html#tb-tan-so">Bài 3, mục 10 – 12</a>.</p>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Bảng tần số: số răng sâu của 40 học sinh (Bài 3, Ví dụ 7.1)</span></div>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>$x$</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+    <tr><th>Số học sinh</th><td>8</td><td>10</td><td>9</td><td>7</td><td>4</td><td>2</td></tr>
+  </table></div>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd><span class="lcd">1-Variable</span></span> <span class="why">(cột Freq đã bật ở mục 1.4). Xoá dữ liệu cũ: <span class="keys"><kbd class="fn">OPTN</kbd><kbd>2</kbd><kbd>2</kbd></span>.</span></li>
+    <li><span class="keys"><kbd>0</kbd><kbd>=</kbd><kbd>1</kbd><kbd>=</kbd>…<kbd>5</kbd><kbd>=</kbd></span> <span class="why">cột x; sau đó sang cột Freq nhập 8, 10, 9, 7, 4, 2.</span></li>
+    <li><span class="keys"><kbd class="fn">OPTN</kbd><kbd>3</kbd><span class="lcd">1-Variable Calc</span></span> <span class="why">dùng ▼ xem hết danh sách.</span></li>
+  </ol>
+  <div class="screen">x̄    = 1.875          → trung bình mẫu
+Σx    = 75             → Σ nᵢxᵢ
+Σx²   = 223            → Σ nᵢxᵢ²
+σ²x   = 2.059375       → chia n   (σ² trong slide)
+σx    = 1.4350…        → chia n
+s²x   = 2.1121794…     → chia n−1 (phương sai mẫu s²)
+sx    = 1.4533…        → chia n−1 (độ lệch chuẩn mẫu s)
+n     = 40             → cỡ mẫu — kiểm tra đã nhập đủ
+min(x)= 0
+Q₁    = 1
+Med   = 2              → trung vị
+Q₃    = 3
+max(x)= 5</div>
+  <p><b>Số liệu phân lớp:</b> nhập <b>trung điểm</b> mỗi lớp vào cột x, số người vào Freq (Bài 3, Ví dụ 12.3). Kết quả $\overline x$, $s$ là giá trị gần đúng theo giả thiết “dồn về trung điểm”; Med, Q₁, Q₃ khi đó <b>không</b> dùng được — tính trung vị phân lớp bằng công thức.</p>
+</div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span><span>Hai chỗ máy khác cách làm của giáo trình</span></div>
+  <ul>
+    <li><b>sx hay σx?</b> Số liệu mẫu (Bài 3 trở đi): độ lệch chuẩn mẫu là <span class="lcd">sx</span> (chia $n-1$). Đề hỏi “phương sai tổng thể $\sigma^2$” mới lấy <span class="lcd">σ²x</span>. Bài 2 (biến ngẫu nhiên, Freq là xác suất) thì lấy σx.</li>
+    <li><b>Q₁, Q₃:</b> theo sách fx-580VN X, máy lấy trung vị của nửa dưới / nửa trên. Giáo trình dùng vị trí $\frac{n+1}{4}$, $\frac{3(n+1)}{4}$ rồi nội suy. Hai cách trùng nhau khi $n+1$ chia hết cho 4; còn lại có thể lệch (ví dụ 12 số ở <a href="bai-3.html#phan-vi-bang">Bài 3 mục 11</a>: máy 34 và 44,5; giáo trình 33,5 và 45,25). Khi thi làm theo giáo trình.</li>
+  </ul>
+</div>
+
 <!-- =============================================================== -->
 <h2 id="distribution" data-toc="5. Phân phối (MENU 7)"><span class="num">5</span>Phân phối — <span class="nowrap">MENU 7</span> Distribution</h2>
 <h3 id="dist-menu">5.1. Menu phân phối</h3>
@@ -352,6 +389,7 @@ n    = 1              → tổng các p bằng 1 ✓</div>
   <tr><td class="left">Bernoulli: “ít nhất / nhiều nhất / từ … đến …”</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>▼</kbd><kbd>1</kbd></span> Binomial CD + bảng đổi câu chữ</td><td class="left"><a href="#binomial">5.2</a></td></tr>
   <tr><td class="left">Cả bảng phân phối, số lần có khả năng nhất, $n$ nhỏ nhất</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>8</kbd></span> Table</td><td class="left"><a href="#table">3</a></td></tr>
   <tr><td class="left">$E(X)$, $D(X)$, $\sigma(X)$ của biến rời rạc</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> + cột Freq $=p_i$</td><td class="left"><a href="#statistics">4</a></td></tr>
+  <tr><td class="left">Số liệu mẫu: $\overline x$, $s$, trung vị, min, max (Bài 3)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> + Freq = số người; đọc <b>sx</b></td><td class="left"><a href="#stat-mau">4.3</a></td></tr>
   <tr><td class="left">Tích phân, $E(X)$, $D(X)$ của biến liên tục</td><td class="left"><span class="keys"><kbd>∫</kbd></span></td><td class="left"><a href="#tich-phan">6</a></td></tr>
   <tr><td class="left">Xác suất của phân phối chuẩn</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd></span> Normal CD</td><td class="left"><a href="#normal-cd">5.3</a></td></tr>
   <tr><td class="left">Tìm ngưỡng, phân vị $z_\alpha$</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd></span> Inverse Normal (diện tích bên trái)</td><td class="left"><a href="#inverse-normal">5.4</a></td></tr>
@@ -378,7 +416,7 @@ n    = 1              → tổng các p bằng 1 ✓</div>
 </div>
 <div class="box extra">
   <div class="box-title"><span class="tag">Sẽ bổ sung</span>Các bài sau</div>
-  <p>Bài 3: dùng <span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> với <b>số liệu mẫu</b> (trung bình mẫu $\bar x$, độ lệch chuẩn mẫu $s_x$). Bài 8: hồi quy tuyến tính <span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>2</kbd></span> <span class="lcd">y=a+bx</span>. Các bài sẽ có khung <b>“Bấm máy”</b> ngay tại chỗ cần dùng.</p>
+  <p>Bài 3 (số liệu mẫu, $\overline x$, $s_x$, trung vị) đã có ở <a href="#stat-mau">mục 4.3</a>. Bài 8: hồi quy tuyến tính <span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>2</kbd></span> <span class="lcd">y=a+bx</span>. Các bài sẽ có khung <b>“Bấm máy”</b> ngay tại chỗ cần dùng.</p>
 </div>
 
 <div class="pager">

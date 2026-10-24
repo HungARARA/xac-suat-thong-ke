@@ -17,6 +17,11 @@ const LESSONS = [
     id: "bai-2", href: "bai-2.html", no: "Bài 2", title: "Phân phối xác suất của biến ngẫu nhiên",
     desc: "Biến ngẫu nhiên rời rạc – liên tục, tích phân từ con số 0, kỳ vọng – phương sai, nhị thức, chuẩn, chuẩn tắc, χ², Student, Fisher, cách tra bảng.",
     chips: ["Tích phân", "E(X), D(X)", "Phân phối chuẩn", "Tra bảng"]
+  },
+  {
+    id: "bai-3", href: "bai-3.html", no: "Bài 3", title: "Thống kê mô tả và phân bố của các tham số trên mẫu",
+    desc: "Tổng thể – mẫu, thang đo, cách chọn mẫu, bảng tần số, phân lớp, biểu đồ, trung bình – trung vị – mod, tứ phân vị, phương sai mẫu, phân phối của trung bình mẫu và tỉ lệ mẫu.",
+    chips: ["Thang đo", "Chọn mẫu", "x̄, s, Mₑ", "σ/√n"]
   }
 ];
 
@@ -28,7 +33,6 @@ const EXTRA_PAGES = [
 
 /* Các bài sắp học (hiện mờ trên trang chủ). Khi làm xong bài nào thì chuyển nó lên LESSONS. */
 const COMING = [
-  { no: "Bài 3", title: "Giới thiệu thống kê – Thu thập, trình bày dữ liệu – Phân bố của các tham số trên mẫu" },
   { no: "Bài 4", title: "Ước lượng tham số tổng thể" },
   { no: "Bài 5", title: "Kiểm định giả thuyết thống kê" },
   { no: "Bài 6", title: "Phép kiểm phi tham số" },
