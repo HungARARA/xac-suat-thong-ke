@@ -2095,7 +2095,7 @@ $$\sigma_f=\sqrt{\frac{p(1-p)}{n}}\cdot\sqrt{\frac{N-n}{N-1}}.$$
 
 <!-- =============================================================== -->
 <h2 id="trac-nghiem" data-toc="18. Trắc nghiệm luyện tập"><span class="num">18</span>Trắc nghiệm luyện tập (50 câu)</h2>
-<p>Đề soạn mới theo các dạng hay gặp trong đề thi trắc nghiệm của lớp, chia thành từng <b>chặng</b>: mỗi chặng đi từ <span class="lvl l1">Thông hiểu</span> → <span class="lvl l2">Vận dụng</span> → <span class="lvl l3">Vận dụng cao</span>. Bấm vào một phương án để chấm ngay: sai thì đọc giải thích vì sao sai rồi chọn lại; đúng rồi thì mở “Xem lời giải từng bước” để đối chiếu.</p>
+<p>Đề soạn mới (không lấy câu hay số liệu của slide, giáo trình), gồm cả câu giải <b>xuôi</b> lẫn câu giải <b>ngược</b> (từ kết quả tìm lại dữ kiện: cỡ mẫu, tần số, giá trị bị thiếu…), chia thành từng <b>chặng</b>: mỗi chặng đi từ <span class="lvl l1">Thông hiểu</span> → <span class="lvl l2">Vận dụng</span> → <span class="lvl l3">Vận dụng cao</span>. Bấm vào một phương án để chấm ngay: sai thì đọc giải thích vì sao sai rồi chọn lại; đúng rồi thì mở “Xem lời giải từng bước” để đối chiếu.</p>
 <p class="small muted">Mẹo: làm nháp ra giấy trước khi bấm — mục tiêu là đúng ngay lần đầu.</p>
 
 <h3 id="b3-tn-c1">Chặng 1 · Tổng thể, mẫu, mô tả – suy diễn, loại đặc điểm</h3>
@@ -2369,44 +2369,44 @@ $$\sigma_f=\sqrt{\frac{p(1-p)}{n}}\cdot\sqrt{\frac{N-n}{N-1}}.$$
 </div>
 
 <div class="ex mcq" id="b3q15">
-  <div class="ex-head"><span class="ex-num">Câu 15</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Chọn điểm bắt đầu</span></div>
-  <p>Lấy mẫu hệ thống với $N=480$, $n=24$. Điểm bắt đầu $r$ nào <b>không hợp lệ</b>?</p>
-  <div class="qc" data-ans="d">
+  <div class="ex-head"><span class="ex-num">Câu 15</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ngược: từ mẫu hệ thống tìm $N$</span></div>
+  <p>Một mẫu hệ thống gồm 25 hồ sơ, các số được chọn là 9, 33, 57, … Biết khoảng cách $k=\frac Nn$ là số nguyên. Danh sách có bao nhiêu hồ sơ, và hồ sơ cuối cùng được chọn mang số mấy?</p>
+  <div class="qc" data-ans="a">
     <div class="qc-opts">
-      <button data-k="a"><b>A.</b> 1</button>
-      <button data-k="b"><b>B.</b> 7</button>
-      <button data-k="c"><b>C.</b> 20</button>
-      <button data-k="d"><b>D.</b> 25</button>
+      <button data-k="a"><b>A.</b> 600 hồ sơ; số 585</button>
+      <button data-k="b"><b>B.</b> 576 hồ sơ; số 585</button>
+      <button data-k="c"><b>C.</b> 600 hồ sơ; số 609</button>
+      <button data-k="d"><b>D.</b> 625 hồ sơ; số 585</button>
     </div>
-    <div class="qc-fb" data-k="a">$k=20$; $r=1$ nằm trong 20 số đầu → hợp lệ.</div>
-    <div class="qc-fb" data-k="b">Nằm trong $1\dots20$ → hợp lệ.</div>
-    <div class="qc-fb" data-k="c">$r=k=20$ vẫn hợp lệ: người cuối là $20+23\cdot20=480$.</div>
-    <div class="qc-fb" data-k="d">$r$ phải nằm trong $k=20$ đơn vị đầu. Với $r=25$, người thứ 24 mang số $25+23\cdot20=485&gt;480$ — không tồn tại.</div>
+    <div class="qc-fb" data-k="a">$k=33-9=24$; $N=k\cdot n=24\cdot25=600$; người thứ 25 mang số $9+24\cdot24=585$.</div>
+    <div class="qc-fb" data-k="b">$576=24\cdot24$: nhân $k$ với $n-1$. Từ $k=\frac Nn$ suy ra $N=k\cdot n$ với $n=25$.</div>
+    <div class="qc-fb" data-k="c">$9+25\cdot24=609$: cộng $k$ 25 lần — thừa một lần (người đầu là $r=9$, chỉ cần thêm 24 bước). 609 còn vượt quá 600.</div>
+    <div class="qc-fb" data-k="d">$625=25^2$ không liên quan; khoảng cách là 24 chứ không phải 25.</div>
   </div>
-  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$k=\frac{480}{24}=20$ → $r\in\{1,\dots,20\}$. Chỉ 25 nằm ngoài → <b>D</b>.</p></div></details>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Hai số liên tiếp cách nhau đúng $k$: $k=33-9=24$; $r=9$ (hợp lệ vì $9\le24$).</li><li>$k=\frac Nn$ → $N=24\cdot25=600$.</li><li>Người thứ $j=25$: $r+(j-1)k=9+24\cdot24=585\le600$ ✓ → <b>A</b>.</li></ol></div></details>
 </div>
 
 <div class="ex mcq" id="b3q16">
-  <div class="ex-head"><span class="ex-num">Câu 16</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Phân tầng theo tỉ lệ</span></div>
-  <p>Ba khoa có 450; 300; 250 nhân viên. Lấy mẫu phân tầng theo tỉ lệ với $n=80$. Số người lấy ở khoa thứ hai là</p>
+  <div class="ex-head"><span class="ex-num">Câu 16</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ngược: phân tầng theo tỉ lệ</span></div>
+  <p>Lấy mẫu phân tầng <b>theo tỉ lệ</b>: khoa A có 240 nhân viên và được lấy 18 người; khoa B được lấy 12 người. Khoa B có bao nhiêu nhân viên?</p>
   <div class="qc" data-ans="b">
     <div class="qc-opts">
-      <button data-k="a"><b>A.</b> 27</button>
-      <button data-k="b"><b>B.</b> 24</button>
-      <button data-k="c"><b>C.</b> 30</button>
-      <button data-k="d"><b>D.</b> 20</button>
+      <button data-k="a"><b>A.</b> 234</button>
+      <button data-k="b"><b>B.</b> 160</button>
+      <button data-k="c"><b>C.</b> 0,9</button>
+      <button data-k="d"><b>D.</b> 360</button>
     </div>
-    <div class="qc-fb" data-k="a">$27=\frac{80}{3}$ (làm tròn) là phân bổ <b>đều</b>, không phải theo tỉ lệ.</div>
-    <div class="qc-fb" data-k="b">$\frac{80}{1000}\cdot300=24$.</div>
-    <div class="qc-fb" data-k="c">$30$ là $\frac{300}{1000}\cdot100$ — nhầm cỡ mẫu thành 100.</div>
-    <div class="qc-fb" data-k="d">20 là số của khoa thứ ba ($\frac{80}{1000}\cdot250$).</div>
+    <div class="qc-fb" data-k="a">$240-18+12$: cộng trừ không có cơ sở. Phân bổ theo tỉ lệ nghĩa là mọi khoa có cùng tỉ lệ lấy mẫu $\frac{n_i}{N_i}$.</div>
+    <div class="qc-fb" data-k="b">Tỉ lệ lấy mẫu chung $\frac{18}{240}=0{,}075$ → $N_B=\frac{12}{0{,}075}=160$.</div>
+    <div class="qc-fb" data-k="c">$0{,}075\cdot12$: nhân thay vì chia. $n_B=0{,}075\cdot N_B$ nên $N_B=\frac{n_B}{0{,}075}$.</div>
+    <div class="qc-fb" data-k="d">$\frac{240\cdot18}{12}$: đảo ngược tỉ lệ — khoa lấy ít người hơn phải nhỏ hơn, không lớn hơn.</div>
   </div>
-  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>$N=1000$, $\frac nN=0{,}08$.</li><li>Khoa 2: $0{,}08\cdot300=24$ (các khoa: 36; 24; 20; tổng 80 ✓) → <b>B</b>.</li></ol></div></details>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Theo tỉ lệ: $\frac{n_A}{N_A}=\frac{n_B}{N_B}$ → $\frac{18}{240}=\frac{12}{N_B}$.</li><li>$N_B=\frac{12\cdot240}{18}=160$ → <b>B</b>.</li></ol></div></details>
 </div>
 
 <div class="ex mcq" id="b3q17">
   <div class="ex-head"><span class="ex-num">Câu 17</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Trọng số tầng</span></div>
-  <p>Vẫn ba khoa 450; 300; 250 nhân viên, nhưng lấy mẫu phân tầng <b>đều</b> với $n=90$. Trọng số của khoa thứ ba là</p>
+  <p>Ba khoa có 450; 300; 250 nhân viên. Lấy mẫu phân tầng <b>đều</b> với $n=90$. Trọng số của khoa thứ ba là</p>
   <div class="qc" data-ans="a">
     <div class="qc-opts">
       <button data-k="a"><b>A.</b> 0,75</button>
@@ -2479,21 +2479,21 @@ $$\sigma_f=\sqrt{\frac{p(1-p)}{n}}\cdot\sqrt{\frac{N-n}{N-1}}.$$
 </div>
 
 <div class="ex mcq" id="b3q21">
-  <div class="ex-head"><span class="ex-num">Câu 21</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Số lớp</span></div>
-  <p>Mẫu có $n=108$ quan sát. Theo công thức $k=\sqrt[3]{2n}$, số lớp là</p>
-  <div class="qc" data-ans="b">
+  <div class="ex-head"><span class="ex-num">Câu 21</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ngược: từ số lớp đoán cỡ mẫu</span></div>
+  <p>Một bảng phân lớp có <b>7 lớp</b>, số lớp được chọn theo $k=\sqrt[3]{2n}$ rồi làm tròn lên. Cỡ mẫu $n$ nào phù hợp?</p>
+  <div class="qc" data-ans="c">
     <div class="qc-opts">
-      <button data-k="a"><b>A.</b> 5</button>
-      <button data-k="b"><b>B.</b> 6</button>
-      <button data-k="c"><b>C.</b> 7</button>
-      <button data-k="d"><b>D.</b> 10</button>
+      <button data-k="a"><b>A.</b> 60</button>
+      <button data-k="b"><b>B.</b> 100</button>
+      <button data-k="c"><b>C.</b> 150</button>
+      <button data-k="d"><b>D.</b> 250</button>
     </div>
-    <div class="qc-fb" data-k="a">$5^3=125\ne216$.</div>
-    <div class="qc-fb" data-k="b">$2n=216=6^3$ → $k=6$.</div>
-    <div class="qc-fb" data-k="c">$7^3=343$. Có thể bạn đã dùng công thức khác ($1+3{,}32\log108\approx7{,}75$).</div>
-    <div class="qc-fb" data-k="d">$\sqrt{108}\approx10{,}4$: dùng căn bậc <b>hai</b> của $n$ thay vì căn bậc ba của $2n$.</div>
+    <div class="qc-fb" data-k="a">$\sqrt[3]{120}\approx4{,}93$ → 5 lớp.</div>
+    <div class="qc-fb" data-k="b">$\sqrt[3]{200}\approx5{,}85$ → 6 lớp.</div>
+    <div class="qc-fb" data-k="c">$\sqrt[3]{300}\approx6{,}69$ → làm tròn lên 7 lớp.</div>
+    <div class="qc-fb" data-k="d">$\sqrt[3]{500}\approx7{,}94$ → 8 lớp.</div>
   </div>
-  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$2n=216$; $6\cdot6\cdot6=216$ → $k=6$ → <b>B</b>.</p></div></details>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Làm tròn lên ra 7 nghĩa là $6&lt;\sqrt[3]{2n}\le7$, tức $216&lt;2n\le343$, hay $108&lt;n\le171{,}5$. Chỉ 150 thoả → <b>C</b>.</p></div></details>
 </div>
 
 <div class="ex mcq" id="b3q22">
@@ -2551,21 +2551,21 @@ $$\sigma_f=\sqrt{\frac{p(1-p)}{n}}\cdot\sqrt{\frac{N-n}{N-1}}.$$
 </div>
 
 <div class="ex mcq" id="b3q25">
-  <div class="ex-head"><span class="ex-num">Câu 25</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Biểu đồ tròn · thân – lá</span></div>
-  <p>Trong 180 bệnh nhân có 45 người dùng articain. Trên biểu đồ tròn, hình quạt articain có góc ở tâm là</p>
+  <div class="ex-head"><span class="ex-num">Câu 25</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ngược: từ góc biểu đồ tròn</span></div>
+  <p>Trên biểu đồ tròn về loại thuốc tê, hình quạt “articain” có góc ở tâm $72^\circ$ và ứng với 36 bệnh nhân. Tổng số bệnh nhân là</p>
   <div class="qc" data-ans="a">
     <div class="qc-opts">
-      <button data-k="a"><b>A.</b> 90°</button>
-      <button data-k="b"><b>B.</b> 45°</button>
-      <button data-k="c"><b>C.</b> 25°</button>
-      <button data-k="d"><b>D.</b> 120°</button>
+      <button data-k="a"><b>A.</b> 180</button>
+      <button data-k="b"><b>B.</b> 50</button>
+      <button data-k="c"><b>C.</b> 5</button>
+      <button data-k="d"><b>D.</b> 129,6</button>
     </div>
-    <div class="qc-fb" data-k="a">Tần suất $\frac{45}{180}=0{,}25$ → $0{,}25\cdot360^\circ=90^\circ$.</div>
-    <div class="qc-fb" data-k="b">45 là tần số, không phải số độ.</div>
-    <div class="qc-fb" data-k="c">25 là phần trăm; phải nhân với $360^\circ$ chứ không đổi thẳng % thành độ.</div>
-    <div class="qc-fb" data-k="d">$120^\circ$ ứng với $\frac13$ hình tròn (60 người).</div>
+    <div class="qc-fb" data-k="a">Tần suất $=\frac{72^\circ}{360^\circ}=0{,}2$ → $n=\frac{36}{0{,}2}=180$.</div>
+    <div class="qc-fb" data-k="b">Coi $72^\circ$ là 72%: $\frac{36}{0{,}72}=50$. Phải đổi góc ra tần suất bằng cách chia cho $360^\circ$.</div>
+    <div class="qc-fb" data-k="c">$\frac{360}{72}=5$ là số phần bằng nhau của hình tròn, chưa nhân với 36 người.</div>
+    <div class="qc-fb" data-k="d">$36\cdot\frac{360}{100}$: trộn phần trăm với độ. Số người phải là số nguyên.</div>
   </div>
-  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Góc = tần suất × 360° = $0{,}25\cdot360^\circ=90^\circ$ → <b>A</b>.</p></div></details>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Góc = tần suất × $360^\circ$ → tần suất $=\frac{72}{360}=0{,}2$.</li><li>Tần suất $=\frac{36}{n}$ → $n=\frac{36}{0{,}2}=180$ → <b>A</b>.</li></ol></div></details>
 </div>
 
 <h3 id="b3-tn-c5">Chặng 5 · Trung bình, trung vị, mod</h3>
@@ -2594,33 +2594,39 @@ $$\sigma_f=\sqrt{\frac{p(1-p)}{n}}\cdot\sqrt{\frac{N-n}{N-1}}.$$
 </div>
 
 <div class="ex mcq" id="b3q27">
-  <div class="ex-head"><span class="ex-num">Câu 27</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Trung vị $n$ chẵn</span></div>
-  <p>Thời gian (phút) làm sạch một ống tủy ở 6 ca: 9; 4; 12; 7; 15; 10. Trung vị là</p>
-  <div class="qc" data-ans="b">
+  <div class="ex-head"><span class="ex-num">Câu 27</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ngược: từ trung vị tìm giá trị</span></div>
+  <p>Dãy đã sắp tăng dần: 3; 5; $x$; 10; 14; 16 có trung vị bằng 8,5. Giá trị $x$ là</p>
+  <div class="qc" data-ans="a">
     <div class="qc-opts">
-      <button data-k="a"><b>A.</b> 9</button><button data-k="b"><b>B.</b> 9,5</button><button data-k="c"><b>C.</b> 10</button><button data-k="d"><b>D.</b> 7</button>
+      <button data-k="a"><b>A.</b> 7</button>
+      <button data-k="b"><b>B.</b> 8,5</button>
+      <button data-k="c"><b>C.</b> 12</button>
+      <button data-k="d"><b>D.</b> 17</button>
     </div>
-    <div class="qc-fb" data-k="a">9 chỉ là <b>một</b> trong hai số đứng giữa. $n=6$ chẵn thì lấy trung bình của số thứ 3 và số thứ 4.</div>
-    <div class="qc-fb" data-k="b">Sắp xếp: 4, 7, <b>9</b>, <b>10</b>, 12, 15 → $\frac{9+10}{2}=9{,}5$.</div>
-    <div class="qc-fb" data-k="c">Bạn làm tròn vị trí $\frac{6+1}{2}=3{,}5$ lên 4 rồi lấy $x_4=10$. Vị trí 3,5 nằm <b>giữa</b> số thứ 3 và thứ 4 nên lấy trung bình hai số.</div>
-    <div class="qc-fb" data-k="d">7 là số thứ 2 sau khi sắp — chưa tới giữa.</div>
+    <div class="qc-fb" data-k="a">$n=6$ chẵn → $M_e=\frac{x+10}{2}=8{,}5$ → $x=7$, và $5\le7\le10$ ✓.</div>
+    <div class="qc-fb" data-k="b">Coi $x$ (số thứ 3) là trung vị — với $n$ chẵn, trung vị là trung bình của số thứ 3 và thứ 4.</div>
+    <div class="qc-fb" data-k="c">Ghép nhầm $\frac{5+x}{2}=8{,}5$; vả lại 12 &gt; 10 làm dãy không còn tăng dần.</div>
+    <div class="qc-fb" data-k="d">$2\cdot8{,}5=17$ mới là tổng hai số giữa; còn phải trừ 10.</div>
   </div>
-  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Sắp xếp: 4, 7, 9, 10, 12, 15.</li><li>$n=6$ chẵn → trung bình số thứ 3 và 4: $\frac{9+10}{2}=9{,}5$ → <b>B</b>.</li></ol></div></details>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>$n=6$ → hai số giữa ở vị trí 3 và 4: $x$ và 10.</li><li>$\frac{x+10}{2}=8{,}5$ → $x=17-10=7$; kiểm tra thứ tự $5\le7\le10$ ✓ → <b>A</b>.</li></ol></div></details>
 </div>
 
 <div class="ex mcq" id="b3q28">
-  <div class="ex-head"><span class="ex-num">Câu 28</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Trung bình từ bảng tần số</span></div>
-  <p>Điểm đánh giá vệ sinh răng miệng (1 – 5) của 30 học sinh: điểm 1; 2; 3; 4; 5 có tần số 4; 6; 10; 7; 3. Trung bình xấp xỉ</p>
-  <div class="qc" data-ans="a">
+  <div class="ex-head"><span class="ex-num">Câu 28</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ngược: từ trung bình tìm tần số</span></div>
+  <p>Điểm đánh giá vệ sinh răng miệng 1; 2; 3; 4; 5 có tần số lần lượt 4; $x$; 10; 7; 3. Biết điểm trung bình đúng bằng 3. Tần số $x$ là</p>
+  <div class="qc" data-ans="b">
     <div class="qc-opts">
-      <button data-k="a"><b>A.</b> 2,97</button><button data-k="b"><b>B.</b> 3</button><button data-k="c"><b>C.</b> 6</button><button data-k="d"><b>D.</b> 17,8</button>
+      <button data-k="a"><b>A.</b> 6</button>
+      <button data-k="b"><b>B.</b> 5</button>
+      <button data-k="c"><b>C.</b> 8</button>
+      <button data-k="d"><b>D.</b> 10</button>
     </div>
-    <div class="qc-fb" data-k="a">$\sum n_ix_i=4+12+30+28+15=89$; $\frac{89}{30}\approx2{,}97$.</div>
-    <div class="qc-fb" data-k="b">$3=\frac{1+2+3+4+5}{5}$: bỏ qua tần số khác nhau của các điểm.</div>
-    <div class="qc-fb" data-k="c">$6=\frac{30}{5}$ là trung bình của cột tần số — vô nghĩa.</div>
-    <div class="qc-fb" data-k="d">Chia 89 cho 5 (số cột) thay vì 30.</div>
+    <div class="qc-fb" data-k="a">Thử lại: $x=6$ → $\frac{4+12+30+28+15}{30}=\frac{89}{30}\approx2{,}97\ne3$.</div>
+    <div class="qc-fb" data-k="b">$\frac{77+2x}{24+x}=3$ → $77+2x=72+3x$ → $x=5$.</div>
+    <div class="qc-fb" data-k="c">Thử lại: $x=8$ → $\frac{93}{32}\approx2{,}91\ne3$.</div>
+    <div class="qc-fb" data-k="d">Thử lại: $x=10$ → $\frac{97}{34}\approx2{,}85\ne3$.</div>
   </div>
-  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$\overline x=\frac{\sum n_ix_i}{n}=\frac{89}{30}\approx2{,}97$ → <b>A</b>.</p></div></details>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>$n=4+x+10+7+3=24+x$.</li><li>$\sum n_ix_i=4+2x+30+28+15=77+2x$.</li><li>$\frac{77+2x}{24+x}=3$ → $77+2x=72+3x$ → $x=5$ → <b>B</b>. (Lưu ý: $n$ cũng chứa ẩn $x$.)</li></ol></div></details>
 </div>
 
 <p class="small muted">Câu 29 – 31 dùng chung bảng: thời gian (phút) chờ phẫu thuật của 50 bệnh nhân: $[20;30)$: 5; $[30;40)$: 15; $[40;50)$: 20; $[50;60)$: 10.</p>
@@ -2723,18 +2729,21 @@ $$\sigma_f=\sqrt{\frac{p(1-p)}{n}}\cdot\sqrt{\frac{N-n}{N-1}}.$$
 </div>
 
 <div class="ex mcq" id="b3q35">
-  <div class="ex-head"><span class="ex-num">Câu 35</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Khoảng biến thiên</span></div>
-  <p>Lực cắn (kg) của 7 người: 31; 45; 28; 52; 39; 47; 36. Khoảng biến thiên là</p>
-  <div class="qc" data-ans="d">
+  <div class="ex-head"><span class="ex-num">Câu 35</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ngược: từ hệ số biến thiên</span></div>
+  <p>Cân nặng trẻ 8 tuổi có trung bình 25 kg và hệ số biến thiên $C_v=12\%$. Độ lệch chuẩn và phương sai mẫu là</p>
+  <div class="qc" data-ans="a">
     <div class="qc-opts">
-      <button data-k="a"><b>A.</b> 21</button><button data-k="b"><b>B.</b> 39</button><button data-k="c"><b>C.</b> (28; 52)</button><button data-k="d"><b>D.</b> 24</button>
+      <button data-k="a"><b>A.</b> $s=3$ kg; $s^2=9$</button>
+      <button data-k="b"><b>B.</b> $s=3$ kg; $s^2\approx1{,}73$</button>
+      <button data-k="c"><b>C.</b> $s=300$ kg; $s^2=90000$</button>
+      <button data-k="d"><b>D.</b> $s\approx2{,}08$ kg; $s^2\approx4{,}34$</button>
     </div>
-    <div class="qc-fb" data-k="a">$52-31$: lấy số đầu tiên của dãy chưa sắp làm nhỏ nhất. Nhỏ nhất là 28.</div>
-    <div class="qc-fb" data-k="b">39 là trung vị.</div>
-    <div class="qc-fb" data-k="c">Khoảng biến thiên là <b>một con số</b> (hiệu), không phải cặp hai đầu.</div>
-    <div class="qc-fb" data-k="d">$R=52-28=24$ kg.</div>
+    <div class="qc-fb" data-k="a">$s=C_v\cdot\overline x=0{,}12\cdot25=3$; $s^2=9$.</div>
+    <div class="qc-fb" data-k="b">$\sqrt3\approx1{,}73$: lấy căn thay vì bình phương. Phương sai là bình phương độ lệch chuẩn.</div>
+    <div class="qc-fb" data-k="c">Nhân với 12 thay vì 12% = 0,12.</div>
+    <div class="qc-fb" data-k="d">$\frac{25}{12}$: chia ngược. $C_v=\frac{s}{\overline x}$ → $s=C_v\cdot\overline x$.</div>
   </div>
-  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$x_{\max}=52$, $x_{\min}=28$ → $R=24$ → <b>D</b>.</p></div></details>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$C_v=\frac{s}{\overline x}$ → $s=0{,}12\cdot25=3$ kg → $s^2=9$ → <b>A</b>.</p></div></details>
 </div>
 
 <div class="ex mcq" id="b3q36">
@@ -2826,18 +2835,21 @@ $$\sigma_f=\sqrt{\frac{p(1-p)}{n}}\cdot\sqrt{\frac{N-n}{N-1}}.$$
 </div>
 
 <div class="ex mcq" id="b3q41">
-  <div class="ex-head"><span class="ex-num">Câu 41</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Sai số chuẩn</span></div>
-  <p>Đặc tính có $\sigma=9$. Sai số chuẩn của trung bình mẫu khi $n=36$ là</p>
+  <div class="ex-head"><span class="ex-num">Câu 41</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ngược: từ sai số chuẩn tìm $\sigma$ và $n$</span></div>
+  <p>Một mẫu 36 người cho sai số chuẩn của trung bình là 1,5. Độ lệch chuẩn $\sigma$ của tổng thể, và cỡ mẫu tối thiểu để sai số chuẩn không quá 1, lần lượt là</p>
   <div class="qc" data-ans="b">
     <div class="qc-opts">
-      <button data-k="a"><b>A.</b> 0,25</button><button data-k="b"><b>B.</b> 1,5</button><button data-k="c"><b>C.</b> 2,25</button><button data-k="d"><b>D.</b> 9</button>
+      <button data-k="a"><b>A.</b> 9 và 54</button>
+      <button data-k="b"><b>B.</b> 9 và 81</button>
+      <button data-k="c"><b>C.</b> 0,25 và 81</button>
+      <button data-k="d"><b>D.</b> 54 và 2916</button>
     </div>
-    <div class="qc-fb" data-k="a">$\frac{9}{36}$: chia $n$ thay vì $\sqrt n$.</div>
-    <div class="qc-fb" data-k="b">$\frac{9}{\sqrt{36}}=\frac96=1{,}5$.</div>
-    <div class="qc-fb" data-k="c">$\frac{81}{36}=2{,}25$ là phương sai $\sigma^2_{\overline X}$.</div>
-    <div class="qc-fb" data-k="d">9 là độ lệch chuẩn của <b>từng</b> người.</div>
+    <div class="qc-fb" data-k="a">$\sigma=9$ đúng, nhưng $36\cdot1{,}5=54$ không phải cách tính cỡ mẫu: phải giải $\frac{9}{\sqrt n}\le1$.</div>
+    <div class="qc-fb" data-k="b">$\frac{\sigma}{\sqrt{36}}=1{,}5$ → $\sigma=9$; $\frac{9}{\sqrt n}\le1$ → $\sqrt n\ge9$ → $n\ge81$.</div>
+    <div class="qc-fb" data-k="c">$\frac{1{,}5}{6}$: chia thay vì nhân. $\sigma=1{,}5\cdot\sqrt{36}$.</div>
+    <div class="qc-fb" data-k="d">Nhân với $n=36$ thay vì $\sqrt{36}=6$.</div>
   </div>
-  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$\sigma_{\overline X}=\frac{\sigma}{\sqrt n}=\frac{9}{6}=1{,}5$ → <b>B</b>.</p></div></details>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>$\sigma_{\overline X}=\frac{\sigma}{\sqrt n}$ → $\sigma=1{,}5\cdot6=9$.</li><li>$\frac{9}{\sqrt n}\le1$ → $\sqrt n\ge9$ → $n\ge81$ → <b>B</b>.</li></ol></div></details>
 </div>
 
 <div class="ex mcq" id="b3q42">
@@ -2903,23 +2915,26 @@ $$\sigma_f=\sqrt{\frac{p(1-p)}{n}}\cdot\sqrt{\frac{N-n}{N-1}}.$$
 <h3 id="b3-tn-c8">Chặng 8 · Tỉ lệ mẫu và tổng hợp</h3>
 
 <div class="ex mcq" id="b3q46">
-  <div class="ex-head"><span class="ex-num">Câu 46</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Sai số chuẩn tỉ lệ</span></div>
-  <p>Tỉ lệ người lớn có túi nha chu sâu là $p=0{,}2$. Khảo sát $n=400$. Sai số chuẩn của tỉ lệ mẫu là</p>
-  <div class="qc" data-ans="b">
+  <div class="ex-head"><span class="ex-num">Câu 46</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Ngược: từ sai số chuẩn tìm tỉ lệ</span></div>
+  <p>Với $n=400$, sai số chuẩn của tỉ lệ mẫu là $\sigma_f=0{,}02$. Tỉ lệ tổng thể $p$ có thể là</p>
+  <div class="qc" data-ans="a">
     <div class="qc-opts">
-      <button data-k="a"><b>A.</b> 0,0004</button><button data-k="b"><b>B.</b> 0,02</button><button data-k="c"><b>C.</b> 0,008</button><button data-k="d"><b>D.</b> 0,04</button>
+      <button data-k="a"><b>A.</b> 0,2 hoặc 0,8</button>
+      <button data-k="b"><b>B.</b> 0,16</button>
+      <button data-k="c"><b>C.</b> chỉ 0,2</button>
+      <button data-k="d"><b>D.</b> 0,02</button>
     </div>
-    <div class="qc-fb" data-k="a">0,0004 là phương sai $\frac{p(1-p)}{n}$, chưa khai căn.</div>
-    <div class="qc-fb" data-k="b">$\sqrt{\frac{0{,}2\cdot0{,}8}{400}}=\sqrt{0{,}0004}=0{,}02$.</div>
-    <div class="qc-fb" data-k="c">$\frac{0{,}16}{\sqrt{400}}$: khai căn mẫu số nhưng quên căn tử số.</div>
-    <div class="qc-fb" data-k="d">$\frac{0{,}8}{20}$: dùng $1-p$ thay cho $p(1-p)$.</div>
+    <div class="qc-fb" data-k="a">$\frac{p(1-p)}{400}=0{,}0004$ → $p(1-p)=0{,}16$ → $p^2-p+0{,}16=0$ → $p=0{,}2$ hoặc $p=0{,}8$.</div>
+    <div class="qc-fb" data-k="b">0,16 là tích $p(1-p)$, chưa giải ra $p$.</div>
+    <div class="qc-fb" data-k="c">Phương trình bậc hai có hai nghiệm: $p$ và $1-p$ cho cùng một tích. 0,8 cũng thoả.</div>
+    <div class="qc-fb" data-k="d">0,02 là sai số chuẩn, không phải tỉ lệ.</div>
   </div>
-  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$\sigma_f=\sqrt{\frac{0{,}16}{400}}=0{,}02$ → <b>B</b>.</p></div></details>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Bình phương: $\frac{p(1-p)}{400}=0{,}02^2=0{,}0004$ → $p(1-p)=0{,}16$.</li><li>$p^2-p+0{,}16=0$, $\Delta=1-0{,}64=0{,}36$ → $p=\frac{1\pm0{,}6}{2}$ → $0{,}8$ hoặc $0{,}2$ → <b>A</b>.</li></ol></div></details>
 </div>
 
 <div class="ex mcq" id="b3q47">
   <div class="ex-head"><span class="ex-num">Câu 47</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Xác suất cho tỉ lệ mẫu</span></div>
-  <p>Vẫn $p=0{,}2$, $n=400$. Xác suất tỉ lệ mẫu nằm trong khoảng $0{,}17$ đến $0{,}23$ là</p>
+  <p>Tỉ lệ người lớn có túi nha chu sâu là $p=0{,}2$; khảo sát $n=400$ người. Xác suất tỉ lệ mẫu nằm trong khoảng $0{,}17$ đến $0{,}23$ là</p>
   <div class="qc" data-ans="c">
     <div class="qc-opts">
       <button data-k="a"><b>A.</b> 0,4332</button><button data-k="b"><b>B.</b> 0,6826</button><button data-k="c"><b>C.</b> 0,8664</button><button data-k="d"><b>D.</b> 0,9544</button>

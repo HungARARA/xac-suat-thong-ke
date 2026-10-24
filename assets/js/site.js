@@ -22,6 +22,11 @@ const LESSONS = [
     id: "bai-3", href: "bai-3.html", no: "Bài 3", title: "Thống kê mô tả và phân bố của các tham số trên mẫu",
     desc: "Tổng thể – mẫu, thang đo, cách chọn mẫu, bảng tần số, phân lớp, biểu đồ, trung bình – trung vị – mod, tứ phân vị, phương sai mẫu, phân phối của trung bình mẫu và tỉ lệ mẫu.",
     chips: ["Thang đo", "Chọn mẫu", "x̄, s, Mₑ", "σ/√n"]
+  },
+  {
+    id: "bai-4", href: "bai-4.html", no: "Bài 4", title: "Ước lượng tham số tổng thể",
+    desc: "Ước lượng điểm và khoảng tin cậy cho trung bình, tỉ lệ, phương sai; cỡ mẫu tối thiểu; bài toán ngược; hiệu hai trung bình, hiệu hai tỉ lệ.",
+    chips: ["z, t, χ²", "Khoảng tin cậy", "Cỡ mẫu", "Hai nhóm"]
   }
 ];
 
@@ -33,7 +38,6 @@ const EXTRA_PAGES = [
 
 /* Các bài sắp học (hiện mờ trên trang chủ). Khi làm xong bài nào thì chuyển nó lên LESSONS. */
 const COMING = [
-  { no: "Bài 4", title: "Ước lượng tham số tổng thể" },
   { no: "Bài 5", title: "Kiểm định giả thuyết thống kê" },
   { no: "Bài 6", title: "Phép kiểm phi tham số" },
   { no: "Bài 7", title: "Phân tích phương sai" },

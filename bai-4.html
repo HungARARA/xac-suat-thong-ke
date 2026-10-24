@@ -1,0 +1,1841 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bài 4 · Ước lượng tham số tổng thể</title>
+  <meta name="description" content="Bài 4 – Ước lượng điểm và khoảng tin cậy cho trung bình, tỉ lệ, phương sai; cỡ mẫu tối thiểu; ước lượng hiệu hai trung bình và hiệu hai tỉ lệ.">
+  <script>try{var t=localStorage.getItem("xstk-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script defer src="assets/js/site.js?v=6"></script>
+  <script defer src="assets/js/plot.js"></script>
+  <script defer src="assets/js/bai4.js?v=1"></script>
+</head>
+<body data-lesson="bai-4">
+<header class="topbar">
+  <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mở mục lục" aria-controls="toc" aria-expanded="false"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span>Mục lục</span></button>
+  <a class="brand" href="index.html"><span class="brand-mark">XS</span><span>Xác suất – Thống kê</span></a>
+  <span class="crumb">/ Bài 4 · Ước lượng</span>
+  <span class="spacer"></span>
+  <nav class="topnav" id="topnav"></nav>
+  <button class="icon-btn" id="themeBtn" title="Đổi giao diện sáng / tối" aria-label="Đổi giao diện sáng tối">☾</button>
+  <div class="progress" id="progress"></div>
+</header>
+
+<div class="layout">
+<nav class="toc" id="toc" aria-label="Mục lục">
+  <div class="toc-title">Mục lục Bài 4</div>
+  <ol id="tocList"></ol>
+</nav>
+
+<main class="content">
+
+<section class="hero">
+  <span class="kicker">Phần II · Thống kê</span>
+  <h1>Bài 4. Ước lượng tham số tổng thể</h1>
+  <p class="lead">Bài 3 cho biết trung bình mẫu “dao động” quanh trung bình thật một khoảng cỡ $\frac{\sigma}{\sqrt n}$. Bài này lật ngược câu chuyện: <b>đã có một mẫu</b>, hãy chỉ ra một <b>khoảng</b> mà ta khá chắc chắn chứa con số thật của tổng thể — trung bình, tỉ lệ, phương sai, hay độ chênh giữa hai nhóm — và tính xem cần khám bao nhiêu người để khoảng đó đủ hẹp.</p>
+</section>
+
+<div class="box tip">
+  <div class="box-title"><span class="tag">Cách học</span>Lộ trình gợi ý</div>
+  <ul>
+    <li><b>Mục 1 – 2</b> là chìa khoá: hiểu một khoảng tin cậy được dựng từ đâu (chỉ là đảo ngược phép chuẩn hoá của Bài 2), thì mọi công thức sau chỉ là thay “sai số chuẩn” cho đúng.</li>
+    <li><b>Mục 3 – 4</b> (trung bình, tỉ lệ, cỡ mẫu) gặp nhiều nhất trong đề thi — mỗi mục có cả bài <b>xuôi</b> (tính khoảng) lẫn bài <b>ngược</b> (từ khoảng tìm lại $n$, $s$, độ tin cậy).</li>
+    <li><b>Mục 5 – 7</b>: phương sai (bảng $\chi^2$), so sánh hai nhóm (hiệu hai trung bình, hai tỉ lệ).</li>
+    <li>Cần bảng $z$ (Phụ lục 3), Student (Phụ lục 5), $\chi^2$ (Phụ lục 4): mở sẵn <a href="phu-luc.html">trang Bảng phụ lục</a> ở thẻ bên cạnh.</li>
+  </ul>
+</div>
+
+<h2 id="ban-do" data-toc="Bản đồ bài học"><span class="num">0</span>Bản đồ bài học (sơ đồ tư duy)</h2>
+<div class="fig-box" style="padding:16px"><div id="mm4"></div></div>
+<p class="small muted center">Trên điện thoại, vuốt ngang để xem hết sơ đồ.</p>
+
+<!-- =============================================================== -->
+<h2 id="uoc-luong-la-gi" data-toc="1. Ước lượng là gì?"><span class="num">1</span>Ước lượng là gì?</h2>
+
+<h3 id="tu-bai-3">1.1. Từ Bài 3 sang Bài 4: đi ngược một bước</h3>
+<p>Bài 3 mục 13 làm bài toán <b>thuận</b>: biết trung bình thật $\mu$ của tổng thể, hỏi trung bình mẫu $\overline x$ sẽ rơi vào đâu. Ví dụ: thời gian tê môi khi dùng articain có $\mu=150$ phút, $\sigma=12$ phút; khám 36 bệnh nhân thì $\overline X\sim N\big(150;\frac{12^2}{36}\big)$, sai số chuẩn $\frac{12}{6}=2$ phút, nên khoảng 95% các mẫu có $\overline x$ nằm trong $150\pm1{,}96\cdot2$.</p>
+<p>Thực tế thì ngược lại: ta <b>không biết</b> $\mu$, chỉ có <b>một</b> mẫu, ví dụ $\overline x=152$ phút. Câu hỏi của Bài 4: “vậy $\mu$ khoảng bao nhiêu?”. Ý tưởng rất gọn: nếu $\overline x$ thường nằm cách $\mu$ không quá $1{,}96\cdot2$ phút, thì <b>ngược lại</b> $\mu$ cũng thường nằm cách $\overline x$ không quá $1{,}96\cdot2$ phút — tức trong khoảng $152\pm3{,}92$.</p>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Hình dung</span>Khoảng cách là chuyện của hai người</div>
+  <p>“Nhà An cách nhà Bình không quá 4 km” cũng chính là “nhà Bình cách nhà An không quá 4 km”. Bài 3 đứng ở $\mu$ nhìn ra $\overline x$; Bài 4 đứng ở $\overline x$ nhìn về $\mu$. <b>Cùng một khoảng cách</b> — đó là toàn bộ bí mật của khoảng tin cậy.</p>
+</div>
+
+<h3 id="uoc-luong-diem">1.2. Ước lượng điểm: đoán bằng một con số</h3>
+<p>Cách đơn giản nhất là lấy con số của mẫu làm con số đoán cho tổng thể:</p>
+<div class="table-wrap"><table>
+  <tr><th class="left">Muốn biết (tổng thể)</th><th>Dùng (mẫu)</th><th class="left">Ví dụ</th></tr>
+  <tr><td class="left">trung bình $\mu$</td><td>trung bình mẫu $\overline x$</td><td class="left">thời gian tê trung bình ≈ 152 phút</td></tr>
+  <tr><td class="left">tỉ lệ $p$</td><td>tỉ lệ mẫu $f=\frac kn$</td><td class="left">248 trong 400 trẻ sâu răng → $p\approx0{,}62$</td></tr>
+  <tr><td class="left">phương sai $\sigma^2$</td><td>phương sai mẫu $s^2$ (chia $n-1$)</td><td class="left">$s^2=6{,}25$ → $\sigma^2\approx6{,}25$</td></tr>
+</table></div>
+<p><b>Điểm yếu:</b> một con số không cho biết <b>sai bao nhiêu</b>. Báo “thời gian tê trung bình là 152 phút” thì người nghe không biết thật ra là 151 hay 165. Vì vậy cần thêm <b>ước lượng khoảng</b>.</p>
+<div class="qc" data-ans="b">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 1</span>Khám 250 người cao tuổi, có 85 người mất răng toàn bộ. Ước lượng điểm cho tỉ lệ mất răng toàn bộ của người cao tuổi trong vùng là</div>
+  <div class="qc-opts">
+    <button data-k="a">85</button>
+    <button data-k="b">0,34</button>
+    <button data-k="c">0,66</button>
+  </div>
+  <div class="qc-fb" data-k="a">85 là <b>số người</b>; ước lượng cho tỉ lệ phải là một tỉ lệ (từ 0 đến 1).</div>
+  <div class="qc-fb" data-k="b">$f=\frac{85}{250}=0{,}34$: tỉ lệ mẫu là ước lượng điểm của tỉ lệ tổng thể $p$.</div>
+  <div class="qc-fb" data-k="c">0,66 là tỉ lệ người <b>còn</b> răng — phần bù.</div>
+</div>
+
+<h3 id="uoc-luong-khoang">1.3. Ước lượng khoảng: thả một tấm lưới thay vì phóng một mũi tên</h3>
+<p>Đoán bằng một con số giống phóng một mũi tên vào con cá dưới nước: gần như chắc chắn trượt. Ước lượng khoảng giống <b>thả một tấm lưới</b>: lưới đủ rộng thì bắt được cá với khả năng cao.</p>
+<div class="box def">
+  <div class="box-title"><span class="tag">Định nghĩa</span>Khoảng tin cậy</div>
+  <p>Với một số $\alpha$ nhỏ cho trước (thường $0&lt;\alpha&lt;0{,}1$), <b>khoảng tin cậy</b> (khoảng ước lượng) của tham số $\theta$ là khoảng $(\theta_1;\theta_2)$ tính từ mẫu sao cho cách làm đó cho ra khoảng chứa $\theta$ với xác suất $1-\alpha$.</p>
+  <ul>
+    <li>$1-\alpha$: <b>độ tin cậy</b> (90%, 95%, 99%…).</li>
+    <li>$\alpha$: <b>mức ý nghĩa</b> — phần “rủi ro” chấp nhận được (5% khi độ tin cậy 95%).</li>
+  </ul>
+  <p class="small">Chữ $\theta$ (“tê-ta”) chỉ là tên chung cho “con số cần ước lượng” — có thể là $\mu$, $p$ hay $\sigma^2$.</p>
+</div>
+<p>Mọi khoảng tin cậy trong bài (trừ phương sai) có <b>cùng một dáng</b>:</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Dáng chung</span>Ước lượng điểm ± bán kính</div>
+  <div class="big-formula">$$\begin{aligned}&amp;\text{ước lượng điểm}\\ &amp;\pm\ \underbrace{\text{hệ số}\times\text{sai số chuẩn}}_{\varepsilon}\end{aligned}$$</div>
+  <p class="small center">$\varepsilon$ (“ép-xi-lon”) gọi là <b>bán kính</b> khoảng, còn gọi là <b>độ chính xác</b> hay <b>sai số</b> của ước lượng. Phần còn lại của bài chỉ là học cách chọn đúng hai thừa số này cho từng loại tham số.</p>
+</div>
+
+<h3 id="y-nghia-95">1.4. “Độ tin cậy 95%” nghĩa là gì — thấy tận mắt</h3>
+<p>Câu này hay bị hiểu sai nhất. Hãy làm thí nghiệm: giả sử ta <b>biết</b> $\mu=50$ (để kiểm tra), rồi lấy 100 mẫu khác nhau, mỗi mẫu dựng một khoảng 95%. Mỗi khoảng là một tấm lưới.</p>
+<div class="widget" id="ciSim">
+  <div class="widget-title">100 mẫu, 100 khoảng tin cậy</div>
+  <div class="widget-sub">Tổng thể $N(50;\,10^2)$. Mỗi vạch ngang là khoảng tin cậy tính từ một mẫu cỡ $n$. Vạch <b style="color:var(--s3)">xanh</b> chứa $\mu=50$ (đường dọc), vạch <b style="color:var(--s8)">đỏ</b> trượt. Bấm “Lấy 100 mẫu mới” vài lần.</div>
+  <div class="controls">
+    <div class="ctrl"><label for="ciN">Cỡ mẫu $n$ <output for="ciN"></output></label><input type="range" id="ciN" min="5" max="200" step="5" value="25"></div>
+    <div class="ctrl"><label for="ciC">Độ tin cậy (%) <output for="ciC"></output></label><input type="range" id="ciC" min="80" max="99" step="1" value="95"></div>
+  </div>
+  <div class="seg" id="ciBtns"><button data-a="run">Lấy 100 mẫu mới</button></div>
+  <div id="ciPlot" style="margin-top:8px"></div>
+  <div class="readout" id="ciRead"></div>
+</div>
+<p><b>Cách đọc hình:</b> trục ngang là giá trị (thang đo của $X$), mỗi hàng là một mẫu. Tâm mỗi vạch là $\overline x$ của mẫu đó — các tâm nhảy qua lại vì mỗi mẫu một khác. Đếm vạch đỏ: thường khoảng 5 trên 100. Kéo độ tin cậy lên 99%: vạch dài ra, vạch đỏ hiếm hơn (khoảng 1). Kéo $n$ lên 200: vạch ngắn lại nhưng tỉ lệ đỏ <b>vẫn</b> khoảng 5% — cỡ mẫu làm khoảng <b>hẹp</b> đi chứ không làm tăng độ tin cậy.</p>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Hiểu đúng</span>“95%” là độ tin cậy của <b>cách làm</b></div>
+  <ul>
+    <li><b>Trước khi lấy mẫu</b>: khoảng còn là “ngẫu nhiên”, xác suất nó chứa $\mu$ là 95% (giáo trình gọi là khoảng ngẫu nhiên).</li>
+    <li><b>Sau khi đã tính ra</b>, ví dụ $(148{,}08;\,155{,}92)$: $\mu$ là một số cố định — hoặc nằm trong, hoặc không. “95%” nghĩa là: nếu lặp lại cách làm này rất nhiều lần thì khoảng 95% số khoảng thu được sẽ chứa $\mu$. Ta tin khoảng của mình là một trong số đó.</li>
+    <li><b>Không</b> có nghĩa “95% bệnh nhân có giá trị nằm trong khoảng”. Khoảng tin cậy nói về <b>trung bình</b> của tổng thể, không nói về từng người.</li>
+  </ul>
+</div>
+<div class="qc" data-ans="c">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Khoảng tin cậy 95% cho thời gian tê trung bình là $(148{,}08;\,155{,}92)$ phút. Câu nào hiểu <b>đúng</b>?</div>
+  <div class="qc-opts">
+    <button data-k="a">95% bệnh nhân tê từ 148,08 đến 155,92 phút.</button>
+    <button data-k="b">Trung bình mẫu nằm trong khoảng này với xác suất 95%.</button>
+    <button data-k="c">Khoảng được dựng bằng một cách làm mà cứ 100 lần áp dụng thì khoảng 95 lần cho khoảng chứa trung bình thật.</button>
+  </div>
+  <div class="qc-fb" data-k="a">Khoảng tin cậy nói về <b>trung bình</b> tổng thể. Thời gian tê của từng người dao động rộng hơn nhiều (độ lệch chuẩn 12 phút).</div>
+  <div class="qc-fb" data-k="b">Trung bình mẫu (152) là tâm của khoảng — nó luôn nằm trong khoảng, chẳng cần xác suất. Điều chưa biết là $\mu$.</div>
+  <div class="qc-fb" data-k="c">Đúng tinh thần thí nghiệm 100 mẫu ở trên: “95%” là tỉ lệ thành công của cách làm.</div>
+</div>
+
+<h3 id="bo-ky-hieu">1.5. Bộ ký hiệu dùng suốt bài</h3>
+<div class="table-wrap"><table>
+  <tr><th>Ký hiệu</th><th class="left">Đọc là</th><th class="left">Nghĩa</th><th class="left">Ví dụ</th></tr>
+  <tr><td>$1-\alpha$</td><td class="left">độ tin cậy</td><td class="left">khả năng cách làm cho khoảng chứa tham số</td><td class="left">0,95</td></tr>
+  <tr><td>$\alpha$</td><td class="left">mức ý nghĩa</td><td class="left">rủi ro khoảng trượt</td><td class="left">0,05</td></tr>
+  <tr><td>s.e.</td><td class="left">sai số chuẩn</td><td class="left">độ lệch chuẩn của ước lượng điểm (Bài 3 mục 13 – 14)</td><td class="left">$\frac{\sigma}{\sqrt n}$, $\frac{s}{\sqrt n}$, $\sqrt{\frac{f(1-f)}{n}}$</td></tr>
+  <tr><td>$z_{1-\alpha/2}$, $t_{1-\alpha/2}$</td><td class="left">hệ số tin cậy</td><td class="left">số lần sai số chuẩn cần lấy ra mỗi bên</td><td class="left">$z_{0{,}975}=1{,}96$</td></tr>
+  <tr><td>$\varepsilon$</td><td class="left">bán kính, độ chính xác, sai số</td><td class="left">khoảng = tâm $\pm\,\varepsilon$</td><td class="left">3,92 phút</td></tr>
+  <tr><td>$2\varepsilon$</td><td class="left">độ dài khoảng</td><td class="left">mút phải trừ mút trái</td><td class="left">7,84 phút</td></tr>
+</table></div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>“Độ dài khoảng” khác “bán kính”</div>
+  <p>Đề nói “<b>sai số</b> (độ chính xác, bán kính) không quá 0,02” → $\varepsilon\le0{,}02$. Đề nói “<b>độ dài khoảng</b> ước lượng không quá 0,04” → $2\varepsilon\le0{,}04$, tức cũng là $\varepsilon\le0{,}02$. Nhầm hai cách nói này là sai cỡ mẫu gấp 4 lần.</p>
+</div>
+<div class="qc" data-ans="a">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Một báo cáo ghi khoảng tin cậy cho lượng nước bọt trung bình là $(1{,}32;\,1{,}52)$ ml/phút. Ước lượng điểm và bán kính là</div>
+  <div class="qc-opts">
+    <button data-k="a">$\overline x=1{,}42$; $\varepsilon=0{,}10$</button>
+    <button data-k="b">$\overline x=1{,}42$; $\varepsilon=0{,}20$</button>
+    <button data-k="c">$\overline x=1{,}32$; $\varepsilon=0{,}20$</button>
+  </div>
+  <div class="qc-fb" data-k="a">Tâm $=\frac{1{,}32+1{,}52}{2}=1{,}42$; bán kính $=\frac{1{,}52-1{,}32}{2}=0{,}10$.</div>
+  <div class="qc-fb" data-k="b">$0{,}20$ là <b>độ dài</b> khoảng ($2\varepsilon$). Bán kính chỉ bằng một nửa.</div>
+  <div class="qc-fb" data-k="c">Mút trái không phải tâm. Khoảng đối xứng quanh ước lượng điểm, nên tâm là trung bình hai mút.</div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="he-so-tin-cay" data-toc="2. Hệ số tin cậy, dựng khoảng"><span class="num">2</span>Hệ số tin cậy và cách dựng một khoảng tin cậy</h2>
+
+<h3 id="chia-hai-duoi">2.1. Chia rủi ro $\alpha$ thành hai đuôi: vì sao lại là $z_{1-\alpha/2}$</h3>
+<p>Muốn khoảng 95%, ta cần một đoạn ở giữa đường chuông chuẩn tắc chiếm đúng diện tích $0{,}95$. Phần rủi ro $\alpha=0{,}05$ còn lại chia <b>đều cho hai đuôi</b> (khoảng đối xứng): mỗi đuôi $\frac{\alpha}{2}=0{,}025$.</p>
+<figure><div class="fig-box"><div id="zFig"></div></div>
+<figcaption>Hình 2.1. Độ tin cậy 95%: phần giữa 0,95, mỗi đuôi 0,025; hai mốc là $\pm1{,}96$.</figcaption></figure>
+<p><b>Cách đọc hình:</b> trục ngang là $z$ (số độ lệch chuẩn tính từ tâm), đường cong là mật độ chuẩn tắc $N(0;1)$. Phần tô xanh ở giữa có diện tích $1-\alpha=0{,}95$; hai đuôi đỏ mỗi bên $\frac{\alpha}{2}=0{,}025$. Mốc bên phải có diện tích <b>bên trái</b> nó là $0{,}95+0{,}025=0{,}975=1-\frac{\alpha}{2}$. Theo quy ước phân vị của Bài 2 (diện tích bên trái), mốc đó là $z_{0{,}975}=1{,}96$. Mốc bên trái là $-1{,}96$ (soi gương).</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Hệ số tin cậy</div>
+  <div class="big-formula">$$z_{1-\frac{\alpha}{2}}\quad\text{là số có diện tích bên trái bằng }1-\tfrac{\alpha}{2}$$</div>
+  <p class="small center">Quy trình: độ tin cậy $1-\alpha$ → mức ý nghĩa $\alpha$ → chia đôi $\frac{\alpha}{2}$ → lấy $1-\frac{\alpha}{2}$ → tra bảng phân vị (<a href="phu-luc.html#pl-3">Phụ lục 3</a>).</p>
+</div>
+<div class="table-wrap"><table class="compact">
+  <tr><th>Độ tin cậy $1-\alpha$</th><td>80%</td><td>90%</td><td>92%</td><td>95%</td><td>96%</td><td>98%</td><td>99%</td></tr>
+  <tr><th>$1-\frac{\alpha}{2}$</th><td>0,90</td><td>0,95</td><td>0,96</td><td>0,975</td><td>0,98</td><td>0,99</td><td>0,995</td></tr>
+  <tr><th>$z_{1-\alpha/2}$</th><td>1,282</td><td>1,645</td><td>1,751</td><td class="hl">1,96</td><td>2,054</td><td>2,326</td><td>2,576</td></tr>
+</table></div>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Tra nhầm cột</div>
+  <p>95% mà tra $z_{0{,}95}=1{,}645$ là quên chia đôi $\alpha$ (đó là hệ số của khoảng <b>90%</b>). Luôn viết rõ bước “$1-\frac{\alpha}{2}=$ …” trước khi tra.</p>
+</div>
+<div class="widget" id="zWidget">
+  <div class="widget-title">Kéo độ tin cậy, xem hệ số $z$</div>
+  <div class="widget-sub">Phần giữa có diện tích bằng độ tin cậy; hai đuôi chia đều phần còn lại.</div>
+  <div class="controls"><div class="ctrl"><label for="zc">Độ tin cậy (%) <output for="zc"></output></label><input type="range" id="zc" min="50" max="99.8" step="0.1" value="95"></div></div>
+  <div id="zPlot"></div>
+  <div class="readout" id="zRead"></div>
+</div>
+<div class="qc" data-num="2,054" data-tol="0,002">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 1</span>Hệ số tin cậy $z_{1-\alpha/2}$ cho độ tin cậy 96% là bao nhiêu? (tra Phụ lục 3)</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập số"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">$\alpha=0{,}04$ → $\frac\alpha2=0{,}02$ → $1-\frac\alpha2=0{,}98$ → $z_{0{,}98}=2{,}054$.</div>
+  <div class="qc-fb" data-k="no">Đi từng bước: $1-\alpha=0{,}96$ nên $\alpha=0{,}04$; mỗi đuôi $0{,}02$; diện tích bên trái mốc phải là $0{,}98$. Tra $z_{0{,}98}$.</div>
+</div>
+<div class="qc" data-ans="b">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Bài toán ngược: một khoảng tin cậy dùng hệ số $z=2{,}326$. Độ tin cậy của nó là</div>
+  <div class="qc-opts">
+    <button data-k="a">99%</button>
+    <button data-k="b">98%</button>
+    <button data-k="c">97,7%</button>
+  </div>
+  <div class="qc-fb" data-k="a">99% cần $z_{0{,}995}=2{,}576$.</div>
+  <div class="qc-fb" data-k="b">$2{,}326=z_{0{,}99}$ → $1-\frac\alpha2=0{,}99$ → $\alpha=0{,}02$ → độ tin cậy $98\%$.</div>
+  <div class="qc-fb" data-k="c">Đi ngược đúng thứ tự: $z\to1-\frac\alpha2\to\alpha\to1-\alpha$. Đừng dừng ở bước giữa.</div>
+</div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Tìm $z_{1-\alpha/2}$ bằng Inverse Normal</span></div>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd><span class="lcd">Inverse Normal</span></span> <span class="why">máy chỉ nhận diện tích <b>bên trái</b> — đúng với $1-\frac\alpha2$.</span></li>
+    <li><span class="keys"><span class="lcd">Area</span><kbd>0.975</kbd><kbd>=</kbd><span class="lcd">σ</span><kbd>1</kbd><kbd>=</kbd><span class="lcd">μ</span><kbd>0</kbd><kbd>=</kbd><kbd>=</kbd></span> <span class="why">→ <span class="lcd">1.959963…</span> ≈ 1,96. Đổi Area thành 0.96 (độ tin cậy 92%) → 1,7507.</span></li>
+  </ol>
+  <p class="small">Máy <b>không có</b> phân phối Student và $\chi^2$ — hai hệ số đó phải tra <a href="phu-luc.html#pl-5">Phụ lục 5</a>, <a href="phu-luc.html#pl-4">Phụ lục 4</a>. <a href="may-tinh.html#inverse-normal">Chi tiết Inverse Normal →</a></p>
+</div>
+
+<h3 id="dung-khoang">2.2. Dựng khoảng từ phép chuẩn hoá — đi từng bước</h3>
+<p>Ta làm lại đúng lập luận ở mục 1.1, nhưng bằng đại số, với trường hợp đã biết $\sigma$. Từ Bài 3: $Z=\dfrac{\overline X-\mu}{\sigma/\sqrt n}\sim N(0;1)$. Với độ tin cậy $1-\alpha$, đặt $z=z_{1-\alpha/2}$, ta có</p>
+$$P\Big(-z&lt;\frac{\overline X-\mu}{\sigma/\sqrt n}&lt;z\Big)=1-\alpha.$$
+<p>Giờ “gỡ” $\mu$ ra khỏi giữa chuỗi bất đẳng thức. Mỗi bước làm <b>cùng một phép</b> cho cả ba vế:</p>
+<ol class="steps">
+  <li><span class="step-label">Nhân cả ba vế với $\frac{\sigma}{\sqrt n}$</span> (số dương → giữ chiều): $$-z\tfrac{\sigma}{\sqrt n}&lt;\overline X-\mu&lt;z\tfrac{\sigma}{\sqrt n}$$</li>
+  <li><span class="step-label">Trừ cả ba vế cho $\overline X$:</span> $$-\overline X-z\tfrac{\sigma}{\sqrt n}&lt;-\mu&lt;-\overline X+z\tfrac{\sigma}{\sqrt n}$$</li>
+  <li><span class="step-label">Nhân cả ba vế với $-1$</span> (số âm → <b>đổi chiều</b> cả hai dấu, và hai đầu đổi chỗ): $$\overline X-z\tfrac{\sigma}{\sqrt n}&lt;\mu&lt;\overline X+z\tfrac{\sigma}{\sqrt n}$$</li>
+</ol>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Kết quả</span><span>Khoảng tin cậy $1-\alpha$ cho $\mu$ (khi biết $\sigma$)</span></div>
+  <div class="big-formula">$$\overline x\pm\varepsilon,\qquad\varepsilon=z_{1-\frac{\alpha}{2}}\cdot\frac{\sigma}{\sqrt n}$$</div>
+</div>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Vì sao</span>Nhân với số âm thì đổi chiều</div>
+  <p>$2&lt;5$ nhưng $-2&gt;-5$: trên trục số, nhân với $-1$ là “soi gương” qua số 0, nên số nào đang ở bên trái chạy sang bên phải. Đây đúng là bước mà ở Bài 1 mục 11.4 ta đã gặp khi chia cho $\ln$ của một số nhỏ hơn 1.</p>
+</div>
+<div class="qc" data-ans="c">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Từ $-2&lt;3-\mu&lt;2$, khoảng của $\mu$ là</div>
+  <div class="qc-opts">
+    <button data-k="a">$-5&lt;\mu&lt;-1$</button>
+    <button data-k="b">$5&lt;\mu&lt;1$</button>
+    <button data-k="c">$1&lt;\mu&lt;5$</button>
+  </div>
+  <div class="qc-fb" data-k="a">Trừ 3 được $-5&lt;-\mu&lt;-1$ là đúng, nhưng chưa nhân $-1$ để ra $\mu$.</div>
+  <div class="qc-fb" data-k="b">Nhân $-1$ được $5&gt;\mu&gt;1$ — đổi chiều rồi thì phải viết lại cho đúng thứ tự: số nhỏ bên trái.</div>
+  <div class="qc-fb" data-k="c">Trừ 3: $-5&lt;-\mu&lt;-1$; nhân $-1$ và đổi chiều: $5&gt;\mu&gt;1$, tức $1&lt;\mu&lt;5$ — đúng là $3\pm2$.</div>
+</div>
+
+<h3 id="ba-nut-van">2.3. Ba nút vặn quyết định độ rộng của khoảng</h3>
+<p>$\varepsilon=z\cdot\dfrac{\sigma}{\sqrt n}$ có ba thành phần, mỗi cái một tác dụng:</p>
+<div class="grid3">
+  <div class="card"><h4>Độ tin cậy ↑</h4><p class="small">$z$ ↑ → khoảng <b>rộng</b> ra. Muốn chắc chắn hơn thì phải chịu lưới to hơn.</p></div>
+  <div class="card"><h4>Cỡ mẫu $n$ ↑</h4><p class="small">$\sqrt n$ ↑ → khoảng <b>hẹp</b> lại, nhưng chậm: gấp 4 lần người mới hẹp còn một nửa.</p></div>
+  <div class="card"><h4>Độ phân tán $\sigma$ ↑</h4><p class="small">Dữ liệu càng tản → khoảng càng <b>rộng</b>. Ta ít khi điều khiển được nút này.</p></div>
+</div>
+<div class="qc" data-ans="b">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Giữ nguyên độ tin cậy và $\sigma$, tăng cỡ mẫu từ 25 lên 100 người thì bán kính $\varepsilon$</div>
+  <div class="qc-opts">
+    <button data-k="a">giảm còn $\frac14$</button>
+    <button data-k="b">giảm còn $\frac12$</button>
+    <button data-k="c">không đổi</button>
+  </div>
+  <div class="qc-fb" data-k="a">$n$ gấp 4 nhưng $\varepsilon$ tỉ lệ với $\frac{1}{\sqrt n}$, nên chỉ chia cho $\sqrt4=2$.</div>
+  <div class="qc-fb" data-k="b">$\frac{\sqrt{25}}{\sqrt{100}}=\frac{5}{10}=\frac12$.</div>
+  <div class="qc-fb" data-k="c">$n$ nằm trong mẫu số của sai số chuẩn, tăng $n$ chắc chắn làm $\varepsilon$ nhỏ đi.</div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="ktc-trung-binh" data-toc="3. KTC cho trung bình"><span class="num">3</span>Khoảng tin cậy cho trung bình $\mu$</h2>
+
+<h3 id="chon-cong-thuc">3.1. Chọn công thức: ba trường hợp</h3>
+<p>Dáng chung luôn là $\overline x\pm\varepsilon$. Chỉ khác nhau ở hai thừa số của $\varepsilon$, tùy ta <b>biết gì</b> về độ phân tán và mẫu <b>lớn hay nhỏ</b>:</p>
+<div class="table-wrap"><table>
+  <tr><th class="left">Trường hợp</th><th>Bán kính $\varepsilon$</th><th class="left">Hệ số tra ở</th></tr>
+  <tr><td class="left"><b>TH1.</b> Đã biết $\sigma$ của tổng thể</td><td>$z_{1-\frac\alpha2}\cdot\dfrac{\sigma}{\sqrt n}$</td><td class="left">Phụ lục 3 (chuẩn)</td></tr>
+  <tr><td class="left"><b>TH2.</b> Chưa biết $\sigma$, mẫu lớn $n&gt;30$</td><td>$z_{1-\frac\alpha2}\cdot\dfrac{s}{\sqrt n}$</td><td class="left">Phụ lục 3 (chuẩn)</td></tr>
+  <tr><td class="left"><b>TH3.</b> Chưa biết $\sigma$, mẫu nhỏ $n\le30$</td><td>$t^{\,n-1}_{1-\frac\alpha2}\cdot\dfrac{s}{\sqrt n}$</td><td class="left">Phụ lục 5 (Student), hàng $n-1$</td></tr>
+</table></div>
+<div class="decide">
+  <div class="rule"><span class="when">Đề cho $\sigma$ (hoặc $\sigma^2$, hoặc “$X\sim N(\mu;\,100)$”) của <b>tổng thể</b>?</span><span class="arrow">→</span><span class="use">Có → TH1 (dùng $z$ và $\sigma$, khai căn nếu đề cho phương sai)</span></div>
+  <div class="rule"><span class="when">Chỉ có $s$ tính từ mẫu (“độ lệch điều chỉnh mẫu”) và $n&gt;30$?</span><span class="arrow">→</span><span class="use">TH2 ($z$ và $s$)</span></div>
+  <div class="rule"><span class="when">Chỉ có $s$ và $n\le30$?</span><span class="arrow">→</span><span class="use">TH3 ($t$ với $n-1$ bậc tự do và $s$)</span></div>
+</div>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Vì sao</span><span>Mẫu nhỏ thì phải đổi $z$ thành $t$</span></div>
+  <p>Khi không biết $\sigma$, ta “mượn” $s$ của mẫu. Nhưng $s$ cũng dao động theo mẫu — mẫu nhỏ thì dao động nhiều, có khi $s$ nhỏ hơn hẳn $\sigma$ làm khoảng hẹp một cách “ảo”. Phân phối Student (Bài 2 mục 14) có <b>đuôi dày hơn</b> chuẩn để bù cho sự không chắc chắn đó, nên hệ số $t$ lớn hơn $z$ và khoảng rộng hơn. Mẫu càng lớn, $s$ càng sát $\sigma$, $t$ càng gần $z$:</p>
+  <div class="table-wrap"><table class="compact">
+    <tr><th>Bậc tự do $n-1$</th><td>4</td><td>15</td><td>29</td><td>rất lớn</td></tr>
+    <tr><th>$t_{0{,}975}$</th><td>2,776</td><td>2,131</td><td>2,045</td><td>1,96</td></tr>
+  </table></div>
+  <p class="small">Bậc tự do là $n-1$ vì $s^2$ chia cho $n-1$ (Bài 3 mục 12.2).</p>
+</div>
+<figure><div class="fig-box"><div id="tFig"></div></div>
+<figcaption>Hình 3.1. Đường chuông chuẩn tắc (xanh) và Student 4 bậc tự do (cam): mốc 2,5% đuôi phải dịch từ 1,96 ra 2,776.</figcaption></figure>
+<p><b>Cách đọc hình:</b> trục ngang là giá trị của thống kê, trục đứng là mật độ. Đường cam (Student, mẫu 5 người) thấp hơn ở giữa và <b>cao hơn ở hai đuôi</b>. Muốn chừa đúng 2,5% ở đuôi phải, mốc cam phải đặt xa hơn (2,776 so với 1,96) — vì vậy khoảng tính bằng $t$ rộng hơn.</p>
+<div class="qc" data-ans="c">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 1</span>Đo lực cắn của 20 người, được $\overline x=38{,}4$ kg, $s=6{,}2$ kg; không có thông tin gì khác. Bán kính khoảng tin cậy 95% dùng</div>
+  <div class="qc-opts">
+    <button data-k="a">$1{,}96\cdot\frac{6{,}2}{\sqrt{20}}$</button>
+    <button data-k="b">$t^{20}_{0{,}975}\cdot\frac{6{,}2}{\sqrt{20}}$</button>
+    <button data-k="c">$t^{19}_{0{,}975}\cdot\frac{6{,}2}{\sqrt{20}}$</button>
+  </div>
+  <div class="qc-fb" data-k="a">$z$ chỉ dùng khi biết $\sigma$ hoặc $n&gt;30$. Ở đây chỉ có $s$ và $n=20$.</div>
+  <div class="qc-fb" data-k="b">Đúng là Student, nhưng bậc tự do là $n-1=19$, không phải 20.</div>
+  <div class="qc-fb" data-k="c">TH3: $\sigma$ chưa biết, $n=20\le30$ → $t$ với $n-1=19$ bậc tự do ($t^{19}_{0{,}975}=2{,}093$).</div>
+</div>
+
+<h3 id="th1-biet-sigma">3.2. TH1 — đã biết $\sigma$</h3>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 3.1</span>Thời gian tê môi với articain 4%</div>
+  <p>Từ các nghiên cứu lớn, độ lệch chuẩn thời gian tê môi của articain 4% là $\sigma=12$ phút. Một phòng khám đo 36 bệnh nhân, được $\overline x=152$ phút. Ước lượng thời gian tê trung bình với độ tin cậy 95%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Gọi tên:</span> $\mu$ = thời gian tê môi trung bình của mọi bệnh nhân dùng articain 4%.</li>
+      <li><span class="step-label">Trường hợp:</span> biết $\sigma=12$ → TH1.</li>
+      <li><span class="step-label">Hệ số:</span> $1-\alpha=0{,}95$ → $1-\frac\alpha2=0{,}975$ → $z=1{,}96$.</li>
+      <li><span class="step-label">Sai số chuẩn:</span> $\frac{\sigma}{\sqrt n}=\frac{12}{\sqrt{36}}=2$ phút.</li>
+      <li><span class="step-label">Bán kính:</span> $\varepsilon=1{,}96\cdot2=3{,}92$ phút.</li>
+      <li><span class="step-label">Khoảng:</span> $152\pm3{,}92$ → $(148{,}08;\,155{,}92)$ phút.</li>
+    </ol>
+    <p><b>Kết luận bằng lời:</b> với độ tin cậy 95%, thời gian tê môi trung bình của articain 4% nằm trong khoảng 148,08 đến 155,92 phút.</p>
+  </div></details>
+</div>
+<div class="qc" data-num="89,88" data-tol="0,01">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 1</span>Nhịp tim lúc ngồi ghế nha có $\sigma=15$ lần/phút (đã biết). Đo 25 bệnh nhân được $\overline x=84$. Tìm <b>mút phải</b> khoảng tin cậy 95%.</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập số"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">$\varepsilon=1{,}96\cdot\frac{15}{5}=5{,}88$ → khoảng $(78{,}12;\,89{,}88)$.</div>
+  <div class="qc-fb" data-k="no">Sai số chuẩn $\frac{15}{\sqrt{25}}=3$; nhân $z_{0{,}975}=1{,}96$ được $\varepsilon$; mút phải $=84+\varepsilon$.</div>
+</div>
+
+<h3 id="th2-mau-lon">3.3. TH2 — chưa biết $\sigma$, mẫu lớn</h3>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 3.2</span>Lưu lượng nước bọt kích thích</div>
+  <p>Đo lưu lượng nước bọt kích thích của 64 sinh viên: $\overline x=1{,}42$ ml/phút, độ lệch chuẩn mẫu $s=0{,}48$. Ước lượng lưu lượng trung bình với độ tin cậy 99%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Trường hợp:</span> chỉ có $s$, $n=64&gt;30$ → TH2.</li>
+      <li><span class="step-label">Hệ số:</span> $1-\frac\alpha2=0{,}995$ → $z=2{,}576$.</li>
+      <li><span class="step-label">Sai số chuẩn:</span> $\frac{s}{\sqrt n}=\frac{0{,}48}{8}=0{,}06$.</li>
+      <li><span class="step-label">Bán kính:</span> $\varepsilon=2{,}576\cdot0{,}06\approx0{,}155$.</li>
+      <li><span class="step-label">Khoảng:</span> $1{,}42\pm0{,}155$ → $(1{,}265;\,1{,}575)$ ml/phút.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="qc" data-num="0,4935" data-tol="0,0006">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 1</span>Đo thời gian chờ của 49 bệnh nhân: $\overline x=12{,}4$ phút, $s=2{,}1$. Tính bán kính khoảng tin cậy 90% (4 chữ số thập phân).</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập số"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">TH2: $z_{0{,}95}=1{,}645$; $\varepsilon=1{,}645\cdot\frac{2{,}1}{7}=1{,}645\cdot0{,}3=0{,}4935$ phút.</div>
+  <div class="qc-fb" data-k="no">90% → $1-\frac\alpha2=0{,}95$ → $z=1{,}645$. Sai số chuẩn $\frac{2{,}1}{\sqrt{49}}=0{,}3$. Nhân lại.</div>
+</div>
+
+<h3 id="th3-mau-nho">3.4. TH3 — chưa biết $\sigma$, mẫu nhỏ: dùng Student</h3>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 3.3</span>Độ bền dán của một loại keo dán ngà</div>
+  <p>Đo độ bền dán (MPa) trên 16 mẫu răng: $\overline x=24{,}6$; $s=3{,}2$. Độ bền dán có phân phối chuẩn. Ước lượng độ bền dán trung bình với độ tin cậy 95%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Trường hợp:</span> chỉ có $s$, $n=16\le30$ → TH3, bậc tự do $n-1=15$.</li>
+      <li><span class="step-label">Tra Phụ lục 5:</span> hàng 15, cột 0,975 → $t^{15}_{0{,}975}=2{,}131$.</li>
+      <li><span class="step-label">Sai số chuẩn:</span> $\frac{3{,}2}{\sqrt{16}}=0{,}8$.</li>
+      <li><span class="step-label">Bán kính:</span> $\varepsilon=2{,}131\cdot0{,}8\approx1{,}705$.</li>
+      <li><span class="step-label">Khoảng:</span> $24{,}6\pm1{,}705$ → $(22{,}895;\,26{,}305)$ MPa.</li>
+    </ol>
+    <p class="small">Nếu dùng nhầm $z=1{,}96$ thì $\varepsilon=1{,}568$ — khoảng hẹp hơn thực tế, “tự tin” quá mức.</p>
+  </div></details>
+</div>
+<div class="qc" data-num="1,3836" data-tol="0,0006">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Thời gian (phút) hoàn thành một ca trám ở 9 sinh viên: $\overline x=5{,}4$; $s=1{,}8$. Tính bán kính khoảng tin cậy 95% (4 chữ số thập phân).</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập số"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">$n=9\le30$ → $t^{8}_{0{,}975}=2{,}306$; $\varepsilon=2{,}306\cdot\frac{1{,}8}{3}=2{,}306\cdot0{,}6=1{,}3836$.</div>
+  <div class="qc-fb" data-k="no">Bậc tự do $9-1=8$, cột 0,975 của Phụ lục 5 → 2,306. Sai số chuẩn $\frac{1{,}8}{\sqrt9}=0{,}6$.</div>
+</div>
+
+<h3 id="tu-so-lieu-tho">3.5. Từ số liệu thô: tính $\overline x$, $s$ trước</h3>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 3.4</span>pH nước bọt của 10 người</div>
+  <p class="center">6,8 · 7,1 · 6,5 · 6,9 · 7,3 · 6,6 · 7,0 · 6,7 · 7,2 · 6,9</p>
+  <p>pH có phân phối chuẩn. Ước lượng pH trung bình với độ tin cậy 95%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Đặc trưng mẫu</span> (Bài 3 mục 10, 12 hoặc máy): $\sum x_i=69$ → $\overline x=6{,}9$; $\sum x_i^2=476{,}7$ → $$\begin{aligned}s^2&amp;=\frac{476{,}7-10\cdot6{,}9^2}{9}\\&amp;=\frac{0{,}6}{9}\approx0{,}0667\end{aligned}$$ → $s\approx0{,}2582$.</li>
+      <li><span class="step-label">Trường hợp:</span> $n=10$ → TH3; $t^{9}_{0{,}975}=2{,}262$.</li>
+      <li><span class="step-label">Bán kính:</span> $\varepsilon=2{,}262\cdot\frac{0{,}2582}{\sqrt{10}}\approx0{,}185$.</li>
+      <li><span class="step-label">Khoảng:</span> $(6{,}715;\,7{,}085)$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Ví dụ 3.4: lấy $\overline x$, $s$ rồi tính $\varepsilon$</span></div>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> <span class="why">nhập 10 số vào cột x (Freq để 1).</span></li>
+    <li><span class="keys"><kbd class="fn">OPTN</kbd><kbd>3</kbd></span> <span class="why">đọc $\overline x$ = <span class="lcd">6.9</span>; <span class="lcd">sx</span> = 0.2581988… (đây là $s$, chia $n-1$). Ghi ra giấy.</span></li>
+    <li><span class="keys"><kbd>AC</kbd></span> <span class="why">rồi về <span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span> và gõ $2{,}262\times0{,}2581988\div\sqrt{10}$:</span> <span class="keys"><kbd>2.262</kbd><kbd>×</kbd><kbd>0.2581988</kbd><kbd>÷</kbd><kbd>√■</kbd><kbd>10</kbd><kbd>=</kbd></span> <span class="why">→ 0.18469… = $\varepsilon$.</span></li>
+  </ol>
+  <p class="small">Hệ số $t$ phải tra bảng (máy không có Student). Đừng lấy <span class="lcd">σx</span> — đó là chia $n$.</p>
+</div>
+
+<h3 id="bai-toan-nguoc">3.6. Bài toán ngược: từ khoảng đi tìm lại các con số</h3>
+<p>Công thức $\varepsilon=z\cdot\dfrac{s}{\sqrt n}$ có 4 đại lượng ($\varepsilon$, $z$, $s$, $n$). Biết 3 cái thì tìm được cái còn lại. Thêm nữa, từ hai mút khoảng ta luôn đọc ra tâm và bán kính:</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span><span>Từ khoảng $(a;b)$ đọc ngược</span></div>
+  <div class="big-formula">$$\overline x=\frac{a+b}{2},\qquad\varepsilon=\frac{b-a}{2}$$</div>
+  <p class="center small">rồi: $\ z=\dfrac{\varepsilon\sqrt n}{s}\ $ · $\ s=\dfrac{\varepsilon\sqrt n}{z}\ $ · $\ \sqrt n=\dfrac{z\,s}{\varepsilon}$</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 3.5</span>Bốn câu hỏi ngược trên cùng một kiểu số liệu</div>
+  <ol class="steps">
+    <li><span class="step-label">(a) Tìm độ tin cậy.</span> Khoảng cho lưu lượng nước bọt là $(1{,}32;\,1{,}52)$, $n=64$, $s=0{,}48$. Tâm 1,42; $\varepsilon=0{,}10$. $z=\frac{0{,}10\cdot8}{0{,}48}\approx1{,}67$. Độ tin cậy = diện tích giữa $-1{,}67$ và $1{,}67$ $=2\varphi(1{,}67)=2\cdot0{,}4525=0{,}905$, tức <b>90,5%</b>.</li>
+    <li><span class="step-label">(b) Tìm $\sigma$.</span> Khoảng 95% $(148{,}08;\,155{,}92)$, $n=36$, biết dùng TH1. $\varepsilon=3{,}92$ → $\sigma=\frac{3{,}92\cdot6}{1{,}96}=12$ phút.</li>
+    <li><span class="step-label">(c) Tìm $n$.</span> Khoảng 95% có bán kính 2,94 phút, $\sigma=12$. $\sqrt n=\frac{1{,}96\cdot12}{2{,}94}=8$ → $n=64$.</li>
+    <li><span class="step-label">(d) Tìm $\overline x$ khi chỉ biết một mút.</span> Khoảng 95% có mút trái 148,08 và $\varepsilon=3{,}92$ → $\overline x=148{,}08+3{,}92=152$, mút phải 155,92.</li>
+  </ol>
+</div>
+<div class="box intuit">
+  <div class="box-title"><span class="tag">Hiểu</span><span>Vì sao độ tin cậy là $2\varphi(z)$?</span></div>
+  <p>Độ tin cậy là diện tích phần giữa từ $-z$ đến $z$. Theo Bài 2 mục 11: diện tích từ 0 đến $z$ là $\varphi(z)$, và hai nửa bằng nhau, nên tổng là $2\varphi(z)$. Kiểm tra: $2\varphi(1{,}96)=2\cdot0{,}4750=0{,}95$ ✓.</p>
+</div>
+<div class="widget" id="widthWidget">
+  <div class="widget-title">Bán kính khoảng tin cậy thay đổi ra sao</div>
+  <div class="widget-sub">Trường hợp mẫu lớn (dùng $z$), $\overline x=152$. Kéo từng nút và để ý độ dài vạch.</div>
+  <div class="controls">
+    <div class="ctrl"><label for="wN">Cỡ mẫu $n$ <output for="wN"></output></label><input type="range" id="wN" min="4" max="400" step="1" value="36"></div>
+    <div class="ctrl"><label for="wS">Độ lệch chuẩn <output for="wS"></output></label><input type="range" id="wS" min="2" max="30" step="0.5" value="12"></div>
+    <div class="ctrl"><label for="wC">Độ tin cậy (%) <output for="wC"></output></label><input type="range" id="wC" min="80" max="99.5" step="0.5" value="95"></div>
+  </div>
+  <div id="widthPlot"></div>
+  <div class="readout" id="widthRead"></div>
+</div>
+<div class="qc" data-num="1,96" data-tol="0,005">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Khoảng tin cậy 95% (TH2) cho số phút chải răng mỗi ngày là $(3{,}02;\,3{,}98)$, tính từ 64 người. Độ lệch chuẩn mẫu $s$ bằng bao nhiêu? (2 chữ số thập phân)</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập số"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">$\varepsilon=\frac{3{,}98-3{,}02}{2}=0{,}48$; $s=\frac{\varepsilon\sqrt n}{z}=\frac{0{,}48\cdot8}{1{,}96}\approx1{,}96$ phút.</div>
+  <div class="qc-fb" data-k="no">Tìm bán kính trước: $\varepsilon=\frac{b-a}{2}$. Rồi từ $\varepsilon=z\frac{s}{\sqrt n}$ suy ra $s=\frac{\varepsilon\sqrt n}{z}$ với $z=1{,}96$, $\sqrt{64}=8$.</div>
+</div>
+
+<h3 id="co-mau">3.7. Cỡ mẫu tối thiểu</h3>
+<p>Bài toán thiết kế nghiên cứu: “muốn sai số không quá $\varepsilon$ với độ tin cậy $1-\alpha$ thì phải khám ít nhất bao nhiêu người?”. Từ $z\frac{\sigma}{\sqrt n}\le\varepsilon$, đi từng bước:</p>
+<ol class="steps">
+  <li><span class="step-label">Nhân hai vế với $\sqrt n$, chia cho $\varepsilon$</span> (đều dương, giữ chiều): $\sqrt n\ge\frac{z\sigma}{\varepsilon}$.</li>
+  <li><span class="step-label">Bình phương hai vế</span> (hai vế dương, giữ chiều): $n\ge\left(\frac{z\sigma}{\varepsilon}\right)^2$.</li>
+  <li><span class="step-label">Làm tròn LÊN</span> thành số nguyên: số người phải nguyên, và phải <b>lớn hơn hoặc bằng</b> giá trị vừa tính; làm tròn xuống thì không còn thoả bất đẳng thức.</li>
+</ol>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Cỡ mẫu tối thiểu cho trung bình</div>
+  <div class="big-formula">$$n\ge\left(\frac{z_{1-\frac\alpha2}\cdot\sigma}{\varepsilon}\right)^2$$</div>
+  <p class="small center">Chưa biết $\sigma$: làm một <b>mẫu thăm dò</b> nhỏ để có $s$, rồi thay $\sigma$ bằng $s$ (giáo trình và slide dùng $z$; nếu mẫu thăm dò nhỏ, có sách dùng $t$).</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 3.6</span>Thiết kế một nghiên cứu về thời gian tê</div>
+  <p>Thời gian tê có $\sigma=12$ phút. Độ tin cậy 95%.</p>
+  <ol class="steps">
+    <li><span class="step-label">Sai số không quá 2 phút:</span> $n\ge\left(\frac{1{,}96\cdot12}{2}\right)^2=11{,}76^2=138{,}2976$ → <b>139</b> người.</li>
+    <li><span class="step-label">“Cần khám thêm”:</span> đã có 36 người (Ví dụ 3.1) → thêm $139-36=$ <b>103</b> người.</li>
+    <li><span class="step-label">“Độ dài khoảng không quá 3 phút”:</span> $2\varepsilon\le3$ → $\varepsilon\le1{,}5$ → $n\ge\left(\frac{1{,}96\cdot12}{1{,}5}\right)^2\approx245{,}86$ → <b>246</b> người.</li>
+  </ol>
+</div>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Tổng quát</span><span>Muốn sai số nhỏ đi $k$ lần thì cỡ mẫu phải gấp $k^2$ lần</span></div>
+  <p>$n$ tỉ lệ với $\frac{1}{\varepsilon^2}$. Chia đôi sai số ($k=2$) → gấp 4 lần người; giảm còn một phần ba ($k=3$) → gấp 9 lần; giảm còn $\frac23$ ($k=1{,}5$) → gấp $2{,}25$ lần. Đó là lý do nghiên cứu càng chính xác càng đắt.</p>
+</div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span>Cỡ mẫu</div>
+  <p><span class="keys"><kbd>(</kbd><kbd>1.96</kbd><kbd>×</kbd><kbd>12</kbd><kbd>÷</kbd><kbd>2</kbd><kbd>)</kbd><kbd>x²</kbd><kbd>=</kbd></span> → <span class="lcd">138.2976</span> → tự làm tròn <b>lên</b> 139. (Máy không tự làm tròn lên; đừng bấm làm tròn thông thường vì 138,2976 sẽ thành 138.)</p>
+</div>
+<div class="qc" data-ans="b">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>$\sigma=8$ mmHg, độ tin cậy 95%. Muốn sai số không quá 1 mmHg cần ít nhất bao nhiêu người?</div>
+  <div class="qc-opts">
+    <button data-k="a">245</button>
+    <button data-k="b">246</button>
+    <button data-k="c">62</button>
+    <button data-k="d">16</button>
+  </div>
+  <div class="qc-fb" data-k="a">$245{,}86$ làm tròn <b>xuống</b> thành 245 thì $n&lt;245{,}86$ — không đạt yêu cầu.</div>
+  <div class="qc-fb" data-k="b">$\left(\frac{1{,}96\cdot8}{1}\right)^2=15{,}68^2\approx245{,}86$ → làm tròn lên 246.</div>
+  <div class="qc-fb" data-k="c">62 ứng với sai số 2 mmHg. Sai số 1 thì gấp $2^2=4$ lần.</div>
+  <div class="qc-fb" data-k="d">Quên bình phương: $1{,}96\cdot8\approx15{,}7$.</div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="ktc-ti-le" data-toc="4. KTC cho tỉ lệ"><span class="num">4</span>Khoảng tin cậy cho tỉ lệ $p$</h2>
+
+<h3 id="cong-thuc-ti-le">4.1. Công thức</h3>
+<p>Bài 3 mục 14: tỉ lệ mẫu $f$ xấp xỉ chuẩn quanh $p$ với sai số chuẩn $\sqrt{\frac{p(1-p)}{n}}$. Ta không biết $p$ (đang đi tìm nó!), nên thay $p$ bằng $f$ trong sai số chuẩn:</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Khoảng tin cậy cho tỉ lệ</div>
+  <div class="big-formula">$$f\pm\varepsilon,\qquad\varepsilon=z_{1-\frac\alpha2}\sqrt{\frac{f(1-f)}{n}}$$</div>
+  <p class="small center">$f=\frac kn$ với $k$ là số đơn vị có đặc điểm. Điều kiện để xấp xỉ chuẩn: $nf\ge5$ và $n(1-f)\ge5$. Luôn dùng $z$ (không có trường hợp Student).</p>
+</div>
+
+<h3 id="vi-du-ti-le">4.2. Ví dụ</h3>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 4.1</span>Tỉ lệ sâu răng ở trẻ 12 tuổi</div>
+  <p>Khám ngẫu nhiên 400 trẻ 12 tuổi của một tỉnh, có 248 trẻ bị sâu răng. Ước lượng tỉ lệ sâu răng với độ tin cậy 95%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Tỉ lệ mẫu:</span> $f=\frac{248}{400}=0{,}62$. Kiểm tra: $nf=248\ge5$, $n(1-f)=152\ge5$ ✓.</li>
+      <li><span class="step-label">Sai số chuẩn:</span> $\sqrt{\frac{0{,}62\cdot0{,}38}{400}}=\sqrt{0{,}000589}\approx0{,}02427$.</li>
+      <li><span class="step-label">Bán kính:</span> $\varepsilon=1{,}96\cdot0{,}02427\approx0{,}0476$.</li>
+      <li><span class="step-label">Khoảng:</span> $0{,}62\pm0{,}0476$ → $(0{,}5724;\,0{,}6676)$, tức từ 57,2% đến 66,8%.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="qc" data-num="0,0554" data-tol="0,0006">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 1</span>Phỏng vấn 300 sinh viên, 120 người dùng chỉ nha khoa hằng ngày. Tính bán kính khoảng tin cậy 95% của tỉ lệ (4 chữ số thập phân).</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập số"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">$f=0{,}4$; $\sqrt{\frac{0{,}4\cdot0{,}6}{300}}=\sqrt{0{,}0008}\approx0{,}02828$; $\varepsilon=1{,}96\cdot0{,}02828\approx0{,}0554$.</div>
+  <div class="qc-fb" data-k="no">$f=\frac{120}{300}=0{,}4$, rồi $\varepsilon=1{,}96\sqrt{\frac{f(1-f)}{n}}$. Nhớ khai căn trước khi nhân 1,96.</div>
+</div>
+
+<h3 id="so-voi-ti-le-cu">4.3. So với một con số cũ: đọc kết luận</h3>
+<p>Đề hay hỏi thêm: “tỉ lệ năm trước là …, có thể kết luận gì?”. Quy tắc đọc:</p>
+<div class="decide">
+  <div class="rule"><span class="when">Con số cũ nằm <b>ngoài</b> khoảng, ở bên phải (lớn hơn mút phải)</span><span class="arrow">→</span><span class="use">Tỉ lệ hiện nay <b>thấp hơn</b> trước (với độ tin cậy đã chọn)</span></div>
+  <div class="rule"><span class="when">Con số cũ nằm <b>ngoài</b> khoảng, ở bên trái</span><span class="arrow">→</span><span class="use">Tỉ lệ hiện nay <b>cao hơn</b> trước</span></div>
+  <div class="rule"><span class="when">Con số cũ nằm <b>trong</b> khoảng</span><span class="arrow">→</span><span class="use"><b>Chưa đủ cơ sở</b> kết luận tỉ lệ đã thay đổi</span></div>
+</div>
+<p>Ví dụ 4.1: nếu 5 năm trước tỉ lệ là 70% thì 0,70 &gt; 0,6676 → có thể kết luận tỉ lệ sâu răng <b>đã giảm</b>. Nếu trước là 65% thì 0,65 nằm trong $(0{,}5724;\,0{,}6676)$ → chưa đủ cơ sở nói đã thay đổi. (Bài 5 sẽ làm việc này bằng kiểm định.)</p>
+<div class="qc" data-ans="c">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Khoảng tin cậy 95% của tỉ lệ hút thuốc ở nam sinh viên năm nay là $(0{,}21;\,0{,}29)$. Năm ngoái tỉ lệ là 0,30. Kết luận hợp lý là</div>
+  <div class="qc-opts">
+    <button data-k="a">Chưa đủ cơ sở kết luận có thay đổi</button>
+    <button data-k="b">Tỉ lệ năm nay cao hơn năm ngoái</button>
+    <button data-k="c">Tỉ lệ năm nay thấp hơn năm ngoái</button>
+  </div>
+  <div class="qc-fb" data-k="a">0,30 nằm <b>ngoài</b> khoảng (lớn hơn mút phải 0,29), nên có cơ sở kết luận.</div>
+  <div class="qc-fb" data-k="b">Ngược chiều: cả khoảng nằm dưới 0,30.</div>
+  <div class="qc-fb" data-k="c">0,30 &gt; 0,29 → mọi giá trị hợp lý của tỉ lệ năm nay đều nhỏ hơn 0,30 → giảm.</div>
+</div>
+
+<h3 id="co-mau-ti-le">4.4. Cỡ mẫu cho tỉ lệ — và vì sao có số 4</h3>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Cỡ mẫu tối thiểu cho tỉ lệ</div>
+  <div class="big-formula">$$n\ge\frac{z^2_{1-\frac\alpha2}\,f(1-f)}{\varepsilon^2}\quad\text{(có mẫu thăm dò)}$$</div>
+  <div class="big-formula">$$n\ge\frac{z^2_{1-\frac\alpha2}}{4\varepsilon^2}\quad\text{(chưa có mẫu thăm dò)}$$</div>
+</div>
+<p>Dòng đầu chỉ là giải $z\sqrt{\frac{f(1-f)}{n}}\le\varepsilon$ theo $n$ (bình phương hai vế rồi chuyển vế). Dòng thứ hai trả lời câu hỏi “chưa biết $f$ thì thay bằng gì?”.</p>
+<figure><div class="fig-box"><div id="fqFig"></div></div>
+<figcaption>Hình 4.1. Tích $f(1-f)$ lớn nhất bằng $\frac14$ khi $f=\frac12$.</figcaption></figure>
+<p><b>Cách đọc hình:</b> trục ngang là tỉ lệ $f$ từ 0 đến 1, trục đứng là $f(1-f)$. Đường cong là một parabol úp, cao nhất ở giữa: $0{,}5\cdot0{,}5=0{,}25=\frac14$. Chưa biết $f$ thì ta chọn trường hợp <b>xấu nhất</b> (cần nhiều người nhất), tức thay $f(1-f)$ bằng $\frac14$ — đó là số 4 dưới mẫu. Biết $f$ rồi thì $f(1-f)\le\frac14$, cỡ mẫu nhỏ hơn.</p>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 4.2</span>Cần khám bao nhiêu trẻ để sai số không quá 3%?</div>
+  <ol class="steps">
+    <li><span class="step-label">Có mẫu thăm dò</span> ($f=0{,}62$ từ Ví dụ 4.1), 95%: $n\ge\frac{1{,}96^2\cdot0{,}62\cdot0{,}38}{0{,}03^2}\approx1005{,}65$ → <b>1006</b> trẻ.</li>
+    <li><span class="step-label">Chưa có mẫu thăm dò:</span> $n\ge\frac{1{,}96^2}{4\cdot0{,}03^2}\approx1067{,}11$ → <b>1068</b> trẻ (nhiều hơn, vì phòng trường hợp xấu nhất).</li>
+  </ol>
+</div>
+<div class="qc" data-num="601" data-tol="0">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Chưa có thông tin gì về tỉ lệ. Muốn ước lượng tỉ lệ với sai số không quá 4%, độ tin cậy 95%, cần ít nhất bao nhiêu người?</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập số"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">$n\ge\frac{1{,}96^2}{4\cdot0{,}04^2}=\frac{3{,}8416}{0{,}0064}=600{,}25$ → 601 người (làm tròn lên dù phần lẻ chỉ 0,25).</div>
+  <div class="qc-fb" data-k="no">Chưa có mẫu thăm dò → $n\ge\frac{z^2}{4\varepsilon^2}$ với $z=1{,}96$, $\varepsilon=0{,}04$. Kết quả 600,25 phải làm tròn <b>lên</b>, không phải 600.</div>
+</div>
+
+<h3 id="nguoc-ti-le">4.5. Bài toán ngược cho tỉ lệ</h3>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 4.3</span><span>Báo cáo chỉ ghi “tỉ lệ $(0{,}21;\,0{,}29)$, $n=400$”</span></div>
+  <ol class="steps">
+    <li><span class="step-label">Tâm, bán kính:</span> $f=0{,}25$, $\varepsilon=0{,}04$; số người có đặc điểm $k=0{,}25\cdot400=100$.</li>
+    <li><span class="step-label">Sai số chuẩn:</span> $\sqrt{\frac{0{,}25\cdot0{,}75}{400}}\approx0{,}02165$.</li>
+    <li><span class="step-label">Hệ số:</span> $z=\frac{0{,}04}{0{,}02165}\approx1{,}85$.</li>
+    <li><span class="step-label">Độ tin cậy:</span> $2\varphi(1{,}85)=2\cdot0{,}4678\approx0{,}9356$, tức khoảng <b>93,6%</b>.</li>
+  </ol>
+</div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Độ tin cậy từ $z$: Normal CD</span></div>
+  <p><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd><span class="lcd">Normal CD</span></span> Lower $-1{,}85$, Upper $1{,}85$, σ 1, μ 0 → <span class="lcd">0.93569…</span> — chính là diện tích phần giữa, tức độ tin cậy. Có thể nhập thẳng $z$ chưa làm tròn ($1{,}8475$) để được 0,9353.</p>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="ktc-phuong-sai" data-toc="5. KTC cho phương sai"><span class="num">5</span>Khoảng tin cậy cho phương sai $\sigma^2$</h2>
+<p>Đôi khi điều cần biết không phải “trung bình bao nhiêu” mà “<b>đều tay</b> đến đâu”: một máy đo huyết áp có chính xác ổn định không, một loại vật liệu có độ bền đồng đều không. Đó là câu hỏi về phương sai $\sigma^2$ (hoặc độ lệch chuẩn $\sigma$). Phần này cần tổng thể có phân phối <b>chuẩn</b>.</p>
+
+<h3 id="vi-sao-chi2">5.1. Vì sao dùng $\chi^2$, và vì sao khoảng không còn dạng “±”</h3>
+<p>Bài 2 mục 14: nếu $X$ chuẩn thì $\dfrac{(n-1)s^2}{\sigma^2}$ có phân phối $\chi^2$ với $n-1$ bậc tự do. Phân phối $\chi^2$ chỉ nhận giá trị dương và <b>lệch phải</b> — hai mốc chừa 2,5% ở hai đuôi không đối xứng nhau, nên ta phải tra <b>hai số khác nhau</b>.</p>
+<figure><div class="fig-box"><div id="chiFig"></div></div>
+<figcaption>Hình 5.1. Mật độ $\chi^2$ với 20 bậc tự do: phần giữa 95% nằm từ 9,591 đến 34,170.</figcaption></figure>
+<p><b>Cách đọc hình:</b> trục ngang là giá trị của $\chi^2$, đường cong là mật độ. Hai đuôi đỏ mỗi bên chừa 0,025. Mốc trái $\chi^2_{0{,}025}=9{,}591$ (diện tích bên trái 0,025), mốc phải $\chi^2_{0{,}975}=34{,}170$. Đỉnh lệch về bên trái, đuôi phải kéo dài: khoảng cách từ đỉnh tới hai mốc rất khác nhau.</p>
+<p>Gỡ $\sigma^2$ ra khỏi chuỗi bất đẳng thức, đi từng bước:</p>
+<ol class="steps">
+  <li><span class="step-label">Xuất phát:</span> $\chi^2_{\alpha/2}&lt;\dfrac{(n-1)s^2}{\sigma^2}&lt;\chi^2_{1-\alpha/2}$ với xác suất $1-\alpha$.</li>
+  <li><span class="step-label">Lấy nghịch đảo</span> (mọi vế đều dương → <b>đổi chiều</b>, như $2&lt;5$ thì $\frac12&gt;\frac15$): $\dfrac{1}{\chi^2_{\alpha/2}}&gt;\dfrac{\sigma^2}{(n-1)s^2}&gt;\dfrac{1}{\chi^2_{1-\alpha/2}}$.</li>
+  <li><span class="step-label">Nhân với $(n-1)s^2$</span> (dương, giữ chiều) và viết lại cho số nhỏ đứng trước:</li>
+</ol>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span><span>Khoảng tin cậy cho $\sigma^2$ — chưa biết $\mu$</span></div>
+  <div class="big-formula">$$\left(\frac{(n-1)s^2}{\chi^2_{1-\frac\alpha2}(n-1)}\,;\ \frac{(n-1)s^2}{\chi^2_{\frac\alpha2}(n-1)}\right)$$</div>
+  <p class="small center">Mút <b>trái</b> chia cho số <b>lớn</b> ($\chi^2_{1-\alpha/2}$), mút phải chia cho số nhỏ. Bậc tự do $n-1$.</p>
+</div>
+
+<h3 id="vi-du-phuong-sai">5.2. Ví dụ khi chưa biết trung bình</h3>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 5.1</span>Độ đồng đều của lực bám dính</div>
+  <p>Đo lực bám dính (MPa) trên 21 mẫu một loại composite, độ lệch chuẩn mẫu $s=2{,}5$. Lực bám dính có phân phối chuẩn. Ước lượng phương sai và độ lệch chuẩn với độ tin cậy 95%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Số liệu:</span> $n=21$ → bậc tự do 20; $(n-1)s^2=20\cdot6{,}25=125$.</li>
+      <li><span class="step-label">Tra Phụ lục 4</span> hàng 20: cột 0,975 → $34{,}170$; cột 0,025 → $9{,}591$.</li>
+      <li><span class="step-label">Hai mút:</span> $\frac{125}{34{,}170}\approx3{,}658$ và $\frac{125}{9{,}591}\approx13{,}033$.</li>
+      <li><span class="step-label">Kết luận:</span> $\sigma^2\in(3{,}658;\,13{,}033)$ (MPa²); khai căn hai mút: $\sigma\in(1{,}913;\,3{,}610)$ MPa.</li>
+    </ol>
+    <p class="small">Để ý: $s^2=6{,}25$ <b>không</b> nằm ở giữa khoảng — khoảng cho phương sai không đối xứng.</p>
+  </div></details>
+</div>
+<div class="qc" data-ans="b">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>16 lần đo, $s^2=9$, tổng thể chuẩn, độ tin cậy 95%. Cho $\chi^2_{0{,}025}(15)=6{,}262$, $\chi^2_{0{,}975}(15)=27{,}488$. Khoảng cho $\sigma^2$ là</div>
+  <div class="qc-opts">
+    <button data-k="a">$(0{,}327;\,1{,}437)$</button>
+    <button data-k="b">$(4{,}911;\,21{,}559)$</button>
+    <button data-k="c">$(21{,}559;\,4{,}911)$</button>
+    <button data-k="d">$(5{,}238;\,22{,}996)$</button>
+  </div>
+  <div class="qc-fb" data-k="a">Bạn đã chia $s^2$ cho $\chi^2$ mà quên nhân $(n-1)=15$.</div>
+  <div class="qc-fb" data-k="b">$(n-1)s^2=135$; $\frac{135}{27{,}488}\approx4{,}911$; $\frac{135}{6{,}262}\approx21{,}559$.</div>
+  <div class="qc-fb" data-k="c">Đúng hai số nhưng viết ngược: mút trái phải nhỏ hơn mút phải.</div>
+  <div class="qc-fb" data-k="d">Bạn nhân với $n=16$ thay vì $n-1=15$.</div>
+</div>
+
+<h3 id="biet-mu">5.3. Khi đã biết trung bình $\mu$</h3>
+<p>Nếu biết chính xác $\mu$ (ví dụ đo một vật chuẩn có giá trị đã biết), ta đo độ lệch so với <b>$\mu$ thật</b> chứ không so với $\overline x$, nên không mất bậc tự do nào: dùng $n$ bậc tự do.</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span><span>Khoảng tin cậy cho $\sigma^2$ — đã biết $\mu$</span></div>
+  <div class="big-formula">$$\left(\frac{\sum n_i(x_i-\mu)^2}{\chi^2_{1-\frac\alpha2}(n)}\,;\ \frac{\sum n_i(x_i-\mu)^2}{\chi^2_{\frac\alpha2}(n)}\right)$$</div>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 5.2</span>Độ chính xác của một máy đo huyết áp</div>
+  <p>Cho máy đo 10 lần một thiết bị chuẩn có áp suất <b>đúng 120 mmHg</b>: 118, 123, 121, 117, 122, 119, 124, 120, 116, 121. Sai số đo có phân phối chuẩn. Ước lượng phương sai của phép đo với độ tin cậy 90%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Biết $\mu=120$</span> → dùng $n=10$ bậc tự do.</li>
+      <li><span class="step-label">Độ lệch so với 120:</span> $-2,3,1,-3,2,-1,4,0,-4,1$ → bình phương cộng lại: $\sum(x_i-120)^2=61$.</li>
+      <li><span class="step-label">Tra bảng</span> (90% → $\frac\alpha2=0{,}05$): $\chi^2_{0{,}95}(10)=18{,}307$; $\chi^2_{0{,}05}(10)=3{,}940$.</li>
+      <li><span class="step-label">Khoảng:</span> $\left(\frac{61}{18{,}307};\frac{61}{3{,}940}\right)\approx(3{,}332;\,15{,}482)$ mmHg²; độ lệch chuẩn của máy từ 1,83 đến 3,93 mmHg.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="qc" data-ans="c">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Ước lượng phương sai với độ tin cậy 90% từ 10 số đo, <b>chưa biết</b> $\mu$. Hai giá trị cần tra là</div>
+  <div class="qc-opts">
+    <button data-k="a">$\chi^2_{0{,}05}(10)$ và $\chi^2_{0{,}95}(10)$</button>
+    <button data-k="b">$\chi^2_{0{,}025}(9)$ và $\chi^2_{0{,}975}(9)$</button>
+    <button data-k="c">$\chi^2_{0{,}05}(9)$ và $\chi^2_{0{,}95}(9)$</button>
+  </div>
+  <div class="qc-fb" data-k="a">10 bậc tự do chỉ dùng khi <b>đã biết</b> $\mu$.</div>
+  <div class="qc-fb" data-k="b">Mức 0,025/0,975 ứng với độ tin cậy 95%, không phải 90%.</div>
+  <div class="qc-fb" data-k="c">Chưa biết $\mu$ → $n-1=9$ bậc tự do; 90% → $\frac\alpha2=0{,}05$ → tra cột 0,05 và 0,95 ($3{,}325$ và $16{,}919$).</div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="hieu-hai-trung-binh" data-toc="6. Hiệu hai trung bình"><span class="num">6</span>Ước lượng hiệu hai trung bình $\mu_1-\mu_2$</h2>
+<p>Nghiên cứu y khoa thường <b>so sánh hai nhóm</b>: thuốc mới với thuốc cũ, bàn chải điện với bàn chải tay. Ta ước lượng <b>độ chênh</b> $\mu_1-\mu_2$ bằng một khoảng, rồi đọc khoảng đó để kết luận.</p>
+
+<h3 id="doc-khoang-hieu">6.1. Đọc một khoảng cho $\mu_1-\mu_2$</h3>
+<figure><div class="fig-box"><div id="diffFig"></div></div>
+<figcaption>Hình 6.1. Ba khoảng tin cậy cho $\mu_1-\mu_2$ và vị trí của số 0.</figcaption></figure>
+<p><b>Cách đọc hình:</b> trục ngang là độ chênh $\mu_1-\mu_2$, vạch dọc là số 0 (“hai nhóm bằng nhau”). Mỗi thanh là một khoảng tin cậy:</p>
+<div class="decide">
+  <div class="rule"><span class="when">Cả khoảng nằm <b>bên phải</b> 0, ví dụ $(2;\,9)$</span><span class="arrow">→</span><span class="use">$\mu_1&gt;\mu_2$: nhóm 1 lớn hơn nhóm 2 từ 2 đến 9 đơn vị</span></div>
+  <div class="rule"><span class="when">Khoảng <b>chứa</b> 0, ví dụ $(-3;\,5)$</span><span class="arrow">→</span><span class="use">Chưa đủ cơ sở kết luận hai trung bình khác nhau</span></div>
+  <div class="rule"><span class="when">Cả khoảng nằm <b>bên trái</b> 0, ví dụ $(-8;\,-1)$</span><span class="arrow">→</span><span class="use">$\mu_1&lt;\mu_2$: nhóm 2 lớn hơn nhóm 1 từ 1 đến 8 đơn vị (đổi dấu và đổi chỗ hai mút)</span></div>
+</div>
+<div class="qc" data-ans="b">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>Gọi $\mu_1$ là thời gian lành thương của nhóm dùng gel mới, $\mu_2$ của nhóm chứng. Khoảng tin cậy 95% của $\mu_1-\mu_2$ là $(-2{,}6;\,-0{,}4)$ ngày. Kết luận đúng là</div>
+  <div class="qc-opts">
+    <button data-k="a">Nhóm gel lành chậm hơn 0,4 đến 2,6 ngày</button>
+    <button data-k="b">Nhóm gel lành nhanh hơn 0,4 đến 2,6 ngày</button>
+    <button data-k="c">Chưa đủ cơ sở kết luận có khác biệt</button>
+  </div>
+  <div class="qc-fb" data-k="a">Hiệu âm nghĩa là $\mu_1&lt;\mu_2$: thời gian lành của nhóm gel <b>ngắn</b> hơn.</div>
+  <div class="qc-fb" data-k="b">Cả khoảng nằm bên trái 0 → $\mu_1&lt;\mu_2$; độ chênh $\mu_2-\mu_1$ nằm từ 0,4 đến 2,6 ngày.</div>
+  <div class="qc-fb" data-k="c">Khoảng không chứa 0 (hai mút cùng âm), nên có cơ sở kết luận.</div>
+</div>
+
+<h3 id="bon-truong-hop">6.2. Bốn trường hợp tính bán kính</h3>
+<p>Khoảng luôn có dạng $(\overline x_1-\overline x_2)\pm\varepsilon$. Sai số chuẩn của một hiệu là căn của <b>tổng</b> hai phương sai (Bài 2 mục 8.8: $X$, $Y$ độc lập thì $D(X-Y)=D(X)+D(Y)$ — trừ nhau nhưng phương sai vẫn cộng, vì hai nguồn dao động chồng lên nhau).</p>
+<div class="table-wrap"><table style="min-width:560px">
+  <tr><th class="left">Trường hợp</th><th>Bán kính $\varepsilon$</th></tr>
+  <tr><td class="left"><b>TH1.</b> Biết $\sigma_1$, $\sigma_2$</td><td>$z_{1-\frac\alpha2}\sqrt{\dfrac{\sigma_1^2}{n_1}+\dfrac{\sigma_2^2}{n_2}}$</td></tr>
+  <tr><td class="left"><b>TH2.</b> Chưa biết $\sigma$, mẫu lớn: $n_1+n_2-2\ge30$</td><td>$z_{1-\frac\alpha2}\sqrt{\dfrac{s_1^2}{n_1}+\dfrac{s_2^2}{n_2}}$</td></tr>
+  <tr><td class="left"><b>TH3.</b> Chưa biết $\sigma$, nhưng $\sigma_1=\sigma_2$ (hoặc chưa chứng minh được khác nhau)</td><td>$t^{\,n_1+n_2-2}_{1-\frac\alpha2}\sqrt{\dfrac{s^2}{n_1}+\dfrac{s^2}{n_2}}$, với $s^2=\dfrac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}$</td></tr>
+  <tr><td class="left"><b>TH4.</b> Chưa biết $\sigma$, mẫu nhỏ, không giả sử $\sigma_1=\sigma_2$</td><td>$t^{\,k}_{1-\frac\alpha2}\sqrt{\dfrac{s_1^2}{n_1}+\dfrac{s_2^2}{n_2}}$, $k$ tính ở mục 6.5</td></tr>
+</table></div>
+<p class="small muted center">Trên điện thoại, vuốt ngang bảng để xem hết.</p>
+<p class="small">Slide của lớp ghi điều kiện TH2 là $n_1+n_2-2&gt;30$ (giáo trình: $\ge30$) và không có TH4. Đề thi theo slide thì chỉ cần TH1 – TH3.</p>
+
+<h3 id="th2-hai-mau">6.3. Mẫu lớn: dùng $z$</h3>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 6.1</span>Bàn chải điện hay bàn chải tay?</div>
+  <p>Sau 4 tuần, chỉ số mảng bám của nhóm dùng bàn chải điện ($n_1=45$): $\overline x_1=1{,}12$, $s_1=0{,}38$; nhóm bàn chải tay ($n_2=50$): $\overline x_2=1{,}41$, $s_2=0{,}45$. Ước lượng $\mu_1-\mu_2$ với độ tin cậy 95%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Trường hợp:</span> chưa biết $\sigma$; $n_1+n_2-2=93\ge30$ → TH2.</li>
+      <li><span class="step-label">Hiệu hai trung bình mẫu:</span> $1{,}12-1{,}41=-0{,}29$.</li>
+      <li><span class="step-label">Sai số chuẩn:</span> $$\begin{aligned}&amp;\sqrt{\tfrac{0{,}38^2}{45}+\tfrac{0{,}45^2}{50}}\\&amp;=\sqrt{0{,}003209+0{,}00405}\approx0{,}0852\end{aligned}$$</li>
+      <li><span class="step-label">Bán kính:</span> $1{,}96\cdot0{,}0852\approx0{,}167$.</li>
+      <li><span class="step-label">Khoảng:</span> $-0{,}29\pm0{,}167$ → $(-0{,}457;\,-0{,}123)$.</li>
+    </ol>
+    <p><b>Kết luận:</b> khoảng nằm hoàn toàn bên trái 0 → chỉ số mảng bám của nhóm bàn chải điện thấp hơn, chênh từ 0,123 đến 0,457.</p>
+  </div></details>
+</div>
+<div class="qc" data-num="1,1597" data-tol="0,0006">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 1</span>Nhóm 1: $n_1=40$, $s_1=5$; nhóm 2: $n_2=50$, $s_2=6$. Tính sai số chuẩn của $\overline x_1-\overline x_2$ (4 chữ số thập phân).</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập số"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">$\sqrt{\frac{25}{40}+\frac{36}{50}}=\sqrt{0{,}625+0{,}72}=\sqrt{1{,}345}\approx1{,}1597$.</div>
+  <div class="qc-fb" data-k="no">Bình phương từng $s$, chia cho cỡ mẫu của chính nhóm đó, <b>cộng</b> lại rồi mới khai căn. Không cộng $\frac{5}{\sqrt{40}}+\frac{6}{\sqrt{50}}$.</div>
+</div>
+
+<h3 id="th3-gop">6.4. Hai phương sai bằng nhau: phương sai gộp và $t$</h3>
+<p>Khi có lý do tin hai nhóm cùng độ phân tán ($\sigma_1=\sigma_2$), ta <b>gộp</b> thông tin của hai mẫu thành một ước lượng chung $s^2$ — trung bình có trọng số của $s_1^2$ và $s_2^2$, trọng số là số bậc tự do $n_1-1$ và $n_2-1$:</p>
+$$s^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}$$
+<p class="small">Slide in “$s=\dots$”, nhưng biểu thức này là $s^2$ (phương sai gộp); độ lệch chuẩn gộp là căn của nó.</p>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 6.2</span>Màng PRF và thời gian lành thương sau nhổ răng khôn</div>
+  <p>Nhóm đặt PRF ($n_1=12$): $\overline x_1=7{,}4$ ngày, $s_1=1{,}6$; nhóm chứng ($n_2=14$): $\overline x_2=9{,}1$ ngày, $s_2=1{,}9$. Giả sử thời gian lành thương có phân phối chuẩn và hai phương sai bằng nhau. Ước lượng $\mu_1-\mu_2$ với độ tin cậy 95%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Phương sai gộp:</span> $$\begin{aligned}s^2&amp;=\tfrac{11\cdot1{,}6^2+13\cdot1{,}9^2}{24}\\&amp;=\tfrac{28{,}16+46{,}93}{24}\approx3{,}1288\end{aligned}$$</li>
+      <li><span class="step-label">Sai số chuẩn:</span> $\sqrt{3{,}1288\big(\tfrac1{12}+\tfrac1{14}\big)}\approx0{,}6959$.</li>
+      <li><span class="step-label">Hệ số:</span> bậc tự do $12+14-2=24$ → $t^{24}_{0{,}975}=2{,}064$.</li>
+      <li><span class="step-label">Bán kính:</span> $2{,}064\cdot0{,}6959\approx1{,}436$.</li>
+      <li><span class="step-label">Khoảng:</span> $(7{,}4-9{,}1)\pm1{,}436=-1{,}7\pm1{,}436$ → $(-3{,}136;\,-0{,}264)$ ngày.</li>
+    </ol>
+    <p><b>Kết luận:</b> khoảng nằm bên trái 0 → nhóm PRF lành nhanh hơn, từ khoảng 0,26 đến 3,14 ngày.</p>
+  </div></details>
+</div>
+<div class="qc" data-num="5,1" data-tol="0,001">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>$n_1=10$, $s_1^2=4$; $n_2=12$, $s_2^2=6$. Tính phương sai gộp $s^2$.</div>
+  <div class="qc-num"><input type="text" inputmode="decimal" placeholder="Nhập số"><button class="qc-check">Kiểm tra</button></div>
+  <div class="qc-fb" data-k="ok">$s^2=\frac{9\cdot4+11\cdot6}{20}=\frac{36+66}{20}=5{,}1$ — nằm giữa 4 và 6, gần 6 hơn vì nhóm 2 đông hơn.</div>
+  <div class="qc-fb" data-k="no">Trọng số là $n-1$: $\frac{(10-1)\cdot4+(12-1)\cdot6}{10+12-2}$. Đừng lấy trung bình cộng thường $\frac{4+6}{2}$.</div>
+</div>
+
+<h3 id="th4-welch">6.5. Mẫu nhỏ, phương sai có thể khác nhau (giáo trình)</h3>
+<p>Khi hai độ lệch chuẩn rất khác nhau và mẫu nhỏ, không gộp được. Giáo trình dùng $t$ với số bậc tự do $k$ tính theo công thức dưới (gọi là công thức Welch), rồi <b>làm tròn</b> $k$ thành số nguyên để tra bảng:</p>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span><span>Bậc tự do $k$</span></div>
+  <div class="big-formula">$$k=\frac{\left(v_1+v_2\right)^2}{\dfrac{v_1^2}{n_1-1}+\dfrac{v_2^2}{n_2-1}},\qquad v_1=\frac{s_1^2}{n_1},\ v_2=\frac{s_2^2}{n_2}$$</div>
+  <p class="small center">$v_1$, $v_2$ là “phần phương sai” mỗi nhóm đóng góp vào sai số chuẩn.</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 6.3</span>Lượng mảng bám sau 24 giờ không chải răng</div>
+  <p>Nhóm uống nước ngọt hằng ngày ($n_1=8$): $\overline x_1=31{,}5$ mg, $s_1=6{,}1$; nhóm không uống ($n_2=10$): $\overline x_2=24{,}8$ mg, $s_2=2{,}3$. Phân phối chuẩn, chưa có cơ sở cho rằng hai phương sai bằng nhau. Độ tin cậy 95%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Hai phần phương sai:</span> $v_1=\frac{6{,}1^2}{8}\approx4{,}6513$; $v_2=\frac{2{,}3^2}{10}=0{,}529$.</li>
+      <li><span class="step-label">Bậc tự do:</span> $$\begin{aligned}k&amp;=\tfrac{(4{,}6513+0{,}529)^2}{\frac{4{,}6513^2}{7}+\frac{0{,}529^2}{9}}\\&amp;\approx\tfrac{26{,}835}{3{,}0906+0{,}0311}\approx8{,}6\end{aligned}$$ → làm tròn $k=9$.</li>
+      <li><span class="step-label">Hệ số:</span> $t^{9}_{0{,}975}=2{,}262$; sai số chuẩn $\sqrt{4{,}6513+0{,}529}\approx2{,}276$.</li>
+      <li><span class="step-label">Khoảng:</span> $(31{,}5-24{,}8)\pm2{,}262\cdot2{,}276=6{,}7\pm5{,}148$ → $(1{,}55;\,11{,}85)$ mg.</li>
+    </ol>
+  </div></details>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="hieu-hai-ti-le" data-toc="7. Hiệu hai tỉ lệ"><span class="num">7</span>Ước lượng hiệu hai tỉ lệ $p_1-p_2$</h2>
+<div class="box formula">
+  <div class="box-title"><span class="tag">Công thức</span>Khoảng tin cậy cho hiệu hai tỉ lệ</div>
+  <div class="big-formula">$$\begin{aligned}&amp;(f_1-f_2)\pm z_{1-\frac\alpha2}\,\times\\ &amp;\sqrt{\frac{f_1(1-f_1)}{n_1}+\frac{f_2(1-f_2)}{n_2}}\end{aligned}$$</div>
+  <p class="small center">Điều kiện: $n_1f_1$, $n_1(1-f_1)$, $n_2f_2$, $n_2(1-f_2)$ đều $\ge5$ (không đạt thì tăng cỡ mẫu). Đọc kết quả như mục 6.1.</p>
+</div>
+<div class="box example">
+  <div class="box-title"><span class="tag">Ví dụ 7.1</span>Chương trình nha học đường có giảm viêm nướu?</div>
+  <p>Trường A (có chương trình nha học đường): 54 trong 240 học sinh viêm nướu. Trường B (chưa có): 92 trong 260. Ước lượng $p_A-p_B$ với độ tin cậy 95%.</p>
+  <details class="sol" open><summary>Lời giải từng bước</summary><div class="sol-body">
+    <ol class="steps">
+      <li><span class="step-label">Tỉ lệ mẫu:</span> $f_A=\frac{54}{240}=0{,}225$; $f_B=\frac{92}{260}\approx0{,}3538$; hiệu $\approx-0{,}1288$.</li>
+      <li><span class="step-label">Sai số chuẩn:</span> $$\begin{aligned}&amp;\sqrt{\tfrac{0{,}225\cdot0{,}775}{240}+\tfrac{0{,}3538\cdot0{,}6462}{260}}\\&amp;\approx\sqrt{0{,}000727+0{,}000879}\approx0{,}0401\end{aligned}$$</li>
+      <li><span class="step-label">Bán kính:</span> $1{,}96\cdot0{,}0401\approx0{,}0785$.</li>
+      <li><span class="step-label">Khoảng:</span> $(-0{,}2074;\,-0{,}0503)$.</li>
+    </ol>
+    <p><b>Kết luận:</b> khoảng nằm bên trái 0 → tỉ lệ viêm nướu ở trường A thấp hơn trường B, chênh khoảng 5 đến 21 điểm phần trăm.</p>
+  </div></details>
+</div>
+<div class="qc" data-ans="a">
+  <div class="qc-q"><span class="qc-tag">Thử nhanh · Level 2</span>$f_1=0{,}30$ ($n_1=200$), $f_2=0{,}20$ ($n_2=300$). Khoảng tin cậy 95% của $p_1-p_2$ xấp xỉ</div>
+  <div class="qc-opts">
+    <button data-k="a">$(0{,}022;\,0{,}178)$</button>
+    <button data-k="b">$(0{,}06;\,0{,}14)$</button>
+    <button data-k="c">$(-0{,}178;\,-0{,}022)$</button>
+  </div>
+  <div class="qc-fb" data-k="a">s.e. $=\sqrt{\frac{0{,}21}{200}+\frac{0{,}16}{300}}\approx0{,}0398$; $\varepsilon\approx0{,}078$; $0{,}10\pm0{,}078$. Khoảng nằm bên phải 0 → $p_1&gt;p_2$.</div>
+  <div class="qc-fb" data-k="b">Bán kính 0,04 là sai số chuẩn (0,0398), chưa nhân 1,96.</div>
+  <div class="qc-fb" data-k="c">Đổi dấu nhầm: $f_1-f_2=+0{,}10$.</div>
+</div>
+
+<!-- =============================================================== -->
+<h2 id="nhan-dang" data-toc="8. Nhận dạng & lỗi hay gặp"><span class="num">8</span>Nhận dạng dạng bài, quy trình chung, lỗi hay gặp</h2>
+
+<h3 id="quy-trinh-chung">8.1. Quy trình 5 bước cho mọi bài ước lượng</h3>
+<ol class="steps">
+  <li><span class="step-label">Gọi tên tham số:</span> “Gọi $\mu$ là …”, “Gọi $p$ là …” — nói rõ của tổng thể nào.</li>
+  <li><span class="step-label">Chọn công thức:</span> trung bình (3 trường hợp), tỉ lệ, phương sai, hiệu hai trung bình (4 trường hợp), hiệu hai tỉ lệ.</li>
+  <li><span class="step-label">Tìm hệ số:</span> $1-\alpha$ → $1-\frac\alpha2$ → tra $z$ (Phụ lục 3), $t$ (Phụ lục 5, đúng bậc tự do) hoặc hai giá trị $\chi^2$ (Phụ lục 4).</li>
+  <li><span class="step-label">Tính sai số chuẩn và bán kính:</span> giữ nhiều chữ số, chỉ làm tròn ở kết quả cuối.</li>
+  <li><span class="step-label">Viết khoảng và kết luận bằng lời:</span> có đơn vị; nếu so sánh thì đọc vị trí của số 0 (hoặc của giá trị cũ).</li>
+</ol>
+
+<h3 id="bang-nhan-dang">8.2. Đọc đề → biết dùng gì</h3>
+<div class="decide">
+  <div class="rule"><span class="when">“Ước lượng … trung bình”, đề cho $\sigma$ hoặc $X\sim N(\mu;\sigma^2)$ với $\sigma^2$ là số cụ thể</span><span class="arrow">→</span><span class="use">$\overline x\pm z\frac{\sigma}{\sqrt n}$</span></div>
+  <div class="rule"><span class="when">“Ước lượng … trung bình”, chỉ có $s$ (độ lệch điều chỉnh mẫu)</span><span class="arrow">→</span><span class="use">$n&gt;30$: $z\frac{s}{\sqrt n}$; $n\le30$: $t^{n-1}\frac{s}{\sqrt n}$</span></div>
+  <div class="rule"><span class="when">“Tỉ lệ”, “bao nhiêu phần trăm”, cho $k$ trên $n$</span><span class="arrow">→</span><span class="use">$f\pm z\sqrt{\frac{f(1-f)}{n}}$</span></div>
+  <div class="rule"><span class="when">“Ước lượng phương sai / độ lệch chuẩn”, “độ đồng đều”</span><span class="arrow">→</span><span class="use">Hai giá trị $\chi^2$; biết $\mu$ dùng $n$ bậc tự do</span></div>
+  <div class="rule"><span class="when">“Cần ít nhất bao nhiêu …”, “cỡ mẫu tối thiểu”, “cần thêm”</span><span class="arrow">→</span><span class="use">$n\ge(\frac{z\sigma}{\varepsilon})^2$ hoặc $\frac{z^2f(1-f)}{\varepsilon^2}$, $\frac{z^2}{4\varepsilon^2}$; làm tròn lên; trừ số đã có</span></div>
+  <div class="rule"><span class="when">Cho sẵn khoảng, hỏi $\overline x$, $s$, $n$, độ tin cậy</span><span class="arrow">→</span><span class="use">Tâm $\frac{a+b}{2}$, bán kính $\frac{b-a}{2}$, rồi giải ngược công thức (mục 3.6, 4.5)</span></div>
+  <div class="rule"><span class="when">“So sánh hai nhóm”, “chênh lệch”, “nhóm nào cao hơn”</span><span class="arrow">→</span><span class="use">Khoảng cho hiệu; đọc vị trí số 0 (mục 6.1)</span></div>
+</div>
+
+<h3 id="loi-hay-gap">8.3. Mười lỗi hay mất điểm</h3>
+<div class="box trap">
+  <div class="box-title"><span class="tag">Bẫy</span>Soát trước khi chọn đáp án</div>
+  <ol class="steps">
+    <li><b>Quên chia đôi $\alpha$:</b> 95% mà dùng $z_{0{,}95}=1{,}645$.</li>
+    <li><b>Đề cho phương sai mà không khai căn:</b> $X\sim N(\mu;\,100)$ thì $\sigma=10$.</li>
+    <li><b>Dùng $z$ cho mẫu nhỏ chưa biết $\sigma$</b>, hoặc tra $t$ với $n$ bậc tự do thay vì $n-1$.</li>
+    <li><b>Chia cho $n$ thay vì $\sqrt n$</b> trong sai số chuẩn.</li>
+    <li><b>Lấy $\sigma_x$ của máy</b> thay vì $s_x$ khi tính $s$ từ số liệu thô.</li>
+    <li><b>Nhầm “độ dài khoảng” với “sai số”</b>: độ dài $=2\varepsilon$.</li>
+    <li><b>Làm tròn cỡ mẫu xuống</b>, hoặc quên trừ số đã khám khi đề hỏi “cần thêm”.</li>
+    <li><b>Phương sai: đặt ngược hai giá trị $\chi^2$</b> (mút trái phải chia cho số <b>lớn</b>), hoặc nhân $n$ thay vì $n-1$.</li>
+    <li><b>Sai số chuẩn của hiệu:</b> cộng hai sai số chuẩn ($\frac{s_1}{\sqrt{n_1}}+\frac{s_2}{\sqrt{n_2}}$) thay vì cộng hai phương sai rồi mới khai căn.</li>
+    <li><b>Đọc sai kết luận:</b> khoảng chứa 0 mà vẫn kết luận “khác nhau”; hoặc hiệu âm mà kết luận nhóm 1 cao hơn.</li>
+  </ol>
+</div>
+
+<h3 id="lam-tron-n">8.4. Làm tròn $n$: lên khi thiết kế, gần nhất khi đọc ngược</h3>
+<p>Hai loại câu hỏi về $n$ trông giống nhau nhưng làm tròn khác nhau:</p>
+<div class="grid2">
+  <div class="card"><h4>Thiết kế: “cần ít nhất bao nhiêu”</h4><p class="small">Bất đẳng thức $n\ge138{,}3$ → làm tròn <b>lên</b> 139. Thiếu một người là không đạt yêu cầu.</p></div>
+  <div class="card"><h4>Đọc ngược: “mẫu đã dùng có bao nhiêu người”</h4><p class="small">Phương trình $n=(\frac{z\sigma}{\varepsilon})^2$ ra 96,04 chỉ vì bán kính đã bị làm tròn khi báo cáo → lấy số nguyên <b>gần nhất</b> (96) rồi thử lại.</p></div>
+</div>
+
+<h3 id="giao-trinh-luu-y">8.5. Những chỗ trong giáo trình và slide cần đọc cẩn thận</h3>
+<div class="table-wrap"><table style="min-width:560px">
+  <tr><th class="left">Chỗ</th><th class="left">In trong tài liệu</th><th class="left">Nên hiểu là</th></tr>
+  <tr><td class="left">Giáo trình Ví dụ 4.2</td><td class="left">$\overline x=1{,}67$ m nhưng $\sigma^2=100$ (cm²), khoảng ra theo cm</td><td class="left">Đổi $\overline x=167$ cm cho cùng đơn vị</td></tr>
+  <tr><td class="left">Giáo trình Ví dụ 4.2b</td><td class="left">Ghi “$z_{1-\alpha/2}=z_{0{,}99}=2{,}326$” cho độ tin cậy 95%</td><td class="left">$z_{0{,}975}=1{,}96$ (phần tính bên dưới đã dùng đúng 1,96)</td></tr>
+  <tr><td class="left">Giáo trình Ví dụ 4.6</td><td class="left">$\chi^2_{0{,}95}(25)=37{,}5$</td><td class="left">$37{,}652$ (kết quả 0,046 của sách khớp với 37,652)</td></tr>
+  <tr><td class="left">Slide, hiệu hai trung bình TH3</td><td class="left">“$s=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}$”</td><td class="left">Đó là $s^2$ (phương sai gộp)</td></tr>
+  <tr><td class="left">Slide, điều kiện TH2 hai mẫu</td><td class="left">$n_1+n_2-2&gt;30$</td><td class="left">Giáo trình ghi $\ge30$; hai cách chỉ khác khi đúng bằng 30</td></tr>
+</table></div>
+
+<!-- =============================================================== -->
+<h2 id="tom-tat" data-toc="9. Bảng công thức"><span class="num">9</span>Bảng công thức tóm tắt</h2>
+<div class="table-wrap"><table style="min-width:600px">
+  <tr><th class="left">Ước lượng</th><th>Khoảng tin cậy $1-\alpha$</th><th class="left">Ghi chú</th></tr>
+  <tr><td class="left">$\mu$, biết $\sigma$</td><td>$\overline x\pm z_{1-\frac\alpha2}\frac{\sigma}{\sqrt n}$</td><td class="left">$z$: Phụ lục 3</td></tr>
+  <tr><td class="left">$\mu$, chưa biết $\sigma$, $n&gt;30$</td><td>$\overline x\pm z_{1-\frac\alpha2}\frac{s}{\sqrt n}$</td><td class="left"></td></tr>
+  <tr><td class="left">$\mu$, chưa biết $\sigma$, $n\le30$</td><td>$\overline x\pm t^{\,n-1}_{1-\frac\alpha2}\frac{s}{\sqrt n}$</td><td class="left">$t$: Phụ lục 5</td></tr>
+  <tr><td class="left">$p$</td><td>$f\pm z_{1-\frac\alpha2}\sqrt{\frac{f(1-f)}{n}}$</td><td class="left">$nf,\ n(1-f)\ge5$</td></tr>
+  <tr><td class="left">$\sigma^2$, chưa biết $\mu$</td><td>$\left(\frac{(n-1)s^2}{\chi^2_{1-\alpha/2}(n-1)};\frac{(n-1)s^2}{\chi^2_{\alpha/2}(n-1)}\right)$</td><td class="left">$\chi^2$: Phụ lục 4</td></tr>
+  <tr><td class="left">$\sigma^2$, biết $\mu$</td><td>$\left(\frac{\sum n_i(x_i-\mu)^2}{\chi^2_{1-\alpha/2}(n)};\frac{\sum n_i(x_i-\mu)^2}{\chi^2_{\alpha/2}(n)}\right)$</td><td class="left">$n$ bậc tự do</td></tr>
+  <tr><td class="left">Cỡ mẫu cho $\mu$</td><td>$n\ge\left(\frac{z\sigma}{\varepsilon}\right)^2$ (hoặc thay $\sigma$ bằng $s$ thăm dò)</td><td class="left">làm tròn lên</td></tr>
+  <tr><td class="left">Cỡ mẫu cho $p$</td><td>$n\ge\frac{z^2f(1-f)}{\varepsilon^2}$; chưa có $f$: $n\ge\frac{z^2}{4\varepsilon^2}$</td><td class="left">làm tròn lên</td></tr>
+  <tr><td class="left">$\mu_1-\mu_2$ (TH1, TH2)</td><td>$(\overline x_1-\overline x_2)\pm z\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}$ (hoặc $s_1$, $s_2$)</td><td class="left">TH2: $n_1+n_2-2\ge30$</td></tr>
+  <tr><td class="left">$\mu_1-\mu_2$ (TH3)</td><td>$(\overline x_1-\overline x_2)\pm t^{\,n_1+n_2-2}\sqrt{\frac{s^2}{n_1}+\frac{s^2}{n_2}}$</td><td class="left">$s^2$ gộp</td></tr>
+  <tr><td class="left">$p_1-p_2$</td><td>$(f_1-f_2)\pm z\sqrt{\frac{f_1(1-f_1)}{n_1}+\frac{f_2(1-f_2)}{n_2}}$</td><td class="left">đọc vị trí số 0</td></tr>
+</table></div>
+<p class="small muted center">Trên điện thoại, vuốt ngang bảng để xem hết.</p>
+
+<!-- =============================================================== -->
+<h2 id="bai-tap" data-toc="10. Bài tập luyện tập"><span class="num">10</span>Bài tập luyện tập (bài mới)</h2>
+<p>Bảng tra dùng giá trị 3 chữ số như Phụ lục 3 – 5 (đã sửa lỗi in). Làm ra giấy trước rồi mới mở lời giải.</p>
+
+<h3 id="bt4-muc-1">Mức 1 — Thông hiểu</h3>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.1</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Chọn hệ số tin cậy</span></div>
+  <p>Ghi hệ số cần dùng: (a) ước lượng trung bình, biết $\sigma=8$, $n=20$, 95%; (b) trung bình, chỉ có $s$, $n=50$, 99%; (c) trung bình, chỉ có $s$, $n=12$, 90%; (d) tỉ lệ, 98%.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <p>(a) biết $\sigma$ → $z_{0{,}975}=\mathbf{1{,}96}$ (cỡ mẫu nhỏ cũng vẫn dùng $z$). (b) $n&gt;30$ → $z_{0{,}995}=\mathbf{2{,}576}$. (c) $n\le30$ → $t^{11}_{0{,}95}=\mathbf{1{,}796}$. (d) $z_{0{,}99}=\mathbf{2{,}326}$.</p>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.2</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">KTC trung bình, biết $\sigma$</span></div>
+  <p>Chiều dài chân răng nanh hàm trên có $\sigma=1{,}5$ mm. Đo 25 răng được $\overline x=17{,}2$ mm. Tìm khoảng tin cậy 95% cho chiều dài trung bình.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>$\varepsilon=1{,}96\cdot\frac{1{,}5}{5}=0{,}588$ → $(\mathbf{16{,}612};\,\mathbf{17{,}788})$ mm.</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.3</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">KTC tỉ lệ</span></div>
+  <p>Trong 500 ca nhổ răng có 35 ca viêm ổ răng khô. Ước lượng tỉ lệ viêm ổ răng khô với độ tin cậy 99%.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>$f=0{,}07$; s.e. $=\sqrt{\frac{0{,}07\cdot0{,}93}{500}}\approx0{,}01141$; $\varepsilon=2{,}576\cdot0{,}01141\approx0{,}0294$ → $(\mathbf{0{,}0406};\,\mathbf{0{,}0994})$, tức khoảng 4,1% đến 9,9%.</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 1.4</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Đọc ngược khoảng</span></div>
+  <p>Khoảng tin cậy cho thời gian chờ trung bình là $(12{,}6;\,14{,}2)$ phút, tính từ $n=36$, $s=2{,}4$ (mẫu lớn). Tìm $\overline x$, $\varepsilon$ và độ tin cậy.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>$\overline x=\mathbf{13{,}4}$; $\varepsilon=\mathbf{0{,}8}$; $z=\frac{0{,}8\cdot6}{2{,}4}=2$ → độ tin cậy $2\varphi(2)=\mathbf{0{,}9544}$ (95,44%).</p></div></details>
+</div>
+
+<h3 id="bt4-muc-2">Mức 2 — Vận dụng</h3>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.1</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Số liệu thô · Student</span></div>
+  <p>Độ há miệng tối đa (mm) của 8 bệnh nhân sau phẫu thuật răng khôn: 32, 35, 30, 38, 34, 31, 36, 33. Giả sử phân phối chuẩn. Tìm khoảng tin cậy 95% cho độ há miệng trung bình.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$\sum x=269$ → $\overline x=33{,}625$; $\sum x^2=9095$ → $s^2=\frac{9095-8\cdot33{,}625^2}{7}\approx7{,}125$ → $s\approx2{,}669$.</li>
+      <li>$t^{7}_{0{,}975}=2{,}365$; $\varepsilon=2{,}365\cdot\frac{2{,}669}{\sqrt8}\approx2{,}232$.</li>
+      <li>Khoảng $(\mathbf{31{,}39};\,\mathbf{35{,}86})$ mm.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.2</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Cỡ mẫu từ mẫu thăm dò</span></div>
+  <p>Một mẫu thăm dò 15 người cho độ lệch chuẩn huyết áp tâm trương $s=4{,}8$ mmHg. Muốn ước lượng huyết áp trung bình với sai số không quá 1 mmHg, độ tin cậy 95%: cần tổng cộng bao nhiêu người, và phải khám thêm bao nhiêu?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>$n\ge(1{,}96\cdot4{,}8)^2\approx88{,}51$ → $\mathbf{89}$ người; đã có 15 → cần thêm $\mathbf{74}$ người.</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.3</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Tỉ lệ · cỡ mẫu hai kiểu</span></div>
+  <p>Khảo sát 250 người, 60 người có triệu chứng rối loạn khớp thái dương hàm. (a) Khoảng tin cậy 95% cho tỉ lệ. (b) Dùng mẫu này làm thăm dò: cần bao nhiêu người để sai số không quá 3% (95%)? (c) Nếu chưa có mẫu thăm dò, cần bao nhiêu người để <b>độ dài</b> khoảng 99% không quá 0,05?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $f=0{,}24$; s.e. $\approx0{,}02701$; $\varepsilon\approx0{,}0529$ → $(\mathbf{0{,}187};\,\mathbf{0{,}293})$.</li>
+      <li>(b) $n\ge\frac{1{,}96^2\cdot0{,}24\cdot0{,}76}{0{,}03^2}\approx778{,}56$ → $\mathbf{779}$.</li>
+      <li>(c) Độ dài 0,05 → $\varepsilon=0{,}025$; $n\ge\frac{2{,}576^2}{4\cdot0{,}025^2}\approx2654{,}31$ → $\mathbf{2655}$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.4</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">KTC phương sai</span></div>
+  <p>Hàm lượng fluor (ppm) trong 25 tuýp kem đánh răng cùng lô có độ lệch chuẩn mẫu $s=42$. Giả sử phân phối chuẩn. Ước lượng độ lệch chuẩn của lô với độ tin cậy 95%.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>$(n-1)s^2=24\cdot1764=42336$; $\chi^2_{0{,}975}(24)=39{,}364$, $\chi^2_{0{,}025}(24)=12{,}401$ → $\sigma^2\in(1075{,}5;\,3413{,}9)$ → $\sigma\in(\mathbf{32{,}79};\,\mathbf{58{,}43})$ ppm.</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 2.5</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Hiệu hai trung bình (mẫu lớn)</span></div>
+  <p>Huyết áp tâm thu trước nhổ răng: nhóm lo âu ($n_1=60$): $\overline x_1=132$, $s_1=14$; nhóm không lo âu ($n_2=70$): $\overline x_2=124$, $s_2=12$. Ước lượng $\mu_1-\mu_2$ với độ tin cậy 95% và kết luận.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>s.e. $=\sqrt{\frac{196}{60}+\frac{144}{70}}\approx2{,}307$; $\varepsilon\approx4{,}522$ → $8\pm4{,}522=(\mathbf{3{,}48};\,\mathbf{12{,}52})$ mmHg. Khoảng bên phải 0 → nhóm lo âu có huyết áp cao hơn khoảng 3,5 – 12,5 mmHg.</p></div></details>
+</div>
+
+<h3 id="bt4-muc-3">Mức 3 — Vận dụng cao</h3>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.1</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Ngược tìm $n$ rồi đổi độ tin cậy</span></div>
+  <p>Một báo cáo ghi khoảng tin cậy 95% cho nhịp tim trung bình là $(71{,}2;\,74{,}8)$, biết $\sigma=9$. (a) Tìm $\overline x$ và cỡ mẫu đã dùng. (b) Với cùng mẫu đó, khoảng tin cậy 99% là gì?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>(a) $\overline x=\mathbf{73}$; $\varepsilon=1{,}8$; $\sqrt n=\frac{1{,}96\cdot9}{1{,}8}=9{,}8$ → $n=96{,}04$ → $n=\mathbf{96}$ (đọc ngược: lấy số nguyên gần nhất; thử lại $1{,}96\cdot\frac{9}{\sqrt{96}}\approx1{,}80$ ✓).</li>
+      <li>(b) $\varepsilon=2{,}576\cdot\frac{9}{\sqrt{96}}\approx2{,}366$ → $(\mathbf{70{,}63};\,\mathbf{75{,}37})$ — rộng hơn khoảng 95%.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.2</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Phương sai gộp · đọc kết luận</span></div>
+  <p>Độ cứng vi thể của men răng sau hai cách tẩy trắng: cách A ($n_1=10$): $\overline x_1=62{,}4$, $s_1=3{,}1$; cách B ($n_2=12$): $\overline x_2=59{,}8$, $s_2=3{,}6$. Giả sử chuẩn, hai phương sai bằng nhau. Ước lượng $\mu_A-\mu_B$ (95%) và kết luận.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>$s^2=\frac{9\cdot3{,}1^2+11\cdot3{,}6^2}{20}=\frac{86{,}49+142{,}56}{20}\approx11{,}4525$.</li>
+      <li>s.e. $=\sqrt{11{,}4525\left(\frac1{10}+\frac1{12}\right)}\approx1{,}449$; $t^{20}_{0{,}975}=2{,}086$; $\varepsilon\approx3{,}023$.</li>
+      <li>Khoảng $2{,}6\pm3{,}023=(\mathbf{-0{,}42};\,\mathbf{5{,}62})$ — chứa 0 → <b>chưa đủ cơ sở</b> kết luận hai cách khác nhau.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.3</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hai tỉ lệ · hệ 2 ẩn</span></div>
+  <p>Hai trường, mỗi trường khám 300 học sinh. Tổng số em có cao răng ở cả hai trường là 150. Khoảng tin cậy 95% của $p_1-p_2$ có tâm 0,10. Tìm số em có cao răng ở mỗi trường và viết đầy đủ khoảng tin cậy.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body">
+    <ol class="steps">
+      <li>Gọi $x$, $y$ là số em có cao răng ở trường 1, 2: $x+y=150$ và $\frac{x}{300}-\frac{y}{300}=0{,}10$ → $x-y=30$.</li>
+      <li>Giải hệ: $x=\mathbf{90}$, $y=\mathbf{60}$ → $f_1=0{,}3$, $f_2=0{,}2$.</li>
+      <li>s.e. $=\sqrt{\frac{0{,}21+0{,}16}{300}}\approx0{,}0351$; $\varepsilon\approx0{,}0688$ → $(\mathbf{0{,}031};\,\mathbf{0{,}169})$.</li>
+    </ol>
+  </div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.4</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Cỡ mẫu tỉ lệ thuận $k^2$</span></div>
+  <p>Một nghiên cứu cũ dùng 150 người cho sai số 0,9 với độ tin cậy 95%. (a) Muốn sai số 0,6 (vẫn 95%) cần bao nhiêu người? (b) Muốn giữ sai số 0,9 nhưng nâng độ tin cậy lên 99%?</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>(a) $n$ tỉ lệ với $\frac1{\varepsilon^2}$: $150\cdot\left(\frac{0{,}9}{0{,}6}\right)^2=337{,}5$ → $\mathbf{338}$. (b) $n$ tỉ lệ với $z^2$: $150\cdot\left(\frac{2{,}576}{1{,}96}\right)^2\approx259{,}1$ → $\mathbf{260}$.</p></div></details>
+</div>
+<div class="ex">
+  <div class="ex-head"><span class="ex-num">Bài 3.5</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Ngược với khoảng phương sai</span></div>
+  <p>Từ 21 số đo (tổng thể chuẩn, chưa biết $\mu$), khoảng tin cậy 95% cho $\sigma^2$ có mút trái 2,341. Tìm $s^2$ và mút phải.</p>
+  <details class="sol"><summary>Xem lời giải</summary><div class="sol-body"><p>Mút trái $=\frac{20s^2}{\chi^2_{0{,}975}(20)}$ → $s^2=\frac{2{,}341\cdot34{,}170}{20}\approx\mathbf{4{,}00}$. Mút phải $=\frac{20\cdot4}{\chi^2_{0{,}025}(20)}=\frac{80}{9{,}591}\approx\mathbf{8{,}34}$.</p></div></details>
+</div>
+
+<div class="pager" id="pager"></div>
+
+<!-- =============================================================== -->
+<h2 id="trac-nghiem" data-toc="11. Trắc nghiệm luyện tập"><span class="num">11</span>Trắc nghiệm luyện tập (50 câu)</h2>
+<p>50 câu soạn mới (không lấy từ slide hay giáo trình), phủ mọi dạng của bài: tính khoảng (giải <b>xuôi</b>), từ khoảng tìm lại $\overline x$, $s$, $n$, độ tin cậy, số người (giải <b>ngược</b>), cỡ mẫu khi đổi yêu cầu, đọc kết luận, lập hệ hai ẩn. Mỗi chặng đi từ <span class="lvl l1">Thông hiểu</span> → <span class="lvl l2">Vận dụng</span> → <span class="lvl l3">Vận dụng cao</span>. Bấm một phương án để chấm ngay; sai thì đọc vì sao sai rồi chọn lại.</p>
+<p class="small muted">Giá trị tra bảng dùng 3 chữ số như Phụ lục 3 – 5 (bản đã sửa). Mẹo: làm nháp ra giấy trước khi bấm.</p>
+
+<h3 id="b4-tn-c1">Chặng 1 · Ý nghĩa của ước lượng và khoảng tin cậy</h3>
+
+<div class="ex mcq" id="b4q01">
+  <div class="ex-head"><span class="ex-num">Câu 1</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Ước lượng điểm</span></div>
+  <p>Nhập thời gian chờ của 50 bệnh nhân vào máy, màn hình cho $\overline x=18{,}4$; $\sigma_x=6{,}93$; $s_x=7{,}0$. Ước lượng điểm của phương sai thời gian chờ của mọi bệnh nhân là</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $6{,}93$</button>
+      <button data-k="b"><b>B.</b> $48{,}02$</button>
+      <button data-k="c"><b>C.</b> $49$</button>
+      <button data-k="d"><b>D.</b> $7{,}0$</button>
+    </div>
+    <div class="qc-fb" data-k="a">6,93 là độ lệch chuẩn chia $n$, lại chưa bình phương.</div>
+    <div class="qc-fb" data-k="b">$6{,}93^2\approx48{,}02$ là phương sai chia $n$. Ước lượng cho $\sigma^2$ của tổng thể là $s^2$ (chia $n-1$).</div>
+    <div class="qc-fb" data-k="c">$s^2=7{,}0^2=49$: phương sai mẫu (chia $n-1$) là ước lượng điểm của $\sigma^2$.</div>
+    <div class="qc-fb" data-k="d">7,0 là $s$ — ước lượng của độ lệch chuẩn, không phải phương sai.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Ước lượng điểm: $\mu\leftarrow\overline x$, $\sigma^2\leftarrow s^2$, $p\leftarrow f$. Ở đây $s=s_x=7{,}0$ → $s^2=49$ → <b>C</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q02">
+  <div class="ex-head"><span class="ex-num">Câu 2</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Hiểu đúng “95%”</span></div>
+  <p>Một nghiên cứu báo cáo: “khoảng tin cậy 95% cho lượng đường huyết trung bình là $(5{,}4;\,5{,}9)$ mmol/l”. Câu nào đúng?</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 95% người trong mẫu có đường huyết từ 5,4 đến 5,9.</button>
+      <button data-k="b"><b>B.</b> 95% người trong tổng thể có đường huyết từ 5,4 đến 5,9.</button>
+      <button data-k="c"><b>C.</b> Có 5% khả năng trung bình mẫu nằm ngoài khoảng.</button>
+      <button data-k="d"><b>D.</b> Cách làm đã dùng cho ra khoảng chứa trung bình thật trong khoảng 95% số lần áp dụng.</button>
+    </div>
+    <div class="qc-fb" data-k="a">Khoảng tin cậy nói về <b>trung bình</b>, không nói về từng người.</div>
+    <div class="qc-fb" data-k="b">Vẫn nhầm sang từng người; giá trị từng người dao động rộng hơn nhiều.</div>
+    <div class="qc-fb" data-k="c">Trung bình mẫu là tâm khoảng (5,65) — luôn nằm trong.</div>
+    <div class="qc-fb" data-k="d">“95%” là độ tin cậy của phương pháp: lặp lại nhiều lần thì khoảng 95% số khoảng chứa $\mu$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Khoảng tin cậy ước lượng một <b>tham số</b> ($\mu$), và “95%” đo tỉ lệ thành công của cách dựng khoảng → <b>D</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q03">
+  <div class="ex-head"><span class="ex-num">Câu 3</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Hai nút vặn cùng lúc</span></div>
+  <p>Một khoảng tin cậy cho trung bình (biết $\sigma$) có bán kính $\varepsilon$ ở độ tin cậy 95%. Nếu <b>vừa</b> nâng độ tin cậy lên 99% <b>vừa</b> tăng cỡ mẫu gấp 4 thì bán kính mới bằng khoảng</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $0{,}33\,\varepsilon$</button>
+      <button data-k="b"><b>B.</b> $0{,}66\,\varepsilon$</button>
+      <button data-k="c"><b>C.</b> $1{,}31\,\varepsilon$</button>
+      <button data-k="d"><b>D.</b> $\varepsilon$ (hai thay đổi bù nhau)</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn đã chia cho 4 thay vì $\sqrt4=2$: $\frac{1{,}314}{4}\approx0{,}33$.</div>
+    <div class="qc-fb" data-k="b">$\varepsilon$ tỉ lệ với $\frac{z}{\sqrt n}$: $\frac{2{,}576}{1{,}96}\cdot\frac{1}{\sqrt4}\approx1{,}314\cdot0{,}5\approx0{,}66$.</div>
+    <div class="qc-fb" data-k="c">1,31 chỉ là tác dụng của việc tăng độ tin cậy, quên phần tăng cỡ mẫu.</div>
+    <div class="qc-fb" data-k="d">Hai tác dụng không bằng nhau: $z$ tăng 1,31 lần còn $\sqrt n$ tăng 2 lần.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>$\varepsilon=z\frac{\sigma}{\sqrt n}$ → tỉ số mới/cũ $=\frac{z_{mới}}{z_{cũ}}\cdot\sqrt{\frac{n_{cũ}}{n_{mới}}}$.</li><li>$=\frac{2{,}576}{1{,}96}\cdot\frac12\approx0{,}657$ → <b>B</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q04">
+  <div class="ex-head"><span class="ex-num">Câu 4</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Đọc khoảng: tâm, bán kính, độ dài</span></div>
+  <p>Khoảng tin cậy của tỉ lệ bệnh nhân hài lòng là $(0{,}52;\,0{,}60)$. Phát biểu nào <b>sai</b>?</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> Tỉ lệ mẫu $f=0{,}56$.</button>
+      <button data-k="b"><b>B.</b> Sai số (bán kính) là 0,04.</button>
+      <button data-k="c"><b>C.</b> Độ dài khoảng là 0,04.</button>
+      <button data-k="d"><b>D.</b> Có thể viết là $56\%\pm4\%$.</button>
+    </div>
+    <div class="qc-fb" data-k="a">Đúng: tâm $=\frac{0{,}52+0{,}60}{2}=0{,}56$.</div>
+    <div class="qc-fb" data-k="b">Đúng: $\varepsilon=\frac{0{,}60-0{,}52}{2}=0{,}04$.</div>
+    <div class="qc-fb" data-k="c">Đây là câu sai: độ dài $=0{,}60-0{,}52=0{,}08=2\varepsilon$.</div>
+    <div class="qc-fb" data-k="d">Đúng: tâm ± bán kính.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Tâm 0,56, bán kính 0,04, độ dài 0,08 → phát biểu sai là <b>C</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q05">
+  <div class="ex-head"><span class="ex-num">Câu 5</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Đổi cách viết</span></div>
+  <p>Báo cáo ghi: “tỉ lệ trẻ có răng mọc lệch là $(30\pm5)\%$ với độ tin cậy 95%”. Ta suy ra</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $f=0{,}30$ và $p\in(0{,}25;\,0{,}35)$</button>
+      <button data-k="b"><b>B.</b> $p=0{,}30$ và $f\in(0{,}25;\,0{,}35)$</button>
+      <button data-k="c"><b>C.</b> $f=0{,}05$</button>
+      <button data-k="d"><b>D.</b> $p=0{,}35$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Tâm khoảng là tỉ lệ mẫu $f$; khoảng là nơi ta tin tỉ lệ tổng thể $p$ nằm.</div>
+    <div class="qc-fb" data-k="b">Đảo vai trò: $p$ chưa biết nên không thể “bằng 0,30”; $f$ là con số đã tính được.</div>
+    <div class="qc-fb" data-k="c">0,05 là bán kính $\varepsilon$.</div>
+    <div class="qc-fb" data-k="d">0,35 chỉ là mút phải.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>“$f\pm\varepsilon$” → $f=0{,}30$, $\varepsilon=0{,}05$, khoảng cho $p$ là $(0{,}25;\,0{,}35)$ → <b>A</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q06">
+  <div class="ex-head"><span class="ex-num">Câu 6</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Độ tin cậy của nhiều khoảng · nối Bài 1</span></div>
+  <p>Ba nhóm nghiên cứu <b>độc lập</b>, mỗi nhóm dựng một khoảng tin cậy 95% cho cùng một trung bình $\mu$. Xác suất để <b>cả ba</b> khoảng đều chứa $\mu$ là</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 0,95</button>
+      <button data-k="b"><b>B.</b> khoảng 0,857</button>
+      <button data-k="c"><b>C.</b> 0,85</button>
+      <button data-k="d"><b>D.</b> khoảng 0,000125</button>
+    </div>
+    <div class="qc-fb" data-k="a">Mỗi khoảng 0,95 nhưng “cả ba cùng đúng” là biến cố nhỏ hơn.</div>
+    <div class="qc-fb" data-k="b">Độc lập → nhân (Bài 1): $0{,}95^3\approx0{,}857$.</div>
+    <div class="qc-fb" data-k="c">Trừ ba lần 5% ($1-0{,}15$) chỉ là xấp xỉ thô, không phải công thức nhân.</div>
+    <div class="qc-fb" data-k="d">$0{,}05^3$ là xác suất cả ba cùng <b>trượt</b>.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Mỗi khoảng chứa $\mu$ với xác suất 0,95, ba nhóm độc lập → $P=0{,}95\cdot0{,}95\cdot0{,}95\approx0{,}857$ → <b>B</b>.</p></div></details>
+</div>
+
+<h3 id="b4-tn-c2">Chặng 2 · Hệ số tin cậy: tra xuôi và tra ngược</h3>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Cách làm dạng này</span>Một chuỗi bốn mắt xích</div>
+  <p>$1-\alpha\ \to\ \alpha\ \to\ \frac\alpha2\ \to\ 1-\frac\alpha2\ \to$ tra $z$ hoặc $t$ (đúng bậc tự do). Tra ngược thì đi đúng chuỗi đó theo chiều ngược lại.</p>
+</div>
+
+<div class="ex mcq" id="b4q07">
+  <div class="ex-head"><span class="ex-num">Câu 7</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Tra $z$</span></div>
+  <p>Hệ số $z_{1-\alpha/2}$ cho độ tin cậy 98% là</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 2,054</button><button data-k="b"><b>B.</b> 2,576</button><button data-k="c"><b>C.</b> 2,326</button><button data-k="d"><b>D.</b> 1,96</button>
+    </div>
+    <div class="qc-fb" data-k="a">2,054 $=z_{0{,}98}$ — tra thẳng 0,98 mà quên chia đôi $\alpha$ (đó là hệ số của 96%).</div>
+    <div class="qc-fb" data-k="b">2,576 ứng với 99%.</div>
+    <div class="qc-fb" data-k="c">$\alpha=0{,}02$ → $1-\frac\alpha2=0{,}99$ → $z_{0{,}99}=2{,}326$.</div>
+    <div class="qc-fb" data-k="d">1,96 ứng với 95%.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$1-\alpha=0{,}98$ → $\frac\alpha2=0{,}01$ → tra $z_{0{,}99}=2{,}326$ → <b>C</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q08">
+  <div class="ex-head"><span class="ex-num">Câu 8</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Tra $t$</span></div>
+  <p>Ước lượng trung bình từ mẫu 13 người, chưa biết $\sigma$, độ tin cậy 99%. Hệ số tin cậy là</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $t^{12}_{0{,}995}=3{,}055$</button>
+      <button data-k="b"><b>B.</b> $t^{13}_{0{,}995}=3{,}012$</button>
+      <button data-k="c"><b>C.</b> $t^{12}_{0{,}99}=2{,}681$</button>
+      <button data-k="d"><b>D.</b> $z_{0{,}995}=2{,}576$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$n=13\le30$ → Student, bậc tự do 12, cột $1-\frac\alpha2=0{,}995$.</div>
+    <div class="qc-fb" data-k="b">Bậc tự do là $n-1=12$, không phải 13.</div>
+    <div class="qc-fb" data-k="c">Cột 0,99 là quên chia đôi $\alpha$ (ứng với độ tin cậy 98%).</div>
+    <div class="qc-fb" data-k="d">Mẫu nhỏ và chưa biết $\sigma$ thì không dùng $z$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>TH3 → $t^{n-1}_{1-\alpha/2}=t^{12}_{0{,}995}=3{,}055$ (Phụ lục 5, hàng 12) → <b>A</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q09">
+  <div class="ex-head"><span class="ex-num">Câu 9</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Tra ngược $z$</span></div>
+  <p>Một khoảng tin cậy cho tỉ lệ được tính với hệ số $z=1{,}751$. Độ tin cậy của khoảng là</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 96%</button><button data-k="b"><b>B.</b> 90%</button><button data-k="c"><b>C.</b> 94%</button><button data-k="d"><b>D.</b> 92%</button>
+    </div>
+    <div class="qc-fb" data-k="a">96% là $1-\frac\alpha2$, mới đi được nửa đường.</div>
+    <div class="qc-fb" data-k="b">90% dùng $z=1{,}645$.</div>
+    <div class="qc-fb" data-k="c">94% dùng $z_{0{,}97}=1{,}881$.</div>
+    <div class="qc-fb" data-k="d">$1{,}751=z_{0{,}96}$ → $1-\frac\alpha2=0{,}96$ → $\alpha=0{,}08$ → độ tin cậy 92%.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Phụ lục 3: $z_{0{,}96}=1{,}751$.</li><li>$1-\frac\alpha2=0{,}96$ → $\frac\alpha2=0{,}04$ → $\alpha=0{,}08$ → $1-\alpha=0{,}92$ → <b>D</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q10">
+  <div class="ex-head"><span class="ex-num">Câu 10</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Tra ngược $t$</span></div>
+  <p>Một khoảng tin cậy cho trung bình từ 12 bệnh nhân dùng hệ số 2,201. Độ tin cậy là</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 97,5%</button><button data-k="b"><b>B.</b> 95%</button><button data-k="c"><b>C.</b> 90%</button><button data-k="d"><b>D.</b> 99%</button>
+    </div>
+    <div class="qc-fb" data-k="a">0,975 là cột tra ($1-\frac\alpha2$), chưa đổi sang độ tin cậy.</div>
+    <div class="qc-fb" data-k="b">Hàng $12-1=11$: giá trị 2,201 nằm ở cột 0,975 → $\frac\alpha2=0{,}025$ → 95%.</div>
+    <div class="qc-fb" data-k="c">Hàng 11 cột 0,95 là 1,796.</div>
+    <div class="qc-fb" data-k="d">Hàng 11 cột 0,995 là 3,106.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Tìm 2,201 trong hàng 11 của Phụ lục 5 → cột 0,975 → $1-\alpha=0{,}95$ → <b>B</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q11">
+  <div class="ex-head"><span class="ex-num">Câu 11</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Cặp giá trị $\chi^2$</span></div>
+  <p>Ước lượng phương sai với độ tin cậy 98% từ 16 số đo, chưa biết $\mu$. Hai giá trị cần tra là</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $\chi^2_{0{,}02}(15)$ và $\chi^2_{0{,}98}(15)$</button>
+      <button data-k="b"><b>B.</b> $\chi^2_{0{,}01}(16)$ và $\chi^2_{0{,}99}(16)$</button>
+      <button data-k="c"><b>C.</b> $\chi^2_{0{,}01}(15)$ và $\chi^2_{0{,}99}(15)$</button>
+      <button data-k="d"><b>D.</b> $\chi^2_{0{,}025}(15)$ và $\chi^2_{0{,}975}(15)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Quên chia đôi $\alpha=0{,}02$. Mỗi đuôi 0,01.</div>
+    <div class="qc-fb" data-k="b">16 bậc tự do chỉ khi đã biết $\mu$.</div>
+    <div class="qc-fb" data-k="c">$\frac\alpha2=0{,}01$, bậc tự do $n-1=15$: $\chi^2_{0{,}01}(15)=5{,}229$, $\chi^2_{0{,}99}(15)=30{,}578$.</div>
+    <div class="qc-fb" data-k="d">Mức 0,025/0,975 là của độ tin cậy 95%.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>98% → $\alpha=0{,}02$ → hai mức $0{,}01$ và $0{,}99$; chưa biết $\mu$ → $n-1=15$ → <b>C</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q12">
+  <div class="ex-head"><span class="ex-num">Câu 12</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">So sánh $t$ và $z$</span></div>
+  <p>Mẫu 10 người, chưa biết $\sigma$, độ tin cậy 95%. Một bạn dùng nhầm $z$ thay cho $t$. Khoảng <b>đúng</b> rộng hơn khoảng bạn đó tính khoảng</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 15%</button><button data-k="b"><b>B.</b> 30%</button><button data-k="c"><b>C.</b> 2%</button><button data-k="d"><b>D.</b> hai khoảng bằng nhau</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\frac{t^{9}_{0{,}975}}{z_{0{,}975}}=\frac{2{,}262}{1{,}96}\approx1{,}154$: rộng hơn khoảng 15%.</div>
+    <div class="qc-fb" data-k="b">Độ dài là $2\varepsilon$ ở cả hai khoảng, nên tỉ lệ vẫn là $\frac{t}{z}$, không nhân đôi.</div>
+    <div class="qc-fb" data-k="c">2% là tỉ lệ khi $n$ rất lớn ($t\approx1{,}99$). Với 9 bậc tự do, $t$ khác $z$ khá nhiều.</div>
+    <div class="qc-fb" data-k="d">Cùng $s$ và $n$, chỉ khác hệ số: $2{,}262\ne1{,}96$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Hai bán kính chỉ khác hệ số: $\frac{2{,}262\cdot s/\sqrt{10}}{1{,}96\cdot s/\sqrt{10}}\approx1{,}154$ → <b>A</b>. Dùng $z$ cho mẫu nhỏ làm khoảng hẹp “ảo”.</p></div></details>
+</div>
+
+<h3 id="b4-tn-c3">Chặng 3 · Khoảng tin cậy cho trung bình — giải xuôi</h3>
+
+<div class="ex mcq" id="b4q13">
+  <div class="ex-head"><span class="ex-num">Câu 13</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">TH1</span></div>
+  <p>Nồng độ canxi nước bọt có $\sigma=6$ (mg/l). Đo 16 người được $\overline x=40$. Khoảng tin cậy 95% cho nồng độ trung bình là</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(39{,}265;\,40{,}735)$</button>
+      <button data-k="b"><b>B.</b> $(37{,}06;\,42{,}94)$</button>
+      <button data-k="c"><b>C.</b> $(37{,}533;\,42{,}467)$</button>
+      <button data-k="d"><b>D.</b> $(28{,}24;\,51{,}76)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Chia cho $n=16$ thay vì $\sqrt{16}=4$.</div>
+    <div class="qc-fb" data-k="b">$\varepsilon=1{,}96\cdot\frac64=2{,}94$ → $40\pm2{,}94$.</div>
+    <div class="qc-fb" data-k="c">Dùng $z=1{,}645$ (đó là hệ số 90%).</div>
+    <div class="qc-fb" data-k="d">Quên chia $\sqrt n$: $1{,}96\cdot6=11{,}76$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Biết $\sigma$ → TH1, $z=1{,}96$.</li><li>$\varepsilon=1{,}96\cdot\frac{6}{\sqrt{16}}=2{,}94$ → $(37{,}06;\,42{,}94)$ → <b>B</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q14">
+  <div class="ex-head"><span class="ex-num">Câu 14</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">TH2</span></div>
+  <p>Khảo sát 100 người: số giờ ngủ trung bình $\overline x=7{,}8$, $s=2{,}5$. Khoảng tin cậy 90% cho số giờ ngủ trung bình là</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(7{,}31;\,8{,}29)$</button>
+      <button data-k="b"><b>B.</b> $(7{,}76;\,7{,}84)$</button>
+      <button data-k="c"><b>C.</b> $(7{,}389;\,8{,}211)$</button>
+      <button data-k="d"><b>D.</b> $(3{,}69;\,11{,}91)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Đây là khoảng 95% ($z=1{,}96$).</div>
+    <div class="qc-fb" data-k="b">Chia $s$ cho $n=100$ thay vì $\sqrt{100}=10$.</div>
+    <div class="qc-fb" data-k="c">$\varepsilon=1{,}645\cdot\frac{2{,}5}{10}=0{,}41125$ → $7{,}8\pm0{,}411$.</div>
+    <div class="qc-fb" data-k="d">Quên chia cho $\sqrt n$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$n=100&gt;30$ → TH2; 90% → $z=1{,}645$; s.e. $=0{,}25$; $\varepsilon\approx0{,}411$ → <b>C</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q15">
+  <div class="ex-head"><span class="ex-num">Câu 15</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">TH3 · 99%</span></div>
+  <p>Thời gian (phút) đông máu sau nhổ răng ở 16 bệnh nhân dùng thuốc chống đông: $\overline x=12$, $s=2$; phân phối chuẩn. Khoảng tin cậy 99% là</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(10{,}712;\,13{,}288)$</button>
+      <button data-k="b"><b>B.</b> $(10{,}934;\,13{,}066)$</button>
+      <button data-k="c"><b>C.</b> $(10{,}540;\,13{,}460)$</button>
+      <button data-k="d"><b>D.</b> $(10{,}527;\,13{,}474)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Dùng $z=2{,}576$; mẫu 16 người chưa biết $\sigma$ phải dùng $t$.</div>
+    <div class="qc-fb" data-k="b">Dùng $t^{15}_{0{,}975}=2{,}131$ — đó là độ tin cậy 95%.</div>
+    <div class="qc-fb" data-k="c">Dùng $t^{16}_{0{,}995}=2{,}921$: sai bậc tự do — phải là $n-1=15$.</div>
+    <div class="qc-fb" data-k="d">$t^{15}_{0{,}995}=2{,}947$; $\varepsilon=2{,}947\cdot\frac24\approx1{,}474$ → $12\pm1{,}474$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>TH3, bậc tự do 15, cột 0,995 → 2,947.</li><li>s.e. $=\frac{2}{4}=0{,}5$; $\varepsilon=1{,}4735$ → <b>D</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q16">
+  <div class="ex-head"><span class="ex-num">Câu 16</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Bẫy $N(\mu;\sigma^2)$</span></div>
+  <p>Huyết áp tâm trương $X\sim N(\mu;\,64)$. Đo 25 người được $\overline x=70$ mmHg. Khoảng tin cậy 98% cho $\mu$ là</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(66{,}28;\,73{,}72)$</button>
+      <button data-k="b"><b>B.</b> $(40{,}23;\,99{,}77)$</button>
+      <button data-k="c"><b>C.</b> $(66{,}86;\,73{,}14)$</button>
+      <button data-k="d"><b>D.</b> $(65{,}88;\,74{,}12)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\sigma=\sqrt{64}=8$; $\varepsilon=2{,}326\cdot\frac85\approx3{,}72$.</div>
+    <div class="qc-fb" data-k="b">Lấy 64 làm $\sigma$ — số thứ hai trong $N(\mu;\,64)$ là <b>phương sai</b>.</div>
+    <div class="qc-fb" data-k="c">Dùng $z=1{,}96$ (95%).</div>
+    <div class="qc-fb" data-k="d">Dùng $z=2{,}576$ (99%).</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Biết phương sai → TH1, $\sigma=8$.</li><li>98% → $z_{0{,}99}=2{,}326$; $\varepsilon=2{,}326\cdot1{,}6=3{,}7216$ → <b>A</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q17">
+  <div class="ex-head"><span class="ex-num">Câu 17</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Từ số liệu thô</span></div>
+  <p>Nồng độ fluor (ppm) đo ở 5 giếng: 4,1; 3,6; 4,4; 3,9; 4,0. Giả sử chuẩn. Khoảng tin cậy 95% cho nồng độ trung bình là</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(3{,}744;\,4{,}256)$</button>
+      <button data-k="b"><b>B.</b> $(3{,}638;\,4{,}362)$</button>
+      <button data-k="c"><b>C.</b> $(3{,}676;\,4{,}324)$</button>
+      <button data-k="d"><b>D.</b> $(3{,}191;\,4{,}809)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Dùng $z=1{,}96$ cho mẫu 5 người — phải dùng $t^4$.</div>
+    <div class="qc-fb" data-k="b">$\overline x=4$; $s^2=\frac{0{,}34}{4}=0{,}085$, $s\approx0{,}2915$; $t^4_{0{,}975}=2{,}776$; $\varepsilon\approx0{,}362$.</div>
+    <div class="qc-fb" data-k="c">Dùng $\sigma_x$ (chia $n$): $\sqrt{0{,}068}\approx0{,}261$ thay cho $s$.</div>
+    <div class="qc-fb" data-k="d">Quên chia cho $\sqrt5$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>$\overline x=\frac{20}{5}=4$; độ lệch: $0{,}1;-0{,}4;0{,}4;-0{,}1;0$ → tổng bình phương 0,34 → $s\approx0{,}2915$.</li><li>$\varepsilon=2{,}776\cdot\frac{0{,}2915}{\sqrt5}\approx0{,}362$ → <b>B</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q18">
+  <div class="ex-head"><span class="ex-num">Câu 18</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Số liệu phân lớp → khoảng tin cậy</span></div>
+  <p>Số tháng giữa hai lần khám răng của 50 người: $[0;4)$: 10 người; $[4;8)$: 25; $[8;12)$: 15. Khoảng tin cậy 95% cho số tháng trung bình là</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(4{,}832;\,7{,}968)$</button>
+      <button data-k="b"><b>B.</b> $(6{,}289;\,6{,}511)$</button>
+      <button data-k="c"><b>C.</b> $(5{,}616;\,7{,}184)$</button>
+      <button data-k="d"><b>D.</b> $(5{,}742;\,7{,}058)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bán kính bị nhân đôi: 1,568 là <b>độ dài</b> khoảng ($2\cdot0{,}784$), không phải bán kính.</div>
+    <div class="qc-fb" data-k="b">Chia $s$ cho $n=50$ thay vì $\sqrt{50}$.</div>
+    <div class="qc-fb" data-k="c">Trung điểm 2; 6; 10 → $\overline x=6{,}4$; $s^2=\frac{2440-50\cdot6{,}4^2}{49}=8$, $s\approx2{,}828$; $\varepsilon=1{,}96\cdot\frac{2{,}828}{7{,}071}=0{,}784$.</div>
+    <div class="qc-fb" data-k="d">Dùng $z=1{,}645$ (90%).</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Bài 3: $\overline x=\frac{10\cdot2+25\cdot6+15\cdot10}{50}=6{,}4$.</li><li>$\sum n_ix_i^2=40+900+1500=2440$ → $s^2=\frac{2440-2048}{49}=8$.</li><li>$n=50&gt;30$ → $z$: $\varepsilon=1{,}96\cdot\frac{\sqrt8}{\sqrt{50}}=1{,}96\cdot0{,}4=0{,}784$ → <b>C</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q19">
+  <div class="ex-head"><span class="ex-num">Câu 19</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Đổi đơn vị</span></div>
+  <p>Thời gian một ca phẫu thuật răng khôn của 36 ca: $\overline x=2{,}4$ giờ, $s=0{,}6$ giờ. Viết khoảng tin cậy 95% theo <b>phút</b>.</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(2{,}204;\,2{,}596)$ phút</button>
+      <button data-k="b"><b>B.</b> $(143{,}8;\,144{,}2)$ phút</button>
+      <button data-k="c"><b>C.</b> $(120{,}48;\,167{,}52)$ phút</button>
+      <button data-k="d"><b>D.</b> $(132{,}24;\,155{,}76)$ phút</button>
+    </div>
+    <div class="qc-fb" data-k="a">Đó là khoảng tính theo <b>giờ</b>, chưa đổi đơn vị.</div>
+    <div class="qc-fb" data-k="b">Đổi $\overline x$ sang phút (144) nhưng quên đổi bán kính (0,196 giờ = 11,76 phút).</div>
+    <div class="qc-fb" data-k="c">Bán kính bị nhân đôi: 23,52 là độ dài khoảng, không phải bán kính.</div>
+    <div class="qc-fb" data-k="d">$\varepsilon=1{,}96\cdot\frac{0{,}6}{6}=0{,}196$ giờ $=11{,}76$ phút; $144\pm11{,}76$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Tính theo giờ rồi nhân <b>cả hai mút</b> với 60: $(2{,}204;\,2{,}596)$ giờ → $(132{,}24;\,155{,}76)$ phút → <b>D</b>.</p></div></details>
+</div>
+
+<h3 id="b4-tn-c4">Chặng 4 · Trung bình — giải ngược và cỡ mẫu</h3>
+<div class="box tip">
+  <div class="box-title"><span class="tag">Cách làm dạng này</span>Bốn đại lượng, biết ba tìm một</div>
+  <p>$\varepsilon=z\frac{s}{\sqrt n}$: $\ z=\frac{\varepsilon\sqrt n}{s}$ (rồi độ tin cậy $=2\varphi(z)$), $\ s=\frac{\varepsilon\sqrt n}{z}$, $\ n=\left(\frac{zs}{\varepsilon}\right)^2$. Thiết kế (“ít nhất”) → làm tròn <b>lên</b>.</p>
+</div>
+
+<div class="ex mcq" id="b4q20">
+  <div class="ex-head"><span class="ex-num">Câu 20</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Tâm và bán kính</span></div>
+  <p>Khoảng tin cậy cho độ bền dán trung bình là $(24{,}3;\,27{,}9)$ MPa. Trung bình mẫu và bán kính là</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 26,1 và 1,8</button><button data-k="b"><b>B.</b> 26,1 và 3,6</button><button data-k="c"><b>C.</b> 24,3 và 3,6</button><button data-k="d"><b>D.</b> 27,9 và 1,8</button>
+    </div>
+    <div class="qc-fb" data-k="a">Tâm $\frac{24{,}3+27{,}9}{2}=26{,}1$; bán kính $\frac{27{,}9-24{,}3}{2}=1{,}8$.</div>
+    <div class="qc-fb" data-k="b">3,6 là độ dài khoảng.</div>
+    <div class="qc-fb" data-k="c">Mút trái không phải tâm.</div>
+    <div class="qc-fb" data-k="d">Mút phải không phải tâm.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$\overline x=\frac{a+b}{2}$, $\varepsilon=\frac{b-a}{2}$ → <b>A</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q21">
+  <div class="ex-head"><span class="ex-num">Câu 21</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Tìm độ tin cậy</span></div>
+  <p>Biết $\sigma=4$, mẫu 64 người cho khoảng $(49{,}18;\,50{,}82)$. Độ tin cậy của khoảng xấp xỉ</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 95%</button><button data-k="b"><b>B.</b> 44,95%</button><button data-k="c"><b>C.</b> 89,9%</button><button data-k="d"><b>D.</b> 80%</button>
+    </div>
+    <div class="qc-fb" data-k="a">95% cần $z=1{,}96$, tức bán kính 0,98.</div>
+    <div class="qc-fb" data-k="b">$0{,}4495=\varphi(1{,}64)$ mới là một nửa diện tích ở giữa; phải nhân 2.</div>
+    <div class="qc-fb" data-k="c">$\varepsilon=0{,}82$; $z=\frac{0{,}82\cdot8}{4}=1{,}64$; $2\varphi(1{,}64)=2\cdot0{,}4495\approx0{,}899$.</div>
+    <div class="qc-fb" data-k="d">80% ứng với $z=1{,}282$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>$\varepsilon=\frac{50{,}82-49{,}18}{2}=0{,}82$; s.e. $=\frac{4}{8}=0{,}5$.</li><li>$z=\frac{0{,}82}{0{,}5}=1{,}64$ → độ tin cậy $2\varphi(1{,}64)\approx0{,}899$ → <b>C</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q22">
+  <div class="ex-head"><span class="ex-num">Câu 22</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Tìm $s$</span></div>
+  <p>Khoảng tin cậy 99% cho trung bình (mẫu 49 người, chưa biết $\sigma$) là $(15{,}2;\,16{,}8)$. Độ lệch chuẩn mẫu $s$ xấp xỉ</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 4,35</button><button data-k="b"><b>B.</b> 2,17</button><button data-k="c"><b>C.</b> 0,31</button><button data-k="d"><b>D.</b> 2,86</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn dùng độ dài 1,6 thay cho bán kính 0,8.</div>
+    <div class="qc-fb" data-k="b">$s=\frac{\varepsilon\sqrt n}{z}=\frac{0{,}8\cdot7}{2{,}576}\approx2{,}17$.</div>
+    <div class="qc-fb" data-k="c">$\frac{0{,}8}{2{,}576}$ là sai số chuẩn, chưa nhân $\sqrt n$.</div>
+    <div class="qc-fb" data-k="d">Dùng $z=1{,}96$ (95%) thay vì 2,576.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$\varepsilon=0{,}8$; $n=49&gt;30$ → $z_{0{,}995}=2{,}576$; $s=\frac{0{,}8\cdot\sqrt{49}}{2{,}576}\approx2{,}17$ → <b>B</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q23">
+  <div class="ex-head"><span class="ex-num">Câu 23</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Tìm $n$ đã dùng</span></div>
+  <p>Biết $\sigma=10$. Một khoảng tin cậy 95% cho $\mu$ có <b>độ dài</b> 4,9. Mẫu đã dùng có bao nhiêu người?</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 16</button><button data-k="b"><b>B.</b> 8</button><button data-k="c"><b>C.</b> 256</button><button data-k="d"><b>D.</b> 64</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn dùng độ dài 4,9 làm bán kính: $\left(\frac{1{,}96\cdot10}{4{,}9}\right)^2=16$.</div>
+    <div class="qc-fb" data-k="b">8 là $\sqrt n$; còn phải bình phương.</div>
+    <div class="qc-fb" data-k="c">Bạn đã chia đôi hai lần.</div>
+    <div class="qc-fb" data-k="d">$\varepsilon=2{,}45$ → $\sqrt n=\frac{1{,}96\cdot10}{2{,}45}=8$ → $n=64$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Độ dài $=2\varepsilon$ → $\varepsilon=2{,}45$ → $n=\left(\frac{z\sigma}{\varepsilon}\right)^2=64$ → <b>D</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q24">
+  <div class="ex-head"><span class="ex-num">Câu 24</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Cỡ mẫu tối thiểu</span></div>
+  <p>Biết $\sigma=15$ phút. Muốn ước lượng thời gian chờ trung bình với sai số không quá 3 phút, độ tin cậy 99%, cần ít nhất</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 166 người</button><button data-k="b"><b>B.</b> 165 người</button><button data-k="c"><b>C.</b> 97 người</button><button data-k="d"><b>D.</b> 13 người</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\left(\frac{2{,}576\cdot15}{3}\right)^2=12{,}88^2\approx165{,}89$ → làm tròn lên 166.</div>
+    <div class="qc-fb" data-k="b">Làm tròn xuống thì không đạt yêu cầu “không quá 3 phút”.</div>
+    <div class="qc-fb" data-k="c">97 ứng với độ tin cậy 95% ($z=1{,}96$).</div>
+    <div class="qc-fb" data-k="d">Quên bình phương: 12,88.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$n\ge\left(\frac{z\sigma}{\varepsilon}\right)^2=165{,}89$ → $n_{\min}=166$ → <b>A</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q25">
+  <div class="ex-head"><span class="ex-num">Câu 25</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Mẫu thăm dò · cần thêm</span></div>
+  <p>Mẫu thăm dò 20 bệnh nhân cho $s=5{,}5$ mmHg. Muốn ước lượng trung bình với sai số không quá 1,2 mmHg, độ tin cậy 95%, cần khám <b>thêm</b> ít nhất bao nhiêu người?</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 81</button><button data-k="b"><b>B.</b> 60</button><button data-k="c"><b>C.</b> 61</button><button data-k="d"><b>D.</b> 101</button>
+    </div>
+    <div class="qc-fb" data-k="a">81 là <b>tổng</b> số người cần; đề hỏi cần thêm.</div>
+    <div class="qc-fb" data-k="b">$80-20$: làm tròn 80,7 xuống trước khi trừ.</div>
+    <div class="qc-fb" data-k="c">$n\ge\left(\frac{1{,}96\cdot5{,}5}{1{,}2}\right)^2\approx80{,}7$ → 81 người; đã có 20 → thêm 61.</div>
+    <div class="qc-fb" data-k="d">Cộng thêm 20 thay vì trừ.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Cỡ mẫu cần: $80{,}70$ → 81.</li><li>Đã có 20 → cần thêm $81-20=61$ → <b>C</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q26">
+  <div class="ex-head"><span class="ex-num">Câu 26</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Tổng quát $k^2$</span></div>
+  <p>Giữ nguyên độ tin cậy. Muốn độ dài khoảng tin cậy chỉ còn <b>40%</b> so với hiện tại thì cỡ mẫu phải nhân với</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 2,5</button><button data-k="b"><b>B.</b> 6,25</button><button data-k="c"><b>C.</b> 0,16</button><button data-k="d"><b>D.</b> 1,58</button>
+    </div>
+    <div class="qc-fb" data-k="a">Quên bình phương: $\frac{1}{0{,}4}=2{,}5$.</div>
+    <div class="qc-fb" data-k="b">$n$ tỉ lệ với $\frac1{\varepsilon^2}$: $\left(\frac{1}{0{,}4}\right)^2=6{,}25$.</div>
+    <div class="qc-fb" data-k="c">$0{,}4^2$: muốn hẹp đi thì cỡ mẫu phải <b>tăng</b>, không giảm.</div>
+    <div class="qc-fb" data-k="d">$\sqrt{2{,}5}$: lấy căn thay vì bình phương.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$\varepsilon\propto\frac{1}{\sqrt n}$ → $n\propto\frac{1}{\varepsilon^2}$. $\varepsilon$ nhân 0,4 → $n$ nhân $\frac{1}{0{,}16}=6{,}25$ → <b>B</b>.</p></div></details>
+</div>
+
+<h3 id="b4-tn-c5">Chặng 5 · Khoảng tin cậy cho tỉ lệ — xuôi, ngược, cỡ mẫu</h3>
+
+<div class="ex mcq" id="b4q27">
+  <div class="ex-head"><span class="ex-num">Câu 27</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Tính khoảng cho tỉ lệ</span></div>
+  <p>Trong 450 công nhân được khám có 81 người bị viêm nha chu. Khoảng tin cậy 95% cho tỉ lệ viêm nha chu là</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(0{,}162;\,0{,}198)$</button>
+      <button data-k="b"><b>B.</b> $(0{,}1445;\,0{,}2155)$</button>
+      <button data-k="c"><b>C.</b> $(0{,}1333;\,0{,}2267)$</button>
+      <button data-k="d"><b>D.</b> $(0{,}1794;\,0{,}1806)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Bạn lấy $f\pm$ sai số chuẩn, chưa nhân hệ số 1,96.</div>
+    <div class="qc-fb" data-k="b">$f=0{,}18$; s.e. $=\sqrt{\frac{0{,}18\cdot0{,}82}{450}}\approx0{,}01811$; $\varepsilon\approx0{,}0355$.</div>
+    <div class="qc-fb" data-k="c">Đây là khoảng 99% ($z=2{,}576$).</div>
+    <div class="qc-fb" data-k="d">Quên khai căn: $\frac{f(1-f)}{n}$ là phương sai, căn của nó mới là sai số chuẩn.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>$f=\frac{81}{450}=0{,}18$.</li><li>$\varepsilon=1{,}96\sqrt{\frac{0{,}18\cdot0{,}82}{450}}\approx0{,}0355$ → $(0{,}1445;\,0{,}2155)$ → <b>B</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q28">
+  <div class="ex-head"><span class="ex-num">Câu 28</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">So với tỉ lệ cũ</span></div>
+  <p>Vẫn số liệu câu 27 (81/450). Ba năm trước tỉ lệ viêm nha chu ở công nhân nhà máy này là 25%. Với độ tin cậy 99%, kết luận là</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> Chưa đủ cơ sở kết luận có thay đổi</button>
+      <button data-k="b"><b>B.</b> Tỉ lệ đã tăng</button>
+      <button data-k="c"><b>C.</b> Tỉ lệ đã giảm</button>
+      <button data-k="d"><b>D.</b> Không so sánh được vì khác năm</button>
+    </div>
+    <div class="qc-fb" data-k="a">Khoảng 99% là $(0{,}1333;\,0{,}2267)$, không chứa 0,25.</div>
+    <div class="qc-fb" data-k="b">0,25 nằm bên <b>phải</b> khoảng: mọi giá trị hợp lý hiện nay đều nhỏ hơn 0,25.</div>
+    <div class="qc-fb" data-k="c">$\varepsilon=2{,}576\cdot0{,}01811\approx0{,}0467$ → $(0{,}1333;\,0{,}2267)$; 0,25 lớn hơn mút phải → giảm.</div>
+    <div class="qc-fb" data-k="d">So sánh với một con số cũ chính là cách dùng thường gặp của khoảng tin cậy.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Khoảng 99%: $0{,}18\pm0{,}0467$. Giá trị cũ 0,25 &gt; 0,2267 → tỉ lệ hiện nay thấp hơn → <b>C</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q29">
+  <div class="ex-head"><span class="ex-num">Câu 29</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Ngược: tìm số người</span></div>
+  <p>Một khảo sát 500 người báo cáo khoảng tin cậy cho tỉ lệ dùng nước súc miệng là $(0{,}30;\,0{,}40)$. Số người dùng nước súc miệng trong mẫu là</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 150</button><button data-k="b"><b>B.</b> 200</button><button data-k="c"><b>C.</b> 25</button><button data-k="d"><b>D.</b> 175</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}30\cdot500$ dùng mút trái thay vì tâm.</div>
+    <div class="qc-fb" data-k="b">$0{,}40\cdot500$ dùng mút phải.</div>
+    <div class="qc-fb" data-k="c">$0{,}05\cdot500$ là bán kính nhân $n$.</div>
+    <div class="qc-fb" data-k="d">$f=\frac{0{,}30+0{,}40}{2}=0{,}35$ → $k=0{,}35\cdot500=175$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Tâm khoảng là $f=\frac kn$ → $k=nf=175$ → <b>D</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q30">
+  <div class="ex-head"><span class="ex-num">Câu 30</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Cỡ mẫu có thăm dò</span></div>
+  <p>Mẫu thăm dò cho tỉ lệ thiếu răng ở người lao động là 15%. Muốn sai số không quá 2% với độ tin cậy 95%, cần ít nhất</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 1225 người</button><button data-k="b"><b>B.</b> 1224 người</button><button data-k="c"><b>C.</b> 2401 người</button><button data-k="d"><b>D.</b> 35 người</button>
+    </div>
+    <div class="qc-fb" data-k="a">$n\ge\frac{1{,}96^2\cdot0{,}15\cdot0{,}85}{0{,}02^2}\approx1224{,}51$ → 1225.</div>
+    <div class="qc-fb" data-k="b">Làm tròn xuống — không đạt yêu cầu.</div>
+    <div class="qc-fb" data-k="c">2401 là công thức <b>chưa có</b> thăm dò ($\frac{z^2}{4\varepsilon^2}$). Đã biết $f=0{,}15$ thì dùng $f(1-f)$.</div>
+    <div class="qc-fb" data-k="d">Quên bình phương: $\frac{1{,}96\sqrt{0{,}1275}}{0{,}02}\approx35$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$n\ge\frac{z^2f(1-f)}{\varepsilon^2}=\frac{3{,}8416\cdot0{,}1275}{0{,}0004}\approx1224{,}51$ → <b>A</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q31">
+  <div class="ex-head"><span class="ex-num">Câu 31</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Cỡ mẫu chưa có thăm dò · độ dài</span></div>
+  <p>Chưa có thông tin về tỉ lệ. Muốn <b>độ dài</b> khoảng tin cậy 90% không quá 0,1 thì cần ít nhất</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 68 người</button><button data-k="b"><b>B.</b> 385 người</button><button data-k="c"><b>C.</b> 271 người</button><button data-k="d"><b>D.</b> 270 người</button>
+    </div>
+    <div class="qc-fb" data-k="a">Lấy độ dài 0,1 làm bán kính. Bán kính chỉ là 0,05.</div>
+    <div class="qc-fb" data-k="b">385 ứng với 95% ($z=1{,}96$).</div>
+    <div class="qc-fb" data-k="c">$\varepsilon=0{,}05$; $n\ge\frac{1{,}645^2}{4\cdot0{,}05^2}\approx270{,}6$ → 271.</div>
+    <div class="qc-fb" data-k="d">270,6 phải làm tròn <b>lên</b>.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Độ dài $=2\varepsilon\le0{,}1$ → $\varepsilon\le0{,}05$; 90% → $z=1{,}645$; $n\ge270{,}6$ → <b>C</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q32">
+  <div class="ex-head"><span class="ex-num">Câu 32</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Ngược: tìm độ tin cậy</span></div>
+  <p>Khảo sát 600 người, khoảng tin cậy cho tỉ lệ ủng hộ fluor hoá nước là $(0{,}46;\,0{,}54)$. Độ tin cậy của khoảng xấp xỉ</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 47,5%</button><button data-k="b"><b>B.</b> 95%</button><button data-k="c"><b>C.</b> 90%</button><button data-k="d"><b>D.</b> 99%</button>
+    </div>
+    <div class="qc-fb" data-k="a">$0{,}475=\varphi(1{,}96)$ chỉ là một nửa phần giữa.</div>
+    <div class="qc-fb" data-k="b">$f=0{,}5$, $\varepsilon=0{,}04$, s.e. $=\sqrt{\frac{0{,}25}{600}}\approx0{,}0204$ → $z\approx1{,}96$ → $2\varphi(1{,}96)=0{,}95$.</div>
+    <div class="qc-fb" data-k="c">90% cần $z=1{,}645$, tức bán kính khoảng 0,034.</div>
+    <div class="qc-fb" data-k="d">99% cần $z=2{,}576$, bán kính khoảng 0,053.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Tâm 0,5; bán kính 0,04.</li><li>$z=\frac{0{,}04}{0{,}0204}\approx1{,}96$ → độ tin cậy $2\varphi(1{,}96)=0{,}95$ → <b>B</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q33">
+  <div class="ex-head"><span class="ex-num">Câu 33</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Điều kiện xấp xỉ chuẩn</span></div>
+  <p>Mẫu nào <b>không</b> đủ điều kiện để dùng công thức khoảng tin cậy $f\pm z\sqrt{\frac{f(1-f)}{n}}$?</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 60 người, 3 người mắc u nang xương hàm</button>
+      <button data-k="b"><b>B.</b> 100 người, 20 người mắc</button>
+      <button data-k="c"><b>C.</b> 400 người, 390 người mắc</button>
+      <button data-k="d"><b>D.</b> 50 người, 25 người mắc</button>
+    </div>
+    <div class="qc-fb" data-k="a">$nf=3&lt;5$: quá ít người mắc, phân phối của $f$ còn lệch, không xấp xỉ chuẩn được.</div>
+    <div class="qc-fb" data-k="b">$nf=20$, $n(1-f)=80$ — đều $\ge5$.</div>
+    <div class="qc-fb" data-k="c">$nf=390$, $n(1-f)=10$ — vẫn $\ge5$, dùng được.</div>
+    <div class="qc-fb" data-k="d">$25$ và $25$ — dùng được.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Kiểm tra $nf=k$ và $n(1-f)=n-k$ đều $\ge5$. Chỉ A có $k=3&lt;5$ → <b>A</b>.</p></div></details>
+</div>
+
+<h3 id="b4-tn-c6">Chặng 6 · Khoảng tin cậy cho phương sai</h3>
+
+<div class="ex mcq" id="b4q34">
+  <div class="ex-head"><span class="ex-num">Câu 34</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Chọn giá trị $\chi^2$</span></div>
+  <p>Ước lượng phương sai với độ tin cậy 95% từ 12 số đo, chưa biết $\mu$. Mút trái của khoảng là $(n-1)s^2$ chia cho</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $\chi^2_{0{,}025}(11)$</button><button data-k="b"><b>B.</b> $\chi^2_{0{,}975}(12)$</button><button data-k="c"><b>C.</b> $\chi^2_{0{,}975}(11)$</button><button data-k="d"><b>D.</b> $\chi^2_{0{,}95}(11)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Chia cho số <b>nhỏ</b> cho ra mút <b>phải</b>.</div>
+    <div class="qc-fb" data-k="b">Chưa biết $\mu$ → bậc tự do $n-1=11$.</div>
+    <div class="qc-fb" data-k="c">Mút trái chia cho giá trị lớn $\chi^2_{1-\alpha/2}(n-1)=\chi^2_{0{,}975}(11)=21{,}920$.</div>
+    <div class="qc-fb" data-k="d">Cột 0,95 là quên chia đôi $\alpha$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Mút trái $=\frac{(n-1)s^2}{\chi^2_{1-\alpha/2}(n-1)}$ với $1-\frac\alpha2=0{,}975$, bậc tự do 11 → <b>C</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q35">
+  <div class="ex-head"><span class="ex-num">Câu 35</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Khoảng cho $\sigma^2$, chưa biết $\mu$</span></div>
+  <p>11 lần đo độ dày lớp men (đơn vị 0,01 mm), $s^2=2{,}5$, tổng thể chuẩn. Khoảng tin cậy 95% cho $\sigma^2$ là</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(1{,}343;\,8{,}469)$</button>
+      <button data-k="b"><b>B.</b> $(7{,}699;\,1{,}221)$</button>
+      <button data-k="c"><b>C.</b> $(1{,}366;\,6{,}345)$</button>
+      <button data-k="d"><b>D.</b> $(1{,}221;\,7{,}699)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Nhân với $n=11$ thay vì $n-1=10$.</div>
+    <div class="qc-fb" data-k="b">Đúng hai số nhưng ghi ngược thứ tự.</div>
+    <div class="qc-fb" data-k="c">Dùng cột 0,05/0,95 (độ tin cậy 90%).</div>
+    <div class="qc-fb" data-k="d">$(n-1)s^2=25$; $\frac{25}{20{,}483}\approx1{,}221$; $\frac{25}{3{,}247}\approx7{,}699$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Bậc tự do 10: $\chi^2_{0{,}975}(10)=20{,}483$; $\chi^2_{0{,}025}(10)=3{,}247$.</li><li>$\left(\frac{25}{20{,}483};\frac{25}{3{,}247}\right)\approx(1{,}221;\,7{,}699)$ → <b>D</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q36">
+  <div class="ex-head"><span class="ex-num">Câu 36</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Đã biết $\mu$</span></div>
+  <p>Đo 8 lần một mẫu chuẩn có giá trị đúng $\mu$ đã biết, được $\sum(x_i-\mu)^2=12$. Khoảng tin cậy 90% cho phương sai của phép đo là</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(0{,}853;\,5{,}538)$</button>
+      <button data-k="b"><b>B.</b> $(0{,}774;\,4{,}391)$</button>
+      <button data-k="c"><b>C.</b> $(0{,}679;\,5{,}510)$</button>
+      <button data-k="d"><b>D.</b> $(1{,}5;\,12)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Dùng 7 bậc tự do — chỉ khi chưa biết $\mu$.</div>
+    <div class="qc-fb" data-k="b">Biết $\mu$ → 8 bậc tự do: $\frac{12}{15{,}507}\approx0{,}774$; $\frac{12}{2{,}733}\approx4{,}391$.</div>
+    <div class="qc-fb" data-k="c">Dùng cột 0,025/0,975 (độ tin cậy 95%).</div>
+    <div class="qc-fb" data-k="d">Không dùng bảng $\chi^2$ — chia 12 cho 8 và cho 1 là vô căn cứ.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Biết $\mu$: $\left(\frac{\sum(x_i-\mu)^2}{\chi^2_{0{,}95}(8)};\frac{\sum(x_i-\mu)^2}{\chi^2_{0{,}05}(8)}\right)=\left(\frac{12}{15{,}507};\frac{12}{2{,}733}\right)$ → <b>B</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q37">
+  <div class="ex-head"><span class="ex-num">Câu 37</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Từ $\sigma^2$ sang $\sigma$</span></div>
+  <p>Khoảng tin cậy 95% cho phương sai là $(4;\,16)$. Khoảng tin cậy 95% cho độ lệch chuẩn là</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(2;\,4)$</button><button data-k="b"><b>B.</b> $(2;\,8)$</button><button data-k="c"><b>C.</b> $(16;\,256)$</button><button data-k="d"><b>D.</b> $(4;\,16)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Khai căn hai mút: $\sqrt4=2$, $\sqrt{16}=4$.</div>
+    <div class="qc-fb" data-k="b">Chia đôi hai mút — phải khai căn.</div>
+    <div class="qc-fb" data-k="c">Bình phương — làm ngược chiều.</div>
+    <div class="qc-fb" data-k="d">Đó là khoảng cho phương sai.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$4&lt;\sigma^2&lt;16\iff2&lt;\sigma&lt;4$ (căn bậc hai giữ chiều vì các vế dương) → <b>A</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q38">
+  <div class="ex-head"><span class="ex-num">Câu 38</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Tỉ số hai mút</span></div>
+  <p>Với 21 số đo và độ tin cậy 95% (chưa biết $\mu$), mút phải của khoảng tin cậy cho $\sigma^2$ luôn gấp mút trái bao nhiêu lần, bất kể $s$ bằng bao nhiêu?</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 1 lần (khoảng đối xứng)</button><button data-k="b"><b>B.</b> 2 lần</button><button data-k="c"><b>C.</b> khoảng 3,56 lần</button><button data-k="d"><b>D.</b> 24,58 lần</button>
+    </div>
+    <div class="qc-fb" data-k="a">Khoảng cho phương sai không đối xứng, và hai mút chắc chắn khác nhau.</div>
+    <div class="qc-fb" data-k="b">Không có lý do gì cho con số 2.</div>
+    <div class="qc-fb" data-k="c">$\frac{\text{mút phải}}{\text{mút trái}}=\frac{\chi^2_{0{,}975}(20)}{\chi^2_{0{,}025}(20)}=\frac{34{,}170}{9{,}591}\approx3{,}56$; $(n-1)s^2$ triệt tiêu.</div>
+    <div class="qc-fb" data-k="d">$34{,}170-9{,}591$ là hiệu, không phải tỉ số.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$\frac{(n-1)s^2/\chi^2_{0{,}025}}{(n-1)s^2/\chi^2_{0{,}975}}=\frac{\chi^2_{0{,}975}(20)}{\chi^2_{0{,}025}(20)}\approx3{,}56$ → <b>C</b>. Biết một mút là suy ra mút kia.</p></div></details>
+</div>
+
+<h3 id="b4-tn-c7">Chặng 7 · Hiệu hai trung bình</h3>
+
+<div class="ex mcq" id="b4q39">
+  <div class="ex-head"><span class="ex-num">Câu 39</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Đọc khoảng chứa 0</span></div>
+  <p>Khoảng tin cậy 95% của $\mu_1-\mu_2$ (thời gian tê của hai loại thuốc, phút) là $(-1{,}8;\,3{,}4)$. Kết luận là</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> Thuốc 1 tê lâu hơn từ 1,8 đến 3,4 phút</button>
+      <button data-k="b"><b>B.</b> Thuốc 1 tê lâu hơn 0,8 phút</button>
+      <button data-k="c"><b>C.</b> Thuốc 2 tê lâu hơn</button>
+      <button data-k="d"><b>D.</b> Chưa đủ cơ sở kết luận hai thuốc khác nhau</button>
+    </div>
+    <div class="qc-fb" data-k="a">Mút trái âm: khoảng chứa cả những giá trị cho thấy thuốc 2 tê lâu hơn.</div>
+    <div class="qc-fb" data-k="b">0,8 là tâm khoảng (ước lượng điểm); chưa đủ để khẳng định vì khoảng chứa 0.</div>
+    <div class="qc-fb" data-k="c">Khoảng chứa cả giá trị dương lẫn âm.</div>
+    <div class="qc-fb" data-k="d">Khoảng chứa 0 → không loại được khả năng hai trung bình bằng nhau.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$-1{,}8&lt;0&lt;3{,}4$ → số 0 nằm trong khoảng → <b>D</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q40">
+  <div class="ex-head"><span class="ex-num">Câu 40</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Đọc dấu của khoảng</span></div>
+  <p>$\mu_1$: lực cắn trung bình của nhóm A; $\mu_2$: của nhóm B. Khoảng tin cậy 95% của $\mu_1-\mu_2$ là $(-6{,}2;\,-1{,}4)$ kg. Kết luận đúng là</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> Nhóm A mạnh hơn từ 1,4 đến 6,2 kg</button>
+      <button data-k="b"><b>B.</b> Nhóm B mạnh hơn từ 1,4 đến 6,2 kg</button>
+      <button data-k="c"><b>C.</b> Nhóm B mạnh hơn 7,6 kg</button>
+      <button data-k="d"><b>D.</b> Chưa đủ cơ sở</button>
+    </div>
+    <div class="qc-fb" data-k="a">Hiệu âm nghĩa là $\mu_1&lt;\mu_2$.</div>
+    <div class="qc-fb" data-k="b">Cả khoảng âm → $\mu_2-\mu_1\in(1{,}4;\,6{,}2)$.</div>
+    <div class="qc-fb" data-k="c">7,6 là tổng hai số, vô nghĩa; khoảng chênh là từ 1,4 đến 6,2.</div>
+    <div class="qc-fb" data-k="d">Khoảng không chứa 0 nên có cơ sở kết luận.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Nhân $-1$ và đổi chiều: $1{,}4&lt;\mu_2-\mu_1&lt;6{,}2$ → <b>B</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q41">
+  <div class="ex-head"><span class="ex-num">Câu 41</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Chọn trường hợp</span></div>
+  <p>So sánh hai nhóm $n_1=12$, $n_2=10$, chưa biết $\sigma$, giả sử hai phương sai bằng nhau, độ tin cậy 95%. Hệ số và sai số chuẩn dùng là</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $z_{0{,}975}$ và $\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$</button>
+      <button data-k="b"><b>B.</b> $t^{22}_{0{,}975}$ và $s$ gộp</button>
+      <button data-k="c"><b>C.</b> $t^{20}_{0{,}975}$ và $\sqrt{\frac{s^2}{n_1}+\frac{s^2}{n_2}}$ với $s^2$ gộp</button>
+      <button data-k="d"><b>D.</b> $t^{11}_{0{,}975}$</button>
+    </div>
+    <div class="qc-fb" data-k="a">$n_1+n_2-2=20&lt;30$ và chưa biết $\sigma$ → không dùng $z$.</div>
+    <div class="qc-fb" data-k="b">Bậc tự do là $n_1+n_2-2=20$.</div>
+    <div class="qc-fb" data-k="c">TH3: phương sai bằng nhau → gộp, $t$ với $n_1+n_2-2=20$ bậc tự do.</div>
+    <div class="qc-fb" data-k="d">Đó là bậc tự do của một mẫu 12 người.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Chưa biết $\sigma$, mẫu nhỏ, $\sigma_1=\sigma_2$ → TH3 → <b>C</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q42">
+  <div class="ex-head"><span class="ex-num">Câu 42</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Hai mẫu lớn</span></div>
+  <p>Nhóm 1 ($n_1=50$): $\overline x_1=23{,}5$, $s_1=4$; nhóm 2 ($n_2=40$): $\overline x_2=21$, $s_2=5$. Khoảng tin cậy 95% của $\mu_1-\mu_2$ là</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(0{,}595;\,4{,}405)$</button>
+      <button data-k="b"><b>B.</b> $(-0{,}158;\,5{,}158)$</button>
+      <button data-k="c"><b>C.</b> $(0{,}648;\,4{,}352)$</button>
+      <button data-k="d"><b>D.</b> $(0{,}901;\,4{,}099)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">s.e. $=\sqrt{\frac{16}{50}+\frac{25}{40}}=\sqrt{0{,}945}\approx0{,}972$; $\varepsilon\approx1{,}905$; $2{,}5\pm1{,}905$.</div>
+    <div class="qc-fb" data-k="b">Cộng hai sai số chuẩn $\frac{4}{\sqrt{50}}+\frac{5}{\sqrt{40}}$ thay vì cộng hai phương sai rồi khai căn.</div>
+    <div class="qc-fb" data-k="c">Quên khai căn: dùng 0,945 làm sai số chuẩn.</div>
+    <div class="qc-fb" data-k="d">Dùng $z=1{,}645$ (90%).</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$n_1+n_2-2=88\ge30$ → TH2. $\varepsilon=1{,}96\cdot0{,}972\approx1{,}905$ → <b>A</b>. Khoảng dương → nhóm 1 cao hơn.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q43">
+  <div class="ex-head"><span class="ex-num">Câu 43</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Phương sai gộp</span></div>
+  <p>$n_1=8$, $s_1=2$; $n_2=10$, $s_2=3$. Phương sai gộp $s^2$ bằng</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 6,5</button><button data-k="b"><b>B.</b> 2,5</button><button data-k="c"><b>C.</b> 6,778</button><button data-k="d"><b>D.</b> 6,8125</button>
+    </div>
+    <div class="qc-fb" data-k="a">Trung bình cộng thường $\frac{4+9}{2}$ — chưa tính trọng số.</div>
+    <div class="qc-fb" data-k="b">Gộp hai độ lệch chuẩn $\frac{2+3}{2}$ — phải gộp phương sai.</div>
+    <div class="qc-fb" data-k="c">Dùng trọng số $n$ thay vì $n-1$: $\frac{8\cdot4+10\cdot9}{18}$.</div>
+    <div class="qc-fb" data-k="d">$\frac{7\cdot4+9\cdot9}{16}=\frac{28+81}{16}=6{,}8125$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$s^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}=\frac{109}{16}=6{,}8125$ → <b>D</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q44">
+  <div class="ex-head"><span class="ex-num">Câu 44</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Trọn một bài phương sai gộp</span></div>
+  <p>Vẫn hai nhóm câu 43, thêm $\overline x_1=15$, $\overline x_2=12$; chuẩn, phương sai bằng nhau. Khoảng tin cậy 95% của $\mu_1-\mu_2$ là</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> $(0{,}573;\,5{,}427)$</button>
+      <button data-k="b"><b>B.</b> $(0{,}375;\,5{,}625)$</button>
+      <button data-k="c"><b>C.</b> $(1{,}375;\,4{,}625)$</button>
+      <button data-k="d"><b>D.</b> $(0{,}399;\,5{,}601)$</button>
+    </div>
+    <div class="qc-fb" data-k="a">Dùng $z=1{,}96$; mẫu nhỏ phải dùng $t^{16}$.</div>
+    <div class="qc-fb" data-k="b">s.e. $=\sqrt{6{,}8125\left(\frac18+\frac1{10}\right)}\approx1{,}238$; $t^{16}_{0{,}975}=2{,}120$; $\varepsilon\approx2{,}625$; $3\pm2{,}625$.</div>
+    <div class="qc-fb" data-k="c">Dùng $s\approx2{,}61$ (đã khai căn) ở chỗ cần $s^2$.</div>
+    <div class="qc-fb" data-k="d">Dùng 18 bậc tự do ($n_1+n_2$); đúng là $n_1+n_2-2=16$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>$s^2=6{,}8125$ (câu 43).</li><li>s.e. $=\sqrt{6{,}8125\cdot0{,}225}\approx1{,}238$.</li><li>$\varepsilon=2{,}120\cdot1{,}238\approx2{,}625$ → $(0{,}375;\,5{,}625)$ → <b>B</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q45">
+  <div class="ex-head"><span class="ex-num">Câu 45</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Ngược với hiệu hai trung bình</span></div>
+  <p>Một bài báo (mẫu lớn, 95%) ghi khoảng tin cậy của $\mu_1-\mu_2$ là $(1{,}2;\,6{,}8)$, và $\overline x_1=25$. Khi đó $\overline x_2$ và sai số chuẩn của hiệu là</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 29 và 1,43</button><button data-k="b"><b>B.</b> 21 và 2,8</button><button data-k="c"><b>C.</b> 21 và 1,43</button><button data-k="d"><b>D.</b> 18,2 và 2,86</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\overline x_1-\overline x_2=4$ → $\overline x_2=25-4=21$, không phải $25+4$.</div>
+    <div class="qc-fb" data-k="b">2,8 là bán kính; sai số chuẩn $=\frac{2{,}8}{1{,}96}$.</div>
+    <div class="qc-fb" data-k="c">Tâm 4 → $\overline x_2=21$; $\varepsilon=2{,}8$ → s.e. $=\frac{2{,}8}{1{,}96}\approx1{,}43$.</div>
+    <div class="qc-fb" data-k="d">Bạn dùng mút phải 6,8 như hiệu và lấy độ dài chia 1,96.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Tâm $=\frac{1{,}2+6{,}8}{2}=4=\overline x_1-\overline x_2$ → $\overline x_2=21$; $\varepsilon=2{,}8=1{,}96\cdot$s.e. → s.e. $\approx1{,}43$ → <b>C</b>.</p></div></details>
+</div>
+
+<h3 id="b4-tn-c8">Chặng 8 · Hiệu hai tỉ lệ và tổng hợp</h3>
+
+<div class="ex mcq" id="b4q46">
+  <div class="ex-head"><span class="ex-num">Câu 46</span><span class="lvl l1">Thông hiểu</span><span class="ex-skill">Sai số chuẩn của hiệu hai tỉ lệ</span></div>
+  <p>$f_1=0{,}40$ ($n_1=100$), $f_2=0{,}25$ ($n_2=200$). Sai số chuẩn của $f_1-f_2$ xấp xỉ</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 0,0578</button><button data-k="b"><b>B.</b> 0,0033</button><button data-k="c"><b>C.</b> 0,0796</button><button data-k="d"><b>D.</b> 0,1132</button>
+    </div>
+    <div class="qc-fb" data-k="a">$\sqrt{\frac{0{,}24}{100}+\frac{0{,}1875}{200}}=\sqrt{0{,}0033375}\approx0{,}0578$.</div>
+    <div class="qc-fb" data-k="b">Chưa khai căn.</div>
+    <div class="qc-fb" data-k="c">Cộng hai sai số chuẩn riêng — phải cộng phương sai rồi khai căn.</div>
+    <div class="qc-fb" data-k="d">0,1132 là bán kính (đã nhân 1,96).</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>s.e. $=\sqrt{\frac{f_1(1-f_1)}{n_1}+\frac{f_2(1-f_2)}{n_2}}\approx0{,}0578$ → <b>A</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q47">
+  <div class="ex-head"><span class="ex-num">Câu 47</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Khoảng và kết luận</span></div>
+  <p>Vẫn số liệu câu 46 ($f_1$: tỉ lệ sâu răng ở trẻ uống nước ngọt hằng ngày, $f_2$: ở trẻ không uống). Với độ tin cậy 95%, kết luận là</p>
+  <div class="qc" data-ans="c">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> Chưa đủ cơ sở vì 0,15 nhỏ</button>
+      <button data-k="b"><b>B.</b> Trẻ không uống có tỉ lệ cao hơn</button>
+      <button data-k="c"><b>C.</b> Trẻ uống nước ngọt có tỉ lệ cao hơn, chênh khoảng 3,7 – 26,3 điểm phần trăm</button>
+      <button data-k="d"><b>D.</b> Trẻ uống nước ngọt có tỉ lệ cao hơn đúng 15 điểm phần trăm</button>
+    </div>
+    <div class="qc-fb" data-k="a">Không xét độ lớn của 0,15 mà xét khoảng có chứa 0 hay không.</div>
+    <div class="qc-fb" data-k="b">Ngược dấu: $f_1-f_2=+0{,}15$.</div>
+    <div class="qc-fb" data-k="c">$0{,}15\pm1{,}96\cdot0{,}0578=(0{,}037;\,0{,}263)$, nằm hẳn bên phải 0.</div>
+    <div class="qc-fb" data-k="d">15 điểm là ước lượng điểm; kết luận đúng phải kèm khoảng.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>$\varepsilon\approx0{,}113$ → $(0{,}037;\,0{,}263)$ → $p_1&gt;p_2$ → <b>C</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q48">
+  <div class="ex-head"><span class="ex-num">Câu 48</span><span class="lvl l2">Vận dụng</span><span class="ex-skill">Đọc khoảng hai tỉ lệ</span></div>
+  <p>Khoảng tin cậy 95% của $p_{\text{nam}}-p_{\text{nữ}}$ (tỉ lệ mòn răng) là $(-0{,}03;\,0{,}09)$. Kết luận là</p>
+  <div class="qc" data-ans="b">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> Nam cao hơn nữ 3%</button>
+      <button data-k="b"><b>B.</b> Chưa đủ cơ sở kết luận có khác biệt theo giới</button>
+      <button data-k="c"><b>C.</b> Nữ cao hơn nam</button>
+      <button data-k="d"><b>D.</b> Nam cao hơn nữ từ 3% đến 9%</button>
+    </div>
+    <div class="qc-fb" data-k="a">3% là tâm khoảng, nhưng khoảng chứa 0.</div>
+    <div class="qc-fb" data-k="b">$-0{,}03&lt;0&lt;0{,}09$ → không loại được khả năng bằng nhau.</div>
+    <div class="qc-fb" data-k="c">Khoảng chủ yếu dương; không có cơ sở nói nữ cao hơn.</div>
+    <div class="qc-fb" data-k="d">Mút trái âm, không phải $+0{,}03$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><p>Khoảng chứa 0 → <b>B</b>.</p></div></details>
+</div>
+
+<div class="ex mcq" id="b4q49">
+  <div class="ex-head"><span class="ex-num">Câu 49</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Hệ 2 ẩn từ khoảng</span></div>
+  <p>Hai nhóm, mỗi nhóm 200 người. Khoảng tin cậy của $p_1-p_2$ có tâm $-0{,}05$, và tổng số người mắc bệnh ở hai nhóm là 130. Số người mắc ở nhóm 1 và nhóm 2 là</p>
+  <div class="qc" data-ans="d">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 70 và 60</button><button data-k="b"><b>B.</b> 65 và 65</button><button data-k="c"><b>C.</b> 55 và 75</button><button data-k="d"><b>D.</b> 60 và 70</button>
+    </div>
+    <div class="qc-fb" data-k="a">Ngược dấu: tâm âm nghĩa là nhóm 1 ít hơn.</div>
+    <div class="qc-fb" data-k="b">Bằng nhau thì tâm là 0.</div>
+    <div class="qc-fb" data-k="c">Hiệu $\frac{55-75}{200}=-0{,}10$, không phải $-0{,}05$.</div>
+    <div class="qc-fb" data-k="d">$x+y=130$, $\frac{x-y}{200}=-0{,}05$ → $x-y=-10$ → $x=60$, $y=70$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>Gọi $x$, $y$ là số người mắc: $x+y=130$.</li><li>Tâm $=f_1-f_2=\frac{x}{200}-\frac{y}{200}=-0{,}05$ → $x-y=-10$.</li><li>Cộng hai phương trình: $2x=120$ → $x=60$, $y=70$ → <b>D</b>.</li></ol></div></details>
+</div>
+
+<div class="ex mcq" id="b4q50">
+  <div class="ex-head"><span class="ex-num">Câu 50</span><span class="lvl l3">Vận dụng cao</span><span class="ex-skill">Thiết kế nghiên cứu so sánh hai tỉ lệ</span></div>
+  <p>Muốn ước lượng $p_1-p_2$ với sai số không quá 0,05, độ tin cậy 95%, hai nhóm cùng cỡ $n$; chưa có thông tin về tỉ lệ (lấy trường hợp xấu nhất $f_1=f_2=0{,}5$). Mỗi nhóm cần ít nhất</p>
+  <div class="qc" data-ans="a">
+    <div class="qc-opts">
+      <button data-k="a"><b>A.</b> 769 người</button><button data-k="b"><b>B.</b> 385 người</button><button data-k="c"><b>C.</b> 768 người</button><button data-k="d"><b>D.</b> 1537 người</button>
+    </div>
+    <div class="qc-fb" data-k="a">$1{,}96\sqrt{\frac{0{,}25}{n}+\frac{0{,}25}{n}}\le0{,}05$ → $n\ge0{,}5\left(\frac{1{,}96}{0{,}05}\right)^2\approx768{,}32$ → 769.</div>
+    <div class="qc-fb" data-k="b">Đó là cỡ mẫu cho <b>một</b> tỉ lệ; hiệu hai tỉ lệ có hai nguồn dao động nên cần gấp đôi.</div>
+    <div class="qc-fb" data-k="c">Làm tròn xuống.</div>
+    <div class="qc-fb" data-k="d">Bạn dùng $f(1-f)=0{,}5$ cho mỗi nhóm thay vì $0{,}25$.</div>
+  </div>
+  <details class="sol"><summary>Xem lời giải từng bước</summary><div class="sol-body"><ol class="steps"><li>s.e. $=\sqrt{\frac{0{,}25}{n}+\frac{0{,}25}{n}}=\sqrt{\frac{0{,}5}{n}}$.</li><li>$1{,}96\sqrt{\frac{0{,}5}{n}}\le0{,}05$ → bình phương: $\frac{0{,}5}{n}\le\left(\frac{0{,}05}{1{,}96}\right)^2$ → $n\ge768{,}32$.</li><li>Làm tròn lên: 769 người mỗi nhóm → <b>A</b>.</li></ol></div></details>
+</div>
+
+</main>
+</div>
+
+<footer class="site">Bài 4 · Ước lượng tham số tổng thể — tài liệu tự học, ví dụ và bài tập là bài mới (không trùng giáo trình, slide).</footer>
+</body>
+</html>

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=5"></script>
+  <script defer src="assets/js/site.js?v=6"></script>
 </head>
 <body data-lesson="may-tinh">
 <header class="topbar">
@@ -343,6 +343,11 @@ max(x)= 5</div>
   </ol>
 </div>
 
+<div class="box tip">
+  <div class="box-title"><span class="tag">Bài 4</span><span>Hệ số tin cậy $z_{1-\alpha/2}$ cũng là Inverse Normal</span></div>
+  <p>Độ tin cậy $1-\alpha$ → Area $=1-\frac{\alpha}{2}$, σ 1, μ 0. Ví dụ 95% → Area 0.975 → 1,959963; 98% → 0.99 → 2,326348; 92% → 0.96 → 1,750686. Hệ số Student $t$ và $\chi^2$ thì máy không có — tra Phụ lục 5, 4. <a href="bai-4.html#chia-hai-duoi">Bài 4, mục 2.1 →</a></p>
+</div>
+
 <h3 id="tra-phi">5.5. Tra $\varphi(x)$ bằng máy</h3>
 <div class="grid2">
   <div class="card"><h4>Cách 1 — Normal CD</h4>
@@ -394,6 +399,8 @@ max(x)= 5</div>
   <tr><td class="left">Xác suất của phân phối chuẩn</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd></span> Normal CD</td><td class="left"><a href="#normal-cd">5.3</a></td></tr>
   <tr><td class="left">Tìm ngưỡng, phân vị $z_\alpha$</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd></span> Inverse Normal (diện tích bên trái)</td><td class="left"><a href="#inverse-normal">5.4</a></td></tr>
   <tr><td class="left">$\varphi(x)$</td><td class="left">Normal CD (0 → $x$; σ 1; μ 0) hoặc Q(</td><td class="left"><a href="#tra-phi">5.5</a></td></tr>
+  <tr><td class="left">Hệ số tin cậy $z_{1-\alpha/2}$ (Bài 4)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd></span> Area $=1-\frac{\alpha}{2}$ (95% → 0,975), σ 1, μ 0</td><td class="left"><a href="#inverse-normal">5.4</a></td></tr>
+  <tr><td class="left">Độ tin cậy từ $z$ (bài ngược, Bài 4)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd></span> Lower $-z$, Upper $z$, σ 1, μ 0</td><td class="left"><a href="#normal-cd">5.3</a></td></tr>
   <tr><td class="left">χ², Student, Fisher</td><td class="left">máy không có — tra bảng</td><td class="left"><a href="phu-luc.html">Phụ lục</a></td></tr>
 </table></div>
 
