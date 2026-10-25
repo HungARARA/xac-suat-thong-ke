@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bảng phụ lục · Xác suất – Thống kê</title>
-  <meta name="description" content="Các bảng phụ lục của giáo trình Xác suất – Thống kê Y học (l(x), φ(x), z, χ², Student, Fisher): bản chép đúng như giáo trình và bản đã sửa lỗi in, kèm ghi chú.">
+  <meta name="description" content="Các bảng phụ lục của giáo trình Xác suất – Thống kê Y học (l(x), φ(x), z, χ², Student, Fisher, Wilcoxon): bản chép đúng như giáo trình và bản đã sửa lỗi in, kèm ghi chú.">
   <script>try{var t=localStorage.getItem("xstk-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,9 @@
   <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=7"></script>
-  <script defer src="assets/js/phuluc-data.js"></script>
-  <script defer src="assets/js/phuluc.js"></script>
+  <script defer src="assets/js/site.js?v=8"></script>
+  <script defer src="assets/js/phuluc-data.js?v=2"></script>
+  <script defer src="assets/js/phuluc.js?v=2"></script>
 </head>
 <body data-lesson="phu-luc">
 <header class="topbar">
@@ -39,7 +39,7 @@
 <section class="hero">
   <span class="kicker">Tài liệu kèm theo</span>
   <h1>Bảng phụ lục</h1>
-  <p class="lead">Chép lại đầy đủ các bảng tra ở cuối giáo trình (Phụ lục 1 – 6c). Mỗi bảng có hai bản đặt liền nhau: <b>bản theo giáo trình</b> giữ nguyên từng chữ số in — kể cả chỗ in sai — để bạn đối chiếu với sách, và <b>bản đã sửa</b> thay các ô in sai bằng giá trị đúng, kèm ghi chú.</p>
+  <p class="lead">Chép lại đầy đủ các bảng tra ở cuối giáo trình (Phụ lục 1 – 8). Mỗi bảng có hai bản đặt liền nhau: <b>bản theo giáo trình</b> giữ nguyên từng chữ số in — kể cả chỗ in sai — để bạn đối chiếu với sách, và <b>bản đã sửa</b> thay các ô in sai bằng giá trị đúng, kèm ghi chú.</p>
 </section>
 
 <div class="box errata">
@@ -51,7 +51,7 @@
   </ul>
   <p class="pl-cap">Hiện: <span class="seg" id="plView"><button data-v="both">Cả hai bản</button><button data-v="book">Chỉ bản giáo trình</button><button data-v="fixed">Chỉ bản đã sửa</button></span></p>
 </div>
-<p class="small muted">Cách tra từng bảng được giảng ở <a href="bai-2.html#tra-bang">Bài 2, mục 12</a> và <a href="bai-2.html#chi-t-f">mục 14</a>; danh sách gọn các ô in sai ở <a href="bai-2.html#tb-loi-in">mục 12.4</a>.</p>
+<p class="small muted">Cách tra từng bảng được giảng ở <a href="bai-2.html#tra-bang">Bài 2, mục 12</a> và <a href="bai-2.html#chi-t-f">mục 14</a>; danh sách gọn các ô in sai ở <a href="bai-2.html#tb-loi-in">mục 12.8</a>. Hai bảng Wilcoxon (Phụ lục 7, 8) giảng ở <a href="bai-6.html#phu-luc-7">Bài 6, mục 5.3</a> và <a href="bai-6.html#phu-luc-8">mục 7.3</a>.</p>
 
 <!-- =============================================================== -->
 <h2 id="pl-1" data-toc="1. Hàm Laplace l(x)"><span class="num">1</span>Phụ lục 1 — Bảng giá trị hàm Laplace $l(x)$</h2>
@@ -101,10 +101,20 @@
 <div data-pl="pl-6c-1"></div>
 <h3 id="pl-6c-2" data-toc="Trang 2: m = 15 → +∞">Trang 2: $m=15\to+\infty$</h3>
 <div class="box trap">
-  <div class="box-title"><span class="tag">Chú ý</span>Cả cột $m=40$ ở trang này bị in sai</div>
+  <div class="box-title"><span class="tag">Chú ý</span><span>Cả cột $m=40$ ở trang này bị in sai</span></div>
   <p>Trong sách, cột $m=40$ (từ $n=3$ trở xuống) in lặp lại y nguyên cột $m=30$ bên cạnh. Khi cần $F_{0{,}99}(40;n)$ hãy dùng bản đã sửa hoặc <a href="bai-2.html#f-tra">công cụ tra nhanh ở Bài 2</a>.</p>
 </div>
 <div data-pl="pl-6c-2"></div>
+
+<!-- =============================================================== -->
+<h2 id="pl-7" data-toc="7. Wilcoxon dấu và hạng"><span class="num">7</span>Phụ lục 7 — Cận dưới, cận trên trong kiểm định dấu và hạng Wilcoxon</h2>
+<p>Dùng cho phép kiểm dấu và hạng một mẫu và ghép cặp (<a href="bai-6.html#phu-luc-7">Bài 6, mục 5 – 6</a>). Hàng: $k$ = số hiệu $d_i\ne0$. Cột: kiểm định một phía mức $\alpha$ dùng $W_{1-\alpha}$, hai phía dùng $W_{1-\alpha/2}$. Mỗi ô là cặp (cận dưới; cận trên) $(C_1;C_2)$ với $C_1+C_2=\frac{k(k+1)}{2}$. Ô trống: ở mức đó không thể bác bỏ $H_0$ (kể cả $T^+=0$ cũng có xác suất $\frac1{2^k}$ lớn hơn mức).</p>
+<div data-pl="pl-7"></div>
+
+<!-- =============================================================== -->
+<h2 id="pl-8" data-toc="8. Wilcoxon tổng hạng"><span class="num">8</span>Phụ lục 8 — Cận dưới, cận trên trong kiểm định tổng hạng Wilcoxon</h2>
+<p>Dùng cho phép kiểm tổng hạng hai mẫu độc lập (<a href="bai-6.html#phu-luc-8">Bài 6, mục 7</a>). Cột: $n_1$ = cỡ nhóm <b>nhỏ hơn</b>; hàng: $n_2$ và mức ý nghĩa (một bên hoặc hai bên — hai bên gấp đôi một bên). Mỗi ô là $(C_1;C_2)$ với $C_1+C_2=n_1(n_1+n_2+1)$. Kiểm định hai phía mức 5% dùng hàng “một bên 0,025 | hai bên 0,05”.</p>
+<div data-pl="pl-8"></div>
 
 <div class="pager"><a class="prev" href="bai-2.html#tra-bang"><div class="dir">← Cách tra bảng</div><div class="ttl">Bài 2 · Mục 12. Tra bảng phụ lục</div></a></div>
 </main>

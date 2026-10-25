@@ -32,6 +32,11 @@ const LESSONS = [
     id: "bai-5", href: "bai-5.html", no: "Bài 5", title: "Kiểm định giả thuyết thống kê",
     desc: "Logic kiểm định, hai loại sai lầm, miền bác bỏ, p-value; kiểm định trung bình, tỉ lệ, phương sai một mẫu; so sánh hai phương sai, hai trung bình (độc lập, ghép cặp), hai tỉ lệ; bài toán ngược.",
     chips: ["H₀ và H", "z, t, χ², F", "p-value", "Hai nhóm"]
+  },
+  {
+    id: "bai-6", href: "bai-6.html", no: "Bài 6", title: "Phép kiểm phi tham số",
+    desc: "Phép kiểm χ²: tính độc lập, so sánh nhiều tỉ lệ, sự phù hợp; xếp hạng; Wilcoxon dấu và hạng (một mẫu, ghép cặp), tổng hạng (hai mẫu); Kruskal–Wallis cho nhiều nhóm.",
+    chips: ["χ² độc lập", "Phù hợp", "Wilcoxon", "Kruskal–Wallis"]
   }
 ];
 
@@ -43,7 +48,6 @@ const EXTRA_PAGES = [
 
 /* Các bài sắp học (hiện mờ trên trang chủ). Khi làm xong bài nào thì chuyển nó lên LESSONS. */
 const COMING = [
-  { no: "Bài 6", title: "Phép kiểm phi tham số" },
   { no: "Bài 7", title: "Phân tích phương sai" },
   { no: "Bài 8", title: "Hồi quy và tương quan" }
 ];

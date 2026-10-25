@@ -1,7 +1,7 @@
 /* ==========================================================
    phuluc.js — dựng các bảng phụ lục, mỗi bảng hai bản:
    bản theo giáo trình (ô in sai tô đỏ) và bản đã sửa (ô sửa tô xanh + ghi chú)
-   Mỗi <div data-pl="…"> trong phu-luc.html nhận một cặp bảng;
+   Mỗi <div data-pl="…"> trong phu-luc.html nhận một cặp bảng (kể cả Phụ lục 7, 8 Wilcoxon);
    dữ liệu lấy từ phuluc-data.js (window.PHU_LUC).
    ========================================================== */
 (function () {
@@ -18,6 +18,8 @@
       return (t.kind === "l" ? "l(" : "φ(") + x + ")";
     }
     if (t.kind === "f") return `m = ${C}, n = ${R}`;
+    if (t.kind === "w1") return `k = ${R}, cột ${C}`;
+    if (t.kind === "w2") return `n<sub>1</sub> = ${C}, n<sub>2</sub> = ${R[0]}, một bên ${R[1]}`;
     return `n = ${R}, α = ${C}`;
   }
 
@@ -71,11 +73,25 @@
     return `<table class="compact pl"><thead>${head}</thead><tbody>${body}</tbody></table>`;
   }
 
+  /* bảng tổng hạng Wilcoxon: hàng = (n2, mức một bên, mức hai bên), cột = n1 */
+  function w2Table(t, fx, fixed) {
+    const head = `<tr><th rowspan="2">n<sub>2</sub></th><th colspan="2">Mức ý nghĩa</th><th colspan="${t.cols.length}">n<sub>1</sub></th></tr>`
+      + `<tr><th>Một bên</th><th>Hai bên</th>${t.cols.map(c => `<th>${c}</th>`).join("")}</tr>`;
+    const body = t.rows.map((R, r) => {
+      const first = r === 0 || t.rows[r - 1][0] !== R[0];
+      const span = t.rows.filter(x => x[0] === R[0]).length;
+      return `<tr>${first ? `<th scope="rowgroup" rowspan="${span}">${R[0]}</th>` : ""}<th scope="row">${R[1]}</th><th scope="row">${R[2]}</th>`
+        + `${t.cells[r].map((s, c) => cell(s, fx.get(r + "," + c), fixed)).join("")}</tr>`;
+    }).join("");
+    return `<table class="compact pl"><thead>${head}</thead><tbody>${body}</tbody></table>`;
+  }
+
   function render(host) {
     const t = DATA[host.dataset.pl];
     if (!t) return;
     const { map, notes } = collectFixes(t);
-    const table = fixed => `<div class="table-wrap">${(t.kind === "z" ? zTable : gridTable)(t, map, fixed)}</div>`;
+    const fn = t.kind === "z" ? zTable : t.kind === "w2" ? w2Table : gridTable;
+    const table = fixed => `<div class="table-wrap">${fn(t, map, fixed)}</div>`;
     host.innerHTML = `
       <div class="pl-ver pl-book">
         <p class="pl-cap"><span class="pl-tag book">① Theo giáo trình</span><span class="small muted">chép nguyên văn từng ô; ô đỏ là ô in sai</span></p>
@@ -86,6 +102,7 @@
         ${table(true)}
         ${notes.length ? `<div class="pl-notes"><b>Ghi chú sửa (${t.fix.length} ô)</b><ol>${notes.map(n => `<li>${n}</li>`).join("")}</ol></div>`
                        : `<p class="small muted">Không có ô in sai.</p>`}
+        ${t.note ? `<p class="small muted">${t.note}</p>` : ""}
       </div>`;
   }
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bấm máy Vinacal 680EX Plus · Xác suất – Thống kê</title>
-  <meta name="description" content="Hướng dẫn dùng máy tính Vinacal 680EX Plus cho môn Xác suất – Thống kê Y học: tổ hợp, biến nhớ, CALC, Table, kỳ vọng – phương sai, phân phối nhị thức, phân phối chuẩn, tích phân.">
+  <meta name="description" content="Hướng dẫn dùng máy tính Vinacal 680EX Plus cho môn Xác suất – Thống kê Y học: tổ hợp, biến nhớ, CALC, Table, kỳ vọng – phương sai, phân phối nhị thức, phân phối chuẩn, χ² từ bảng tần số, tích phân.">
   <script>try{var t=localStorage.getItem("xstk-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=7"></script>
+  <script defer src="assets/js/site.js?v=8"></script>
 </head>
 <body data-lesson="may-tinh">
 <header class="topbar">
@@ -385,6 +385,30 @@ max(x)= 5</div>
 </table></div>
 <p class="small">Giá trị tới hạn $C$ của kiểm định cũng lấy bằng Inverse Normal (mục 5.4): một phía Area $=1-\alpha$ (5% → 0.95 → 1,644854), hai phía Area $=1-\frac{\alpha}{2}$. p-value của $T$, $\chi^2$, $F$ thì máy không tính được — chỉ khoanh vùng bằng bảng. <a href="bai-5.html#pv-may">Bài 5, mục 3.3 →</a></p>
 
+<h3 id="chi2-bang">5.8. $\chi^2$ từ bảng tần số, Kruskal–Wallis (Bài 6)</h3>
+<p><b>Máy làm gì?</b> Máy không có phân phối $\chi^2$ hay bảng Wilcoxon, nên giá trị tới hạn vẫn tra <a href="phu-luc.html#pl-4">Phụ lục 4</a>, <a href="phu-luc.html#pl-7">7</a>, <a href="phu-luc.html#pl-8">8</a>. Nhưng phần tính <b>giá trị thực nghiệm</b> thì máy làm rất nhanh, nếu gõ công thức gọn. Với bảng tần số: khai triển $(n-n')^2$ rồi cộng mọi ô được $\chi^2=\sum\frac{n^2}{n'}-n$ (vì tổng các $n$ và tổng các $n'$ đều bằng $n$) — mỗi ô chỉ cần “bình phương số đếm được chia số lẽ ra”.</p>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Bài 6, Ví dụ 2.1 — $\chi^2=\sum\frac{n^2}{n'}-n$</span></div>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd><kbd>18</kbd><kbd>x²</kbd><kbd>÷</kbd><kbd>27</kbd><kbd>+</kbd><kbd>22</kbd><kbd>x²</kbd><kbd>÷</kbd><kbd>21</kbd><kbd>+</kbd><kbd>20</kbd><kbd>x²</kbd><kbd>÷</kbd><kbd>12</kbd><kbd>+</kbd><kbd>72</kbd><kbd>x²</kbd><kbd>÷</kbd><kbd>63</kbd><kbd>+</kbd><kbd>48</kbd><kbd>x²</kbd><kbd>÷</kbd><kbd>49</kbd><kbd>+</kbd><kbd>20</kbd><kbd>x²</kbd><kbd>÷</kbd><kbd>28</kbd><kbd>−</kbd><kbd>200</kbd><kbd>=</kbd></span> <span class="why">máy hiện phân số <span class="lcd">1760/147</span>; nhấn <kbd>S⇔D</kbd> → <span class="lcd">11.97278912</span>.</span></li>
+  </ol>
+</div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Bảng 2 × 2 bằng CALC — Bài 6, Ví dụ 2.2</span></div>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span> gõ <span class="lcd">(A+B+C+D)(AD−BC)²÷((A+B)(C+D)(A+C)(B+D))</span> <span class="why">A: <kbd class="fn">ALPHA</kbd><kbd>(−)</kbd>, B: <kbd class="fn">ALPHA</kbd><kbd>°'"</kbd>, C: <kbd class="fn">ALPHA</kbd><kbd>log<sub>■</sub>□</kbd>, D: <kbd class="fn">ALPHA</kbd><kbd>sin</kbd>.</span></li>
+    <li><span class="keys"><kbd>CALC</kbd><span class="lcd">A=</span><kbd>20</kbd><kbd>=</kbd><span class="lcd">B=</span><kbd>60</kbd><kbd>=</kbd><span class="lcd">C=</span><kbd>54</kbd><kbd>=</kbd><span class="lcd">D=</span><kbd>66</kbd><kbd>=</kbd><kbd>=</kbd></span> <span class="why">→ <span class="lcd">6400/777</span>, <kbd>S⇔D</kbd> → <span class="lcd">8.236808237</span>. Bảng khác: nhấn CALC, nhập bốn số mới. (CALC với 4 biến: theo sách hướng dẫn fx-580VN X, chưa thử trên máy thật.)</span></li>
+  </ol>
+</div>
+<div class="table-wrap"><table>
+  <tr><th class="left">Dạng (Bài 6)</th><th class="left">Gõ trong MENU 1</th><th class="left">Ví dụ</th></tr>
+  <tr><td class="left">Tính độc lập, bảng bất kỳ</td><td class="left">$\sum\frac{n_{ij}^2}{n'_{ij}}-n$</td><td class="left">Ví dụ 2.1 → $11{,}973$</td></tr>
+  <tr><td class="left">Bảng 2 × 2</td><td class="left">$\frac{n(ad-bc)^2}{h_1h_2c_1c_2}$ (CALC)</td><td class="left">Ví dụ 2.2 → $8{,}237$</td></tr>
+  <tr><td class="left">Phù hợp, các loại đều</td><td class="left">$\frac{\sum n_i^2}{n/k}-n$</td><td class="left">Ví dụ 3.2 → $\frac{20}{3}\approx6{,}667$</td></tr>
+  <tr><td class="left">Kruskal–Wallis</td><td class="left">$12\div(n(n+1))\times(\sum T_i^2\div n_i)-3(n+1)$</td><td class="left">Ví dụ 8.1 → $\frac{459}{40}=11{,}475$</td></tr>
+</table></div>
+<p class="small">Tổng hạng $T^+$, $T_1$, $T_i$ phải tự xếp hạng bằng tay — máy không xếp hạng được; có thể dùng <a href="#stat-mau">MENU 6 → 1-Variable</a> nhập các hạng rồi đọc $\sum x$ để kiểm tra tổng. <a href="bai-6.html#vd-hut-thuoc">Bài 6, mục 2.5 →</a></p>
+
 <!-- =============================================================== -->
 <h2 id="tich-phan" data-toc="6. Tích phân ∫"><span class="num">6</span>Tích phân $\int$</h2>
 <p><b>Máy làm gì?</b> Máy cộng diện tích của rất nhiều mảnh nhỏ dưới đường cong (đúng ý tưởng ở khung tương tác <a href="bai-2.html#tp-dien-tich">Bài 2, mục 3.1</a>) và cho ra <b>một con số</b>. Máy <b>không</b> tìm nguyên hàm — nên bạn vẫn phải tính tay theo 4 bước Newton – Leibniz, còn máy dùng để soát.</p>
@@ -421,6 +445,9 @@ max(x)= 5</div>
   <tr><td class="left">Giá trị tới hạn $C$ của kiểm định (Bài 5)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd></span> Area $=1-\alpha$ (một phía) hoặc $1-\frac{\alpha}{2}$ (hai phía), σ 1, μ 0</td><td class="left"><a href="#inverse-normal">5.4</a></td></tr>
   <tr><td class="left">p-value của kiểm định $Z$ (Bài 5)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd></span> Lower $|Z|$, Upper $10^{99}$, σ 1, μ 0; hai phía nhân 2</td><td class="left"><a href="#p-value">5.7</a></td></tr>
   <tr><td class="left">Ghép cặp: $\overline d$, $s_D$ (Bài 5)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> nhập cột hiệu $D$; đọc x̄ và <b>sx</b></td><td class="left"><a href="#stat-mau">4.3</a></td></tr>
+  <tr><td class="left">Giá trị thực nghiệm $\chi^2$ của bảng tần số (Bài 6)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span> gõ $\sum\frac{n^2}{n'}-n$</td><td class="left"><a href="#chi2-bang">5.8</a></td></tr>
+  <tr><td class="left">$\chi^2$ bảng 2 × 2 (Bài 6)</td><td class="left"><span class="keys"><kbd>CALC</kbd></span> với A, B, C, D là bốn ô</td><td class="left"><a href="#chi2-bang">5.8</a></td></tr>
+  <tr><td class="left">Kruskal–Wallis $W$ (Bài 6)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span> gõ $\frac{12}{n(n+1)}\sum\frac{T_i^2}{n_i}-3(n+1)$</td><td class="left"><a href="#chi2-bang">5.8</a></td></tr>
   <tr><td class="left">χ², Student, Fisher</td><td class="left">máy không có — tra bảng</td><td class="left"><a href="phu-luc.html">Phụ lục</a></td></tr>
 </table></div>
 
