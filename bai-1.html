@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=8"></script>
+  <script defer src="assets/js/site.js?v=9"></script>
   <script defer src="assets/js/plot.js"></script>
   <script defer src="assets/js/bai1.js?v=3"></script>
 </head>
@@ -887,7 +887,7 @@ $$\ln(a^n)=\ln(\underbrace{a\cdot a\cdots a}_{n\text{ thừa số}})=\underbrace
   <p class="small">Mẹo soát nhanh: mỗi lần chỉ có 30% cơ hội mà muốn chắc 95% thì chắc chắn phải cần khá nhiều lần — đáp số 1 hay 3 là không có lý.</p>
 </div>
 <div class="widget" id="nminWidget">
-  <div class="widget-title">Nhìn thấy $n_{\min}$</div>
+  <div class="widget-title"><span>Nhìn thấy $n_{\min}$</span></div>
   <div class="widget-sub">Cột thứ $n$ là $1-q^n$ — xác suất có ít nhất một lần thành công sau $n$ lần. Đường cam là mốc $\gamma$. Cột xanh đậm là cột <b>đầu tiên</b> chạm mốc — đúng bằng số logarit tính ra bên dưới. Kéo thanh trượt để thấy $p$ càng nhỏ, $\gamma$ càng cao thì càng cần nhiều lần.</div>
   <div class="controls">
     <div class="ctrl"><label for="nmP">Xác suất thành công mỗi lần $p$ <output for="nmP"></output></label><input type="range" id="nmP" min="0.1" max="0.9" step="0.05" value="0.3"></div>
@@ -1003,7 +1003,7 @@ $$\ln(a^n)=\ln(\underbrace{a\cdot a\cdots a}_{n\text{ thừa số}})=\underbrace
 </table></div>
 <p class="small">Nhận xét: $k$ càng lớn thì nhóm I càng <b>ít</b> người (muốn số người khỏi của II gấp nhiều lần thì nhóm II phải đông hơn hẳn); còn cột cuối luôn là $\frac{1}{1+k}$ — xem mẹo bên dưới.</p>
 <div class="widget" id="kWidget">
-  <div class="widget-title">Kéo hệ số $k$: “gấp $k$ lần” thay đổi điều gì?</div>
+  <div class="widget-title"><span>Kéo hệ số $k$: “gấp $k$ lần” thay đổi điều gì?</span></div>
   <div class="widget-sub">Tính trên 100 bệnh nhân. Mỗi phương pháp có 2 cột: <b>cột nhạt</b> = số người được điều trị, <b>cột đậm</b> = số người khỏi bệnh. Kéo $k$, $a$, $b$ hoặc đổi “câu so sánh nói về…” để xem $x$ phải bằng bao nhiêu thì câu so sánh mới đúng.</div>
   <div class="controls">
     <div class="ctrl"><label for="kK">Hệ số $k$ <output for="kK"></output></label><input type="range" id="kK" min="0.5" max="4" step="0.25" value="1.5"></div>

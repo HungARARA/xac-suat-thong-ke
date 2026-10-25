@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=8"></script>
+  <script defer src="assets/js/site.js?v=9"></script>
   <script defer src="assets/js/plot.js"></script>
   <script defer src="assets/js/bai5.js?v=1"></script>
 </head>
@@ -194,7 +194,7 @@
   <p>Giáo trình nhấn mạnh: việc đặt tên loại 1 hay loại 2 không phân biệt mức độ nguy hại — tuỳ tình huống mà kiểu sai nào cũng có thể gây hại lớn. Muốn giảm cả hai cùng lúc mà không tăng cỡ mẫu là không làm được, nên người ta <b>cố định $\alpha$ nhỏ trước</b>, rồi trong các cách kiểm định có cùng $\alpha$ thì chọn cách có sai lầm loại 2 nhỏ nhất. Các công thức trong bài này đều đã là những cách tốt như vậy.</p>
 </div>
 <div class="widget" id="errWidget">
-  <div class="widget-title">$\alpha$ và $\beta$ kéo co nhau</div>
+  <div class="widget-title"><span>$\alpha$ và $\beta$ kéo co nhau</span></div>
   <div class="widget-sub">Ví dụ 1.1, $H_0:\ \mu=150$, $H:\ \mu&lt;150$, $\sigma=12$. Đường <b style="color:var(--s1)">xanh</b>: trung bình mẫu khi $H_0$ đúng. Đường <b style="color:var(--s2)">cam</b>: trung bình mẫu khi thuốc thật sự chỉ tê $\mu$ phút. Kéo các thanh và xem hai phần tô.</div>
   <div class="controls">
     <div class="ctrl"><label for="errA">Mức ý nghĩa $\alpha$ <output for="errA"></output></label><input type="range" id="errA" min="0.01" max="0.2" step="0.005" value="0.05"></div>
@@ -606,7 +606,7 @@ $$\begin{aligned}Z&amp;=\frac{\overline x-\mu_0}{\sigma/\sqrt n}\\&amp;=\frac{(\
 </table></div>
 <p class="small muted center">Trên điện thoại, vuốt ngang bảng để xem hết.</p>
 <div class="widget" id="testWidget">
-  <div class="widget-title">Máy kiểm định trung bình (biết $\sigma$ hoặc mẫu lớn)</div>
+  <div class="widget-title"><span>Máy kiểm định trung bình (biết $\sigma$ hoặc mẫu lớn)</span></div>
   <div class="widget-sub">Tổng quát hoá: kéo $\overline x$, $n$, $\sigma$ (hoặc $s$), $\alpha$ và chọn dạng $H$; mốc $\mu_0=150$. Xem $Z$, ngưỡng $\overline x^*$ và kết luận thay đổi ra sao.</div>
   <div class="seg" id="tH"><button data-h="1">$H_1:\ \mu&gt;150$</button><button data-h="2" class="on">$H_2:\ \mu&lt;150$</button><button data-h="3">$H_3:\ \mu\ne150$</button></div>
   <div class="controls">
@@ -691,7 +691,7 @@ $$\begin{aligned}&amp;|\overline x-\mu_0|\\ &amp;\quad&gt;\underbrace{z_{1-\frac
 </div>
 <p>Ta đã gặp p-value mà chưa gọi tên: ở mục 1.2, “chỉ 2,28% số mẫu thấp được như vậy nếu thuốc vẫn tốt” — $0{,}0228$ chính là p-value của Ví dụ 1.1.</p>
 <div class="widget" id="pvWidget">
-  <div class="widget-title">p-value là diện tích đuôi tính từ $Z$ của mẫu</div>
+  <div class="widget-title"><span>p-value là diện tích đuôi tính từ $Z$ của mẫu</span></div>
   <div class="widget-sub">Kéo $Z$ và chọn dạng $H$. Phần tô tím là p-value; vạch đỏ đứt là ngưỡng $C$ ứng với $\alpha=5\%$.</div>
   <div class="seg" id="pvH"><button data-h="1">$H_1$ (phải)</button><button data-h="2" class="on">$H_2$ (trái)</button><button data-h="3">$H_3$ (hai phía)</button></div>
   <div class="controls"><div class="ctrl"><label for="pvZ">Giá trị thực nghiệm $Z$ <output for="pvZ"></output></label><input type="range" id="pvZ" min="-3.5" max="3.5" step="0.01" value="-2"></div></div>

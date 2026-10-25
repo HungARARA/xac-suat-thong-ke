@@ -37,6 +37,11 @@ const LESSONS = [
     id: "bai-6", href: "bai-6.html", no: "Bài 6", title: "Phép kiểm phi tham số",
     desc: "Phép kiểm χ²: tính độc lập, so sánh nhiều tỉ lệ, sự phù hợp; xếp hạng; Wilcoxon dấu và hạng (một mẫu, ghép cặp), tổng hạng (hai mẫu); Kruskal–Wallis cho nhiều nhóm.",
     chips: ["χ² độc lập", "Phù hợp", "Wilcoxon", "Kruskal–Wallis"]
+  },
+  {
+    id: "bai-7", href: "bai-7.html", no: "Bài 7", title: "Phân tích phương sai (ANOVA)",
+    desc: "So sánh nhiều trung bình cùng lúc: chia độ biến thiên SS = SSB + SSW, phép kiểm F và bảng ANOVA; số liệu thô và số liệu tóm tắt, bài toán ngược, nối với phép kiểm T và Kruskal–Wallis, ANOVA hai yếu tố.",
+    chips: ["SSB, SSW", "Phép kiểm F", "Bảng ANOVA", "Hai yếu tố"]
   }
 ];
 
@@ -48,7 +53,6 @@ const EXTRA_PAGES = [
 
 /* Các bài sắp học (hiện mờ trên trang chủ). Khi làm xong bài nào thì chuyển nó lên LESSONS. */
 const COMING = [
-  { no: "Bài 7", title: "Phân tích phương sai" },
   { no: "Bài 8", title: "Hồi quy và tương quan" }
 ];
 

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=8"></script>
+  <script defer src="assets/js/site.js?v=9"></script>
   <script defer src="assets/js/plot.js"></script>
   <script defer src="assets/js/bai2.js?v=3"></script>
 </head>
@@ -560,7 +560,7 @@ $$F(x)=\sum_{x_i&lt;x}p_i$$
 $$F(x)=\begin{cases}0 &amp; x\le0\\ 0{,}006 &amp; 0&lt;x\le1\\ 0{,}098 &amp; 1&lt;x\le2\\ 0{,}496 &amp; 2&lt;x\le3\\ 1 &amp; x&gt;3\end{cases}$$
 
 <div class="widget" id="s05-cut">
-  <div class="widget-title">Vạch cắt $x$: cột nào được cộng vào $F(x)$?</div>
+  <div class="widget-title"><span>Vạch cắt $x$: cột nào được cộng vào $F(x)$?</span></div>
   <div class="widget-sub">Kéo vạch đỏ, hoặc bấm nhanh một mốc. Cột <b>cam</b> = giá trị của $X$ nằm hẳn bên trái vạch (được cộng); cột <b>xám</b> = chưa được cộng.</div>
   <div class="controls"><div class="ctrl"><label for="s05-x">Vạch $x$ <output for="s05-x"></output></label><input type="range" id="s05-x" min="-1" max="4" step="0.01" value="0.5"></div></div>
   <div class="seg" id="s05-pre"><button data-v="0">x = 0</button><button data-v="0.5" class="on">x = 0,5</button><button data-v="1">x = 1</button><button data-v="1.01">x = 1,01</button><button data-v="2">x = 2</button><button data-v="3">x = 3</button><button data-v="3.5">x = 3,5</button></div>
@@ -747,7 +747,7 @@ $$F(x)=\begin{cases}0 &amp; x\le0\\ 0{,}006 &amp; 0&lt;x\le1\\ 0{,}098 &amp; 1&l
 
 <h4>Hai hình đi cùng nhau: mật độ $f$ và hàm phân phối $F$</h4>
 <div class="widget" id="cdfWidget">
-  <div class="widget-title">Diện tích bên trái ↔ giá trị $F(x)$</div>
+  <div class="widget-title"><span>Diện tích bên trái ↔ giá trị $F(x)$</span></div>
   <div class="widget-sub">Thời gian tê môi của Ví dụ 5.1. Kéo $x$: hình trên tô diện tích bên trái $x$, hình dưới là điểm $(x;F(x))$ — hai con số luôn bằng nhau.</div>
   <div class="controls"><div class="ctrl"><label for="cx">Điểm $x$ <output for="cx"></output></label><input type="range" id="cx" min="-0.5" max="3.5" step="0.05" value="1.5"></div></div>
   <div id="cdfTop"></div>
@@ -949,7 +949,7 @@ $$\begin{aligned}F(1)&amp;=\frac{1^2}{3}-\frac{2\cdot1^3}{27}=\frac13-\frac{2}{2
 </div>
 <p>Thử dần bằng số là một cách. Cách thứ hai là <b>đọc ngược đồ thị của $F$</b>: chiều xuôi là đi từ trục ngang lên đường cong rồi sang trục đứng; chiều ngược thì đi theo hướng ngược lại.</p>
 <div class="widget" id="s06-inv">
-  <div class="widget-title">Đọc ngược đồ thị $F$: cho tỉ lệ $\alpha$, tìm mốc $x_\alpha$</div>
+  <div class="widget-title"><span>Đọc ngược đồ thị $F$: cho tỉ lệ $\alpha$, tìm mốc $x_\alpha$</span></div>
   <div class="widget-sub">Thời gian tê môi: $f(x)=\frac29x(3-x)$, $F(x)=\frac{x^2}{3}-\frac{2x^3}{27}$ trên $[0;3]$. Kéo $\alpha$ (tỉ lệ bệnh nhân đã hết tê).</div>
   <div class="controls"><div class="ctrl"><label for="s06-a">Tỉ lệ $\alpha$ <output for="s06-a"></output></label><input type="range" id="s06-a" min="0.01" max="0.99" step="0.01" value="0.5"></div></div>
   <div id="s06-top"></div>
@@ -1958,7 +1958,7 @@ $$\begin{aligned}&amp;E(T_2^2)=0{,}5^2\cdot0{,}25+1{,}5^2\cdot0{,}5\\&amp;\qquad
   <p class="small">Hằng số $+200$ làm tăng trung bình nhưng không ảnh hưởng độ dao động.</p>
 </div>
 <div class="widget" id="s08-linWidget">
-  <div class="widget-title">Dời và giãn: $Y=aX+b$</div>
+  <div class="widget-title"><span>Dời và giãn: $Y=aX+b$</span></div>
   <div class="widget-sub">$X$ là số ca điều trị tủy thành công của Ví dụ 2.1 ($x=0;1;2;3$, $p=0{,}006;\ 0{,}092;\ 0{,}398;\ 0{,}504$, $D(X)=0{,}46$). Kéo $a$ và $b$ để tạo $Y=aX+b$.</div>
   <div class="controls">
     <div class="ctrl"><label for="s08-a">Hệ số nhân $a$ <output for="s08-a"></output></label><input type="range" id="s08-a" min="-3" max="3" step="0.5" value="2"></div>
@@ -2976,7 +2976,7 @@ $$\begin{aligned}&amp;E(T_2^2)=0{,}5^2\cdot0{,}25+1{,}5^2\cdot0{,}5\\&amp;\qquad
 <p class="small muted center">Trên điện thoại, vuốt ngang bảng để xem đủ các cột.</p>
 <p><b>Đọc kí hiệu tích phân:</b> $\int_{-\infty}^{x}$ nghĩa là “gom diện tích dưới đường cong, bắt đầu từ tận cùng bên trái, dừng ở $x$”. $\int_0^{x}$ nghĩa là “bắt đầu ở 0, dừng ở $x$”. Chữ $t$ bên trong chỉ là biến chạy (đã giải thích ở mục 3.7). Hai hàm $G$ và $\varphi$ chỉ khác nhau ở <b>điểm xuất phát</b>: $G$ xuất phát từ $-\infty$, $\varphi$ xuất phát từ $0$.</p>
 <div class="widget" id="s11-three">
-  <div class="widget-title">Một mốc $x$ — ba con số khác nhau</div>
+  <div class="widget-title"><span>Một mốc $x$ — ba con số khác nhau</span></div>
   <div class="widget-sub">Kéo $x$ và xem vạch đỏ (chiều cao $l$), phần tô bên trái vạch đỏ (diện tích $G$) và vùng cam giữa 0 và $x$ (diện tích $\varphi$) thay đổi thế nào.</div>
   <div class="controls">
     <div class="ctrl"><label for="s11-x">Mốc $x$ <output for="s11-x"></output></label><input type="range" id="s11-x" min="-3.5" max="3.5" step="0.01" value="1"></div>

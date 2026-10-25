@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=8"></script>
+  <script defer src="assets/js/site.js?v=9"></script>
 </head>
 <body data-lesson="may-tinh">
 <header class="topbar">
@@ -265,6 +265,26 @@ max(x)= 5</div>
   </ul>
 </div>
 
+<h3 id="anova">4.4. Phân tích phương sai (Bài 7): mọi tổng bình phương $=n\times\sigma^2_x$</h3>
+<p><b>Máy làm gì?</b> Dòng <span class="lcd">σ²x</span> là $\frac{\sum f(x-\overline x)^2}{\sum f}$ và dòng <span class="lcd">n</span> là $\sum f$. Nhân hai dòng với nhau được $\sum f(x-\overline x)^2$ — đúng một <b>tổng bình phương độ lệch</b>. Ở đây ta không dùng σ²x như “phương sai tổng thể” mà chỉ mượn nó để có tổng bình phương. Chọn đúng dãy số để nhập là ra từng tổng của ANOVA:</p>
+<div class="table-wrap"><table class="compact" style="min-width:540px">
+  <tr><th class="left">Muốn tính</th><th class="left">Cột x</th><th class="left">Cột Freq</th><th class="left">Lấy</th></tr>
+  <tr><td class="left">$SS$ (toàn phần)</td><td class="left">cả $N$ số liệu</td><td class="left">1</td><td class="left">$n\times\sigma^2_x$ hoặc $(n-1)\times s^2_x$</td></tr>
+  <tr><td class="left">$SSB$ và trung bình chung $\overline x$</td><td class="left">các trung bình nhóm $\overline x_i$</td><td class="left">cỡ nhóm $n_i$</td><td class="left">$n\times\sigma^2_x$ (dòng n là $N$); dòng x̄ là $\overline x$</td></tr>
+  <tr><td class="left">Phần của nhóm $i$ trong $SSW$</td><td class="left">số liệu nhóm $i$</td><td class="left">1</td><td class="left">$(n-1)\times s^2_x$</td></tr>
+  <tr><td class="left">Hai yếu tố: $SSB_A$ / $SSB_B$</td><td class="left">các trung bình hàng / cột</td><td class="left">1</td><td class="left">$N\times\sigma^2_x$ với $N=hc$ (tổng số ô)</td></tr>
+</table></div>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span><span>Bài 7, Ví dụ 4.1 — ba hệ thống dán ($N=18$)</span></div>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> <span class="why">xoá dữ liệu cũ <span class="keys"><kbd class="fn">OPTN</kbd><kbd>2</kbd><kbd>2</kbd></span>; nhập cả 18 số vào cột x.</span></li>
+    <li><span class="keys"><kbd class="fn">OPTN</kbd><kbd>3</kbd></span> <span class="why"><span class="lcd">x̄ = 24</span>, <span class="lcd">σ²x = 2.577777778</span>, <span class="lcd">n = 18</span> ⇒ $SS=18\times2{,}5778=46{,}4$.</span></li>
+    <li><span class="why">Xoá, nhập cột x: $25{,}1$; $22{,}4$; $24{,}2$ (trung bình ba nhóm), cột Freq: $6$; $5$; $7$ → <span class="keys"><kbd class="fn">OPTN</kbd><kbd>3</kbd></span>: <span class="lcd">x̄ = 24</span>, <span class="lcd">σ²x = 1.13</span>, <span class="lcd">n = 18</span> ⇒ $SSB=20{,}34$.</span></li>
+    <li><span class="why">$SSW=46{,}4-20{,}34=26{,}06$; về <span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span> tính $F=\frac{20{,}34\div2}{26{,}06\div15}\approx5{,}854$.</span></li>
+  </ol>
+  <p class="small">Đề chỉ cho $n_i$, $\overline x_i$, $s_i$: bước 3 vẫn làm được (ra $\overline x$ và $SSB$); còn $SSW=\sum(n_i-1)s_i^2$ gõ thẳng trong MENU 1, ví dụ <span class="lcd">11×0.42²+9×0.38²+10×0.45²+10×0.4²</span> → <span class="lcd">6.865</span>. Giá trị tới hạn $F_{1-\alpha}(k-1;\ N-k)$ máy không có — tra <a href="phu-luc.html#pl-6a">Phụ lục 6</a>. <a href="bai-7.html#bam-may-anova">Bài 7, mục 4.2 →</a></p>
+</div>
+
 <!-- =============================================================== -->
 <h2 id="distribution" data-toc="5. Phân phối (MENU 7)"><span class="num">5</span>Phân phối — <span class="nowrap">MENU 7</span> Distribution</h2>
 <h3 id="dist-menu">5.1. Menu phân phối</h3>
@@ -448,6 +468,8 @@ max(x)= 5</div>
   <tr><td class="left">Giá trị thực nghiệm $\chi^2$ của bảng tần số (Bài 6)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span> gõ $\sum\frac{n^2}{n'}-n$</td><td class="left"><a href="#chi2-bang">5.8</a></td></tr>
   <tr><td class="left">$\chi^2$ bảng 2 × 2 (Bài 6)</td><td class="left"><span class="keys"><kbd>CALC</kbd></span> với A, B, C, D là bốn ô</td><td class="left"><a href="#chi2-bang">5.8</a></td></tr>
   <tr><td class="left">Kruskal–Wallis $W$ (Bài 6)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span> gõ $\frac{12}{n(n+1)}\sum\frac{T_i^2}{n_i}-3(n+1)$</td><td class="left"><a href="#chi2-bang">5.8</a></td></tr>
+  <tr><td class="left">ANOVA: $SS$, $SSB$, trung bình chung (Bài 7)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> nhập cả số liệu (→ $SS$) hoặc $\overline x_i$ với Freq $=n_i$ (→ $SSB$); lấy $n\times\sigma^2_x$</td><td class="left"><a href="#anova">4.4</a></td></tr>
+  <tr><td class="left">ANOVA: $SSW$ từ $n_i$, $s_i$ (Bài 7)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>1</kbd></span> gõ $\sum(n_i-1)s_i^2$</td><td class="left"><a href="#anova">4.4</a></td></tr>
   <tr><td class="left">χ², Student, Fisher</td><td class="left">máy không có — tra bảng</td><td class="left"><a href="phu-luc.html">Phụ lục</a></td></tr>
 </table></div>
 

@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=8"></script>
+  <script defer src="assets/js/site.js?v=9"></script>
   <script defer src="assets/js/plot.js"></script>
   <script defer src="assets/js/bai3.js?v=1"></script>
 </head>
@@ -498,7 +498,7 @@
   </div></details>
 </div>
 <div class="widget" id="sysWidget">
-  <div class="widget-title">Lấy mẫu hệ thống: thử với $N$, $n$, $r$ bất kỳ</div>
+  <div class="widget-title"><span>Lấy mẫu hệ thống: thử với $N$, $n$, $r$ bất kỳ</span></div>
   <div class="widget-sub">Mỗi ô vuông là một đơn vị của tổng thể. Ô tô màu là đơn vị được chọn. Đổi $N$, $n$ (máy tính $k=N/n$, làm tròn xuống nếu không chia hết) và vị trí bắt đầu $r$.</div>
   <div class="controls">
     <div class="ctrl"><label for="sysN">Tổng thể $N$ <output for="sysN"></output></label><input type="range" id="sysN" min="20" max="200" step="1" value="60"></div>
@@ -962,7 +962,7 @@
 <p class="small">Mục 10.4 sẽ nói cách tính trung bình khi có lớp mở (phải “mượn” độ rộng của lớp bên cạnh).</p>
 
 <div class="widget" id="histWidget">
-  <div class="widget-title">Tự phân lớp 40 số huyết áp — chọn số lớp $k$</div>
+  <div class="widget-title"><span>Tự phân lớp 40 số huyết áp — chọn số lớp $k$</span></div>
   <div class="widget-sub">Số liệu của Ví dụ 8.1. Máy tính $h=\frac{64}{k}$ làm tròn lên thành số nguyên, bắt đầu từ $a_1=98$. Đổi $k$ để thấy: ít lớp quá thì “bẹt”, nhiều lớp quá thì “lởm chởm”.</div>
   <div class="controls">
     <div class="ctrl"><label for="hk">Số lớp $k$ <output for="hk"></output></label><input type="range" id="hk" min="2" max="12" step="1" value="5"></div>
@@ -1517,7 +1517,7 @@
   <p class="small">Khung tương tác dưới đây cho bạn thấy tận mắt: chia $n$ thì trung bình của các phương sai mẫu luôn thấp hơn phương sai thật; chia $n-1$ thì khớp.</p>
 </div>
 <div class="widget" id="varWidget">
-  <div class="widget-title">Thử nghiệm: chia $n$ hay chia $n-1$?</div>
+  <div class="widget-title"><span>Thử nghiệm: chia $n$ hay chia $n-1$?</span></div>
   <div class="widget-sub">Tổng thể: huyết áp có phương sai thật $\sigma^2=100$ ($\sigma=10$). Máy lấy rất nhiều mẫu cỡ $n$, mỗi mẫu tính hai kiểu phương sai, rồi lấy trung bình của từng kiểu.</div>
   <div class="controls"><div class="ctrl"><label for="vn">Cỡ mẫu $n$ <output for="vn"></output></label><input type="range" id="vn" min="2" max="30" step="1" value="3"></div></div>
   <div class="seg" id="vBtns"><button data-a="run">Lấy 2000 mẫu</button></div>
