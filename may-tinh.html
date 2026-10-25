@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/style.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-  <script defer src="assets/js/site.js?v=6"></script>
+  <script defer src="assets/js/site.js?v=7"></script>
 </head>
 <body data-lesson="may-tinh">
 <header class="topbar">
@@ -368,6 +368,23 @@ max(x)= 5</div>
 <h3 id="khong-co">5.6. Máy không có χ², Student, Fisher</h3>
 <p>Ba phân phối này phải <b>tra bảng</b>: <a href="phu-luc.html#pl-4">Phụ lục 4 (χ²)</a>, <a href="phu-luc.html#pl-5">Phụ lục 5 (Student)</a>, <a href="phu-luc.html#pl-6a">Phụ lục 6 (Fisher)</a> — hoặc dùng công cụ tra nhanh ở <a href="bai-2.html#f-tra">Bài 2, mục 14.4</a> để soát.</p>
 
+<h3 id="p-value">5.7. p-value của kiểm định $Z$ (Bài 5)</h3>
+<p><b>Máy làm gì?</b> p-value của kiểm định $Z$ là một <b>diện tích đuôi</b> dưới đường chuông chuẩn tắc: phần nằm ngoài $|Z|$ (một phía), hoặc gấp đôi phần đó (hai phía). Đó đúng là việc của Normal CD (mục 5.3) với σ $=1$, μ $=0$.</p>
+<div class="box calc">
+  <div class="box-title"><span class="tag">Bấm máy</span><span>p-value khi $Z=-2{,}29$ — Bài 5, Ví dụ 2.2</span></div>
+  <ol class="keyseq">
+    <li><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd><span class="lcd">Normal CD</span></span></li>
+    <li><span class="keys"><span class="lcd">Lower</span><kbd>2.29</kbd><kbd>=</kbd><span class="lcd">Upper</span><kbd>1</kbd><kbd>×10<sup>x</sup></kbd><kbd>99</kbd><kbd>=</kbd><span class="lcd">σ</span><kbd>1</kbd><kbd>=</kbd><span class="lcd">μ</span><kbd>0</kbd><kbd>=</kbd><kbd>=</kbd></span> <span class="why">nhập <b>trị tuyệt đối</b> $|Z|$ để lấy đuôi phải (đường chuông đối xứng nên đuôi trái của $-2{,}29$ bằng đuôi phải của $2{,}29$) → <span class="lcd">0.01101…</span>; bảng cho $0{,}5-\varphi(2{,}29)=0{,}0110$.</span></li>
+    <li><span class="why">Kiểm định hai phía: nhân đôi. Cách khác: hàm <span class="lcd">R(</span> của chế độ thống kê (mục 5.5), <span class="lcd">R(2.29)</span> → diện tích bên phải 2,29.</span></li>
+  </ol>
+</div>
+<div class="table-wrap"><table>
+  <tr><th class="left">Đối giả thuyết</th><th>p-value</th><th class="left">Bấm</th></tr>
+  <tr><td class="left">một phía ($Z$ cùng phía với $H$)</td><td>$0{,}5-\varphi(|Z|)$</td><td class="left">Normal CD: Lower $|Z|$, Upper $10^{99}$</td></tr>
+  <tr><td class="left">hai phía</td><td>$2\big[0{,}5-\varphi(|Z|)\big]$</td><td class="left">như trên rồi nhân 2</td></tr>
+</table></div>
+<p class="small">Giá trị tới hạn $C$ của kiểm định cũng lấy bằng Inverse Normal (mục 5.4): một phía Area $=1-\alpha$ (5% → 0.95 → 1,644854), hai phía Area $=1-\frac{\alpha}{2}$. p-value của $T$, $\chi^2$, $F$ thì máy không tính được — chỉ khoanh vùng bằng bảng. <a href="bai-5.html#pv-may">Bài 5, mục 3.3 →</a></p>
+
 <!-- =============================================================== -->
 <h2 id="tich-phan" data-toc="6. Tích phân ∫"><span class="num">6</span>Tích phân $\int$</h2>
 <p><b>Máy làm gì?</b> Máy cộng diện tích của rất nhiều mảnh nhỏ dưới đường cong (đúng ý tưởng ở khung tương tác <a href="bai-2.html#tp-dien-tich">Bài 2, mục 3.1</a>) và cho ra <b>một con số</b>. Máy <b>không</b> tìm nguyên hàm — nên bạn vẫn phải tính tay theo 4 bước Newton – Leibniz, còn máy dùng để soát.</p>
@@ -401,6 +418,9 @@ max(x)= 5</div>
   <tr><td class="left">$\varphi(x)$</td><td class="left">Normal CD (0 → $x$; σ 1; μ 0) hoặc Q(</td><td class="left"><a href="#tra-phi">5.5</a></td></tr>
   <tr><td class="left">Hệ số tin cậy $z_{1-\alpha/2}$ (Bài 4)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd></span> Area $=1-\frac{\alpha}{2}$ (95% → 0,975), σ 1, μ 0</td><td class="left"><a href="#inverse-normal">5.4</a></td></tr>
   <tr><td class="left">Độ tin cậy từ $z$ (bài ngược, Bài 4)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd></span> Lower $-z$, Upper $z$, σ 1, μ 0</td><td class="left"><a href="#normal-cd">5.3</a></td></tr>
+  <tr><td class="left">Giá trị tới hạn $C$ của kiểm định (Bài 5)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>3</kbd></span> Area $=1-\alpha$ (một phía) hoặc $1-\frac{\alpha}{2}$ (hai phía), σ 1, μ 0</td><td class="left"><a href="#inverse-normal">5.4</a></td></tr>
+  <tr><td class="left">p-value của kiểm định $Z$ (Bài 5)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>7</kbd><kbd>2</kbd></span> Lower $|Z|$, Upper $10^{99}$, σ 1, μ 0; hai phía nhân 2</td><td class="left"><a href="#p-value">5.7</a></td></tr>
+  <tr><td class="left">Ghép cặp: $\overline d$, $s_D$ (Bài 5)</td><td class="left"><span class="keys"><kbd class="fn">MENU</kbd><kbd>6</kbd><kbd>1</kbd></span> nhập cột hiệu $D$; đọc x̄ và <b>sx</b></td><td class="left"><a href="#stat-mau">4.3</a></td></tr>
   <tr><td class="left">χ², Student, Fisher</td><td class="left">máy không có — tra bảng</td><td class="left"><a href="phu-luc.html">Phụ lục</a></td></tr>
 </table></div>
 

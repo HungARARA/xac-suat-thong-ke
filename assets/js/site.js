@@ -27,6 +27,11 @@ const LESSONS = [
     id: "bai-4", href: "bai-4.html", no: "Bài 4", title: "Ước lượng tham số tổng thể",
     desc: "Ước lượng điểm và khoảng tin cậy cho trung bình, tỉ lệ, phương sai; cỡ mẫu tối thiểu; bài toán ngược; hiệu hai trung bình, hiệu hai tỉ lệ.",
     chips: ["z, t, χ²", "Khoảng tin cậy", "Cỡ mẫu", "Hai nhóm"]
+  },
+  {
+    id: "bai-5", href: "bai-5.html", no: "Bài 5", title: "Kiểm định giả thuyết thống kê",
+    desc: "Logic kiểm định, hai loại sai lầm, miền bác bỏ, p-value; kiểm định trung bình, tỉ lệ, phương sai một mẫu; so sánh hai phương sai, hai trung bình (độc lập, ghép cặp), hai tỉ lệ; bài toán ngược.",
+    chips: ["H₀ và H", "z, t, χ², F", "p-value", "Hai nhóm"]
   }
 ];
 
@@ -38,7 +43,6 @@ const EXTRA_PAGES = [
 
 /* Các bài sắp học (hiện mờ trên trang chủ). Khi làm xong bài nào thì chuyển nó lên LESSONS. */
 const COMING = [
-  { no: "Bài 5", title: "Kiểm định giả thuyết thống kê" },
   { no: "Bài 6", title: "Phép kiểm phi tham số" },
   { no: "Bài 7", title: "Phân tích phương sai" },
   { no: "Bài 8", title: "Hồi quy và tương quan" }
